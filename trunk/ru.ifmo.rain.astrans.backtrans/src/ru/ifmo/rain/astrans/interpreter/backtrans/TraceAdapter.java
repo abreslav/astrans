@@ -21,7 +21,9 @@ public class TraceAdapter {
 	private final Map<EReference, ReferenceMapping> referenceMappings;
 	
 	public TraceAdapter(Trace trace) {
-		classMappings = Collections.<ClassMapping>unmodifiableCollection(trace.getClassMappings());
+		@SuppressWarnings("unchecked")
+		Collection<ClassMapping> unmodifiableCollection = Collections.<ClassMapping>unmodifiableCollection(trace.getClassMappings());
+		classMappings = unmodifiableCollection;
 		
 		Map<EAttribute, AttributeMapping> attrMap = new HashMap<EAttribute, AttributeMapping>();
 		for (Iterator iter = trace.getAttributeMappings().iterator(); iter.hasNext();) {
