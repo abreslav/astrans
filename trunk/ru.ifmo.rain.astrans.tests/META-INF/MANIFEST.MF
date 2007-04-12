@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests Plug-in
+Bundle-SymbolicName: ru.ifmo.rain.astrans.tests
+Bundle-Version: 1.0.0
+Bundle-Localization: plugin
+Require-Bundle: ru.ifmo.rain.astrans.ast,
+ ru.ifmo.rain.astrans.astransformation,
+ ru.ifmo.rain.astrans.asttomodel,
+ ru.ifmo.rain.astrans.backtrans,
+ ru.ifmo.rain.astrans.ecore,
+ ru.ifmo.rain.astrans.interpreter,
+ ru.ifmo.rain.astrans.interpreter.trace,
+ ru.ifmo.rain.astrans.utils
