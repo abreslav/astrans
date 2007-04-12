@@ -19,6 +19,7 @@ import ru.ifmo.rain.astrans.trace.ReferenceMappingType;
 
 public class BacktransCreator {
 
+	@SuppressWarnings("unchecked")
 	public static Transformation createBackTransformation(TraceAdapter trace) {
 		Transformation backTransformation = AstransformationFactory.eINSTANCE.createTransformation();
 		backTransformation.setName("back");
