@@ -9,6 +9,7 @@ package ru.ifmo.rain.astrans.trace.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -347,6 +348,19 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 		initEReference(getTrace_ClassMappings(), this.getClassMapping(), null, "classMappings", null, 0, -1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrace_AttributeMappings(), this.getAttributeMapping(), null, "attributeMappings", null, 0, -1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrace_ReferenceMappings(), this.getReferenceMapping(), null, "referenceMappings", null, 0, -1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		EOperation op = addEOperation(traceEClass, null, "addClassMapping");
+		addEParameter(op, ecorePackage.getEClass(), "proto", 0, 1);
+		addEParameter(op, ecorePackage.getEClass(), "image", 0, 1);
+
+		op = addEOperation(traceEClass, null, "addAttributeMapping");
+		addEParameter(op, ecorePackage.getEAttribute(), "proto", 0, 1);
+		addEParameter(op, ecorePackage.getEAttribute(), "image", 0, 1);
+
+		op = addEOperation(traceEClass, null, "addReferenceMapping");
+		addEParameter(op, ecorePackage.getEReference(), "proto", 0, 1);
+		addEParameter(op, ecorePackage.getEStructuralFeature(), "image", 0, 1);
+		addEParameter(op, this.getReferenceMappingType(), "type", 0, 1);
 
 		initEClass(classMappingEClass, ClassMapping.class, "ClassMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getClassMapping_Proto(), ecorePackage.getEClass(), null, "proto", null, 1, 1, ClassMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

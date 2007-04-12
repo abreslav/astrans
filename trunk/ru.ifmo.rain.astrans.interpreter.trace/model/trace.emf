@@ -1,30 +1,36 @@
 @namespace(uri="http://rain.ifmo.ru/~breslav/2007/astrans/interperter/trace", prefix="trace")
 package trace;
 
+import "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore";
+
 class Trace {
-	val ClassMapping[*] classMappings;
-	val AttributeMapping[*] attributeMappings;
-	val ReferenceMapping[*] referenceMappings;
+  val ClassMapping[*] classMappings;
+  op void addClassMapping(ecore.EClass proto, ecore.EClass image);
+  val AttributeMapping[*] attributeMappings;
+  op void addAttributeMapping(ecore.EAttribute proto, ecore.EAttribute image);
+  val ReferenceMapping[*] referenceMappings;
+  op void addReferenceMapping(ecore.EReference proto, ecore.EStructuralFeature image, ReferenceMappingType type);
 }
 
 class ClassMapping {
-	ref ecore.EClass[1] proto;
-	ref ecore.EClass[1] image;
+  ref EClass[1] proto;
+  ref EClass[1] image;
 }
 
 class AttributeMapping {
-	ref ecore.EAttribute[1] proto;
-	ref ecore.EAttribute[1] image;
+  ref ecore.EAttribute[1] proto;
+  ref ecore.EAttribute[1] image;
 }
 
 class ReferenceMapping {
-	ref ecore.EReference[1] proto;
-	ref ecore.EStructuralFeature[1] image;
-	attr ReferenceMappingType type;
+  ref ecore.EReference[1] proto;
+  ref ecore.EStructuralFeature[1] image;
+  attr ReferenceMappingType type;
 }
 
 enum ReferenceMappingType {
-	NONE = 0;
-	TRANSLATED = 1;
-	MAPPED = 2;
+  NONE = 0;
+  TRANSLATED = 1;
+  MAPPED = 2;
 }
+

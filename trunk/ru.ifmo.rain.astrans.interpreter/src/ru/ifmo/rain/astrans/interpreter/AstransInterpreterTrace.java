@@ -15,12 +15,8 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import ru.ifmo.rain.astrans.CreateClass;
-import ru.ifmo.rain.astrans.trace.AttributeMapping;
-import ru.ifmo.rain.astrans.trace.ClassMapping;
-import ru.ifmo.rain.astrans.trace.ReferenceMapping;
 import ru.ifmo.rain.astrans.trace.ReferenceMappingType;
 import ru.ifmo.rain.astrans.trace.Trace;
-import ru.ifmo.rain.astrans.trace.TraceFactory;
 
 public class AstransInterpreterTrace {
 	private final Map<EClass, EClass> mapTrace = new LinkedHashMap<EClass, EClass>();
@@ -36,9 +32,7 @@ public class AstransInterpreterTrace {
 
 	public void registerMappedClass(EClass proto, EClass image) {
 		mapTrace.put(proto, image);
-		
-		ClassMapping mapping = TraceFactory.eINSTANCE.createClassMapping(proto, image);
-		trace.getClassMappings().add(mapping);
+		trace.addClassMapping(proto, image);
 	}
 	
 	public EClass getMappedClass(EClass proto) {
@@ -59,9 +53,7 @@ public class AstransInterpreterTrace {
 	
 	public void registerAttribute(EAttribute proto, EAttribute image) {
 		attributeTrace.put(proto, image);
-		
-		AttributeMapping mapping = TraceFactory.eINSTANCE.createAttributeMapping(proto, image);
-		trace.getAttributeMappings().add(mapping);
+		trace.addAttributeMapping(proto, image);
 	}
 	
 	public EAttribute getCorrespondingAttribute(EAttribute proto) {
@@ -70,9 +62,7 @@ public class AstransInterpreterTrace {
 
 	public void registerReference(EReference proto, EStructuralFeature image, ReferenceMappingType mappingType) {
 		referenceTrace.put(proto, image);
-		
-		ReferenceMapping mapping = TraceFactory.eINSTANCE.createReferenceMapping(proto, image, mappingType);
-		trace.getReferenceMappings().add(mapping);
+		trace.addReferenceMapping(proto, image, mappingType);
 	}
 	
 	public EStructuralFeature getCorrespondingFeature(EReference proto) {

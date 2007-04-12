@@ -182,7 +182,6 @@ public class TraceFactoryImpl extends EFactoryImpl implements TraceFactory {
 	public static TracePackage getPackage() {
 		return TracePackage.eINSTANCE;
 	}
-	
 
 	public AttributeMapping createAttributeMapping(EAttribute proto, EAttribute image) {
 		AttributeMapping result = createAttributeMapping();

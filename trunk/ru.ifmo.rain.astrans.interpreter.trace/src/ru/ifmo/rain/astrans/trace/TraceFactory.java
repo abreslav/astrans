@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see trace.TracePackage
+ * @see ru.ifmo.rain.astrans.trace.TracePackage
  * @generated
  */
 public interface TraceFactory extends EFactory {
@@ -46,6 +46,7 @@ public interface TraceFactory extends EFactory {
 	 * @generated
 	 */
 	ClassMapping createClassMapping();
+
 	ClassMapping createClassMapping(EClass proto, EClass image);
 
 	/**
@@ -56,6 +57,7 @@ public interface TraceFactory extends EFactory {
 	 * @generated
 	 */
 	AttributeMapping createAttributeMapping();
+
 	AttributeMapping createAttributeMapping(EAttribute proto, EAttribute image);
 
 	/**
@@ -66,6 +68,7 @@ public interface TraceFactory extends EFactory {
 	 * @generated
 	 */
 	ReferenceMapping createReferenceMapping();
+
 	ReferenceMapping createReferenceMapping(EReference proto, EStructuralFeature image, ReferenceMappingType mappingType);
 
 	/**

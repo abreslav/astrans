@@ -8,7 +8,13 @@ package ru.ifmo.rain.astrans.trace;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.emf.ecore.EReference;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,5 +82,29 @@ public interface Trace extends EObject {
 	 * @generated
 	 */
 	EList getReferenceMappings();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addClassMapping(EClass proto, EClass image);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addAttributeMapping(EAttribute proto, EAttribute image);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	void addReferenceMapping(EReference proto, EStructuralFeature image, ReferenceMappingType type);
 
 } // Trace

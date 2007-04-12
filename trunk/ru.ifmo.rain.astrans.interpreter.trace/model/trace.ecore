@@ -4,6 +4,19 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="trace"
     nsURI="http://rain.ifmo.ru/~breslav/2007/astrans/interperter/trace" nsPrefix="trace">
   <eClassifiers xsi:type="ecore:EClass" name="Trace">
+    <eOperations name="addClassMapping">
+      <eParameters name="proto" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+      <eParameters name="image" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eOperations>
+    <eOperations name="addAttributeMapping">
+      <eParameters name="proto" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+      <eParameters name="image" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+    </eOperations>
+    <eOperations name="addReferenceMapping">
+      <eParameters name="proto" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+      <eParameters name="image" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+      <eParameters name="type" eType="#//ReferenceMappingType"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classMappings" upperBound="-1"
         eType="#//ClassMapping" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributeMappings" upperBound="-1"

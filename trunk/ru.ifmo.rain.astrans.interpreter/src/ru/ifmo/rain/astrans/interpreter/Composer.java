@@ -65,6 +65,7 @@ class Composer extends AstransSwitch {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void composeMappedClass(EClass proto, AstransInterpreterTrace trace) {
 		assert proto != null;
 
@@ -116,6 +117,7 @@ class Composer extends AstransSwitch {
 		return mappingType;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void composeCreatedClass(CreateClass action, AstransInterpreterTrace trace) {
 		EClass result = trace.getCreatedClass(action);
 		assert result != null;			

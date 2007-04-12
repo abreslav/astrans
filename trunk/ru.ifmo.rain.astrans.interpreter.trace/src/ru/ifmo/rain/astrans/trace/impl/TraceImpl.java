@@ -12,7 +12,10 @@ import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -23,7 +26,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import ru.ifmo.rain.astrans.trace.AttributeMapping;
 import ru.ifmo.rain.astrans.trace.ClassMapping;
 import ru.ifmo.rain.astrans.trace.ReferenceMapping;
+import ru.ifmo.rain.astrans.trace.ReferenceMappingType;
 import ru.ifmo.rain.astrans.trace.Trace;
+import ru.ifmo.rain.astrans.trace.TraceFactory;
 import ru.ifmo.rain.astrans.trace.TracePackage;
 
 /**
@@ -124,6 +129,33 @@ public class TraceImpl extends EObjectImpl implements Trace {
 			referenceMappings = new EObjectContainmentEList(ReferenceMapping.class, this, TracePackage.TRACE__REFERENCE_MAPPINGS);
 		}
 		return referenceMappings;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void addClassMapping(EClass proto, EClass image) {
+		getClassMappings().add(TraceFactory.eINSTANCE.createClassMapping(proto, image));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void addAttributeMapping(EAttribute proto, EAttribute image) {
+		getAttributeMappings().add(TraceFactory.eINSTANCE.createAttributeMapping(proto, image));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void addReferenceMapping(EReference proto, EStructuralFeature image, ReferenceMappingType type) {
+		getReferenceMappings().add(TraceFactory.eINSTANCE.createReferenceMapping(proto, image, type));
 	}
 
 	/**
