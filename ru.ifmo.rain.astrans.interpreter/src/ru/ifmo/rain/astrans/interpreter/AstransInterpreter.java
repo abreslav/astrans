@@ -71,6 +71,7 @@ public class AstransInterpreter {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private static EPackage createResult(Transformation transformation, Collection<? extends EClassifier> classes) {
 		EPackage result = EcoreFactory.eINSTANCE.createEPackage();
 		result.setName(transformation.getOutputName());
@@ -80,6 +81,7 @@ public class AstransInterpreter {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	private static void changeInheritace(Transformation transformation, AstransInterpreterTrace trace, ReferenceResolver referenceResolver) {
 		EList changeInheritanceActions = transformation.getChangeInheritanceActions();
 		for (Iterator iter = changeInheritanceActions.iterator(); iter
