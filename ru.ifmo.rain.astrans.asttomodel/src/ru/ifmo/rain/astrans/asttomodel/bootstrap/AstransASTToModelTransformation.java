@@ -111,10 +111,12 @@ public class AstransASTToModelTransformation extends ASTToModelTransformation<IR
 			getTrace().createClassCreated(createClassAS, createClass);
 
 			addCommand(new Runnable() {
+				@SuppressWarnings("unchecked")
 				public void run() {
 					EList superclasses = createClassAS.getSuperclasses();
 					for (Iterator iter = superclasses.iterator(); iter.hasNext();) {
 						EClassifierReferenceAS superClassQN = (EClassifierReferenceAS) iter.next();
+
 						createClass.getSuperclasses().add(getResolver().resolveCreateClassSuperclass(superClassQN));
 					}
 				}
@@ -170,6 +172,7 @@ public class AstransASTToModelTransformation extends ASTToModelTransformation<IR
 			getTrace().changeInheritanceCreated(changeInheritanceAS, changeInheritance);
 			
 			addCommand(new Runnable() {
+				@SuppressWarnings("unchecked")
 				public void run() {
 					changeInheritance.setTargetProto(
 							getResolver().resolveChangeInheritanceTargetProto(
