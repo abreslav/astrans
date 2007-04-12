@@ -68,6 +68,7 @@ public class AstransASTToModelTransformationTest {
 		
 	}	
 	
+	@SuppressWarnings("unchecked")
 	@Before
 	public void setUp() throws Exception {
 		Resource resource = EMFHelper.getXMIResource(AstransastPackage.eINSTANCE, inputFileName);
