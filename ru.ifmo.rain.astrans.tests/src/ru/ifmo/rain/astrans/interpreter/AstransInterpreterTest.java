@@ -68,6 +68,7 @@ public class AstransInterpreterTest {
 		this.expectedTraceFileName = expectedTraceFileName;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Test
 	public void testRun() throws IOException {
 		Resource transfomationResource = EMFHelper.getXMIResource(AstransPackage.eINSTANCE, "Transformation.xmi");

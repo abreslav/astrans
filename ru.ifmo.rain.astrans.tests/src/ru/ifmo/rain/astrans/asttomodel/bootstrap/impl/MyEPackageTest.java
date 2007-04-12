@@ -15,6 +15,7 @@ public class MyEPackageTest {
 	private EPackage p2;
 	private EClass c1;
 
+	@SuppressWarnings("unchecked")
 	@Before
 	public void setUp() throws Exception {
 		p1 = EcoreFactory.eINSTANCE.createEPackage();
