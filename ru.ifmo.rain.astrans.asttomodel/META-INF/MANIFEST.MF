@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Asttomodel Plug-in
+Bundle-SymbolicName: ru.ifmo.rain.astrans.asttomodel
+Bundle-Version: 1.0.0
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ ru.ifmo.rain.astrans.ast,
+ ru.ifmo.rain.astrans.ecore,
+ ru.ifmo.rain.astrans.utils
+Eclipse-LazyStart: true
+Export-Package: ru.ifmo.rain.astrans.asttomodel,
+ ru.ifmo.rain.astrans.asttomodel.bootstrap,
+ ru.ifmo.rain.astrans.asttomodel.bootstrap.impl
