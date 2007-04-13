@@ -43,6 +43,8 @@ import ru.ifmo.rain.astrans.trace.TracePackage;
  * <ul>
  *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getInput <em>Input</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getOutput <em>Output</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getInputModelRoot <em>Input Model Root</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getOutputModelRoot <em>Output Model Root</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getClassMappings <em>Class Mappings</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getAttributeMappings <em>Attribute Mappings</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getReferenceMappings <em>Reference Mappings</em>}</li>
@@ -71,6 +73,26 @@ public class TraceImpl extends EObjectImpl implements Trace {
 	 * @ordered
 	 */
 	protected EPackage output = null;
+
+	/**
+	 * The cached value of the '{@link #getInputModelRoot() <em>Input Model Root</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputModelRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected EClass inputModelRoot = null;
+
+	/**
+	 * The cached value of the '{@link #getOutputModelRoot() <em>Output Model Root</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutputModelRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected EClass outputModelRoot = null;
 
 	/**
 	 * The cached value of the '{@link #getClassMappings() <em>Class Mappings</em>}' containment reference list.
@@ -201,6 +223,82 @@ public class TraceImpl extends EObjectImpl implements Trace {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInputModelRoot() {
+		if (inputModelRoot != null && inputModelRoot.eIsProxy()) {
+			InternalEObject oldInputModelRoot = (InternalEObject)inputModelRoot;
+			inputModelRoot = (EClass)eResolveProxy(oldInputModelRoot);
+			if (inputModelRoot != oldInputModelRoot) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TracePackage.TRACE__INPUT_MODEL_ROOT, oldInputModelRoot, inputModelRoot));
+			}
+		}
+		return inputModelRoot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass basicGetInputModelRoot() {
+		return inputModelRoot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInputModelRoot(EClass newInputModelRoot) {
+		EClass oldInputModelRoot = inputModelRoot;
+		inputModelRoot = newInputModelRoot;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TracePackage.TRACE__INPUT_MODEL_ROOT, oldInputModelRoot, inputModelRoot));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getOutputModelRoot() {
+		if (outputModelRoot != null && outputModelRoot.eIsProxy()) {
+			InternalEObject oldOutputModelRoot = (InternalEObject)outputModelRoot;
+			outputModelRoot = (EClass)eResolveProxy(oldOutputModelRoot);
+			if (outputModelRoot != oldOutputModelRoot) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TracePackage.TRACE__OUTPUT_MODEL_ROOT, oldOutputModelRoot, outputModelRoot));
+			}
+		}
+		return outputModelRoot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass basicGetOutputModelRoot() {
+		return outputModelRoot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutputModelRoot(EClass newOutputModelRoot) {
+		EClass oldOutputModelRoot = outputModelRoot;
+		outputModelRoot = newOutputModelRoot;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TracePackage.TRACE__OUTPUT_MODEL_ROOT, oldOutputModelRoot, outputModelRoot));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getClassMappings() {
 		if (classMappings == null) {
 			classMappings = new EObjectContainmentEList(ClassMapping.class, this, TracePackage.TRACE__CLASS_MAPPINGS);
@@ -289,6 +387,12 @@ public class TraceImpl extends EObjectImpl implements Trace {
 			case TracePackage.TRACE__OUTPUT:
 				if (resolve) return getOutput();
 				return basicGetOutput();
+			case TracePackage.TRACE__INPUT_MODEL_ROOT:
+				if (resolve) return getInputModelRoot();
+				return basicGetInputModelRoot();
+			case TracePackage.TRACE__OUTPUT_MODEL_ROOT:
+				if (resolve) return getOutputModelRoot();
+				return basicGetOutputModelRoot();
 			case TracePackage.TRACE__CLASS_MAPPINGS:
 				return getClassMappings();
 			case TracePackage.TRACE__ATTRIBUTE_MAPPINGS:
@@ -311,6 +415,12 @@ public class TraceImpl extends EObjectImpl implements Trace {
 				return;
 			case TracePackage.TRACE__OUTPUT:
 				setOutput((EPackage)newValue);
+				return;
+			case TracePackage.TRACE__INPUT_MODEL_ROOT:
+				setInputModelRoot((EClass)newValue);
+				return;
+			case TracePackage.TRACE__OUTPUT_MODEL_ROOT:
+				setOutputModelRoot((EClass)newValue);
 				return;
 			case TracePackage.TRACE__CLASS_MAPPINGS:
 				getClassMappings().clear();
@@ -341,6 +451,12 @@ public class TraceImpl extends EObjectImpl implements Trace {
 			case TracePackage.TRACE__OUTPUT:
 				setOutput((EPackage)null);
 				return;
+			case TracePackage.TRACE__INPUT_MODEL_ROOT:
+				setInputModelRoot((EClass)null);
+				return;
+			case TracePackage.TRACE__OUTPUT_MODEL_ROOT:
+				setOutputModelRoot((EClass)null);
+				return;
 			case TracePackage.TRACE__CLASS_MAPPINGS:
 				getClassMappings().clear();
 				return;
@@ -365,6 +481,10 @@ public class TraceImpl extends EObjectImpl implements Trace {
 				return input != null;
 			case TracePackage.TRACE__OUTPUT:
 				return output != null;
+			case TracePackage.TRACE__INPUT_MODEL_ROOT:
+				return inputModelRoot != null;
+			case TracePackage.TRACE__OUTPUT_MODEL_ROOT:
+				return outputModelRoot != null;
 			case TracePackage.TRACE__CLASS_MAPPINGS:
 				return classMappings != null && !classMappings.isEmpty();
 			case TracePackage.TRACE__ATTRIBUTE_MAPPINGS:

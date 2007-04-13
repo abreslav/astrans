@@ -165,7 +165,7 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTrace_ClassMappings() {
+	public EReference getTrace_InputModelRoot() {
 		return (EReference)traceEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -174,7 +174,7 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTrace_AttributeMappings() {
+	public EReference getTrace_OutputModelRoot() {
 		return (EReference)traceEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -183,8 +183,26 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTrace_ReferenceMappings() {
+	public EReference getTrace_ClassMappings() {
 		return (EReference)traceEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTrace_AttributeMappings() {
+		return (EReference)traceEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTrace_ReferenceMappings() {
+		return (EReference)traceEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -317,6 +335,8 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 		traceEClass = createEClass(TRACE);
 		createEReference(traceEClass, TRACE__INPUT);
 		createEReference(traceEClass, TRACE__OUTPUT);
+		createEReference(traceEClass, TRACE__INPUT_MODEL_ROOT);
+		createEReference(traceEClass, TRACE__OUTPUT_MODEL_ROOT);
 		createEReference(traceEClass, TRACE__CLASS_MAPPINGS);
 		createEReference(traceEClass, TRACE__ATTRIBUTE_MAPPINGS);
 		createEReference(traceEClass, TRACE__REFERENCE_MAPPINGS);
@@ -367,6 +387,8 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 		initEClass(traceEClass, Trace.class, "Trace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTrace_Input(), ecorePackage.getEPackage(), null, "input", null, 1, 1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrace_Output(), ecorePackage.getEPackage(), null, "output", null, 1, 1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTrace_InputModelRoot(), ecorePackage.getEClass(), null, "inputModelRoot", null, 1, 1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTrace_OutputModelRoot(), ecorePackage.getEClass(), null, "outputModelRoot", null, 1, 1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrace_ClassMappings(), this.getClassMapping(), null, "classMappings", null, 0, -1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrace_AttributeMappings(), this.getAttributeMapping(), null, "attributeMappings", null, 0, -1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrace_ReferenceMappings(), this.getReferenceMapping(), null, "referenceMappings", null, 0, -1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -125,7 +125,7 @@ public class AstransInterpreter {
 		changeInheritace(transformation, trace, referenceResolver);
 		
 		EPackage result = createResult(transformation, classes);
-		trace.registerOutput(transformation.getInput(), result);
+		trace.registerOutput(transformation.getInput(), result, transformation.getInputModelRoot(), (EClass) referenceResolver.resolveEClassifierReference(transformation.getAstRoot()));
 		return result;
 	}
 

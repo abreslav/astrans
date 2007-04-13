@@ -27,6 +27,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * <ul>
  *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getInput <em>Input</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getOutput <em>Output</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getInputModelRoot <em>Input Model Root</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getOutputModelRoot <em>Output Model Root</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getClassMappings <em>Class Mappings</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getAttributeMappings <em>Attribute Mappings</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getReferenceMappings <em>Reference Mappings</em>}</li>
@@ -89,6 +91,58 @@ public interface Trace extends EObject {
 	 * @generated
 	 */
 	void setOutput(EPackage value);
+
+	/**
+	 * Returns the value of the '<em><b>Input Model Root</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Input Model Root</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input Model Root</em>' reference.
+	 * @see #setInputModelRoot(EClass)
+	 * @see ru.ifmo.rain.astrans.trace.TracePackage#getTrace_InputModelRoot()
+	 * @model required="true"
+	 * @generated
+	 */
+	EClass getInputModelRoot();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.trace.Trace#getInputModelRoot <em>Input Model Root</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Input Model Root</em>' reference.
+	 * @see #getInputModelRoot()
+	 * @generated
+	 */
+	void setInputModelRoot(EClass value);
+
+	/**
+	 * Returns the value of the '<em><b>Output Model Root</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Output Model Root</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Output Model Root</em>' reference.
+	 * @see #setOutputModelRoot(EClass)
+	 * @see ru.ifmo.rain.astrans.trace.TracePackage#getTrace_OutputModelRoot()
+	 * @model required="true"
+	 * @generated
+	 */
+	EClass getOutputModelRoot();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.trace.Trace#getOutputModelRoot <em>Output Model Root</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Output Model Root</em>' reference.
+	 * @see #getOutputModelRoot()
+	 * @generated
+	 */
+	void setOutputModelRoot(EClass value);
 
 	/**
 	 * Returns the value of the '<em><b>Class Mappings</b></em>' containment reference list.
