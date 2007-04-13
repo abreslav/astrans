@@ -70,8 +70,10 @@ public class AstransInterpreterTrace {
 		return referenceTrace.get(proto);
 	}
 	
-	public void registerOutput(EPackage input, EPackage output) {
+	public void registerOutput(EPackage input, EPackage output, EClass inputRoot, EClass astRoot) {
 		trace.setInput(input);
 		trace.setOutput(output);
+		trace.setInputModelRoot(inputRoot);
+		trace.setOutputModelRoot(astRoot);
 	}
 }

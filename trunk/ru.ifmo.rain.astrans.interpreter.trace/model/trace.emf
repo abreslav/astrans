@@ -6,6 +6,8 @@ import "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore";
 class Trace {
   ref ecore.EPackage[1] input;
   ref ecore.EPackage[1] output;
+  ref EClass[1] inputModelRoot;
+  ref EClass[1] outputModelRoot;
   val ClassMapping[*] classMappings;
   op void addClassMapping(ecore.EClass proto, ecore.EClass image);
   val AttributeMapping[*] attributeMappings;

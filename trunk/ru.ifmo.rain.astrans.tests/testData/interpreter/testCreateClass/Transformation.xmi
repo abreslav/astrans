@@ -14,4 +14,8 @@
     </structuralFeatures>
   </createClassActions>
   <input href="input.ecore#/"/>
+  <inputModelRoot href="input.ecore#//Transformation"/>
+  <astRoot xsi:type="astrans:MappedEClass">
+    <proto href="input.ecore#//Transformation"/>
+  </astRoot>
 </astrans:Transformation>

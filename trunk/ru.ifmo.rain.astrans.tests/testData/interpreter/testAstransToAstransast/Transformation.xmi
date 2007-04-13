@@ -56,4 +56,8 @@
     <targetProto href="http://rain.ifmo.ru/~breslav/2007/astrans#//ExistingEDataType"/>
   </skipClassActions>
   <input href="http://rain.ifmo.ru/~breslav/2007/astrans#/"/>
+  <inputModelRoot href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation"/>
+  <astRoot xsi:type="astrans:MappedEClass">
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation"/>
+  </astRoot>
 </astrans:Transformation>

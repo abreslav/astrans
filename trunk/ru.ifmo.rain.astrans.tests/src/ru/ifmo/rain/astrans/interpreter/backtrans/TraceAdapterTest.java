@@ -63,4 +63,13 @@ public class TraceAdapterTest {
 		assertEquals(adapter.getOutput(), EcorePackage.eINSTANCE);
 	}
 
+	@Test
+	public void testGetOutputRoot() {
+		assertEquals(adapter.getOutputRoot(), EcorePackage.eINSTANCE.getEAnnotation());
+	}
+
+	@Test
+	public void testGetInputRoot() {
+		assertEquals(adapter.getInputRoot(), EcorePackage.eINSTANCE.getEClass());
+	}
 }
