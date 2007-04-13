@@ -40,6 +40,10 @@ public class BacktransCreator {
 			rule.setParameter(AstransformationFactory.eINSTANCE.createParameter());
 			rule.getParameter().setType(mapping.getImage());
 			rule.getParameter().setName(lowercaseFirstLetter(mapping.getImage().getName()));
+			
+			if (mapping.getProto() == trace.getInputRoot() && mapping.getImage() == trace.getOutputRoot()) {
+				backTransformation.setMain(rule);
+			}
 		
 			EList allAttributes = mapping.getProto().getEAllAttributes();
 			for (Iterator iter = allAttributes.iterator(); iter.hasNext();) {
