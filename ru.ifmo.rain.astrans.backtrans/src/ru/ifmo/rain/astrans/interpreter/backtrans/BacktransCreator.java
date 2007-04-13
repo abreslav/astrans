@@ -24,7 +24,7 @@ public class BacktransCreator {
 		Transformation backTransformation = AstransformationFactory.eINSTANCE.createTransformation();
 		backTransformation.setName("back");
 		backTransformation.setResolverClassName("IResolver");
-		backTransformation.setTraceClassName("ITracer");
+		backTransformation.setTraceClassName("ITrace");
 	
 		Collection<ClassMapping> mappings = trace.getClassMappings();
 		for (ClassMapping mapping : mappings) {
