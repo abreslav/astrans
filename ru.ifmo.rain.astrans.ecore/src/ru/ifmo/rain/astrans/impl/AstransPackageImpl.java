@@ -585,8 +585,26 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTransformation_InputModelRoot() {
+		return (EReference)transformationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransformation_AstRoot() {
+		return (EReference)transformationEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getTransformation_OutputName() {
-		return (EAttribute)transformationEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -595,7 +613,7 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 	 * @generated
 	 */
 	public EAttribute getTransformation_OutputNsURI() {
-		return (EAttribute)transformationEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -681,6 +699,8 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 		createEReference(transformationEClass, TRANSFORMATION__CHANGE_INHERITANCE_ACTIONS);
 		createEReference(transformationEClass, TRANSFORMATION__SKIP_CLASS_ACTIONS);
 		createEReference(transformationEClass, TRANSFORMATION__INPUT);
+		createEReference(transformationEClass, TRANSFORMATION__INPUT_MODEL_ROOT);
+		createEReference(transformationEClass, TRANSFORMATION__AST_ROOT);
 		createEAttribute(transformationEClass, TRANSFORMATION__OUTPUT_NAME);
 		createEAttribute(transformationEClass, TRANSFORMATION__OUTPUT_NS_URI);
 	}
@@ -776,9 +796,11 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 		initEReference(getTransformation_TranslateReferencesActions(), this.getTranslateReferences(), null, "translateReferencesActions", null, 0, -1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformation_ChangeInheritanceActions(), this.getChangeInheritance(), null, "changeInheritanceActions", null, 0, -1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformation_SkipClassActions(), this.getSkipClass(), null, "skipClassActions", null, 0, -1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransformation_Input(), ecorePackage.getEPackage(), null, "input", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransformation_OutputName(), ecorePackage.getEString(), "outputName", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransformation_OutputNsURI(), ecorePackage.getEString(), "outputNsURI", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_Input(), ecorePackage.getEPackage(), null, "input", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_InputModelRoot(), ecorePackage.getEClass(), null, "inputModelRoot", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_AstRoot(), this.getEClassReference(), null, "astRoot", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformation_OutputName(), ecorePackage.getEString(), "outputName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformation_OutputNsURI(), ecorePackage.getEString(), "outputNsURI", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
