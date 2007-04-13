@@ -624,13 +624,31 @@ public interface AstransPackage extends EPackage {
 	int TRANSFORMATION__INPUT = 4;
 
 	/**
+	 * The feature id for the '<em><b>Input Model Root</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__INPUT_MODEL_ROOT = 5;
+
+	/**
+	 * The feature id for the '<em><b>Ast Root</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__AST_ROOT = 6;
+
+	/**
 	 * The feature id for the '<em><b>Output Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION__OUTPUT_NAME = 5;
+	int TRANSFORMATION__OUTPUT_NAME = 7;
 
 	/**
 	 * The feature id for the '<em><b>Output Ns URI</b></em>' attribute.
@@ -639,7 +657,7 @@ public interface AstransPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION__OUTPUT_NS_URI = 6;
+	int TRANSFORMATION__OUTPUT_NS_URI = 8;
 
 	/**
 	 * The number of structural features of the '<em>Transformation</em>' class.
@@ -648,7 +666,7 @@ public interface AstransPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION_FEATURE_COUNT = 7;
+	int TRANSFORMATION_FEATURE_COUNT = 9;
 
 
 	/**
@@ -1088,6 +1106,28 @@ public interface AstransPackage extends EPackage {
 	EReference getTransformation_Input();
 
 	/**
+	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.Transformation#getInputModelRoot <em>Input Model Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Input Model Root</em>'.
+	 * @see ru.ifmo.rain.astrans.Transformation#getInputModelRoot()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EReference getTransformation_InputModelRoot();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.Transformation#getAstRoot <em>Ast Root</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Ast Root</em>'.
+	 * @see ru.ifmo.rain.astrans.Transformation#getAstRoot()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EReference getTransformation_AstRoot();
+
+	/**
 	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.Transformation#getOutputName <em>Output Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1130,7 +1170,7 @@ public interface AstransPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.impl.ActionImpl <em>Action</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1488,6 +1528,22 @@ public interface AstransPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRANSFORMATION__INPUT = eINSTANCE.getTransformation_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Input Model Root</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSFORMATION__INPUT_MODEL_ROOT = eINSTANCE.getTransformation_InputModelRoot();
+
+		/**
+		 * The meta object literal for the '<em><b>Ast Root</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSFORMATION__AST_ROOT = eINSTANCE.getTransformation_AstRoot();
 
 		/**
 		 * The meta object literal for the '<em><b>Output Name</b></em>' attribute feature.

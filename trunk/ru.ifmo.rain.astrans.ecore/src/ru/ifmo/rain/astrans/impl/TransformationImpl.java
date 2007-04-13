@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import ru.ifmo.rain.astrans.AstransPackage;
 import ru.ifmo.rain.astrans.ChangeInheritance;
 import ru.ifmo.rain.astrans.CreateClass;
+import ru.ifmo.rain.astrans.EClassReference;
 import ru.ifmo.rain.astrans.SkipClass;
 import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.TranslateReferences;
@@ -42,6 +43,8 @@ import ru.ifmo.rain.astrans.TranslateReferences;
  *   <li>{@link ru.ifmo.rain.astrans.impl.TransformationImpl#getChangeInheritanceActions <em>Change Inheritance Actions</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.impl.TransformationImpl#getSkipClassActions <em>Skip Class Actions</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.impl.TransformationImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.impl.TransformationImpl#getInputModelRoot <em>Input Model Root</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.impl.TransformationImpl#getAstRoot <em>Ast Root</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.impl.TransformationImpl#getOutputName <em>Output Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.impl.TransformationImpl#getOutputNsURI <em>Output Ns URI</em>}</li>
  * </ul>
@@ -99,6 +102,26 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * @ordered
 	 */
 	protected EPackage input = null;
+
+	/**
+	 * The cached value of the '{@link #getInputModelRoot() <em>Input Model Root</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInputModelRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected EClass inputModelRoot = null;
+
+	/**
+	 * The cached value of the '{@link #getAstRoot() <em>Ast Root</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAstRoot()
+	 * @generated
+	 * @ordered
+	 */
+	protected EClassReference astRoot = null;
 
 	/**
 	 * The default value of the '{@link #getOutputName() <em>Output Name</em>}' attribute.
@@ -249,6 +272,87 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getInputModelRoot() {
+		if (inputModelRoot != null && inputModelRoot.eIsProxy()) {
+			InternalEObject oldInputModelRoot = (InternalEObject)inputModelRoot;
+			inputModelRoot = (EClass)eResolveProxy(oldInputModelRoot);
+			if (inputModelRoot != oldInputModelRoot) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AstransPackage.TRANSFORMATION__INPUT_MODEL_ROOT, oldInputModelRoot, inputModelRoot));
+			}
+		}
+		return inputModelRoot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass basicGetInputModelRoot() {
+		return inputModelRoot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInputModelRoot(EClass newInputModelRoot) {
+		EClass oldInputModelRoot = inputModelRoot;
+		inputModelRoot = newInputModelRoot;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransPackage.TRANSFORMATION__INPUT_MODEL_ROOT, oldInputModelRoot, inputModelRoot));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClassReference getAstRoot() {
+		return astRoot;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAstRoot(EClassReference newAstRoot, NotificationChain msgs) {
+		EClassReference oldAstRoot = astRoot;
+		astRoot = newAstRoot;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransPackage.TRANSFORMATION__AST_ROOT, oldAstRoot, newAstRoot);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAstRoot(EClassReference newAstRoot) {
+		if (newAstRoot != astRoot) {
+			NotificationChain msgs = null;
+			if (astRoot != null)
+				msgs = ((InternalEObject)astRoot).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransPackage.TRANSFORMATION__AST_ROOT, null, msgs);
+			if (newAstRoot != null)
+				msgs = ((InternalEObject)newAstRoot).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransPackage.TRANSFORMATION__AST_ROOT, null, msgs);
+			msgs = basicSetAstRoot(newAstRoot, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransPackage.TRANSFORMATION__AST_ROOT, newAstRoot, newAstRoot));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getOutputName() {
 		return outputName;
 	}
@@ -301,6 +405,8 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 				return ((InternalEList)getChangeInheritanceActions()).basicRemove(otherEnd, msgs);
 			case AstransPackage.TRANSFORMATION__SKIP_CLASS_ACTIONS:
 				return ((InternalEList)getSkipClassActions()).basicRemove(otherEnd, msgs);
+			case AstransPackage.TRANSFORMATION__AST_ROOT:
+				return basicSetAstRoot(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -323,6 +429,11 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 			case AstransPackage.TRANSFORMATION__INPUT:
 				if (resolve) return getInput();
 				return basicGetInput();
+			case AstransPackage.TRANSFORMATION__INPUT_MODEL_ROOT:
+				if (resolve) return getInputModelRoot();
+				return basicGetInputModelRoot();
+			case AstransPackage.TRANSFORMATION__AST_ROOT:
+				return getAstRoot();
 			case AstransPackage.TRANSFORMATION__OUTPUT_NAME:
 				return getOutputName();
 			case AstransPackage.TRANSFORMATION__OUTPUT_NS_URI:
@@ -357,6 +468,12 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 			case AstransPackage.TRANSFORMATION__INPUT:
 				setInput((EPackage)newValue);
 				return;
+			case AstransPackage.TRANSFORMATION__INPUT_MODEL_ROOT:
+				setInputModelRoot((EClass)newValue);
+				return;
+			case AstransPackage.TRANSFORMATION__AST_ROOT:
+				setAstRoot((EClassReference)newValue);
+				return;
 			case AstransPackage.TRANSFORMATION__OUTPUT_NAME:
 				setOutputName((String)newValue);
 				return;
@@ -389,6 +506,12 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 			case AstransPackage.TRANSFORMATION__INPUT:
 				setInput((EPackage)null);
 				return;
+			case AstransPackage.TRANSFORMATION__INPUT_MODEL_ROOT:
+				setInputModelRoot((EClass)null);
+				return;
+			case AstransPackage.TRANSFORMATION__AST_ROOT:
+				setAstRoot((EClassReference)null);
+				return;
 			case AstransPackage.TRANSFORMATION__OUTPUT_NAME:
 				setOutputName(OUTPUT_NAME_EDEFAULT);
 				return;
@@ -416,6 +539,10 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 				return skipClassActions != null && !skipClassActions.isEmpty();
 			case AstransPackage.TRANSFORMATION__INPUT:
 				return input != null;
+			case AstransPackage.TRANSFORMATION__INPUT_MODEL_ROOT:
+				return inputModelRoot != null;
+			case AstransPackage.TRANSFORMATION__AST_ROOT:
+				return astRoot != null;
 			case AstransPackage.TRANSFORMATION__OUTPUT_NAME:
 				return OUTPUT_NAME_EDEFAULT == null ? outputName != null : !OUTPUT_NAME_EDEFAULT.equals(outputName);
 			case AstransPackage.TRANSFORMATION__OUTPUT_NS_URI:

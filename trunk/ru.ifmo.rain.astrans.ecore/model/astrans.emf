@@ -77,7 +77,10 @@ class Transformation {
     val ChangeInheritance[*] changeInheritanceActions;
     val SkipClass[*] skipClassActions;
     
-    ref ecore.EPackage input;
-    attr String outputName;
-    attr String outputNsURI;
+    ref ecore.EPackage[1] input;
+    ref ecore.EClass[1] inputModelRoot;
+    val EClassReference[1] astRoot;
+    
+    attr String[1] outputName;
+    attr String[1] outputNsURI;
 }

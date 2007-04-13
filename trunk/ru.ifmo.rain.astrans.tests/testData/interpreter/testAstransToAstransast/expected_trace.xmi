@@ -138,4 +138,12 @@
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/input"/>
     <image xsi:type="ecore:EReference" href="output.ecore#//TransformationAS/input"/>
   </referenceMappings>
+  <referenceMappings type="TRANSLATED">
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/inputModelRoot"/>
+    <image xsi:type="ecore:EReference" href="output.ecore#//TransformationAS/inputModelRoot"/>
+  </referenceMappings>
+  <referenceMappings type="TRANSLATED">
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/astRoot"/>
+    <image xsi:type="ecore:EReference" href="output.ecore#//TransformationAS/astRoot"/>
+  </referenceMappings>
 </trace:Trace>
