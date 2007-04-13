@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EPackage;
@@ -27,6 +26,8 @@ import ru.ifmo.rain.astrans.utils.EMFComparator;
 import ru.ifmo.rain.astrans.utils.EMFHelper;
 import ru.ifmo.rain.astrans.AstransPackage;
 import ru.ifmo.rain.astrans.Transformation;
+import utils.FileUtils;
+import utils.IFileProcessor;
 
 @RunWith(Parameterized.class)
 public class AstransASTToModelTransformationTest {
@@ -39,27 +40,20 @@ public class AstransASTToModelTransformationTest {
 	private String resultFileName;
 	private String testDir;
 	
-
 	@Parameters
-	public static Collection<String[]> parameters() {
-		String dataDir = "testData/asttomodel";
-		File dir = new File(dataDir);
-		File[] files = dir.listFiles();
-		Collection<String[]> result = new ArrayList<String[]>();
-		for (File file : files) {
-			if (file.isDirectory() && !file.isHidden()) {
-				result.add(new String[] {
-						file.getPath() + "/input.xmi",
-						file.getPath() + "/expected.xmi",
-						file.getPath() + "/result.xmi",
-						file.getPath()
-				});
+	public static Collection<Object[]> parameters() {
+		return FileUtils.processDirectory("testData/asttomodel", new IFileProcessor() {
+			public Object[] process(File file) {
+				return new String[] {
+					file.getPath() + "/input.xmi",
+					file.getPath() + "/expected.xmi",
+					file.getPath() + "/result.xmi",
+					file.getPath()
+				};
 			}
-		}
-		return result;
+		});
 	}
-	
-	
+
 	public AstransASTToModelTransformationTest(String inputFN, String expectedFN, String resultFN, String testD) {
 		inputFileName = inputFN;
 		expectedResultFileName = expectedFN;

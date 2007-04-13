@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EPackage;
@@ -18,14 +17,16 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import ru.ifmo.rain.astrans.utils.Difference;
-import ru.ifmo.rain.astrans.utils.EMFComparator;
-import ru.ifmo.rain.astrans.utils.EMFHelper;
+import ru.ifmo.rain.astrans.AstransPackage;
+import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.trace.Trace;
 import ru.ifmo.rain.astrans.trace.TraceFactory;
 import ru.ifmo.rain.astrans.trace.TracePackage;
-import ru.ifmo.rain.astrans.AstransPackage;
-import ru.ifmo.rain.astrans.Transformation;
+import ru.ifmo.rain.astrans.utils.Difference;
+import ru.ifmo.rain.astrans.utils.EMFComparator;
+import ru.ifmo.rain.astrans.utils.EMFHelper;
+import utils.FileUtils;
+import utils.IFileProcessor;
 
 @RunWith(Parameterized.class)
 public class AstransInterpreterTest {
@@ -39,24 +40,18 @@ public class AstransInterpreterTest {
 	
 	@Parameters
 	public static Collection<Object[]> parameters() {
-		Collection<Object[]> result = new ArrayList<Object[]>();
-		String testDirName = "testData/interpreter";
-		File testDir = new File(testDirName);
-		File[] files = testDir.listFiles();
-		for (File file : files) {
-			if (file.isDirectory() && !file.isHidden()) {
-				String path = file.getPath();
-				result.add(new Object[] {
-					path + "/input.ecore",
-					path + "/Transformation.xmi",
-					path + "/output.ecore",
-					path + "/expected.ecore",
-					path + "/trace.xmi",
-					path + "/expected_trace.xmi",
-				});
+		return FileUtils.processDirectory("testData/interpreter", new IFileProcessor() {
+			public Object[] process(File file) {
+				return new Object[] {
+						file.getPath() + "/input.ecore",
+						file.getPath() + "/Transformation.xmi",
+						file.getPath() + "/output.ecore",
+						file.getPath() + "/expected.ecore",
+						file.getPath() + "/trace.xmi",
+						file.getPath() + "/expected_trace.xmi",
+					};
 			}
-		}
-		return result;
+		});
 	}
 	
 	public AstransInterpreterTest(String inputFileName, final String transformationFileName, final String outputFileName, final String expectedFileName, final String traceFileName, final String expectedTraceFileName) {
