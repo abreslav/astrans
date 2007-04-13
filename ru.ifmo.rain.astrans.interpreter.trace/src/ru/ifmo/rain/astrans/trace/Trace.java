@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -24,6 +25,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getInput <em>Input</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getOutput <em>Output</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getClassMappings <em>Class Mappings</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getAttributeMappings <em>Attribute Mappings</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.Trace#getReferenceMappings <em>Reference Mappings</em>}</li>
@@ -35,6 +38,58 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * @generated
  */
 public interface Trace extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Input</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input</em>' reference.
+	 * @see #setInput(EPackage)
+	 * @see ru.ifmo.rain.astrans.trace.TracePackage#getTrace_Input()
+	 * @model required="true"
+	 * @generated
+	 */
+	EPackage getInput();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.trace.Trace#getInput <em>Input</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Input</em>' reference.
+	 * @see #getInput()
+	 * @generated
+	 */
+	void setInput(EPackage value);
+
+	/**
+	 * Returns the value of the '<em><b>Output</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Output</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Output</em>' reference.
+	 * @see #setOutput(EPackage)
+	 * @see ru.ifmo.rain.astrans.trace.TracePackage#getTrace_Output()
+	 * @model required="true"
+	 * @generated
+	 */
+	EPackage getOutput();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.trace.Trace#getOutput <em>Output</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Output</em>' reference.
+	 * @see #getOutput()
+	 * @generated
+	 */
+	void setOutput(EPackage value);
+
 	/**
 	 * Returns the value of the '<em><b>Class Mappings</b></em>' containment reference list.
 	 * The list contents are of type {@link ru.ifmo.rain.astrans.trace.ClassMapping}.

@@ -71,13 +71,31 @@ public interface TracePackage extends EPackage {
 	int TRACE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACE__INPUT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACE__OUTPUT = 1;
+
+	/**
 	 * The feature id for the '<em><b>Class Mappings</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRACE__CLASS_MAPPINGS = 0;
+	int TRACE__CLASS_MAPPINGS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Attribute Mappings</b></em>' containment reference list.
@@ -86,7 +104,7 @@ public interface TracePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRACE__ATTRIBUTE_MAPPINGS = 1;
+	int TRACE__ATTRIBUTE_MAPPINGS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Reference Mappings</b></em>' containment reference list.
@@ -95,7 +113,7 @@ public interface TracePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRACE__REFERENCE_MAPPINGS = 2;
+	int TRACE__REFERENCE_MAPPINGS = 4;
 
 	/**
 	 * The number of structural features of the '<em>Trace</em>' class.
@@ -104,7 +122,7 @@ public interface TracePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRACE_FEATURE_COUNT = 3;
+	int TRACE_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.trace.impl.ClassMappingImpl <em>Class Mapping</em>}' class.
@@ -246,6 +264,28 @@ public interface TracePackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTrace();
+
+	/**
+	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.trace.Trace#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Input</em>'.
+	 * @see ru.ifmo.rain.astrans.trace.Trace#getInput()
+	 * @see #getTrace()
+	 * @generated
+	 */
+	EReference getTrace_Input();
+
+	/**
+	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.trace.Trace#getOutput <em>Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Output</em>'.
+	 * @see ru.ifmo.rain.astrans.trace.Trace#getOutput()
+	 * @see #getTrace()
+	 * @generated
+	 */
+	EReference getTrace_Output();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link ru.ifmo.rain.astrans.trace.Trace#getClassMappings <em>Class Mappings</em>}'.
@@ -418,7 +458,7 @@ public interface TracePackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl <em>Trace</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -428,6 +468,22 @@ public interface TracePackage extends EPackage {
 		 * @generated
 		 */
 		EClass TRACE = eINSTANCE.getTrace();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACE__INPUT = eINSTANCE.getTrace_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Output</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACE__OUTPUT = eINSTANCE.getTrace_Output();
 
 		/**
 		 * The meta object literal for the '<em><b>Class Mappings</b></em>' containment reference list feature.

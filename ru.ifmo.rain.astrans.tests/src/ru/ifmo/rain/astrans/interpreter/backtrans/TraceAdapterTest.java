@@ -52,5 +52,15 @@ public class TraceAdapterTest {
 		assertEquals(referenceMapping.getImage(), EcorePackage.eINSTANCE.getEClassifier_DefaultValue());
 		assertEquals(referenceMapping.getType(), ReferenceMappingType.TRANSLATED_LITERAL);
 	}
+	
+	@Test
+	public void testGetInput() {
+		assertEquals(adapter.getInput(), EcorePackage.eINSTANCE);
+	}
+
+	@Test
+	public void testGetOutput() {
+		assertEquals(adapter.getOutput(), EcorePackage.eINSTANCE);
+	}
 
 }

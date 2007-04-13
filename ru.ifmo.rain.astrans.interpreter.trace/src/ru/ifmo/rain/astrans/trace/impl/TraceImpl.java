@@ -8,16 +8,19 @@ package ru.ifmo.rain.astrans.trace.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -38,6 +41,8 @@ import ru.ifmo.rain.astrans.trace.TracePackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getInput <em>Input</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getOutput <em>Output</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getClassMappings <em>Class Mappings</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getAttributeMappings <em>Attribute Mappings</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.impl.TraceImpl#getReferenceMappings <em>Reference Mappings</em>}</li>
@@ -47,6 +52,26 @@ import ru.ifmo.rain.astrans.trace.TracePackage;
  * @generated
  */
 public class TraceImpl extends EObjectImpl implements Trace {
+	/**
+	 * The cached value of the '{@link #getInput() <em>Input</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInput()
+	 * @generated
+	 * @ordered
+	 */
+	protected EPackage input = null;
+
+	/**
+	 * The cached value of the '{@link #getOutput() <em>Output</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutput()
+	 * @generated
+	 * @ordered
+	 */
+	protected EPackage output = null;
+
 	/**
 	 * The cached value of the '{@link #getClassMappings() <em>Class Mappings</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -93,6 +118,82 @@ public class TraceImpl extends EObjectImpl implements Trace {
 	 */
 	protected EClass eStaticClass() {
 		return TracePackage.Literals.TRACE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EPackage getInput() {
+		if (input != null && input.eIsProxy()) {
+			InternalEObject oldInput = (InternalEObject)input;
+			input = (EPackage)eResolveProxy(oldInput);
+			if (input != oldInput) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TracePackage.TRACE__INPUT, oldInput, input));
+			}
+		}
+		return input;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EPackage basicGetInput() {
+		return input;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInput(EPackage newInput) {
+		EPackage oldInput = input;
+		input = newInput;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TracePackage.TRACE__INPUT, oldInput, input));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EPackage getOutput() {
+		if (output != null && output.eIsProxy()) {
+			InternalEObject oldOutput = (InternalEObject)output;
+			output = (EPackage)eResolveProxy(oldOutput);
+			if (output != oldOutput) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, TracePackage.TRACE__OUTPUT, oldOutput, output));
+			}
+		}
+		return output;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EPackage basicGetOutput() {
+		return output;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOutput(EPackage newOutput) {
+		EPackage oldOutput = output;
+		output = newOutput;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TracePackage.TRACE__OUTPUT, oldOutput, output));
 	}
 
 	/**
@@ -182,6 +283,12 @@ public class TraceImpl extends EObjectImpl implements Trace {
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case TracePackage.TRACE__INPUT:
+				if (resolve) return getInput();
+				return basicGetInput();
+			case TracePackage.TRACE__OUTPUT:
+				if (resolve) return getOutput();
+				return basicGetOutput();
 			case TracePackage.TRACE__CLASS_MAPPINGS:
 				return getClassMappings();
 			case TracePackage.TRACE__ATTRIBUTE_MAPPINGS:
@@ -199,6 +306,12 @@ public class TraceImpl extends EObjectImpl implements Trace {
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case TracePackage.TRACE__INPUT:
+				setInput((EPackage)newValue);
+				return;
+			case TracePackage.TRACE__OUTPUT:
+				setOutput((EPackage)newValue);
+				return;
 			case TracePackage.TRACE__CLASS_MAPPINGS:
 				getClassMappings().clear();
 				getClassMappings().addAll((Collection)newValue);
@@ -222,6 +335,12 @@ public class TraceImpl extends EObjectImpl implements Trace {
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case TracePackage.TRACE__INPUT:
+				setInput((EPackage)null);
+				return;
+			case TracePackage.TRACE__OUTPUT:
+				setOutput((EPackage)null);
+				return;
 			case TracePackage.TRACE__CLASS_MAPPINGS:
 				getClassMappings().clear();
 				return;
@@ -242,6 +361,10 @@ public class TraceImpl extends EObjectImpl implements Trace {
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case TracePackage.TRACE__INPUT:
+				return input != null;
+			case TracePackage.TRACE__OUTPUT:
+				return output != null;
 			case TracePackage.TRACE__CLASS_MAPPINGS:
 				return classMappings != null && !classMappings.isEmpty();
 			case TracePackage.TRACE__ATTRIBUTE_MAPPINGS:

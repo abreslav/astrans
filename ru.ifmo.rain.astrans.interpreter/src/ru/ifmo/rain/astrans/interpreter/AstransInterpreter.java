@@ -124,7 +124,9 @@ public class AstransInterpreter {
 
 		changeInheritace(transformation, trace, referenceResolver);
 		
-		return createResult(transformation, classes);
+		EPackage result = createResult(transformation, classes);
+		trace.registerOutput(transformation.getInput(), result);
+		return result;
 	}
 
 }
