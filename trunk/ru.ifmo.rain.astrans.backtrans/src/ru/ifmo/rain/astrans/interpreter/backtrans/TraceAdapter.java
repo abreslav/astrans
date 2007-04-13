@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import ru.ifmo.rain.astrans.trace.AttributeMapping;
@@ -19,8 +20,13 @@ public class TraceAdapter {
 	private final Collection<ClassMapping> classMappings;
 	private final Map<EAttribute, AttributeMapping> attributeMappings;
 	private final Map<EReference, ReferenceMapping> referenceMappings;
+	private final EPackage input;
+	private final EPackage output;
 	
 	public TraceAdapter(Trace trace) {
+		input = trace.getInput();
+		output = trace.getOutput();
+		
 		@SuppressWarnings("unchecked")
 		Collection<ClassMapping> unmodifiableCollection = Collections.<ClassMapping>unmodifiableCollection(trace.getClassMappings());
 		classMappings = unmodifiableCollection;
@@ -38,7 +44,6 @@ public class TraceAdapter {
 			refMap.put(mapping.getProto(), mapping);
 		}
 		referenceMappings = Collections.unmodifiableMap(refMap);
-		
 	}
 	
 	public Collection<ClassMapping> getClassMappings() {
@@ -51,5 +56,13 @@ public class TraceAdapter {
 	
 	public ReferenceMapping getReferenceMapping(EReference reference) {
 		return referenceMappings.get(reference);
+	}
+	
+	public EPackage getInput() {
+		return input;
+	}
+	
+	public EPackage getOutput() {
+		return output;
 	}
 }

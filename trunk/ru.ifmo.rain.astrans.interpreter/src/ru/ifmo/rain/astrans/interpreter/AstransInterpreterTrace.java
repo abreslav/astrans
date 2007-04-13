@@ -11,6 +11,7 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -67,5 +68,10 @@ public class AstransInterpreterTrace {
 	
 	public EStructuralFeature getCorrespondingFeature(EReference proto) {
 		return referenceTrace.get(proto);
+	}
+	
+	public void registerOutput(EPackage input, EPackage output) {
+		trace.setInput(input);
+		trace.setOutput(output);
 	}
 }

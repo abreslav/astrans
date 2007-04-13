@@ -22,9 +22,10 @@ public class BacktransCreator {
 	@SuppressWarnings("unchecked")
 	public static Transformation createBackTransformation(TraceAdapter trace) {
 		Transformation backTransformation = AstransformationFactory.eINSTANCE.createTransformation();
-		backTransformation.setName("back");
-		backTransformation.setResolverClassName("IResolver");
-		backTransformation.setTraceClassName("ITrace");
+		String name = uppercaseFirstLetter(trace.getOutput().getName()) + "To" + uppercaseFirstLetter(trace.getInput().getName());
+		backTransformation.setName(name + "Transformation");
+		backTransformation.setResolverClassName("I" + name + "Resolver");
+		backTransformation.setTraceClassName("I" + name + "Trace");
 	
 		Collection<ClassMapping> mappings = trace.getClassMappings();
 		for (ClassMapping mapping : mappings) {

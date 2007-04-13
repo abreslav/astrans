@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="back" resolverClassName="IResolver" traceClassName="ITrace">
+<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="AstToModelTransformation" resolverClassName="IAstToModelResolver" traceClassName="IAstToModelTrace">
   <mappingRules name="caseClassAS">
     <parameter name="classAS">
       <type href="ast.ecore#//ClassAS"/>

@@ -17,6 +17,9 @@
       <eParameters name="image" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
       <eParameters name="type" eType="#//ReferenceMappingType"/>
     </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" lowerBound="1"
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classMappings" upperBound="-1"
         eType="#//ClassMapping" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="attributeMappings" upperBound="-1"
