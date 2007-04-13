@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="back" resolverClassName="IResolver" traceClassName="ITrace">
+  <mappingRules name="caseClassAS">
+    <parameter name="classAS">
+      <type href="ast.ecore#//ClassAS"/>
+    </parameter>
+    <result name="class">
+      <type href="model.ecore#//Class"/>
+    </result>
+  </mappingRules>
+</astransformation:Transformation>
