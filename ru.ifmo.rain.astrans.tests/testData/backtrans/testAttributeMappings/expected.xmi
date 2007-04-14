@@ -7,6 +7,10 @@
     <result name="class">
       <type href="model.ecore#//Class"/>
     </result>
+    <assignAttributeStatements>
+      <source href="ast.ecore#//ClassAS/as"/>
+      <dest href="model.ecore#//Class/a"/>
+    </assignAttributeStatements>
     <writeTraceStatement traceMethodName="classCreated"/>
   </mappingRules>
 </astransformation:Transformation>

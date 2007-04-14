@@ -41,6 +41,9 @@ public class BacktransCreator {
 			rule.getParameter().setType(mapping.getImage());
 			rule.getParameter().setName(lowercaseFirstLetter(mapping.getImage().getName()));
 			
+			rule.setWriteTraceStatement(AstransformationFactory.eINSTANCE.createWriteTrace());
+			rule.getWriteTraceStatement().setTraceMethodName(lowercaseFirstLetter(mapping.getProto().getName()) + "Created");
+			
 			if (mapping.getProto() == trace.getInputRoot() && mapping.getImage() == trace.getOutputRoot()) {
 				backTransformation.setMain(rule);
 			}

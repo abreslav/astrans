@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="AstToModelTransformation" main="//@mappingRules.0" resolverClassName="IAstToModelResolver" traceClassName="IAstToModelTrace">
+  <mappingRules name="caseClassAS">
+    <parameter name="classAS">
+      <type href="ast.ecore#//ClassAS"/>
+    </parameter>
+    <result name="class">
+      <type href="model.ecore#//Class"/>
+    </result>
+    <assignAttributeStatements>
+      <source href="ast.ecore#//ClassAS/as"/>
+      <dest href="model.ecore#//Class/a"/>
+    </assignAttributeStatements>
+    <assignReferenceStatements>
+      <source href="ast.ecore#//ClassAS/ras1"/>
+      <dest href="model.ecore#//Class/r1"/>
+    </assignReferenceStatements>
+    <assignReferenceStatements mappingNeeded="false">
+      <source href="ast.ecore#//ClassAS/ras3"/>
+      <dest href="model.ecore#//Class/r3"/>
+    </assignReferenceStatements>
+    <writeTraceStatement traceMethodName="classCreated"/>
+    <resolveObjectStatements resolverMethodName="resolveClassR2">
+      <source xsi:type="ecore:EReference" href="ast.ecore#//ClassAS/ras2"/>
+      <dest href="model.ecore#//Class/r2"/>
+    </resolveObjectStatements>
+  </mappingRules>
+</astransformation:Transformation>

@@ -7,5 +7,6 @@
     <result name="class">
       <type href="model.ecore#//Class"/>
     </result>
+    <writeTraceStatement traceMethodName="classCreated"/>
   </mappingRules>
 </astransformation:Transformation>
