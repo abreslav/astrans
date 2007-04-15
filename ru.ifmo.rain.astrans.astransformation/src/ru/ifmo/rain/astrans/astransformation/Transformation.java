@@ -8,6 +8,8 @@ package ru.ifmo.rain.astrans.astransformation;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EPackage;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Transformation</b></em>'.
@@ -20,6 +22,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getMain <em>Main</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getInput <em>Input</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getOutput <em>Output</em>}</li>
  * </ul>
  * </p>
  *
@@ -121,5 +125,57 @@ public interface Transformation extends Named {
 	 * @generated
 	 */
 	void setTraceClassName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Input</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input</em>' reference.
+	 * @see #setInput(EPackage)
+	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_Input()
+	 * @model required="true"
+	 * @generated
+	 */
+	EPackage getInput();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getInput <em>Input</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Input</em>' reference.
+	 * @see #getInput()
+	 * @generated
+	 */
+	void setInput(EPackage value);
+
+	/**
+	 * Returns the value of the '<em><b>Output</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Output</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Output</em>' reference.
+	 * @see #setOutput(EPackage)
+	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_Output()
+	 * @model required="true"
+	 * @generated
+	 */
+	EPackage getOutput();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getOutput <em>Output</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Output</em>' reference.
+	 * @see #getOutput()
+	 * @generated
+	 */
+	void setOutput(EPackage value);
 
 } // Transformation

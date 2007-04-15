@@ -10,6 +10,8 @@ class Transformation extends Named {
   ref MappingRule[1] main; // the mapping rule that is started first
   attr String[1] resolverClassName;
   attr String[1] traceClassName;
+  ref ecore.EPackage[1] input;
+  ref ecore.EPackage[1] output;
 }
 
 class Parameter extends Named {

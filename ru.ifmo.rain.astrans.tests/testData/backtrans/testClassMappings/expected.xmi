@@ -9,4 +9,6 @@
     </result>
     <writeTraceStatement traceMethodName="classCreated"/>
   </mappingRules>
+  <input href="ast.ecore#/"/>
+  <output href="model.ecore#/"/>
 </astransformation:Transformation>

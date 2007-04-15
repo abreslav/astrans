@@ -25,4 +25,6 @@
       <dest href="model.ecore#//Class/r2"/>
     </resolveObjectStatements>
   </mappingRules>
+  <input href="ast.ecore#/"/>
+  <output href="model.ecore#/"/>
 </astransformation:Transformation>
