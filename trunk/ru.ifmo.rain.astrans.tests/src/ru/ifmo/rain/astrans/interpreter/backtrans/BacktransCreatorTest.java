@@ -1,26 +1,28 @@
 package ru.ifmo.rain.astrans.interpreter.backtrans;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.HashMap;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import ru.ifmo.rain.astrans.AstransPackage;
-import ru.ifmo.rain.astrans.Transformation;
-import ru.ifmo.rain.astrans.interpreter.AstransInterpreter;
+import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
+import ru.ifmo.rain.astrans.astransformation.Transformation;
 import ru.ifmo.rain.astrans.trace.Trace;
-import ru.ifmo.rain.astrans.trace.TraceFactory;
 import ru.ifmo.rain.astrans.trace.TracePackage;
 import ru.ifmo.rain.astrans.utils.Difference;
 import ru.ifmo.rain.astrans.utils.EMFComparator;
@@ -31,82 +33,75 @@ import utils.IFileProcessor;
 @RunWith(Parameterized.class)
 public class BacktransCreatorTest {
 
-	private String inputFileName;
-	private String transformationFileName;
-	private String outputFileName;
-	private String expectedFileName;
-	private String traceFileName;
-	private String expectedTraceFileName;
-	
+
 	@Parameters
 	public static Collection<Object[]> parameters() {
-		return FileUtils.processDirectory("testData/interpreter", new IFileProcessor() {
+		return FileUtils.processDirectory("testData/backtrans", new IFileProcessor() {
 			public Object[] process(File file) {
 				return new Object[] {
-						file.getPath() + "/input.ecore",
-						file.getPath() + "/Transformation.xmi",
-						file.getPath() + "/output.ecore",
-						file.getPath() + "/expected.ecore",
 						file.getPath() + "/trace.xmi",
-						file.getPath() + "/expected_trace.xmi",
-					};
+						"/result.xmi",
+						file.getPath() + "/expected.xmi",
+						file
+				};
 			}
 		});
 	}
 	
-	public BacktransCreatorTest(String inputFileName, final String transformationFileName, final String outputFileName, final String expectedFileName, final String traceFileName, final String expectedTraceFileName) {
-		this.inputFileName = inputFileName;
-		this.transformationFileName = transformationFileName;
-		this.outputFileName = outputFileName;
-		this.expectedFileName = expectedFileName;
+	private String traceFileName;
+	private String resultFileName;
+	private String expectedFileName;
+	private File testDir;
+	
+	public BacktransCreatorTest(String traceFileName, String resultFileName, String expectedFileName, File testDir) {
 		this.traceFileName = traceFileName;
-		this.expectedTraceFileName = expectedTraceFileName;
+		this.resultFileName = resultFileName;
+		this.expectedFileName = expectedFileName;
+		this.testDir = testDir;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Test
-	public void testRun() throws IOException {
-		Resource transfomationResource = EMFHelper.getXMIResource(AstransPackage.eINSTANCE, "Transformation.xmi");
-		EMFHelper.loadResourceFromFile(transfomationResource, transformationFileName);
-		Transformation transformation = (Transformation) transfomationResource.getContents().get(0);
-		
-		Resource expectedResource = EMFHelper.getXMIResource(EcorePackage.eINSTANCE, "expected.ecore");
-		EMFHelper.loadResourceFromFile(expectedResource, expectedFileName);
-		EPackage expected = (EPackage) expectedResource.getContents().get(0);
+	public final void testCreateBackTransformation() throws IOException {
+		ResourceSetImpl resourceSetImpl = new ResourceSetImpl();
+		resourceSetImpl.setURIResourceMap(new HashMap());
+		ResourceSet resourceSet = resourceSetImpl;
+		resourceSet.setPackageRegistry(EPackage.Registry.INSTANCE);
+		EPackage.Registry.INSTANCE.put(TracePackage.eNS_URI, TracePackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(AstransformationPackage.eNS_URI, AstransformationPackage.eINSTANCE);
+		EPackage package1 = EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI);
+		assertNotNull(package1);
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
+		resourceSet.setResourceFactoryRegistry(Resource.Factory.Registry.INSTANCE);
+		resourceSet.setURIConverter(new URIConverterImpl() {
+			@Override
+			public URI normalize(URI uri) {
+				String scheme = uri.scheme();
+				if (scheme == null) {
+					String absolutePath = new File(testDir, uri.toFileString()).getAbsolutePath();
+					return URI.createFileURI(absolutePath);
+				}
+				return super.normalize(uri);
+			}
+		});
+		Resource resource = resourceSet.createResource(URI.createURI(traceFileName));
+		EMFHelper.loadResourceFromFile(resource, traceFileName);
+		Trace trace = (Trace) resource.getContents().get(0);
 
-		Resource inputResource = EMFHelper.getXMIResource(EcorePackage.eINSTANCE, "input.ecore");
-		EMFHelper.loadResourceFromFile(inputResource, inputFileName);
+		resource = resourceSet.createResource(URI.createURI(expectedFileName));
+		EMFHelper.loadResourceFromFile(resource, expectedFileName);
+		Transformation expected = (Transformation) resource.getContents().get(0);		
 
-		ResourceSetImpl resourceSet = new ResourceSetImpl();
-		resourceSet.getResources().add(transfomationResource);
-		resourceSet.getResources().add(inputResource);
+		Transformation transformation = BacktransCreator.createBackTransformation(new TraceAdapter(trace));
+		resource = resourceSet.createResource(URI.createURI(resultFileName));
+		resource.getContents().add(transformation);
+		resource.save(null);
 		
-		EcoreUtil.resolve(transformation.getInput(), resourceSet);
-		Trace trace = TraceFactory.eINSTANCE.createTrace();
-		EPackage output = AstransInterpreter.run(transformation, trace);
+		Difference difference = EMFComparator.compare(expected, transformation);
+		assertTrue(difference.toString(), difference.areEqual());
 		
-		Resource resource = EMFHelper.wrapIntoXMIResource(output, "output.ecore");
-		EMFHelper.saveResourceToFile(resource, outputFileName);
-		resourceSet.getResources().add(resource);
-		Resource traceResource = EMFHelper.wrapIntoXMIResource(trace, "trace.xmi");
-		resourceSet.getResources().add(traceResource);
-		EMFHelper.saveResourceToFile(traceResource, traceFileName);
-
-		Difference resultDifference = EMFComparator.compare(expected, output);
-		
-		assertTrue("model: " + resultDifference.toString(), resultDifference.areEqual());
-		
-		Resource expectedTraceResource = EMFHelper.getXMIResource(TracePackage.eINSTANCE, expectedTraceFileName);
-		EMFHelper.loadResourceFromFile(expectedTraceResource, expectedTraceFileName);
-		Trace expectedTrace = (Trace) expectedTraceResource.getContents().get(0);
-		resourceSet.getResources().add(expectedTraceResource);
-		
-		Difference traceDifference = EMFComparator.compare(expectedTrace, trace);
-		assertTrue("trace: " + traceDifference.toString(), traceDifference.areEqual());
-		
-		ru.ifmo.rain.astrans.astransformation.Transformation backTransformation = BacktransCreator.createBackTransformation(new TraceAdapter(trace));
-		BacktransCodeGenerator.generate(backTransformation);
 		
 	}
-	
+
 }
