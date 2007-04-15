@@ -143,13 +143,31 @@ public interface AstransformationPackage extends EPackage {
 	int TRANSFORMATION__TRACE_CLASS_NAME = NAMED_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__INPUT = NAMED_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__OUTPUT = NAMED_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Transformation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION_FEATURE_COUNT = NAMED_FEATURE_COUNT + 4;
+	int TRANSFORMATION_FEATURE_COUNT = NAMED_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -540,6 +558,28 @@ public interface AstransformationPackage extends EPackage {
 	EAttribute getTransformation_TraceClassName();
 
 	/**
+	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getInput <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Input</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.Transformation#getInput()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EReference getTransformation_Input();
+
+	/**
+	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getOutput <em>Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Output</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.Transformation#getOutput()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EReference getTransformation_Output();
+
+	/**
 	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -840,7 +880,7 @@ public interface AstransformationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.Named <em>Named</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -900,6 +940,22 @@ public interface AstransformationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TRANSFORMATION__TRACE_CLASS_NAME = eINSTANCE.getTransformation_TraceClassName();
+
+		/**
+		 * The meta object literal for the '<em><b>Input</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSFORMATION__INPUT = eINSTANCE.getTransformation_Input();
+
+		/**
+		 * The meta object literal for the '<em><b>Output</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSFORMATION__OUTPUT = eINSTANCE.getTransformation_Output();
 
 		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ParameterImpl <em>Parameter</em>}' class.

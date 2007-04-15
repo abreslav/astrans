@@ -26,6 +26,8 @@ public class BacktransCreator {
 		backTransformation.setName(name + "Transformation");
 		backTransformation.setResolverClassName("I" + name + "Resolver");
 		backTransformation.setTraceClassName("I" + name + "Trace");
+		backTransformation.setInput(trace.getOutput());
+		backTransformation.setOutput(trace.getInput());
 	
 		Collection<ClassMapping> mappings = trace.getClassMappings();
 		for (ClassMapping mapping : mappings) {
