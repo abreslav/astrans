@@ -88,6 +88,34 @@ public interface AstransformationPackage extends EPackage {
 	int NAMED_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ClassNameImpl <em>Class Name</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.ClassNameImpl
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getClassName()
+	 * @generated
+	 */
+	int CLASS_NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_NAME__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>Class Name</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_NAME_FEATURE_COUNT = 1;
+
+	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl <em>Transformation</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -95,7 +123,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getTransformation()
 	 * @generated
 	 */
-	int TRANSFORMATION = 1;
+	int TRANSFORMATION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -125,7 +153,7 @@ public interface AstransformationPackage extends EPackage {
 	int TRANSFORMATION__MAIN = NAMED_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Resolver Class Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Resolver Class Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -134,7 +162,7 @@ public interface AstransformationPackage extends EPackage {
 	int TRANSFORMATION__RESOLVER_CLASS_NAME = NAMED_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Trace Class Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Trace Class Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -143,22 +171,13 @@ public interface AstransformationPackage extends EPackage {
 	int TRANSFORMATION__TRACE_CLASS_NAME = NAMED_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Input</b></em>' reference.
+	 * The feature id for the '<em><b>Switch Class Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION__INPUT = NAMED_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Output</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSFORMATION__OUTPUT = NAMED_FEATURE_COUNT + 5;
+	int TRANSFORMATION__SWITCH_CLASS_NAME = NAMED_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Transformation</em>' class.
@@ -167,7 +186,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION_FEATURE_COUNT = NAMED_FEATURE_COUNT + 6;
+	int TRANSFORMATION_FEATURE_COUNT = NAMED_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -177,7 +196,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 2;
+	int PARAMETER = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -189,7 +208,7 @@ public interface AstransformationPackage extends EPackage {
 	int PARAMETER__NAME = NAMED__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' reference.
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -214,7 +233,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getMappingRule()
 	 * @generated
 	 */
-	int MAPPING_RULE = 3;
+	int MAPPING_RULE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -244,13 +263,31 @@ public interface AstransformationPackage extends EPackage {
 	int MAPPING_RULE__RESULT = NAMED_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Factory Class Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPING_RULE__FACTORY_CLASS_NAME = NAMED_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Factory Method Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPING_RULE__FACTORY_METHOD_NAME = NAMED_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Assign Attribute Statements</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS = NAMED_FEATURE_COUNT + 2;
+	int MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS = NAMED_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Assign Reference Statements</b></em>' containment reference list.
@@ -259,7 +296,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS = NAMED_FEATURE_COUNT + 3;
+	int MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS = NAMED_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Write Trace Statement</b></em>' containment reference.
@@ -268,7 +305,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__WRITE_TRACE_STATEMENT = NAMED_FEATURE_COUNT + 4;
+	int MAPPING_RULE__WRITE_TRACE_STATEMENT = NAMED_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Resolve Object Statements</b></em>' containment reference list.
@@ -277,7 +314,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS = NAMED_FEATURE_COUNT + 5;
+	int MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS = NAMED_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Mapping Rule</em>' class.
@@ -286,7 +323,53 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE_FEATURE_COUNT = NAMED_FEATURE_COUNT + 6;
+	int MAPPING_RULE_FEATURE_COUNT = NAMED_FEATURE_COUNT + 8;
+
+	/**
+	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AssignFeatureImpl <em>Assign Feature</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.AssignFeatureImpl
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getAssignFeature()
+	 * @generated
+	 */
+	int ASSIGN_FEATURE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Setter Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_FEATURE__SETTER_NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Getter Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_FEATURE__GETTER_NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Many</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_FEATURE__MANY = 2;
+
+	/**
+	 * The number of structural features of the '<em>Assign Feature</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_FEATURE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AssignAttributeImpl <em>Assign Attribute</em>}' class.
@@ -296,34 +379,34 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getAssignAttribute()
 	 * @generated
 	 */
-	int ASSIGN_ATTRIBUTE = 4;
+	int ASSIGN_ATTRIBUTE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Mapping Rule</b></em>' container reference.
+	 * The feature id for the '<em><b>Setter Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGN_ATTRIBUTE__MAPPING_RULE = 0;
+	int ASSIGN_ATTRIBUTE__SETTER_NAME = ASSIGN_FEATURE__SETTER_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * The feature id for the '<em><b>Getter Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGN_ATTRIBUTE__SOURCE = 1;
+	int ASSIGN_ATTRIBUTE__GETTER_NAME = ASSIGN_FEATURE__GETTER_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Dest</b></em>' reference.
+	 * The feature id for the '<em><b>Many</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGN_ATTRIBUTE__DEST = 2;
+	int ASSIGN_ATTRIBUTE__MANY = ASSIGN_FEATURE__MANY;
 
 	/**
 	 * The number of structural features of the '<em>Assign Attribute</em>' class.
@@ -332,7 +415,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGN_ATTRIBUTE_FEATURE_COUNT = 3;
+	int ASSIGN_ATTRIBUTE_FEATURE_COUNT = ASSIGN_FEATURE_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AssignReferenceImpl <em>Assign Reference</em>}' class.
@@ -342,34 +425,43 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getAssignReference()
 	 * @generated
 	 */
-	int ASSIGN_REFERENCE = 5;
+	int ASSIGN_REFERENCE = 7;
 
 	/**
-	 * The feature id for the '<em><b>Mapping Rule</b></em>' container reference.
+	 * The feature id for the '<em><b>Setter Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGN_REFERENCE__MAPPING_RULE = 0;
+	int ASSIGN_REFERENCE__SETTER_NAME = ASSIGN_FEATURE__SETTER_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * The feature id for the '<em><b>Getter Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGN_REFERENCE__SOURCE = 1;
+	int ASSIGN_REFERENCE__GETTER_NAME = ASSIGN_FEATURE__GETTER_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Dest</b></em>' reference.
+	 * The feature id for the '<em><b>Many</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGN_REFERENCE__DEST = 2;
+	int ASSIGN_REFERENCE__MANY = ASSIGN_FEATURE__MANY;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ASSIGN_REFERENCE__TYPE = ASSIGN_FEATURE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Mapping Needed</b></em>' attribute.
@@ -378,7 +470,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGN_REFERENCE__MAPPING_NEEDED = 3;
+	int ASSIGN_REFERENCE__MAPPING_NEEDED = ASSIGN_FEATURE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Assign Reference</em>' class.
@@ -387,7 +479,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ASSIGN_REFERENCE_FEATURE_COUNT = 4;
+	int ASSIGN_REFERENCE_FEATURE_COUNT = ASSIGN_FEATURE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.WriteTraceImpl <em>Write Trace</em>}' class.
@@ -397,16 +489,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getWriteTrace()
 	 * @generated
 	 */
-	int WRITE_TRACE = 6;
-
-	/**
-	 * The feature id for the '<em><b>Mapping Rule</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WRITE_TRACE__MAPPING_RULE = 0;
+	int WRITE_TRACE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Trace Method Name</b></em>' attribute.
@@ -415,7 +498,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WRITE_TRACE__TRACE_METHOD_NAME = 1;
+	int WRITE_TRACE__TRACE_METHOD_NAME = 0;
 
 	/**
 	 * The number of structural features of the '<em>Write Trace</em>' class.
@@ -424,7 +507,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WRITE_TRACE_FEATURE_COUNT = 2;
+	int WRITE_TRACE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl <em>Resolve Object</em>}' class.
@@ -434,34 +517,52 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getResolveObject()
 	 * @generated
 	 */
-	int RESOLVE_OBJECT = 7;
+	int RESOLVE_OBJECT = 9;
 
 	/**
-	 * The feature id for the '<em><b>Mapping Rule</b></em>' container reference.
+	 * The feature id for the '<em><b>Setter Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOLVE_OBJECT__MAPPING_RULE = 0;
+	int RESOLVE_OBJECT__SETTER_NAME = ASSIGN_FEATURE__SETTER_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Source</b></em>' reference.
+	 * The feature id for the '<em><b>Getter Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOLVE_OBJECT__SOURCE = 1;
+	int RESOLVE_OBJECT__GETTER_NAME = ASSIGN_FEATURE__GETTER_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Dest</b></em>' reference.
+	 * The feature id for the '<em><b>Many</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOLVE_OBJECT__DEST = 2;
+	int RESOLVE_OBJECT__MANY = ASSIGN_FEATURE__MANY;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOLVE_OBJECT__TYPE = ASSIGN_FEATURE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOLVE_OBJECT__PARAMETER_TYPE = ASSIGN_FEATURE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Resolver Method Name</b></em>' attribute.
@@ -470,7 +571,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOLVE_OBJECT__RESOLVER_METHOD_NAME = 3;
+	int RESOLVE_OBJECT__RESOLVER_METHOD_NAME = ASSIGN_FEATURE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Resolve Object</em>' class.
@@ -479,7 +580,36 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOLVE_OBJECT_FEATURE_COUNT = 4;
+	int RESOLVE_OBJECT_FEATURE_COUNT = ASSIGN_FEATURE_FEATURE_COUNT + 3;
+
+
+	/**
+	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.Typed <em>Typed</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ru.ifmo.rain.astrans.astransformation.Typed
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getTyped()
+	 * @generated
+	 */
+	int TYPED = 10;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED__TYPE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Typed</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPED_FEATURE_COUNT = 1;
 
 
 	/**
@@ -502,6 +632,27 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getNamed_Name();
+
+	/**
+	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.ClassName <em>Class Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Class Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.ClassName
+	 * @generated
+	 */
+	EClass getClassName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.ClassName#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.ClassName#getName()
+	 * @see #getClassName()
+	 * @generated
+	 */
+	EAttribute getClassName_Name();
 
 	/**
 	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.Transformation <em>Transformation</em>}'.
@@ -536,48 +687,37 @@ public interface AstransformationPackage extends EPackage {
 	EReference getTransformation_Main();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Resolver Class Name</em>'.
+	 * @return the meta object for the containment reference '<em>Resolver Class Name</em>'.
 	 * @see ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName()
 	 * @see #getTransformation()
 	 * @generated
 	 */
-	EAttribute getTransformation_ResolverClassName();
+	EReference getTransformation_ResolverClassName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Trace Class Name</em>'.
+	 * @return the meta object for the containment reference '<em>Trace Class Name</em>'.
 	 * @see ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName()
 	 * @see #getTransformation()
 	 * @generated
 	 */
-	EAttribute getTransformation_TraceClassName();
+	EReference getTransformation_TraceClassName();
 
 	/**
-	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getInput <em>Input</em>}'.
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getSwitchClassName <em>Switch Class Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Input</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.Transformation#getInput()
+	 * @return the meta object for the containment reference '<em>Switch Class Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.Transformation#getSwitchClassName()
 	 * @see #getTransformation()
 	 * @generated
 	 */
-	EReference getTransformation_Input();
-
-	/**
-	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getOutput <em>Output</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Output</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.Transformation#getOutput()
-	 * @see #getTransformation()
-	 * @generated
-	 */
-	EReference getTransformation_Output();
+	EReference getTransformation_SwitchClassName();
 
 	/**
 	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.Parameter <em>Parameter</em>}'.
@@ -588,17 +728,6 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getParameter();
-
-	/**
-	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.Parameter#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Type</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.Parameter#getType()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EReference getParameter_Type();
 
 	/**
 	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.MappingRule <em>Mapping Rule</em>}'.
@@ -631,6 +760,28 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getMappingRule_Result();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryClassName <em>Factory Class Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Factory Class Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryClassName()
+	 * @see #getMappingRule()
+	 * @generated
+	 */
+	EReference getMappingRule_FactoryClassName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryMethodName <em>Factory Method Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Factory Method Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryMethodName()
+	 * @see #getMappingRule()
+	 * @generated
+	 */
+	EAttribute getMappingRule_FactoryMethodName();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getAssignAttributeStatements <em>Assign Attribute Statements</em>}'.
@@ -677,6 +828,49 @@ public interface AstransformationPackage extends EPackage {
 	EReference getMappingRule_ResolveObjectStatements();
 
 	/**
+	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.AssignFeature <em>Assign Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Assign Feature</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.AssignFeature
+	 * @generated
+	 */
+	EClass getAssignFeature();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.AssignFeature#getSetterName <em>Setter Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Setter Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.AssignFeature#getSetterName()
+	 * @see #getAssignFeature()
+	 * @generated
+	 */
+	EAttribute getAssignFeature_SetterName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.AssignFeature#getGetterName <em>Getter Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Getter Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.AssignFeature#getGetterName()
+	 * @see #getAssignFeature()
+	 * @generated
+	 */
+	EAttribute getAssignFeature_GetterName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.AssignFeature#isMany <em>Many</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Many</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.AssignFeature#isMany()
+	 * @see #getAssignFeature()
+	 * @generated
+	 */
+	EAttribute getAssignFeature_Many();
+
+	/**
 	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.AssignAttribute <em>Assign Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -687,39 +881,6 @@ public interface AstransformationPackage extends EPackage {
 	EClass getAssignAttribute();
 
 	/**
-	 * Returns the meta object for the container reference '{@link ru.ifmo.rain.astrans.astransformation.AssignAttribute#getMappingRule <em>Mapping Rule</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Mapping Rule</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.AssignAttribute#getMappingRule()
-	 * @see #getAssignAttribute()
-	 * @generated
-	 */
-	EReference getAssignAttribute_MappingRule();
-
-	/**
-	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.AssignAttribute#getSource <em>Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.AssignAttribute#getSource()
-	 * @see #getAssignAttribute()
-	 * @generated
-	 */
-	EReference getAssignAttribute_Source();
-
-	/**
-	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.AssignAttribute#getDest <em>Dest</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Dest</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.AssignAttribute#getDest()
-	 * @see #getAssignAttribute()
-	 * @generated
-	 */
-	EReference getAssignAttribute_Dest();
-
-	/**
 	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.AssignReference <em>Assign Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -728,39 +889,6 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getAssignReference();
-
-	/**
-	 * Returns the meta object for the container reference '{@link ru.ifmo.rain.astrans.astransformation.AssignReference#getMappingRule <em>Mapping Rule</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Mapping Rule</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.AssignReference#getMappingRule()
-	 * @see #getAssignReference()
-	 * @generated
-	 */
-	EReference getAssignReference_MappingRule();
-
-	/**
-	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.AssignReference#getSource <em>Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.AssignReference#getSource()
-	 * @see #getAssignReference()
-	 * @generated
-	 */
-	EReference getAssignReference_Source();
-
-	/**
-	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.AssignReference#getDest <em>Dest</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Dest</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.AssignReference#getDest()
-	 * @see #getAssignReference()
-	 * @generated
-	 */
-	EReference getAssignReference_Dest();
 
 	/**
 	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.AssignReference#isMappingNeeded <em>Mapping Needed</em>}'.
@@ -784,17 +912,6 @@ public interface AstransformationPackage extends EPackage {
 	EClass getWriteTrace();
 
 	/**
-	 * Returns the meta object for the container reference '{@link ru.ifmo.rain.astrans.astransformation.WriteTrace#getMappingRule <em>Mapping Rule</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Mapping Rule</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.WriteTrace#getMappingRule()
-	 * @see #getWriteTrace()
-	 * @generated
-	 */
-	EReference getWriteTrace_MappingRule();
-
-	/**
 	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.WriteTrace#getTraceMethodName <em>Trace Method Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -816,37 +933,15 @@ public interface AstransformationPackage extends EPackage {
 	EClass getResolveObject();
 
 	/**
-	 * Returns the meta object for the container reference '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getMappingRule <em>Mapping Rule</em>}'.
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getParameterType <em>Parameter Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Mapping Rule</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.ResolveObject#getMappingRule()
+	 * @return the meta object for the containment reference '<em>Parameter Type</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.ResolveObject#getParameterType()
 	 * @see #getResolveObject()
 	 * @generated
 	 */
-	EReference getResolveObject_MappingRule();
-
-	/**
-	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getSource <em>Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Source</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.ResolveObject#getSource()
-	 * @see #getResolveObject()
-	 * @generated
-	 */
-	EReference getResolveObject_Source();
-
-	/**
-	 * Returns the meta object for the reference '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getDest <em>Dest</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Dest</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.ResolveObject#getDest()
-	 * @see #getResolveObject()
-	 * @generated
-	 */
-	EReference getResolveObject_Dest();
+	EReference getResolveObject_ParameterType();
 
 	/**
 	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getResolverMethodName <em>Resolver Method Name</em>}'.
@@ -858,6 +953,27 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResolveObject_ResolverMethodName();
+
+	/**
+	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.Typed <em>Typed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Typed</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.Typed
+	 * @generated
+	 */
+	EClass getTyped();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.Typed#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Type</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.Typed#getType()
+	 * @see #getTyped()
+	 * @generated
+	 */
+	EReference getTyped_Type();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -900,6 +1016,24 @@ public interface AstransformationPackage extends EPackage {
 		EAttribute NAMED__NAME = eINSTANCE.getNamed_Name();
 
 		/**
+		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ClassNameImpl <em>Class Name</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.ClassNameImpl
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getClassName()
+		 * @generated
+		 */
+		EClass CLASS_NAME = eINSTANCE.getClassName();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_NAME__NAME = eINSTANCE.getClassName_Name();
+
+		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl <em>Transformation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -926,36 +1060,28 @@ public interface AstransformationPackage extends EPackage {
 		EReference TRANSFORMATION__MAIN = eINSTANCE.getTransformation_Main();
 
 		/**
-		 * The meta object literal for the '<em><b>Resolver Class Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Resolver Class Name</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRANSFORMATION__RESOLVER_CLASS_NAME = eINSTANCE.getTransformation_ResolverClassName();
+		EReference TRANSFORMATION__RESOLVER_CLASS_NAME = eINSTANCE.getTransformation_ResolverClassName();
 
 		/**
-		 * The meta object literal for the '<em><b>Trace Class Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Trace Class Name</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TRANSFORMATION__TRACE_CLASS_NAME = eINSTANCE.getTransformation_TraceClassName();
+		EReference TRANSFORMATION__TRACE_CLASS_NAME = eINSTANCE.getTransformation_TraceClassName();
 
 		/**
-		 * The meta object literal for the '<em><b>Input</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Switch Class Name</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSFORMATION__INPUT = eINSTANCE.getTransformation_Input();
-
-		/**
-		 * The meta object literal for the '<em><b>Output</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRANSFORMATION__OUTPUT = eINSTANCE.getTransformation_Output();
+		EReference TRANSFORMATION__SWITCH_CLASS_NAME = eINSTANCE.getTransformation_SwitchClassName();
 
 		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -966,14 +1092,6 @@ public interface AstransformationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PARAMETER = eINSTANCE.getParameter();
-
-		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PARAMETER__TYPE = eINSTANCE.getParameter_Type();
 
 		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.MappingRuleImpl <em>Mapping Rule</em>}' class.
@@ -1000,6 +1118,22 @@ public interface AstransformationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MAPPING_RULE__RESULT = eINSTANCE.getMappingRule_Result();
+
+		/**
+		 * The meta object literal for the '<em><b>Factory Class Name</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAPPING_RULE__FACTORY_CLASS_NAME = eINSTANCE.getMappingRule_FactoryClassName();
+
+		/**
+		 * The meta object literal for the '<em><b>Factory Method Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MAPPING_RULE__FACTORY_METHOD_NAME = eINSTANCE.getMappingRule_FactoryMethodName();
 
 		/**
 		 * The meta object literal for the '<em><b>Assign Attribute Statements</b></em>' containment reference list feature.
@@ -1034,6 +1168,40 @@ public interface AstransformationPackage extends EPackage {
 		EReference MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS = eINSTANCE.getMappingRule_ResolveObjectStatements();
 
 		/**
+		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AssignFeatureImpl <em>Assign Feature</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.AssignFeatureImpl
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getAssignFeature()
+		 * @generated
+		 */
+		EClass ASSIGN_FEATURE = eINSTANCE.getAssignFeature();
+
+		/**
+		 * The meta object literal for the '<em><b>Setter Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSIGN_FEATURE__SETTER_NAME = eINSTANCE.getAssignFeature_SetterName();
+
+		/**
+		 * The meta object literal for the '<em><b>Getter Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSIGN_FEATURE__GETTER_NAME = eINSTANCE.getAssignFeature_GetterName();
+
+		/**
+		 * The meta object literal for the '<em><b>Many</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ASSIGN_FEATURE__MANY = eINSTANCE.getAssignFeature_Many();
+
+		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AssignAttributeImpl <em>Assign Attribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1044,30 +1212,6 @@ public interface AstransformationPackage extends EPackage {
 		EClass ASSIGN_ATTRIBUTE = eINSTANCE.getAssignAttribute();
 
 		/**
-		 * The meta object literal for the '<em><b>Mapping Rule</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ASSIGN_ATTRIBUTE__MAPPING_RULE = eINSTANCE.getAssignAttribute_MappingRule();
-
-		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ASSIGN_ATTRIBUTE__SOURCE = eINSTANCE.getAssignAttribute_Source();
-
-		/**
-		 * The meta object literal for the '<em><b>Dest</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ASSIGN_ATTRIBUTE__DEST = eINSTANCE.getAssignAttribute_Dest();
-
-		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AssignReferenceImpl <em>Assign Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1076,30 +1220,6 @@ public interface AstransformationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ASSIGN_REFERENCE = eINSTANCE.getAssignReference();
-
-		/**
-		 * The meta object literal for the '<em><b>Mapping Rule</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ASSIGN_REFERENCE__MAPPING_RULE = eINSTANCE.getAssignReference_MappingRule();
-
-		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ASSIGN_REFERENCE__SOURCE = eINSTANCE.getAssignReference_Source();
-
-		/**
-		 * The meta object literal for the '<em><b>Dest</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ASSIGN_REFERENCE__DEST = eINSTANCE.getAssignReference_Dest();
 
 		/**
 		 * The meta object literal for the '<em><b>Mapping Needed</b></em>' attribute feature.
@@ -1120,14 +1240,6 @@ public interface AstransformationPackage extends EPackage {
 		EClass WRITE_TRACE = eINSTANCE.getWriteTrace();
 
 		/**
-		 * The meta object literal for the '<em><b>Mapping Rule</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WRITE_TRACE__MAPPING_RULE = eINSTANCE.getWriteTrace_MappingRule();
-
-		/**
 		 * The meta object literal for the '<em><b>Trace Method Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1146,28 +1258,12 @@ public interface AstransformationPackage extends EPackage {
 		EClass RESOLVE_OBJECT = eINSTANCE.getResolveObject();
 
 		/**
-		 * The meta object literal for the '<em><b>Mapping Rule</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Parameter Type</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESOLVE_OBJECT__MAPPING_RULE = eINSTANCE.getResolveObject_MappingRule();
-
-		/**
-		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOLVE_OBJECT__SOURCE = eINSTANCE.getResolveObject_Source();
-
-		/**
-		 * The meta object literal for the '<em><b>Dest</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference RESOLVE_OBJECT__DEST = eINSTANCE.getResolveObject_Dest();
+		EReference RESOLVE_OBJECT__PARAMETER_TYPE = eINSTANCE.getResolveObject_ParameterType();
 
 		/**
 		 * The meta object literal for the '<em><b>Resolver Method Name</b></em>' attribute feature.
@@ -1176,6 +1272,24 @@ public interface AstransformationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOLVE_OBJECT__RESOLVER_METHOD_NAME = eINSTANCE.getResolveObject_ResolverMethodName();
+
+		/**
+		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.Typed <em>Typed</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ru.ifmo.rain.astrans.astransformation.Typed
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getTyped()
+		 * @generated
+		 */
+		EClass TYPED = eINSTANCE.getTyped();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TYPED__TYPE = eINSTANCE.getTyped_Type();
 
 	}
 

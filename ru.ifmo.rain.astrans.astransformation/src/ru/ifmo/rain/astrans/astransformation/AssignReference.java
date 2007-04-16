@@ -6,8 +6,6 @@
  */
 package ru.ifmo.rain.astrans.astransformation;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,9 +15,6 @@ import org.eclipse.emf.ecore.EReference;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.AssignReference#getMappingRule <em>Mapping Rule</em>}</li>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.AssignReference#getSource <em>Source</em>}</li>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.AssignReference#getDest <em>Dest</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.AssignReference#isMappingNeeded <em>Mapping Needed</em>}</li>
  * </ul>
  * </p>
@@ -28,87 +23,7 @@ import org.eclipse.emf.ecore.EReference;
  * @model
  * @generated
  */
-public interface AssignReference extends EObject {
-	/**
-	 * Returns the value of the '<em><b>Mapping Rule</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getAssignReferenceStatements <em>Assign Reference Statements</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Mapping Rule</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Mapping Rule</em>' container reference.
-	 * @see #setMappingRule(MappingRule)
-	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getAssignReference_MappingRule()
-	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getAssignReferenceStatements
-	 * @model opposite="assignReferenceStatements" required="true"
-	 * @generated
-	 */
-	MappingRule getMappingRule();
-
-	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.AssignReference#getMappingRule <em>Mapping Rule</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Mapping Rule</em>' container reference.
-	 * @see #getMappingRule()
-	 * @generated
-	 */
-	void setMappingRule(MappingRule value);
-
-	/**
-	 * Returns the value of the '<em><b>Source</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Source</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Source</em>' reference.
-	 * @see #setSource(EReference)
-	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getAssignReference_Source()
-	 * @model required="true"
-	 * @generated
-	 */
-	EReference getSource();
-
-	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.AssignReference#getSource <em>Source</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Source</em>' reference.
-	 * @see #getSource()
-	 * @generated
-	 */
-	void setSource(EReference value);
-
-	/**
-	 * Returns the value of the '<em><b>Dest</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Dest</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Dest</em>' reference.
-	 * @see #setDest(EReference)
-	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getAssignReference_Dest()
-	 * @model required="true"
-	 * @generated
-	 */
-	EReference getDest();
-
-	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.AssignReference#getDest <em>Dest</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Dest</em>' reference.
-	 * @see #getDest()
-	 * @generated
-	 */
-	void setDest(EReference value);
-
+public interface AssignReference extends AssignFeature, Typed {
 	/**
 	 * Returns the value of the '<em><b>Mapping Needed</b></em>' attribute.
 	 * The default value is <code>"true"</code>.

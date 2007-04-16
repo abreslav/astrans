@@ -10,20 +10,16 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
+import ru.ifmo.rain.astrans.astransformation.ClassName;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
 
@@ -39,8 +35,7 @@ import ru.ifmo.rain.astrans.astransformation.Transformation;
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getMain <em>Main</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getResolverClassName <em>Resolver Class Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getTraceClassName <em>Trace Class Name</em>}</li>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getInput <em>Input</em>}</li>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getOutput <em>Output</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getSwitchClassName <em>Switch Class Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -88,64 +83,34 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	protected MappingRule main = null;
 
 	/**
-	 * The default value of the '{@link #getResolverClassName() <em>Resolver Class Name</em>}' attribute.
+	 * The cached value of the '{@link #getResolverClassName() <em>Resolver Class Name</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getResolverClassName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String RESOLVER_CLASS_NAME_EDEFAULT = null;
+	protected ClassName resolverClassName = null;
 
 	/**
-	 * The cached value of the '{@link #getResolverClassName() <em>Resolver Class Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResolverClassName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String resolverClassName = RESOLVER_CLASS_NAME_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getTraceClassName() <em>Trace Class Name</em>}' attribute.
+	 * The cached value of the '{@link #getTraceClassName() <em>Trace Class Name</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getTraceClassName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TRACE_CLASS_NAME_EDEFAULT = null;
+	protected ClassName traceClassName = null;
 
 	/**
-	 * The cached value of the '{@link #getTraceClassName() <em>Trace Class Name</em>}' attribute.
+	 * The cached value of the '{@link #getSwitchClassName() <em>Switch Class Name</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTraceClassName()
+	 * @see #getSwitchClassName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String traceClassName = TRACE_CLASS_NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getInput() <em>Input</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInput()
-	 * @generated
-	 * @ordered
-	 */
-	protected EPackage input = null;
-
-	/**
-	 * The cached value of the '{@link #getOutput() <em>Output</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutput()
-	 * @generated
-	 * @ordered
-	 */
-	protected EPackage output = null;
+	protected ClassName switchClassName = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -241,7 +206,7 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getResolverClassName() {
+	public ClassName getResolverClassName() {
 		return resolverClassName;
 	}
 
@@ -250,11 +215,14 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setResolverClassName(String newResolverClassName) {
-		String oldResolverClassName = resolverClassName;
+	public NotificationChain basicSetResolverClassName(ClassName newResolverClassName, NotificationChain msgs) {
+		ClassName oldResolverClassName = resolverClassName;
 		resolverClassName = newResolverClassName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME, oldResolverClassName, resolverClassName));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME, oldResolverClassName, newResolverClassName);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -262,7 +230,26 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getTraceClassName() {
+	public void setResolverClassName(ClassName newResolverClassName) {
+		if (newResolverClassName != resolverClassName) {
+			NotificationChain msgs = null;
+			if (resolverClassName != null)
+				msgs = ((InternalEObject)resolverClassName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME, null, msgs);
+			if (newResolverClassName != null)
+				msgs = ((InternalEObject)newResolverClassName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME, null, msgs);
+			msgs = basicSetResolverClassName(newResolverClassName, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME, newResolverClassName, newResolverClassName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassName getTraceClassName() {
 		return traceClassName;
 	}
 
@@ -271,28 +258,14 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTraceClassName(String newTraceClassName) {
-		String oldTraceClassName = traceClassName;
+	public NotificationChain basicSetTraceClassName(ClassName newTraceClassName, NotificationChain msgs) {
+		ClassName oldTraceClassName = traceClassName;
 		traceClassName = newTraceClassName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME, oldTraceClassName, traceClassName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EPackage getInput() {
-		if (input != null && input.eIsProxy()) {
-			InternalEObject oldInput = (InternalEObject)input;
-			input = (EPackage)eResolveProxy(oldInput);
-			if (input != oldInput) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AstransformationPackage.TRANSFORMATION__INPUT, oldInput, input));
-			}
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME, oldTraceClassName, newTraceClassName);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return input;
+		return msgs;
 	}
 
 	/**
@@ -300,37 +273,18 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EPackage basicGetInput() {
-		return input;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setInput(EPackage newInput) {
-		EPackage oldInput = input;
-		input = newInput;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__INPUT, oldInput, input));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EPackage getOutput() {
-		if (output != null && output.eIsProxy()) {
-			InternalEObject oldOutput = (InternalEObject)output;
-			output = (EPackage)eResolveProxy(oldOutput);
-			if (output != oldOutput) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AstransformationPackage.TRANSFORMATION__OUTPUT, oldOutput, output));
-			}
+	public void setTraceClassName(ClassName newTraceClassName) {
+		if (newTraceClassName != traceClassName) {
+			NotificationChain msgs = null;
+			if (traceClassName != null)
+				msgs = ((InternalEObject)traceClassName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME, null, msgs);
+			if (newTraceClassName != null)
+				msgs = ((InternalEObject)newTraceClassName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME, null, msgs);
+			msgs = basicSetTraceClassName(newTraceClassName, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
-		return output;
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME, newTraceClassName, newTraceClassName));
 	}
 
 	/**
@@ -338,8 +292,8 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EPackage basicGetOutput() {
-		return output;
+	public ClassName getSwitchClassName() {
+		return switchClassName;
 	}
 
 	/**
@@ -347,11 +301,33 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setOutput(EPackage newOutput) {
-		EPackage oldOutput = output;
-		output = newOutput;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__OUTPUT, oldOutput, output));
+	public NotificationChain basicSetSwitchClassName(ClassName newSwitchClassName, NotificationChain msgs) {
+		ClassName oldSwitchClassName = switchClassName;
+		switchClassName = newSwitchClassName;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__SWITCH_CLASS_NAME, oldSwitchClassName, newSwitchClassName);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSwitchClassName(ClassName newSwitchClassName) {
+		if (newSwitchClassName != switchClassName) {
+			NotificationChain msgs = null;
+			if (switchClassName != null)
+				msgs = ((InternalEObject)switchClassName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.TRANSFORMATION__SWITCH_CLASS_NAME, null, msgs);
+			if (newSwitchClassName != null)
+				msgs = ((InternalEObject)newSwitchClassName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.TRANSFORMATION__SWITCH_CLASS_NAME, null, msgs);
+			msgs = basicSetSwitchClassName(newSwitchClassName, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__SWITCH_CLASS_NAME, newSwitchClassName, newSwitchClassName));
 	}
 
 	/**
@@ -363,6 +339,12 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 		switch (featureID) {
 			case AstransformationPackage.TRANSFORMATION__MAPPING_RULES:
 				return ((InternalEList)getMappingRules()).basicRemove(otherEnd, msgs);
+			case AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME:
+				return basicSetResolverClassName(null, msgs);
+			case AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME:
+				return basicSetTraceClassName(null, msgs);
+			case AstransformationPackage.TRANSFORMATION__SWITCH_CLASS_NAME:
+				return basicSetSwitchClassName(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -385,12 +367,8 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 				return getResolverClassName();
 			case AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME:
 				return getTraceClassName();
-			case AstransformationPackage.TRANSFORMATION__INPUT:
-				if (resolve) return getInput();
-				return basicGetInput();
-			case AstransformationPackage.TRANSFORMATION__OUTPUT:
-				if (resolve) return getOutput();
-				return basicGetOutput();
+			case AstransformationPackage.TRANSFORMATION__SWITCH_CLASS_NAME:
+				return getSwitchClassName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -413,16 +391,13 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 				setMain((MappingRule)newValue);
 				return;
 			case AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME:
-				setResolverClassName((String)newValue);
+				setResolverClassName((ClassName)newValue);
 				return;
 			case AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME:
-				setTraceClassName((String)newValue);
+				setTraceClassName((ClassName)newValue);
 				return;
-			case AstransformationPackage.TRANSFORMATION__INPUT:
-				setInput((EPackage)newValue);
-				return;
-			case AstransformationPackage.TRANSFORMATION__OUTPUT:
-				setOutput((EPackage)newValue);
+			case AstransformationPackage.TRANSFORMATION__SWITCH_CLASS_NAME:
+				setSwitchClassName((ClassName)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -445,16 +420,13 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 				setMain((MappingRule)null);
 				return;
 			case AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME:
-				setResolverClassName(RESOLVER_CLASS_NAME_EDEFAULT);
+				setResolverClassName((ClassName)null);
 				return;
 			case AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME:
-				setTraceClassName(TRACE_CLASS_NAME_EDEFAULT);
+				setTraceClassName((ClassName)null);
 				return;
-			case AstransformationPackage.TRANSFORMATION__INPUT:
-				setInput((EPackage)null);
-				return;
-			case AstransformationPackage.TRANSFORMATION__OUTPUT:
-				setOutput((EPackage)null);
+			case AstransformationPackage.TRANSFORMATION__SWITCH_CLASS_NAME:
+				setSwitchClassName((ClassName)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -474,13 +446,11 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 			case AstransformationPackage.TRANSFORMATION__MAIN:
 				return main != null;
 			case AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME:
-				return RESOLVER_CLASS_NAME_EDEFAULT == null ? resolverClassName != null : !RESOLVER_CLASS_NAME_EDEFAULT.equals(resolverClassName);
+				return resolverClassName != null;
 			case AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME:
-				return TRACE_CLASS_NAME_EDEFAULT == null ? traceClassName != null : !TRACE_CLASS_NAME_EDEFAULT.equals(traceClassName);
-			case AstransformationPackage.TRANSFORMATION__INPUT:
-				return input != null;
-			case AstransformationPackage.TRANSFORMATION__OUTPUT:
-				return output != null;
+				return traceClassName != null;
+			case AstransformationPackage.TRANSFORMATION__SWITCH_CLASS_NAME:
+				return switchClassName != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -496,10 +466,6 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", resolverClassName: ");
-		result.append(resolverClassName);
-		result.append(", traceClassName: ");
-		result.append(traceClassName);
 		result.append(')');
 		return result.toString();
 	}

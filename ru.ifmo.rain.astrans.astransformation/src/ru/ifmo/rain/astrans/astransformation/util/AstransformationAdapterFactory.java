@@ -73,6 +73,9 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseNamed(Named object) {
 				return createNamedAdapter();
 			}
+			public Object caseClassName(ClassName object) {
+				return createClassNameAdapter();
+			}
 			public Object caseTransformation(Transformation object) {
 				return createTransformationAdapter();
 			}
@@ -81,6 +84,9 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseMappingRule(MappingRule object) {
 				return createMappingRuleAdapter();
+			}
+			public Object caseAssignFeature(AssignFeature object) {
+				return createAssignFeatureAdapter();
 			}
 			public Object caseAssignAttribute(AssignAttribute object) {
 				return createAssignAttributeAdapter();
@@ -93,6 +99,9 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseResolveObject(ResolveObject object) {
 				return createResolveObjectAdapter();
+			}
+			public Object caseTyped(Typed object) {
+				return createTypedAdapter();
 			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
@@ -123,6 +132,20 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createNamedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ru.ifmo.rain.astrans.astransformation.ClassName <em>Class Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ru.ifmo.rain.astrans.astransformation.ClassName
+	 * @generated
+	 */
+	public Adapter createClassNameAdapter() {
 		return null;
 	}
 
@@ -165,6 +188,20 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMappingRuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ru.ifmo.rain.astrans.astransformation.AssignFeature <em>Assign Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ru.ifmo.rain.astrans.astransformation.AssignFeature
+	 * @generated
+	 */
+	public Adapter createAssignFeatureAdapter() {
 		return null;
 	}
 
@@ -221,6 +258,20 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createResolveObjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ru.ifmo.rain.astrans.astransformation.Typed <em>Typed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ru.ifmo.rain.astrans.astransformation.Typed
+	 * @generated
+	 */
+	public Adapter createTypedAdapter() {
 		return null;
 	}
 

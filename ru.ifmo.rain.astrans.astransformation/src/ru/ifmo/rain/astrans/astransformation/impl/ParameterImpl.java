@@ -7,15 +7,18 @@
 package ru.ifmo.rain.astrans.astransformation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
+import ru.ifmo.rain.astrans.astransformation.ClassName;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
+
+import ru.ifmo.rain.astrans.astransformation.Typed;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,14 +56,14 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected EClass type = null;
+	protected ClassName type = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -106,15 +109,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getType() {
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject)type;
-			type = (EClass)eResolveProxy(oldType);
-			if (type != oldType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AstransformationPackage.PARAMETER__TYPE, oldType, type));
-			}
-		}
+	public ClassName getType() {
 		return type;
 	}
 
@@ -123,20 +118,46 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass basicGetType() {
-		return type;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setType(EClass newType) {
-		EClass oldType = type;
+	public NotificationChain basicSetType(ClassName newType, NotificationChain msgs) {
+		ClassName oldType = type;
 		type = newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.PARAMETER__TYPE, oldType, type));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransformationPackage.PARAMETER__TYPE, oldType, newType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setType(ClassName newType) {
+		if (newType != type) {
+			NotificationChain msgs = null;
+			if (type != null)
+				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.PARAMETER__TYPE, null, msgs);
+			if (newType != null)
+				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.PARAMETER__TYPE, null, msgs);
+			msgs = basicSetType(newType, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.PARAMETER__TYPE, newType, newType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case AstransformationPackage.PARAMETER__TYPE:
+				return basicSetType(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -149,8 +170,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 			case AstransformationPackage.PARAMETER__NAME:
 				return getName();
 			case AstransformationPackage.PARAMETER__TYPE:
-				if (resolve) return getType();
-				return basicGetType();
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -166,7 +186,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 				setName((String)newValue);
 				return;
 			case AstransformationPackage.PARAMETER__TYPE:
-				setType((EClass)newValue);
+				setType((ClassName)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -183,7 +203,7 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 				setName(NAME_EDEFAULT);
 				return;
 			case AstransformationPackage.PARAMETER__TYPE:
-				setType((EClass)null);
+				setType((ClassName)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -202,6 +222,36 @@ public class ParameterImpl extends EObjectImpl implements Parameter {
 				return type != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+		if (baseClass == Typed.class) {
+			switch (derivedFeatureID) {
+				case AstransformationPackage.PARAMETER__TYPE: return AstransformationPackage.TYPED__TYPE;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+		if (baseClass == Typed.class) {
+			switch (baseFeatureID) {
+				case AstransformationPackage.TYPED__TYPE: return AstransformationPackage.PARAMETER__TYPE;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

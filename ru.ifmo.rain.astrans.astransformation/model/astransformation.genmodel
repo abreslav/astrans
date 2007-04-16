@@ -10,11 +10,15 @@
     <genClasses ecoreClass="astransformation.ecore#//Named">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//Named/name"/>
     </genClasses>
+    <genClasses ecoreClass="astransformation.ecore#//ClassName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//ClassName/name"/>
+    </genClasses>
     <genClasses ecoreClass="astransformation.ecore#//Transformation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//Transformation/mappingRules"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference astransformation.ecore#//Transformation/main"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//Transformation/resolverClassName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//Transformation/traceClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference astransformation.ecore#//Transformation/resolverClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference astransformation.ecore#//Transformation/traceClassName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//Transformation/switchClassName"/>
     </genClasses>
     <genClasses ecoreClass="astransformation.ecore#//Parameter">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference astransformation.ecore#//Parameter/type"/>
@@ -22,30 +26,26 @@
     <genClasses ecoreClass="astransformation.ecore#//MappingRule">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/parameter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/result"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/factoryClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//MappingRule/factoryMethodName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/assignAttributeStatements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/assignReferenceStatements"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/writeTraceStatement"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/resolveObjectStatements"/>
     </genClasses>
-    <genClasses ecoreClass="astransformation.ecore#//AssignAttribute">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference astransformation.ecore#//AssignAttribute/mappingRule"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference astransformation.ecore#//AssignAttribute/source"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference astransformation.ecore#//AssignAttribute/dest"/>
+    <genClasses ecoreClass="astransformation.ecore#//AssignFeature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//AssignFeature/setterName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//AssignFeature/getterName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//AssignFeature/many"/>
     </genClasses>
+    <genClasses ecoreClass="astransformation.ecore#//AssignAttribute"/>
     <genClasses ecoreClass="astransformation.ecore#//AssignReference">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference astransformation.ecore#//AssignReference/mappingRule"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference astransformation.ecore#//AssignReference/source"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference astransformation.ecore#//AssignReference/dest"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//AssignReference/mappingNeeded"/>
     </genClasses>
     <genClasses ecoreClass="astransformation.ecore#//WriteTrace">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference astransformation.ecore#//WriteTrace/mappingRule"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//WriteTrace/traceMethodName"/>
     </genClasses>
     <genClasses ecoreClass="astransformation.ecore#//ResolveObject">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference astransformation.ecore#//ResolveObject/mappingRule"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference astransformation.ecore#//ResolveObject/source"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference astransformation.ecore#//ResolveObject/dest"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//ResolveObject/resolverMethodName"/>
     </genClasses>
   </genPackages>

@@ -26,6 +26,15 @@ public interface AstransformationFactory extends EFactory {
 	AstransformationFactory eINSTANCE = ru.ifmo.rain.astrans.astransformation.impl.AstransformationFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Class Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Class Name</em>'.
+	 * @generated
+	 */
+	ClassName createClassName();
+
+	/**
 	 * Returns a new object of class '<em>Transformation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -51,6 +60,15 @@ public interface AstransformationFactory extends EFactory {
 	 * @generated
 	 */
 	MappingRule createMappingRule();
+
+	/**
+	 * Returns a new object of class '<em>Assign Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Assign Feature</em>'.
+	 * @generated
+	 */
+	AssignFeature createAssignFeature();
 
 	/**
 	 * Returns a new object of class '<em>Assign Attribute</em>'.

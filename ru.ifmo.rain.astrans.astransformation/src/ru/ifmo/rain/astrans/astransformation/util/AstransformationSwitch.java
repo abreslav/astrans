@@ -93,6 +93,12 @@ public class AstransformationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AstransformationPackage.CLASS_NAME: {
+				ClassName className = (ClassName)theEObject;
+				Object result = caseClassName(className);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AstransformationPackage.TRANSFORMATION: {
 				Transformation transformation = (Transformation)theEObject;
 				Object result = caseTransformation(transformation);
@@ -104,6 +110,7 @@ public class AstransformationSwitch {
 				Parameter parameter = (Parameter)theEObject;
 				Object result = caseParameter(parameter);
 				if (result == null) result = caseNamed(parameter);
+				if (result == null) result = caseTyped(parameter);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -114,15 +121,24 @@ public class AstransformationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case AstransformationPackage.ASSIGN_FEATURE: {
+				AssignFeature assignFeature = (AssignFeature)theEObject;
+				Object result = caseAssignFeature(assignFeature);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case AstransformationPackage.ASSIGN_ATTRIBUTE: {
 				AssignAttribute assignAttribute = (AssignAttribute)theEObject;
 				Object result = caseAssignAttribute(assignAttribute);
+				if (result == null) result = caseAssignFeature(assignAttribute);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case AstransformationPackage.ASSIGN_REFERENCE: {
 				AssignReference assignReference = (AssignReference)theEObject;
 				Object result = caseAssignReference(assignReference);
+				if (result == null) result = caseAssignFeature(assignReference);
+				if (result == null) result = caseTyped(assignReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -135,6 +151,14 @@ public class AstransformationSwitch {
 			case AstransformationPackage.RESOLVE_OBJECT: {
 				ResolveObject resolveObject = (ResolveObject)theEObject;
 				Object result = caseResolveObject(resolveObject);
+				if (result == null) result = caseAssignFeature(resolveObject);
+				if (result == null) result = caseTyped(resolveObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AstransformationPackage.TYPED: {
+				Typed typed = (Typed)theEObject;
+				Object result = caseTyped(typed);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -154,6 +178,21 @@ public class AstransformationSwitch {
 	 * @generated
 	 */
 	public Object caseNamed(Named object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Class Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Class Name</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseClassName(ClassName object) {
 		return null;
 	}
 
@@ -199,6 +238,21 @@ public class AstransformationSwitch {
 	 * @generated
 	 */
 	public Object caseMappingRule(MappingRule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Assign Feature</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Assign Feature</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseAssignFeature(AssignFeature object) {
 		return null;
 	}
 
@@ -259,6 +313,21 @@ public class AstransformationSwitch {
 	 * @generated
 	 */
 	public Object caseResolveObject(ResolveObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Typed</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Typed</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseTyped(Typed object) {
 		return null;
 	}
 
