@@ -59,9 +59,11 @@ public class AstransformationFactoryImpl extends EFactoryImpl implements Astrans
 	 */
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
+			case AstransformationPackage.CLASS_NAME: return createClassName();
 			case AstransformationPackage.TRANSFORMATION: return createTransformation();
 			case AstransformationPackage.PARAMETER: return createParameter();
 			case AstransformationPackage.MAPPING_RULE: return createMappingRule();
+			case AstransformationPackage.ASSIGN_FEATURE: return createAssignFeature();
 			case AstransformationPackage.ASSIGN_ATTRIBUTE: return createAssignAttribute();
 			case AstransformationPackage.ASSIGN_REFERENCE: return createAssignReference();
 			case AstransformationPackage.WRITE_TRACE: return createWriteTrace();
@@ -69,6 +71,16 @@ public class AstransformationFactoryImpl extends EFactoryImpl implements Astrans
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClassName createClassName() {
+		ClassNameImpl className = new ClassNameImpl();
+		return className;
 	}
 
 	/**
@@ -99,6 +111,16 @@ public class AstransformationFactoryImpl extends EFactoryImpl implements Astrans
 	public MappingRule createMappingRule() {
 		MappingRuleImpl mappingRule = new MappingRuleImpl();
 		return mappingRule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssignFeature createAssignFeature() {
+		AssignFeatureImpl assignFeature = new AssignFeatureImpl();
+		return assignFeature;
 	}
 
 	/**

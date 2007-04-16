@@ -5,49 +5,54 @@ interface Named {
   attr String[1] name;
 }
 
-class Transformation extends Named {
-  val MappingRule[*] mappingRules;
-  ref MappingRule[1] main; // the mapping rule that is started first
-  attr String[1] resolverClassName;
-  attr String[1] traceClassName;
-  ref ecore.EPackage[1] input;
-  ref ecore.EPackage[1] output;
+interface Typed {
+  val ClassName[1] type;
 }
 
-class Parameter extends Named {
-  ref EClass[1] type;
+class ClassName {
+  attr String[1] name;
+}
+
+class Transformation extends Named {
+  val MappingRule[*] mappingRules;
+  ref MappingRule[1] main;
+  val ClassName[1] resolverClassName;
+  val ClassName[1] traceClassName;
+  val ClassName[1] switchClassName;
+}
+
+class Parameter extends Named, Typed {
 }
 
 class MappingRule extends Named {
   val Parameter[1] parameter;
   val Parameter[1] result;
-  val AssignAttribute[*]#mappingRule assignAttributeStatements;
-  val AssignReference[*]#mappingRule assignReferenceStatements;
-  val WriteTrace[1]#mappingRule writeTraceStatement;
-  val ResolveObject[*]#mappingRule resolveObjectStatements;
+  val ClassName[1] factoryClassName;
+  attr String[1] factoryMethodName;
+  val AssignAttribute[*] assignAttributeStatements;
+  val AssignReference[*] assignReferenceStatements;
+  val WriteTrace[1] writeTraceStatement;
+  val ResolveObject[*] resolveObjectStatements;
 }
 
-class AssignAttribute {
-  ref MappingRule[1]#assignAttributeStatements mappingRule;
-  ref ecore.EAttribute[1] source; // what to read from mapping's parameter
-  ref ecore.EAttribute[1] dest; // where to write in mapping's result
+class AssignFeature {
+  attr String[1] setterName; // will be a getter for many feature 
+  attr String[1] getterName; 
+  attr boolean many = false;
 }
 
-class AssignReference {
-  ref MappingRule[1]#assignReferenceStatements mappingRule;
-  ref ecore.EReference[1] source; // what to read from mapping's parameter
-  ref ecore.EReference[1] dest; // where to write in mapping's result
-  attr boolean mappingNeeded = true; // set to false if the type was not translated and was skipped during meta-transformation
+class AssignAttribute extends AssignFeature {
+}
+
+class AssignReference extends AssignFeature, Typed {
+  attr boolean mappingNeeded = true;
 }
 
 class WriteTrace {
-  ref MappingRule[1]#writeTraceStatement mappingRule;
   attr String[1] traceMethodName;
 }
 
-class ResolveObject {
-  ref MappingRule[1]#resolveObjectStatements mappingRule;
-  ref ecore.EStructuralFeature[1] source; // what to read from mapping's parameter
-  ref ecore.EReference[1] dest; // where to write in mapping's result
+class ResolveObject extends AssignFeature, Typed {
+  val ClassName[1] parameterType;
   attr String[1] resolverMethodName;
 }

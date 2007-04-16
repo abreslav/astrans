@@ -18,6 +18,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getParameter <em>Parameter</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getResult <em>Result</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryClassName <em>Factory Class Name</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryMethodName <em>Factory Method Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getAssignAttributeStatements <em>Assign Attribute Statements</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getAssignReferenceStatements <em>Assign Reference Statements</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getWriteTraceStatement <em>Write Trace Statement</em>}</li>
@@ -83,9 +85,60 @@ public interface MappingRule extends Named {
 	void setResult(Parameter value);
 
 	/**
+	 * Returns the value of the '<em><b>Factory Class Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Factory Class Name</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Factory Class Name</em>' containment reference.
+	 * @see #setFactoryClassName(ClassName)
+	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getMappingRule_FactoryClassName()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	ClassName getFactoryClassName();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryClassName <em>Factory Class Name</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Factory Class Name</em>' containment reference.
+	 * @see #getFactoryClassName()
+	 * @generated
+	 */
+	void setFactoryClassName(ClassName value);
+
+	/**
+	 * Returns the value of the '<em><b>Factory Method Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Factory Method Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Factory Method Name</em>' attribute.
+	 * @see #setFactoryMethodName(String)
+	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getMappingRule_FactoryMethodName()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getFactoryMethodName();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryMethodName <em>Factory Method Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Factory Method Name</em>' attribute.
+	 * @see #getFactoryMethodName()
+	 * @generated
+	 */
+	void setFactoryMethodName(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Assign Attribute Statements</b></em>' containment reference list.
 	 * The list contents are of type {@link ru.ifmo.rain.astrans.astransformation.AssignAttribute}.
-	 * It is bidirectional and its opposite is '{@link ru.ifmo.rain.astrans.astransformation.AssignAttribute#getMappingRule <em>Mapping Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Assign Attribute Statements</em>' containment reference list isn't clear,
@@ -94,8 +147,7 @@ public interface MappingRule extends Named {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assign Attribute Statements</em>' containment reference list.
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getMappingRule_AssignAttributeStatements()
-	 * @see ru.ifmo.rain.astrans.astransformation.AssignAttribute#getMappingRule
-	 * @model type="ru.ifmo.rain.astrans.astransformation.AssignAttribute" opposite="mappingRule" containment="true"
+	 * @model type="ru.ifmo.rain.astrans.astransformation.AssignAttribute" containment="true"
 	 * @generated
 	 */
 	EList getAssignAttributeStatements();
@@ -103,7 +155,6 @@ public interface MappingRule extends Named {
 	/**
 	 * Returns the value of the '<em><b>Assign Reference Statements</b></em>' containment reference list.
 	 * The list contents are of type {@link ru.ifmo.rain.astrans.astransformation.AssignReference}.
-	 * It is bidirectional and its opposite is '{@link ru.ifmo.rain.astrans.astransformation.AssignReference#getMappingRule <em>Mapping Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Assign Reference Statements</em>' containment reference list isn't clear,
@@ -112,15 +163,13 @@ public interface MappingRule extends Named {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Assign Reference Statements</em>' containment reference list.
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getMappingRule_AssignReferenceStatements()
-	 * @see ru.ifmo.rain.astrans.astransformation.AssignReference#getMappingRule
-	 * @model type="ru.ifmo.rain.astrans.astransformation.AssignReference" opposite="mappingRule" containment="true"
+	 * @model type="ru.ifmo.rain.astrans.astransformation.AssignReference" containment="true"
 	 * @generated
 	 */
 	EList getAssignReferenceStatements();
 
 	/**
 	 * Returns the value of the '<em><b>Write Trace Statement</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link ru.ifmo.rain.astrans.astransformation.WriteTrace#getMappingRule <em>Mapping Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Write Trace Statement</em>' containment reference isn't clear,
@@ -130,8 +179,7 @@ public interface MappingRule extends Named {
 	 * @return the value of the '<em>Write Trace Statement</em>' containment reference.
 	 * @see #setWriteTraceStatement(WriteTrace)
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getMappingRule_WriteTraceStatement()
-	 * @see ru.ifmo.rain.astrans.astransformation.WriteTrace#getMappingRule
-	 * @model opposite="mappingRule" containment="true" required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	WriteTrace getWriteTraceStatement();
@@ -149,7 +197,6 @@ public interface MappingRule extends Named {
 	/**
 	 * Returns the value of the '<em><b>Resolve Object Statements</b></em>' containment reference list.
 	 * The list contents are of type {@link ru.ifmo.rain.astrans.astransformation.ResolveObject}.
-	 * It is bidirectional and its opposite is '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getMappingRule <em>Mapping Rule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Resolve Object Statements</em>' containment reference list isn't clear,
@@ -158,8 +205,7 @@ public interface MappingRule extends Named {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resolve Object Statements</em>' containment reference list.
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getMappingRule_ResolveObjectStatements()
-	 * @see ru.ifmo.rain.astrans.astransformation.ResolveObject#getMappingRule
-	 * @model type="ru.ifmo.rain.astrans.astransformation.ResolveObject" opposite="mappingRule" containment="true"
+	 * @model type="ru.ifmo.rain.astrans.astransformation.ResolveObject" containment="true"
 	 * @generated
 	 */
 	EList getResolveObjectStatements();

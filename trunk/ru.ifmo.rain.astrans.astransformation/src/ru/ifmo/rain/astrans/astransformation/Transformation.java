@@ -8,8 +8,6 @@ package ru.ifmo.rain.astrans.astransformation;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EPackage;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Transformation</b></em>'.
@@ -22,8 +20,7 @@ import org.eclipse.emf.ecore.EPackage;
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getMain <em>Main</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}</li>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getInput <em>Input</em>}</li>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getOutput <em>Output</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getSwitchClassName <em>Switch Class Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -75,107 +72,81 @@ public interface Transformation extends Named {
 	void setMain(MappingRule value);
 
 	/**
-	 * Returns the value of the '<em><b>Resolver Class Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Resolver Class Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Resolver Class Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resolver Class Name</em>' attribute.
-	 * @see #setResolverClassName(String)
+	 * @return the value of the '<em>Resolver Class Name</em>' containment reference.
+	 * @see #setResolverClassName(ClassName)
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_ResolverClassName()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getResolverClassName();
+	ClassName getResolverClassName();
 
 	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}' attribute.
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resolver Class Name</em>' attribute.
+	 * @param value the new value of the '<em>Resolver Class Name</em>' containment reference.
 	 * @see #getResolverClassName()
 	 * @generated
 	 */
-	void setResolverClassName(String value);
+	void setResolverClassName(ClassName value);
 
 	/**
-	 * Returns the value of the '<em><b>Trace Class Name</b></em>' attribute.
+	 * Returns the value of the '<em><b>Trace Class Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Trace Class Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Trace Class Name</em>' attribute.
-	 * @see #setTraceClassName(String)
+	 * @return the value of the '<em>Trace Class Name</em>' containment reference.
+	 * @see #setTraceClassName(ClassName)
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_TraceClassName()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getTraceClassName();
+	ClassName getTraceClassName();
 
 	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}' attribute.
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Trace Class Name</em>' attribute.
+	 * @param value the new value of the '<em>Trace Class Name</em>' containment reference.
 	 * @see #getTraceClassName()
 	 * @generated
 	 */
-	void setTraceClassName(String value);
+	void setTraceClassName(ClassName value);
 
 	/**
-	 * Returns the value of the '<em><b>Input</b></em>' reference.
+	 * Returns the value of the '<em><b>Switch Class Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Input</em>' reference isn't clear,
+	 * If the meaning of the '<em>Switch Class Name</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Input</em>' reference.
-	 * @see #setInput(EPackage)
-	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_Input()
-	 * @model required="true"
+	 * @return the value of the '<em>Switch Class Name</em>' containment reference.
+	 * @see #setSwitchClassName(ClassName)
+	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_SwitchClassName()
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	EPackage getInput();
+	ClassName getSwitchClassName();
 
 	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getInput <em>Input</em>}' reference.
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getSwitchClassName <em>Switch Class Name</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Input</em>' reference.
-	 * @see #getInput()
+	 * @param value the new value of the '<em>Switch Class Name</em>' containment reference.
+	 * @see #getSwitchClassName()
 	 * @generated
 	 */
-	void setInput(EPackage value);
-
-	/**
-	 * Returns the value of the '<em><b>Output</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Output</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Output</em>' reference.
-	 * @see #setOutput(EPackage)
-	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_Output()
-	 * @model required="true"
-	 * @generated
-	 */
-	EPackage getOutput();
-
-	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getOutput <em>Output</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Output</em>' reference.
-	 * @see #getOutput()
-	 * @generated
-	 */
-	void setOutput(EPackage value);
+	void setSwitchClassName(ClassName value);
 
 } // Transformation

@@ -10,21 +10,18 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import ru.ifmo.rain.astrans.astransformation.AssignAttribute;
 import ru.ifmo.rain.astrans.astransformation.AssignReference;
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
+import ru.ifmo.rain.astrans.astransformation.ClassName;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
@@ -40,6 +37,8 @@ import ru.ifmo.rain.astrans.astransformation.WriteTrace;
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.MappingRuleImpl#getName <em>Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.MappingRuleImpl#getParameter <em>Parameter</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.MappingRuleImpl#getResult <em>Result</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.MappingRuleImpl#getFactoryClassName <em>Factory Class Name</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.MappingRuleImpl#getFactoryMethodName <em>Factory Method Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.MappingRuleImpl#getAssignAttributeStatements <em>Assign Attribute Statements</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.MappingRuleImpl#getAssignReferenceStatements <em>Assign Reference Statements</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.MappingRuleImpl#getWriteTraceStatement <em>Write Trace Statement</em>}</li>
@@ -89,6 +88,36 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 	 * @ordered
 	 */
 	protected Parameter result = null;
+
+	/**
+	 * The cached value of the '{@link #getFactoryClassName() <em>Factory Class Name</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFactoryClassName()
+	 * @generated
+	 * @ordered
+	 */
+	protected ClassName factoryClassName = null;
+
+	/**
+	 * The default value of the '{@link #getFactoryMethodName() <em>Factory Method Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFactoryMethodName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FACTORY_METHOD_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFactoryMethodName() <em>Factory Method Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFactoryMethodName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String factoryMethodName = FACTORY_METHOD_NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getAssignAttributeStatements() <em>Assign Attribute Statements</em>}' containment reference list.
@@ -260,9 +289,73 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ClassName getFactoryClassName() {
+		return factoryClassName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFactoryClassName(ClassName newFactoryClassName, NotificationChain msgs) {
+		ClassName oldFactoryClassName = factoryClassName;
+		factoryClassName = newFactoryClassName;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransformationPackage.MAPPING_RULE__FACTORY_CLASS_NAME, oldFactoryClassName, newFactoryClassName);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFactoryClassName(ClassName newFactoryClassName) {
+		if (newFactoryClassName != factoryClassName) {
+			NotificationChain msgs = null;
+			if (factoryClassName != null)
+				msgs = ((InternalEObject)factoryClassName).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.MAPPING_RULE__FACTORY_CLASS_NAME, null, msgs);
+			if (newFactoryClassName != null)
+				msgs = ((InternalEObject)newFactoryClassName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.MAPPING_RULE__FACTORY_CLASS_NAME, null, msgs);
+			msgs = basicSetFactoryClassName(newFactoryClassName, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.MAPPING_RULE__FACTORY_CLASS_NAME, newFactoryClassName, newFactoryClassName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getFactoryMethodName() {
+		return factoryMethodName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFactoryMethodName(String newFactoryMethodName) {
+		String oldFactoryMethodName = factoryMethodName;
+		factoryMethodName = newFactoryMethodName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.MAPPING_RULE__FACTORY_METHOD_NAME, oldFactoryMethodName, factoryMethodName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EList getAssignAttributeStatements() {
 		if (assignAttributeStatements == null) {
-			assignAttributeStatements = new EObjectContainmentWithInverseEList(AssignAttribute.class, this, AstransformationPackage.MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS, AstransformationPackage.ASSIGN_ATTRIBUTE__MAPPING_RULE);
+			assignAttributeStatements = new EObjectContainmentEList(AssignAttribute.class, this, AstransformationPackage.MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS);
 		}
 		return assignAttributeStatements;
 	}
@@ -274,7 +367,7 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 	 */
 	public EList getAssignReferenceStatements() {
 		if (assignReferenceStatements == null) {
-			assignReferenceStatements = new EObjectContainmentWithInverseEList(AssignReference.class, this, AstransformationPackage.MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS, AstransformationPackage.ASSIGN_REFERENCE__MAPPING_RULE);
+			assignReferenceStatements = new EObjectContainmentEList(AssignReference.class, this, AstransformationPackage.MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS);
 		}
 		return assignReferenceStatements;
 	}
@@ -312,9 +405,9 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 		if (newWriteTraceStatement != writeTraceStatement) {
 			NotificationChain msgs = null;
 			if (writeTraceStatement != null)
-				msgs = ((InternalEObject)writeTraceStatement).eInverseRemove(this, AstransformationPackage.WRITE_TRACE__MAPPING_RULE, WriteTrace.class, msgs);
+				msgs = ((InternalEObject)writeTraceStatement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.MAPPING_RULE__WRITE_TRACE_STATEMENT, null, msgs);
 			if (newWriteTraceStatement != null)
-				msgs = ((InternalEObject)newWriteTraceStatement).eInverseAdd(this, AstransformationPackage.WRITE_TRACE__MAPPING_RULE, WriteTrace.class, msgs);
+				msgs = ((InternalEObject)newWriteTraceStatement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.MAPPING_RULE__WRITE_TRACE_STATEMENT, null, msgs);
 			msgs = basicSetWriteTraceStatement(newWriteTraceStatement, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -329,30 +422,9 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 	 */
 	public EList getResolveObjectStatements() {
 		if (resolveObjectStatements == null) {
-			resolveObjectStatements = new EObjectContainmentWithInverseEList(ResolveObject.class, this, AstransformationPackage.MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS, AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE);
+			resolveObjectStatements = new EObjectContainmentEList(ResolveObject.class, this, AstransformationPackage.MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS);
 		}
 		return resolveObjectStatements;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AstransformationPackage.MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS:
-				return ((InternalEList)getAssignAttributeStatements()).basicAdd(otherEnd, msgs);
-			case AstransformationPackage.MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS:
-				return ((InternalEList)getAssignReferenceStatements()).basicAdd(otherEnd, msgs);
-			case AstransformationPackage.MAPPING_RULE__WRITE_TRACE_STATEMENT:
-				if (writeTraceStatement != null)
-					msgs = ((InternalEObject)writeTraceStatement).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.MAPPING_RULE__WRITE_TRACE_STATEMENT, null, msgs);
-				return basicSetWriteTraceStatement((WriteTrace)otherEnd, msgs);
-			case AstransformationPackage.MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS:
-				return ((InternalEList)getResolveObjectStatements()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -366,6 +438,8 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 				return basicSetParameter(null, msgs);
 			case AstransformationPackage.MAPPING_RULE__RESULT:
 				return basicSetResult(null, msgs);
+			case AstransformationPackage.MAPPING_RULE__FACTORY_CLASS_NAME:
+				return basicSetFactoryClassName(null, msgs);
 			case AstransformationPackage.MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS:
 				return ((InternalEList)getAssignAttributeStatements()).basicRemove(otherEnd, msgs);
 			case AstransformationPackage.MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS:
@@ -391,6 +465,10 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 				return getParameter();
 			case AstransformationPackage.MAPPING_RULE__RESULT:
 				return getResult();
+			case AstransformationPackage.MAPPING_RULE__FACTORY_CLASS_NAME:
+				return getFactoryClassName();
+			case AstransformationPackage.MAPPING_RULE__FACTORY_METHOD_NAME:
+				return getFactoryMethodName();
 			case AstransformationPackage.MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS:
 				return getAssignAttributeStatements();
 			case AstransformationPackage.MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS:
@@ -418,6 +496,12 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 				return;
 			case AstransformationPackage.MAPPING_RULE__RESULT:
 				setResult((Parameter)newValue);
+				return;
+			case AstransformationPackage.MAPPING_RULE__FACTORY_CLASS_NAME:
+				setFactoryClassName((ClassName)newValue);
+				return;
+			case AstransformationPackage.MAPPING_RULE__FACTORY_METHOD_NAME:
+				setFactoryMethodName((String)newValue);
 				return;
 			case AstransformationPackage.MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS:
 				getAssignAttributeStatements().clear();
@@ -454,6 +538,12 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 			case AstransformationPackage.MAPPING_RULE__RESULT:
 				setResult((Parameter)null);
 				return;
+			case AstransformationPackage.MAPPING_RULE__FACTORY_CLASS_NAME:
+				setFactoryClassName((ClassName)null);
+				return;
+			case AstransformationPackage.MAPPING_RULE__FACTORY_METHOD_NAME:
+				setFactoryMethodName(FACTORY_METHOD_NAME_EDEFAULT);
+				return;
 			case AstransformationPackage.MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS:
 				getAssignAttributeStatements().clear();
 				return;
@@ -483,6 +573,10 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 				return parameter != null;
 			case AstransformationPackage.MAPPING_RULE__RESULT:
 				return result != null;
+			case AstransformationPackage.MAPPING_RULE__FACTORY_CLASS_NAME:
+				return factoryClassName != null;
+			case AstransformationPackage.MAPPING_RULE__FACTORY_METHOD_NAME:
+				return FACTORY_METHOD_NAME_EDEFAULT == null ? factoryMethodName != null : !FACTORY_METHOD_NAME_EDEFAULT.equals(factoryMethodName);
 			case AstransformationPackage.MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS:
 				return assignAttributeStatements != null && !assignAttributeStatements.isEmpty();
 			case AstransformationPackage.MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS:
@@ -506,6 +600,8 @@ public class MappingRuleImpl extends EObjectImpl implements MappingRule {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", factoryMethodName: ");
+		result.append(factoryMethodName);
 		result.append(')');
 		return result.toString();
 	}

@@ -10,18 +10,15 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
-import ru.ifmo.rain.astrans.astransformation.MappingRule;
+import ru.ifmo.rain.astrans.astransformation.ClassName;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
+
+import ru.ifmo.rain.astrans.astransformation.Typed;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,35 +27,34 @@ import ru.ifmo.rain.astrans.astransformation.ResolveObject;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getMappingRule <em>Mapping Rule</em>}</li>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getSource <em>Source</em>}</li>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getDest <em>Dest</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getType <em>Type</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getParameterType <em>Parameter Type</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getResolverMethodName <em>Resolver Method Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
+public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObject {
 	/**
-	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
+	 * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSource()
+	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected EStructuralFeature source = null;
+	protected ClassName type = null;
 
 	/**
-	 * The cached value of the '{@link #getDest() <em>Dest</em>}' reference.
+	 * The cached value of the '{@link #getParameterType() <em>Parameter Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDest()
+	 * @see #getParameterType()
 	 * @generated
 	 * @ordered
 	 */
-	protected EReference dest = null;
+	protected ClassName parameterType = null;
 
 	/**
 	 * The default value of the '{@link #getResolverMethodName() <em>Resolver Method Name</em>}' attribute.
@@ -103,9 +99,8 @@ public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MappingRule getMappingRule() {
-		if (eContainerFeatureID != AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE) return null;
-		return (MappingRule)eContainer();
+	public ClassName getType() {
+		return type;
 	}
 
 	/**
@@ -113,8 +108,13 @@ public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetMappingRule(MappingRule newMappingRule, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newMappingRule, AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE, msgs);
+	public NotificationChain basicSetType(ClassName newType, NotificationChain msgs) {
+		ClassName oldType = type;
+		type = newType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransformationPackage.RESOLVE_OBJECT__TYPE, oldType, newType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
 		return msgs;
 	}
 
@@ -123,20 +123,18 @@ public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMappingRule(MappingRule newMappingRule) {
-		if (newMappingRule != eInternalContainer() || (eContainerFeatureID != AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE && newMappingRule != null)) {
-			if (EcoreUtil.isAncestor(this, newMappingRule))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+	public void setType(ClassName newType) {
+		if (newType != type) {
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newMappingRule != null)
-				msgs = ((InternalEObject)newMappingRule).eInverseAdd(this, AstransformationPackage.MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS, MappingRule.class, msgs);
-			msgs = basicSetMappingRule(newMappingRule, msgs);
+			if (type != null)
+				msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.RESOLVE_OBJECT__TYPE, null, msgs);
+			if (newType != null)
+				msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.RESOLVE_OBJECT__TYPE, null, msgs);
+			msgs = basicSetType(newType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE, newMappingRule, newMappingRule));
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.RESOLVE_OBJECT__TYPE, newType, newType));
 	}
 
 	/**
@@ -144,16 +142,23 @@ public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EStructuralFeature getSource() {
-		if (source != null && source.eIsProxy()) {
-			InternalEObject oldSource = (InternalEObject)source;
-			source = (EStructuralFeature)eResolveProxy(oldSource);
-			if (source != oldSource) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AstransformationPackage.RESOLVE_OBJECT__SOURCE, oldSource, source));
-			}
+	public ClassName getParameterType() {
+		return parameterType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetParameterType(ClassName newParameterType, NotificationChain msgs) {
+		ClassName oldParameterType = parameterType;
+		parameterType = newParameterType;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE, oldParameterType, newParameterType);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return source;
+		return msgs;
 	}
 
 	/**
@@ -161,58 +166,18 @@ public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EStructuralFeature basicGetSource() {
-		return source;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSource(EStructuralFeature newSource) {
-		EStructuralFeature oldSource = source;
-		source = newSource;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.RESOLVE_OBJECT__SOURCE, oldSource, source));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getDest() {
-		if (dest != null && dest.eIsProxy()) {
-			InternalEObject oldDest = (InternalEObject)dest;
-			dest = (EReference)eResolveProxy(oldDest);
-			if (dest != oldDest) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AstransformationPackage.RESOLVE_OBJECT__DEST, oldDest, dest));
-			}
+	public void setParameterType(ClassName newParameterType) {
+		if (newParameterType != parameterType) {
+			NotificationChain msgs = null;
+			if (parameterType != null)
+				msgs = ((InternalEObject)parameterType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE, null, msgs);
+			if (newParameterType != null)
+				msgs = ((InternalEObject)newParameterType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE, null, msgs);
+			msgs = basicSetParameterType(newParameterType, msgs);
+			if (msgs != null) msgs.dispatch();
 		}
-		return dest;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference basicGetDest() {
-		return dest;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDest(EReference newDest) {
-		EReference oldDest = dest;
-		dest = newDest;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.RESOLVE_OBJECT__DEST, oldDest, dest));
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE, newParameterType, newParameterType));
 	}
 
 	/**
@@ -241,25 +206,12 @@ public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetMappingRule((MappingRule)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE:
-				return basicSetMappingRule(null, msgs);
+			case AstransformationPackage.RESOLVE_OBJECT__TYPE:
+				return basicSetType(null, msgs);
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
+				return basicSetParameterType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -269,29 +221,12 @@ public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID) {
-			case AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE:
-				return eInternalContainer().eInverseRemove(this, AstransformationPackage.MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS, MappingRule.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE:
-				return getMappingRule();
-			case AstransformationPackage.RESOLVE_OBJECT__SOURCE:
-				if (resolve) return getSource();
-				return basicGetSource();
-			case AstransformationPackage.RESOLVE_OBJECT__DEST:
-				if (resolve) return getDest();
-				return basicGetDest();
+			case AstransformationPackage.RESOLVE_OBJECT__TYPE:
+				return getType();
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
+				return getParameterType();
 			case AstransformationPackage.RESOLVE_OBJECT__RESOLVER_METHOD_NAME:
 				return getResolverMethodName();
 		}
@@ -305,14 +240,11 @@ public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE:
-				setMappingRule((MappingRule)newValue);
+			case AstransformationPackage.RESOLVE_OBJECT__TYPE:
+				setType((ClassName)newValue);
 				return;
-			case AstransformationPackage.RESOLVE_OBJECT__SOURCE:
-				setSource((EStructuralFeature)newValue);
-				return;
-			case AstransformationPackage.RESOLVE_OBJECT__DEST:
-				setDest((EReference)newValue);
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
+				setParameterType((ClassName)newValue);
 				return;
 			case AstransformationPackage.RESOLVE_OBJECT__RESOLVER_METHOD_NAME:
 				setResolverMethodName((String)newValue);
@@ -328,14 +260,11 @@ public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE:
-				setMappingRule((MappingRule)null);
+			case AstransformationPackage.RESOLVE_OBJECT__TYPE:
+				setType((ClassName)null);
 				return;
-			case AstransformationPackage.RESOLVE_OBJECT__SOURCE:
-				setSource((EStructuralFeature)null);
-				return;
-			case AstransformationPackage.RESOLVE_OBJECT__DEST:
-				setDest((EReference)null);
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
+				setParameterType((ClassName)null);
 				return;
 			case AstransformationPackage.RESOLVE_OBJECT__RESOLVER_METHOD_NAME:
 				setResolverMethodName(RESOLVER_METHOD_NAME_EDEFAULT);
@@ -351,16 +280,44 @@ public class ResolveObjectImpl extends EObjectImpl implements ResolveObject {
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AstransformationPackage.RESOLVE_OBJECT__MAPPING_RULE:
-				return getMappingRule() != null;
-			case AstransformationPackage.RESOLVE_OBJECT__SOURCE:
-				return source != null;
-			case AstransformationPackage.RESOLVE_OBJECT__DEST:
-				return dest != null;
+			case AstransformationPackage.RESOLVE_OBJECT__TYPE:
+				return type != null;
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
+				return parameterType != null;
 			case AstransformationPackage.RESOLVE_OBJECT__RESOLVER_METHOD_NAME:
 				return RESOLVER_METHOD_NAME_EDEFAULT == null ? resolverMethodName != null : !RESOLVER_METHOD_NAME_EDEFAULT.equals(resolverMethodName);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class baseClass) {
+		if (baseClass == Typed.class) {
+			switch (derivedFeatureID) {
+				case AstransformationPackage.RESOLVE_OBJECT__TYPE: return AstransformationPackage.TYPED__TYPE;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class baseClass) {
+		if (baseClass == Typed.class) {
+			switch (baseFeatureID) {
+				case AstransformationPackage.TYPED__TYPE: return AstransformationPackage.RESOLVE_OBJECT__TYPE;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

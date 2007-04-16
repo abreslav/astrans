@@ -6,5 +6,6 @@ Bundle-Version: 1.0.0
 Bundle-Localization: plugin
 Require-Bundle: ru.ifmo.rain.astrans.interpreter.trace,
  ru.ifmo.rain.astrans.astransformation,
- ru.ifmo.rain.astrans.utils
+ ru.ifmo.rain.astrans.utils,
+ org.eclipse.emf.codegen.ecore
 Export-Package: ru.ifmo.rain.astrans.interpreter.backtrans

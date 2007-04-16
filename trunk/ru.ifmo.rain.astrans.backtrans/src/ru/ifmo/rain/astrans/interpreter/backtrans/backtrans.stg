@@ -1,0 +1,78 @@
+group backtrans;
+
+main(transformation, package) ::= <<
+
+
+public class <transformation.name> extends ASTToModelTransformation\<<transformation.resolverClassName>, <transformation.traceClassName>\> {
+	<switch(...)>
+}
+>>
+
+switch(transformation) ::= <<
+private final <transformation.switchClassName> transformer = new <transformation.switchClassName>() {
+	public void doSwitch(EList target, EList source) {
+		for (Iterator i = source.iterator(); i.hasNext(); ) {
+			traget.add(doSwitch((EObject) i.next()));
+		}
+	}
+
+	<transformation.mappingRules:toCaseMethod(); separator="\n\n">
+}
+>>
+
+toCaseMethod(rule) ::= <<
+public <rule.result.type> <rule.name>(<rule.parameter.type> <rule.parameter.name>) {
+	<rule.result.type> <rule.result.name> = <rule.factoryClassName>.eINSTANCE.<rule.factoryMethodName>();
+<if(rule.assignAttributeStatements)>
+
+	<rule.assignAttributeStatements:{a | <renderAttributeAssignment(a=a, rule=rule)>}; separator="\n">
+<endif>
+<if(rule.assignReferenceStatements)>
+
+	<rule.assignReferenceStatements:{r | <renderReferenceAssignment(r=r, rule=rule)>}; separator="\n">
+<endif>
+
+	getTrace().<rule.writeTraceStatement.traceMethodName>(<rule.parameter.name>, <rule.result.name>);
+<if(rule.resolveObjectStatements)>
+
+	addCommand(new Runnable() {
+		public void run() {
+			<rule.resolveObjectStatements:{r | <renderResolveObject(r=r, rule=rule)>}; separator="\n">
+		}
+	});
+<endif>
+
+}
+>>
+
+renderAttributeAssignment(a, rule) ::= <<
+<if(a.many)>
+<rule.result.name>.<a.setterName>().addAll(<rule.parameter.name>.<a.getterName>);
+<else>
+<rule.result.name>.<a.setterName>(<rule.parameter.name>.<a.getterName>);
+<endif>
+>>
+
+renderReferenceAssignment(r, rule) ::= <<
+<if(r.many)><if(r.mappingNeeded)>
+doSwitch(<rule.result.name>.<r.setterName>(), <rule.parameter.name>.<r.getterName>());
+<else>
+<rule.result.name>.<r.setterName>().addAll(<rule.parameter.name>.<r.getterName>());
+<endif>
+<else><if(r.mappingNeeded)>
+<rule.result.name>.<r.setterName>((<r.type>) doSwitch(<rule.parameter.name>.<r.getterName>()));
+<else>
+<rule.result.name>.<r.setterName>(<rule.parameter.name>.<r.getterName>());
+<endif>
+<endif>
+>>
+
+renderResolveObject(r, rule) ::= <<
+<if(r.many)>
+for (Iterator i = <rule.result.name>.<r.getterName>().iterator(); i.hasNext(); ) {
+	<rule.result.name>.<r.setterName>().add(getResolver().<r.resolverMethodName>((<r.parameterType>) i.next()));
+}
+<else>
+<rule.result.name>.<r.setterName>(getResolver().<r.resolverMethodName>(<rule.parameter.name>.<r.getterName>()));
+<endif>
+>>

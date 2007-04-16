@@ -10,18 +10,20 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import ru.ifmo.rain.astrans.astransformation.AssignAttribute;
+import ru.ifmo.rain.astrans.astransformation.AssignFeature;
 import ru.ifmo.rain.astrans.astransformation.AssignReference;
 import ru.ifmo.rain.astrans.astransformation.AstransformationFactory;
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
+import ru.ifmo.rain.astrans.astransformation.ClassName;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Named;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
+import ru.ifmo.rain.astrans.astransformation.Typed;
 import ru.ifmo.rain.astrans.astransformation.WriteTrace;
 
 /**
@@ -43,6 +45,13 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass classNameEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass transformationEClass = null;
 
 	/**
@@ -58,6 +67,13 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * @generated
 	 */
 	private EClass mappingRuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass assignFeatureEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -86,6 +102,13 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * @generated
 	 */
 	private EClass resolveObjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass typedEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -178,6 +201,24 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getClassName() {
+		return classNameEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getClassName_Name() {
+		return (EAttribute)classNameEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getTransformation() {
 		return transformationEClass;
 	}
@@ -205,8 +246,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTransformation_ResolverClassName() {
-		return (EAttribute)transformationEClass.getEStructuralFeatures().get(2);
+	public EReference getTransformation_ResolverClassName() {
+		return (EReference)transformationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -214,8 +255,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTransformation_TraceClassName() {
-		return (EAttribute)transformationEClass.getEStructuralFeatures().get(3);
+	public EReference getTransformation_TraceClassName() {
+		return (EReference)transformationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -223,17 +264,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransformation_Input() {
+	public EReference getTransformation_SwitchClassName() {
 		return (EReference)transformationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTransformation_Output() {
-		return (EReference)transformationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -243,15 +275,6 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 */
 	public EClass getParameter() {
 		return parameterEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getParameter_Type() {
-		return (EReference)parameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -286,7 +309,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingRule_AssignAttributeStatements() {
+	public EReference getMappingRule_FactoryClassName() {
 		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -295,8 +318,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingRule_AssignReferenceStatements() {
-		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(3);
+	public EAttribute getMappingRule_FactoryMethodName() {
+		return (EAttribute)mappingRuleEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -304,7 +327,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingRule_WriteTraceStatement() {
+	public EReference getMappingRule_AssignAttributeStatements() {
 		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -313,8 +336,62 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingRule_ResolveObjectStatements() {
+	public EReference getMappingRule_AssignReferenceStatements() {
 		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMappingRule_WriteTraceStatement() {
+		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMappingRule_ResolveObjectStatements() {
+		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getAssignFeature() {
+		return assignFeatureEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssignFeature_SetterName() {
+		return (EAttribute)assignFeatureEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssignFeature_GetterName() {
+		return (EAttribute)assignFeatureEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAssignFeature_Many() {
+		return (EAttribute)assignFeatureEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -331,33 +408,6 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAssignAttribute_MappingRule() {
-		return (EReference)assignAttributeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAssignAttribute_Source() {
-		return (EReference)assignAttributeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAssignAttribute_Dest() {
-		return (EReference)assignAttributeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getAssignReference() {
 		return assignReferenceEClass;
 	}
@@ -367,35 +417,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getAssignReference_MappingRule() {
-		return (EReference)assignReferenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAssignReference_Source() {
-		return (EReference)assignReferenceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getAssignReference_Dest() {
-		return (EReference)assignReferenceEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getAssignReference_MappingNeeded() {
-		return (EAttribute)assignReferenceEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)assignReferenceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -412,17 +435,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getWriteTrace_MappingRule() {
-		return (EReference)writeTraceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getWriteTrace_TraceMethodName() {
-		return (EAttribute)writeTraceEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)writeTraceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -439,7 +453,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getResolveObject_MappingRule() {
+	public EReference getResolveObject_ParameterType() {
 		return (EReference)resolveObjectEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -448,26 +462,26 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getResolveObject_Source() {
-		return (EReference)resolveObjectEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getResolveObject_Dest() {
-		return (EReference)resolveObjectEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getResolveObject_ResolverMethodName() {
-		return (EAttribute)resolveObjectEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)resolveObjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTyped() {
+		return typedEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTyped_Type() {
+		return (EReference)typedEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -501,45 +515,47 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		namedEClass = createEClass(NAMED);
 		createEAttribute(namedEClass, NAMED__NAME);
 
+		classNameEClass = createEClass(CLASS_NAME);
+		createEAttribute(classNameEClass, CLASS_NAME__NAME);
+
 		transformationEClass = createEClass(TRANSFORMATION);
 		createEReference(transformationEClass, TRANSFORMATION__MAPPING_RULES);
 		createEReference(transformationEClass, TRANSFORMATION__MAIN);
-		createEAttribute(transformationEClass, TRANSFORMATION__RESOLVER_CLASS_NAME);
-		createEAttribute(transformationEClass, TRANSFORMATION__TRACE_CLASS_NAME);
-		createEReference(transformationEClass, TRANSFORMATION__INPUT);
-		createEReference(transformationEClass, TRANSFORMATION__OUTPUT);
+		createEReference(transformationEClass, TRANSFORMATION__RESOLVER_CLASS_NAME);
+		createEReference(transformationEClass, TRANSFORMATION__TRACE_CLASS_NAME);
+		createEReference(transformationEClass, TRANSFORMATION__SWITCH_CLASS_NAME);
 
 		parameterEClass = createEClass(PARAMETER);
-		createEReference(parameterEClass, PARAMETER__TYPE);
 
 		mappingRuleEClass = createEClass(MAPPING_RULE);
 		createEReference(mappingRuleEClass, MAPPING_RULE__PARAMETER);
 		createEReference(mappingRuleEClass, MAPPING_RULE__RESULT);
+		createEReference(mappingRuleEClass, MAPPING_RULE__FACTORY_CLASS_NAME);
+		createEAttribute(mappingRuleEClass, MAPPING_RULE__FACTORY_METHOD_NAME);
 		createEReference(mappingRuleEClass, MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS);
 		createEReference(mappingRuleEClass, MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS);
 		createEReference(mappingRuleEClass, MAPPING_RULE__WRITE_TRACE_STATEMENT);
 		createEReference(mappingRuleEClass, MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS);
 
+		assignFeatureEClass = createEClass(ASSIGN_FEATURE);
+		createEAttribute(assignFeatureEClass, ASSIGN_FEATURE__SETTER_NAME);
+		createEAttribute(assignFeatureEClass, ASSIGN_FEATURE__GETTER_NAME);
+		createEAttribute(assignFeatureEClass, ASSIGN_FEATURE__MANY);
+
 		assignAttributeEClass = createEClass(ASSIGN_ATTRIBUTE);
-		createEReference(assignAttributeEClass, ASSIGN_ATTRIBUTE__MAPPING_RULE);
-		createEReference(assignAttributeEClass, ASSIGN_ATTRIBUTE__SOURCE);
-		createEReference(assignAttributeEClass, ASSIGN_ATTRIBUTE__DEST);
 
 		assignReferenceEClass = createEClass(ASSIGN_REFERENCE);
-		createEReference(assignReferenceEClass, ASSIGN_REFERENCE__MAPPING_RULE);
-		createEReference(assignReferenceEClass, ASSIGN_REFERENCE__SOURCE);
-		createEReference(assignReferenceEClass, ASSIGN_REFERENCE__DEST);
 		createEAttribute(assignReferenceEClass, ASSIGN_REFERENCE__MAPPING_NEEDED);
 
 		writeTraceEClass = createEClass(WRITE_TRACE);
-		createEReference(writeTraceEClass, WRITE_TRACE__MAPPING_RULE);
 		createEAttribute(writeTraceEClass, WRITE_TRACE__TRACE_METHOD_NAME);
 
 		resolveObjectEClass = createEClass(RESOLVE_OBJECT);
-		createEReference(resolveObjectEClass, RESOLVE_OBJECT__MAPPING_RULE);
-		createEReference(resolveObjectEClass, RESOLVE_OBJECT__SOURCE);
-		createEReference(resolveObjectEClass, RESOLVE_OBJECT__DEST);
+		createEReference(resolveObjectEClass, RESOLVE_OBJECT__PARAMETER_TYPE);
 		createEAttribute(resolveObjectEClass, RESOLVE_OBJECT__RESOLVER_METHOD_NAME);
+
+		typedEClass = createEClass(TYPED);
+		createEReference(typedEClass, TYPED__TYPE);
 	}
 
 	/**
@@ -568,51 +584,59 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		// Add supertypes to classes
 		transformationEClass.getESuperTypes().add(this.getNamed());
 		parameterEClass.getESuperTypes().add(this.getNamed());
+		parameterEClass.getESuperTypes().add(this.getTyped());
 		mappingRuleEClass.getESuperTypes().add(this.getNamed());
+		assignAttributeEClass.getESuperTypes().add(this.getAssignFeature());
+		assignReferenceEClass.getESuperTypes().add(this.getAssignFeature());
+		assignReferenceEClass.getESuperTypes().add(this.getTyped());
+		resolveObjectEClass.getESuperTypes().add(this.getAssignFeature());
+		resolveObjectEClass.getESuperTypes().add(this.getTyped());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(namedEClass, Named.class, "Named", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamed_Name(), ecorePackage.getEString(), "name", null, 1, 1, Named.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(classNameEClass, ClassName.class, "ClassName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getClassName_Name(), ecorePackage.getEString(), "name", null, 1, 1, ClassName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(transformationEClass, Transformation.class, "Transformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransformation_MappingRules(), this.getMappingRule(), null, "mappingRules", null, 0, -1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformation_Main(), this.getMappingRule(), null, "main", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransformation_ResolverClassName(), ecorePackage.getEString(), "resolverClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransformation_TraceClassName(), ecorePackage.getEString(), "traceClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransformation_Input(), ecorePackage.getEPackage(), null, "input", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransformation_Output(), ecorePackage.getEPackage(), null, "output", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_ResolverClassName(), this.getClassName(), null, "resolverClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_TraceClassName(), this.getClassName(), null, "traceClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_SwitchClassName(), this.getClassName(), null, "switchClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getParameter_Type(), ecorePackage.getEClass(), null, "type", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mappingRuleEClass, MappingRule.class, "MappingRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMappingRule_Parameter(), this.getParameter(), null, "parameter", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingRule_Result(), this.getParameter(), null, "result", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMappingRule_AssignAttributeStatements(), this.getAssignAttribute(), this.getAssignAttribute_MappingRule(), "assignAttributeStatements", null, 0, -1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMappingRule_AssignReferenceStatements(), this.getAssignReference(), this.getAssignReference_MappingRule(), "assignReferenceStatements", null, 0, -1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMappingRule_WriteTraceStatement(), this.getWriteTrace(), this.getWriteTrace_MappingRule(), "writeTraceStatement", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMappingRule_ResolveObjectStatements(), this.getResolveObject(), this.getResolveObject_MappingRule(), "resolveObjectStatements", null, 0, -1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMappingRule_FactoryClassName(), this.getClassName(), null, "factoryClassName", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMappingRule_FactoryMethodName(), ecorePackage.getEString(), "factoryMethodName", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMappingRule_AssignAttributeStatements(), this.getAssignAttribute(), null, "assignAttributeStatements", null, 0, -1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMappingRule_AssignReferenceStatements(), this.getAssignReference(), null, "assignReferenceStatements", null, 0, -1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMappingRule_WriteTraceStatement(), this.getWriteTrace(), null, "writeTraceStatement", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMappingRule_ResolveObjectStatements(), this.getResolveObject(), null, "resolveObjectStatements", null, 0, -1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(assignFeatureEClass, AssignFeature.class, "AssignFeature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAssignFeature_SetterName(), ecorePackage.getEString(), "setterName", null, 1, 1, AssignFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAssignFeature_GetterName(), ecorePackage.getEString(), "getterName", null, 1, 1, AssignFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAssignFeature_Many(), ecorePackage.getEBoolean(), "many", "false", 0, 1, AssignFeature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assignAttributeEClass, AssignAttribute.class, "AssignAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAssignAttribute_MappingRule(), this.getMappingRule(), this.getMappingRule_AssignAttributeStatements(), "mappingRule", null, 1, 1, AssignAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAssignAttribute_Source(), ecorePackage.getEAttribute(), null, "source", null, 1, 1, AssignAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAssignAttribute_Dest(), ecorePackage.getEAttribute(), null, "dest", null, 1, 1, AssignAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assignReferenceEClass, AssignReference.class, "AssignReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getAssignReference_MappingRule(), this.getMappingRule(), this.getMappingRule_AssignReferenceStatements(), "mappingRule", null, 1, 1, AssignReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAssignReference_Source(), ecorePackage.getEReference(), null, "source", null, 1, 1, AssignReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getAssignReference_Dest(), ecorePackage.getEReference(), null, "dest", null, 1, 1, AssignReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAssignReference_MappingNeeded(), ecorePackage.getEBoolean(), "mappingNeeded", "true", 0, 1, AssignReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(writeTraceEClass, WriteTrace.class, "WriteTrace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getWriteTrace_MappingRule(), this.getMappingRule(), this.getMappingRule_WriteTraceStatement(), "mappingRule", null, 1, 1, WriteTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getWriteTrace_TraceMethodName(), ecorePackage.getEString(), "traceMethodName", null, 1, 1, WriteTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resolveObjectEClass, ResolveObject.class, "ResolveObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getResolveObject_MappingRule(), this.getMappingRule(), this.getMappingRule_ResolveObjectStatements(), "mappingRule", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResolveObject_Source(), ecorePackage.getEStructuralFeature(), null, "source", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getResolveObject_Dest(), ecorePackage.getEReference(), null, "dest", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResolveObject_ParameterType(), this.getClassName(), null, "parameterType", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResolveObject_ResolverMethodName(), ecorePackage.getEString(), "resolverMethodName", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(typedEClass, Typed.class, "Typed", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTyped_Type(), this.getClassName(), null, "type", null, 1, 1, Typed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

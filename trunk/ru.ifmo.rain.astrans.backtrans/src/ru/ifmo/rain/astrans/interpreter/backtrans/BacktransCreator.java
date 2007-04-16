@@ -3,6 +3,8 @@ package ru.ifmo.rain.astrans.interpreter.backtrans;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
+import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
@@ -20,14 +22,12 @@ import ru.ifmo.rain.astrans.trace.ReferenceMappingType;
 public class BacktransCreator {
 
 	@SuppressWarnings("unchecked")
-	public static Transformation createBackTransformation(TraceAdapter trace) {
+	public static Transformation createBackTransformation(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM) {
 		Transformation backTransformation = AstransformationFactory.eINSTANCE.createTransformation();
 		String name = uppercaseFirstLetter(trace.getOutput().getName()) + "To" + uppercaseFirstLetter(trace.getInput().getName());
 		backTransformation.setName(name + "Transformation");
 		backTransformation.setResolverClassName("I" + name + "Resolver");
 		backTransformation.setTraceClassName("I" + name + "Trace");
-		backTransformation.setInput(trace.getOutput());
-		backTransformation.setOutput(trace.getInput());
 	
 		Collection<ClassMapping> mappings = trace.getClassMappings();
 		for (ClassMapping mapping : mappings) {
@@ -37,10 +37,10 @@ public class BacktransCreator {
 
 			rule.setResult(AstransformationFactory.eINSTANCE.createParameter());
 			rule.getResult().setName(lowercaseFirstLetter(mapping.getProto().getName()));
-			rule.getResult().setType(mapping.getProto());
+			rule.getResult().setType(mapping.getProto().getName());
 			
 			rule.setParameter(AstransformationFactory.eINSTANCE.createParameter());
-			rule.getParameter().setType(mapping.getImage());
+			rule.getParameter().setType(mapping.getImage().getName());
 			rule.getParameter().setName(lowercaseFirstLetter(mapping.getImage().getName()));
 			
 			rule.setWriteTraceStatement(AstransformationFactory.eINSTANCE.createWriteTrace());
@@ -54,8 +54,8 @@ public class BacktransCreator {
 			for (Iterator iter = allAttributes.iterator(); iter.hasNext();) {
 				EAttribute attribute = (EAttribute) iter.next();
 				AssignAttribute assignAttribute = AstransformationFactory.eINSTANCE.createAssignAttribute();
-				assignAttribute.setDest(attribute);
-				assignAttribute.setSource(trace.getAttributeMapping(attribute).getImage());
+				assignAttribute.setSetterName(attribute.getName());
+				assignAttribute.setGetterName(trace.getAttributeMapping(attribute).getImage().getName());
 				rule.getAssignAttributeStatements().add(assignAttribute);
 			}
 			
@@ -83,11 +83,12 @@ public class BacktransCreator {
 	}
 
 	private static String lowercaseFirstLetter(String name) {
-		return Character.toLowerCase(name.charAt(0)) + name.substring(1);
+//		return Character.toLowerCase(name.charAt(0)) + name.substring(1);
+		return CodeGenUtil.uncapName(name);
 	}
 	
 	private static String uppercaseFirstLetter(String name) {
-		return Character.toUpperCase(name.charAt(0)) + name.substring(1);
+//		return Character.toUpperCase(name.charAt(0)) + name.substring(1);
+		return CodeGenUtil.capName(name);
 	}
-	
 }
