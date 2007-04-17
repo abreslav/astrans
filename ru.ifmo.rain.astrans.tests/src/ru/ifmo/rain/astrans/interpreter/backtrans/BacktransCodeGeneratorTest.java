@@ -24,19 +24,19 @@ public class BacktransCodeGeneratorTest {
 			public Object[] process(File file) {
 				return new Object[] {
 						file.getPath() + "/Transformation.xmi",
-						file.getPath() + "/result.java",
+						file.getPath(),
 					};
 			}
 		});
 	}
 	
 	private String transformationFileName;
-	private String resultFileName;
+	private String dataDir;
 	
 	public BacktransCodeGeneratorTest(String transformationFileName, String resultFileName) {
 		super();
 		this.transformationFileName = transformationFileName;
-		this.resultFileName = resultFileName;
+		this.dataDir = resultFileName;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -46,7 +46,7 @@ public class BacktransCodeGeneratorTest {
 		EMFHelper.loadResourceFromFile(transfomationResource, transformationFileName);
 		Transformation transformation = (Transformation) transfomationResource.getContents().get(0);
 		
-		BacktransCodeGenerator.generate(transformation, "ru.astrans", resultFileName);
+		BacktransCodeGenerator.generate(transformation, "ru.astrans", dataDir);
 	}
 	
 }

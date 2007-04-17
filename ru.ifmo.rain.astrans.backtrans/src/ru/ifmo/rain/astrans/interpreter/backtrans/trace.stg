@@ -1,0 +1,13 @@
+group backtrans;
+
+main(transformation) ::= <<
+
+
+public interface <transformation.traceClassName> {
+	<transformation.mappingRules:renderRuleTraceMethod(); separator="\n\n">
+}
+>>
+
+renderRuleTraceMethod(rule) ::= <<
+void <rule.writeTraceStatement.traceMethodName>(<rule.parameter.type> <rule.parameter.name>, <rule.result.type> <rule.result.name>);
+>>
