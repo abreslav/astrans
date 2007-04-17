@@ -1,0 +1,13 @@
+group backtrans;
+
+main(transformation) ::= <<
+
+
+public interface <transformation.resolverClassName> {
+	<transformation.mappingRules:{r| <r.resolveObjectStatements:renderResolveMethod(); separator="\n\n">}>
+}
+>>
+
+renderResolveMethod(ros) ::= <<
+<ros.type> <ros.resolverMethodName>(<ros.parameterType> reference);
+>>

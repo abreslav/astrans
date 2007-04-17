@@ -18,41 +18,119 @@ import ru.ifmo.rain.astrans.astransformation.Transformation;
 import ru.ifmo.rain.astrans.astransformation.impl.ClassNameImpl;
 
 public class BacktransCodeGenerator {
-	
-	public static void generate(Transformation transformation, String targetPackage, String resultFileName) throws IOException {
-		
-		Reader reader = new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("ru/ifmo/rain/astrans/interpreter/backtrans/backtrans.stg"));
-		StringTemplateGroup group = new StringTemplateGroup(reader);
-		StringTemplate mainTemplate = group.getInstanceOf("main");
-		mainTemplate.setAttribute("transformation", transformation);
-		mainTemplate.setAttribute("package", targetPackage);
 
-		final ImportManager importManager = new ImportManager(targetPackage);
-		mainTemplate.registerRenderer(ClassNameImpl.class, new AttributeRenderer() {
-			public String toString(Object o) {
-				String name = ((ClassName) o).getName();
-				importManager.addImport(name);
-				return importManager.getImportedName(name);
-			}
-		});
+	private static abstract class Generator {
+
+		public final void generate(Transformation transformation, String targetPackage, String outputDirectory) throws IOException {
+			Reader reader = new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(getTemplatePath()));
+			StringTemplateGroup group = new StringTemplateGroup(reader);
+			StringTemplate mainTemplate = group.getInstanceOf("main");
+			mainTemplate.setAttribute("transformation", transformation);
+
+			final ImportManager importManager = new ImportManager(targetPackage);
+			mainTemplate.registerRenderer(ClassNameImpl.class, new AttributeRenderer() {
+				public String toString(Object o) {
+					String name = ((ClassName) o).getName();
+					importManager.addImport(name);
+					return importManager.getImportedName(name);
+				}
+			});
+			
+			addCustomImports(importManager, transformation);
+			
+			FileWriter writer = null;
+			try {
+				writer = new FileWriter(outputDirectory + "/" + getFileName(transformation, importManager));
+				writer.write("package " + targetPackage + ";\n");
+				String code = mainTemplate.toString();
+				writer.write(importManager.computeSortedImports());
+				writer.write(code);
+			} finally {
+				if (writer != null) {
+					writer.close();
+				}
+			}		
+		}
+
+		protected void addCustomImports(final ImportManager importManager, Transformation transformation) {
+			
+		}
+
+		protected abstract String getTemplatePath();
+		protected abstract String getFileName(Transformation transformation, ImportManager importManager);
+
+	}
+	
+	private static class TransformationGenerator extends Generator {
+
+		private static final String TEMPLATE = "ru/ifmo/rain/astrans/interpreter/backtrans/backtrans.stg";
+
+		@Override
+		protected void addCustomImports(ImportManager importManager, Transformation transformation) {
+			importManager.addImport(Iterator.class.getCanonicalName());
+			importManager.addImport(Runnable.class.getCanonicalName());
+			importManager.addImport(EList.class.getCanonicalName());
+			importManager.addImport(EObject.class.getCanonicalName());
+			importManager.addImport("ru.ifmo.rain.astrans.asttomodel.ASTToModelTransformation");
+		}
+
+		@Override
+		protected String getFileName(Transformation transformation, ImportManager importManager) {
+			return transformation.getName() + ".java";
+		}
+
+		@Override
+		protected String getTemplatePath() {
+			return TEMPLATE;
+		}
 		
-		importManager.addImport(Iterator.class.getCanonicalName());
-		importManager.addImport(Runnable.class.getCanonicalName());
-		importManager.addImport(EList.class.getCanonicalName());
-		importManager.addImport(EObject.class.getCanonicalName());
-		importManager.addImport("ru.ifmo.rain.astrans.asttomodel.ASTToModelTransformation");
+	}
+	
+	private static class TraceGenerator extends Generator {
+
+		private static final String TEMPLATE = "ru/ifmo/rain/astrans/interpreter/backtrans/trace.stg";
+
+		@Override
+		protected void addCustomImports(ImportManager importManager, Transformation transformation) {
+			importManager.addImport(transformation.getTraceClassName().getName());
+		}
 		
-		FileWriter writer = null;
-		try {
-			writer = new FileWriter(resultFileName);
-			writer.write("package " + targetPackage + ";\n");
-			String code = mainTemplate.toString();
-			writer.write(importManager.computeSortedImports());
-			writer.write(code);
-		} finally {
-			if (writer != null) {
-				writer.close();
-			}
-		}		
+		@Override
+		protected String getFileName(Transformation transformation, ImportManager importManager) {
+			return importManager.getImportedName(transformation.getTraceClassName().getName()) + ".java";
+		}
+
+		@Override
+		protected String getTemplatePath() {
+			return TEMPLATE;
+		}
+		
+	}
+	
+	private static class ResolverGenerator extends Generator {
+
+		private static final String TEMPLATE = "ru/ifmo/rain/astrans/interpreter/backtrans/resolver.stg";
+
+		@Override
+		protected void addCustomImports(ImportManager importManager, Transformation transformation) {
+			importManager.addImport(transformation.getResolverClassName().getName());
+		}
+		
+		@Override
+		protected String getFileName(Transformation transformation, ImportManager importManager) {
+			return importManager.getImportedName(transformation.getResolverClassName().getName()) + ".java";
+		}
+
+		@Override
+		protected String getTemplatePath() {
+			return TEMPLATE;
+		}
+		
+	}
+	
+	public static void generate(Transformation transformation, String targetPackage, String outputDirectory) throws IOException {
+		new TransformationGenerator().generate(transformation, targetPackage, outputDirectory);
+		new TraceGenerator().generate(transformation, targetPackage, outputDirectory);
+		new ResolverGenerator().generate(transformation, targetPackage, outputDirectory);
 	}
 }

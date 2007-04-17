@@ -1,6 +1,6 @@
 group backtrans;
 
-main(transformation, package) ::= <<
+main(transformation) ::= <<
 
 
 public class <transformation.name> extends ASTToModelTransformation\<<transformation.resolverClassName>, <transformation.traceClassName>\> {
