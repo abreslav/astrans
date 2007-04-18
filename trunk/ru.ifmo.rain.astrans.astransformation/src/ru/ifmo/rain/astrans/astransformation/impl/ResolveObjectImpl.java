@@ -8,16 +8,14 @@ package ru.ifmo.rain.astrans.astransformation.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
-
+import ru.ifmo.rain.astrans.astransformation.TypeName;
 import ru.ifmo.rain.astrans.astransformation.Typed;
 
 /**
@@ -28,8 +26,9 @@ import ru.ifmo.rain.astrans.astransformation.Typed;
  * The following features are implemented:
  * <ul>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getType <em>Type</em>}</li>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getParameterType <em>Parameter Type</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getResolverMethodName <em>Resolver Method Name</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getParameterType <em>Parameter Type</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl#getParameterName <em>Parameter Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,16 +44,6 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 	 * @ordered
 	 */
 	protected ClassName type = null;
-
-	/**
-	 * The cached value of the '{@link #getParameterType() <em>Parameter Type</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameterType()
-	 * @generated
-	 * @ordered
-	 */
-	protected ClassName parameterType = null;
 
 	/**
 	 * The default value of the '{@link #getResolverMethodName() <em>Resolver Method Name</em>}' attribute.
@@ -75,6 +64,36 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 	 * @ordered
 	 */
 	protected String resolverMethodName = RESOLVER_METHOD_NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getParameterType() <em>Parameter Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameterType()
+	 * @generated
+	 * @ordered
+	 */
+	protected TypeName parameterType = null;
+
+	/**
+	 * The default value of the '{@link #getParameterName() <em>Parameter Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameterName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PARAMETER_NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getParameterName() <em>Parameter Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParameterName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String parameterName = PARAMETER_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -142,7 +161,7 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ClassName getParameterType() {
+	public TypeName getParameterType() {
 		return parameterType;
 	}
 
@@ -151,8 +170,8 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetParameterType(ClassName newParameterType, NotificationChain msgs) {
-		ClassName oldParameterType = parameterType;
+	public NotificationChain basicSetParameterType(TypeName newParameterType, NotificationChain msgs) {
+		TypeName oldParameterType = parameterType;
 		parameterType = newParameterType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE, oldParameterType, newParameterType);
@@ -166,7 +185,7 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParameterType(ClassName newParameterType) {
+	public void setParameterType(TypeName newParameterType) {
 		if (newParameterType != parameterType) {
 			NotificationChain msgs = null;
 			if (parameterType != null)
@@ -178,6 +197,27 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE, newParameterType, newParameterType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getParameterName() {
+		return parameterName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setParameterName(String newParameterName) {
+		String oldParameterName = parameterName;
+		parameterName = newParameterName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.RESOLVE_OBJECT__PARAMETER_NAME, oldParameterName, parameterName));
 	}
 
 	/**
@@ -225,10 +265,12 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 		switch (featureID) {
 			case AstransformationPackage.RESOLVE_OBJECT__TYPE:
 				return getType();
-			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
-				return getParameterType();
 			case AstransformationPackage.RESOLVE_OBJECT__RESOLVER_METHOD_NAME:
 				return getResolverMethodName();
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
+				return getParameterType();
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_NAME:
+				return getParameterName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -243,11 +285,14 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 			case AstransformationPackage.RESOLVE_OBJECT__TYPE:
 				setType((ClassName)newValue);
 				return;
-			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
-				setParameterType((ClassName)newValue);
-				return;
 			case AstransformationPackage.RESOLVE_OBJECT__RESOLVER_METHOD_NAME:
 				setResolverMethodName((String)newValue);
+				return;
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
+				setParameterType((TypeName)newValue);
+				return;
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_NAME:
+				setParameterName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -263,11 +308,14 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 			case AstransformationPackage.RESOLVE_OBJECT__TYPE:
 				setType((ClassName)null);
 				return;
-			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
-				setParameterType((ClassName)null);
-				return;
 			case AstransformationPackage.RESOLVE_OBJECT__RESOLVER_METHOD_NAME:
 				setResolverMethodName(RESOLVER_METHOD_NAME_EDEFAULT);
+				return;
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
+				setParameterType((TypeName)null);
+				return;
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_NAME:
+				setParameterName(PARAMETER_NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -282,10 +330,12 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 		switch (featureID) {
 			case AstransformationPackage.RESOLVE_OBJECT__TYPE:
 				return type != null;
-			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
-				return parameterType != null;
 			case AstransformationPackage.RESOLVE_OBJECT__RESOLVER_METHOD_NAME:
 				return RESOLVER_METHOD_NAME_EDEFAULT == null ? resolverMethodName != null : !RESOLVER_METHOD_NAME_EDEFAULT.equals(resolverMethodName);
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_TYPE:
+				return parameterType != null;
+			case AstransformationPackage.RESOLVE_OBJECT__PARAMETER_NAME:
+				return PARAMETER_NAME_EDEFAULT == null ? parameterName != null : !PARAMETER_NAME_EDEFAULT.equals(parameterName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -331,6 +381,8 @@ public class ResolveObjectImpl extends AssignFeatureImpl implements ResolveObjec
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (resolverMethodName: ");
 		result.append(resolverMethodName);
+		result.append(", parameterName: ");
+		result.append(parameterName);
 		result.append(')');
 		return result.toString();
 	}

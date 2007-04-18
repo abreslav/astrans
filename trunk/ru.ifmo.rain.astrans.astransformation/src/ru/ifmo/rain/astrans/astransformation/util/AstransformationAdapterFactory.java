@@ -8,12 +8,23 @@ package ru.ifmo.rain.astrans.astransformation.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
 
-import ru.ifmo.rain.astrans.astransformation.*;
+import ru.ifmo.rain.astrans.astransformation.AssignAttribute;
+import ru.ifmo.rain.astrans.astransformation.AssignFeature;
+import ru.ifmo.rain.astrans.astransformation.AssignReference;
+import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
+import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
+import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.MappingRule;
+import ru.ifmo.rain.astrans.astransformation.Named;
+import ru.ifmo.rain.astrans.astransformation.Parameter;
+import ru.ifmo.rain.astrans.astransformation.ResolveObject;
+import ru.ifmo.rain.astrans.astransformation.Transformation;
+import ru.ifmo.rain.astrans.astransformation.TypeName;
+import ru.ifmo.rain.astrans.astransformation.Typed;
+import ru.ifmo.rain.astrans.astransformation.WriteTrace;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,6 +113,12 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseTyped(Typed object) {
 				return createTypedAdapter();
+			}
+			public Object caseTypeName(TypeName object) {
+				return createTypeNameAdapter();
+			}
+			public Object caseBasicTypeName(BasicTypeName object) {
+				return createBasicTypeNameAdapter();
 			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
@@ -272,6 +289,34 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTypedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ru.ifmo.rain.astrans.astransformation.TypeName <em>Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ru.ifmo.rain.astrans.astransformation.TypeName
+	 * @generated
+	 */
+	public Adapter createTypeNameAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ru.ifmo.rain.astrans.astransformation.BasicTypeName <em>Basic Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ru.ifmo.rain.astrans.astransformation.BasicTypeName
+	 * @generated
+	 */
+	public Adapter createBasicTypeNameAdapter() {
 		return null;
 	}
 

@@ -9,8 +9,26 @@ interface Typed {
   val ClassName[1] type;
 }
 
-class ClassName {
+abstract class TypeName {
+}
+
+class ClassName extends TypeName {
   attr String[1] name;
+}
+
+class BasicTypeName extends TypeName {
+  attr BasicType type;
+}
+
+enum BasicType {
+  int = 0;
+  byte = 1;
+  char = 2;
+  short = 3;
+  long = 4;
+  float = 5;
+  double = 6;
+  boolean = 7;
 }
 
 class Transformation extends Named {
@@ -36,8 +54,8 @@ class MappingRule extends Named {
 }
 
 class AssignFeature {
-  attr String[1] setterName; // will be a getter for many feature 
-  attr String[1] getterName; 
+  attr String[1] setterName;
+  attr String[1] getterName;
   attr boolean many = false;
 }
 
@@ -53,6 +71,8 @@ class WriteTrace {
 }
 
 class ResolveObject extends AssignFeature, Typed {
-  val ClassName[1] parameterType;
   attr String[1] resolverMethodName;
+  val TypeName[1] parameterType;
+  attr String[1] parameterName;
 }
+

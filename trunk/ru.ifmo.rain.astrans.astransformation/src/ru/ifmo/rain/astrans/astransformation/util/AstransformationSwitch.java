@@ -11,7 +11,20 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import ru.ifmo.rain.astrans.astransformation.*;
+import ru.ifmo.rain.astrans.astransformation.AssignAttribute;
+import ru.ifmo.rain.astrans.astransformation.AssignFeature;
+import ru.ifmo.rain.astrans.astransformation.AssignReference;
+import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
+import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
+import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.MappingRule;
+import ru.ifmo.rain.astrans.astransformation.Named;
+import ru.ifmo.rain.astrans.astransformation.Parameter;
+import ru.ifmo.rain.astrans.astransformation.ResolveObject;
+import ru.ifmo.rain.astrans.astransformation.Transformation;
+import ru.ifmo.rain.astrans.astransformation.TypeName;
+import ru.ifmo.rain.astrans.astransformation.Typed;
+import ru.ifmo.rain.astrans.astransformation.WriteTrace;
 
 /**
  * <!-- begin-user-doc -->
@@ -96,6 +109,7 @@ public class AstransformationSwitch {
 			case AstransformationPackage.CLASS_NAME: {
 				ClassName className = (ClassName)theEObject;
 				Object result = caseClassName(className);
+				if (result == null) result = caseTypeName(className);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -159,6 +173,19 @@ public class AstransformationSwitch {
 			case AstransformationPackage.TYPED: {
 				Typed typed = (Typed)theEObject;
 				Object result = caseTyped(typed);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AstransformationPackage.TYPE_NAME: {
+				TypeName typeName = (TypeName)theEObject;
+				Object result = caseTypeName(typeName);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AstransformationPackage.BASIC_TYPE_NAME: {
+				BasicTypeName basicTypeName = (BasicTypeName)theEObject;
+				Object result = caseBasicTypeName(basicTypeName);
+				if (result == null) result = caseTypeName(basicTypeName);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -328,6 +355,36 @@ public class AstransformationSwitch {
 	 * @generated
 	 */
 	public Object caseTyped(Typed object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Type Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Type Name</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseTypeName(TypeName object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Basic Type Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Basic Type Name</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseBasicTypeName(BasicTypeName object) {
 		return null;
 	}
 

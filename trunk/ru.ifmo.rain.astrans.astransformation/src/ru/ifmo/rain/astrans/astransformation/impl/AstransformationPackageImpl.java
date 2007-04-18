@@ -8,6 +8,7 @@ package ru.ifmo.rain.astrans.astransformation.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -17,12 +18,15 @@ import ru.ifmo.rain.astrans.astransformation.AssignFeature;
 import ru.ifmo.rain.astrans.astransformation.AssignReference;
 import ru.ifmo.rain.astrans.astransformation.AstransformationFactory;
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
+import ru.ifmo.rain.astrans.astransformation.BasicType;
+import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Named;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
+import ru.ifmo.rain.astrans.astransformation.TypeName;
 import ru.ifmo.rain.astrans.astransformation.Typed;
 import ru.ifmo.rain.astrans.astransformation.WriteTrace;
 
@@ -109,6 +113,27 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * @generated
 	 */
 	private EClass typedEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass typeNameEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass basicTypeNameEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum basicTypeEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -454,7 +479,16 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * @generated
 	 */
 	public EReference getResolveObject_ParameterType() {
-		return (EReference)resolveObjectEClass.getEStructuralFeatures().get(0);
+		return (EReference)resolveObjectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getResolveObject_ParameterName() {
+		return (EAttribute)resolveObjectEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -463,7 +497,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * @generated
 	 */
 	public EAttribute getResolveObject_ResolverMethodName() {
-		return (EAttribute)resolveObjectEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)resolveObjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -482,6 +516,42 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 */
 	public EReference getTyped_Type() {
 		return (EReference)typedEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTypeName() {
+		return typeNameEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getBasicTypeName() {
+		return basicTypeNameEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getBasicTypeName_Type() {
+		return (EAttribute)basicTypeNameEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getBasicType() {
+		return basicTypeEEnum;
 	}
 
 	/**
@@ -551,11 +621,20 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		createEAttribute(writeTraceEClass, WRITE_TRACE__TRACE_METHOD_NAME);
 
 		resolveObjectEClass = createEClass(RESOLVE_OBJECT);
-		createEReference(resolveObjectEClass, RESOLVE_OBJECT__PARAMETER_TYPE);
 		createEAttribute(resolveObjectEClass, RESOLVE_OBJECT__RESOLVER_METHOD_NAME);
+		createEReference(resolveObjectEClass, RESOLVE_OBJECT__PARAMETER_TYPE);
+		createEAttribute(resolveObjectEClass, RESOLVE_OBJECT__PARAMETER_NAME);
 
 		typedEClass = createEClass(TYPED);
 		createEReference(typedEClass, TYPED__TYPE);
+
+		typeNameEClass = createEClass(TYPE_NAME);
+
+		basicTypeNameEClass = createEClass(BASIC_TYPE_NAME);
+		createEAttribute(basicTypeNameEClass, BASIC_TYPE_NAME__TYPE);
+
+		// Create enums
+		basicTypeEEnum = createEEnum(BASIC_TYPE);
 	}
 
 	/**
@@ -582,6 +661,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		setNsURI(eNS_URI);
 
 		// Add supertypes to classes
+		classNameEClass.getESuperTypes().add(this.getTypeName());
 		transformationEClass.getESuperTypes().add(this.getNamed());
 		parameterEClass.getESuperTypes().add(this.getNamed());
 		parameterEClass.getESuperTypes().add(this.getTyped());
@@ -591,6 +671,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		assignReferenceEClass.getESuperTypes().add(this.getTyped());
 		resolveObjectEClass.getESuperTypes().add(this.getAssignFeature());
 		resolveObjectEClass.getESuperTypes().add(this.getTyped());
+		basicTypeNameEClass.getESuperTypes().add(this.getTypeName());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(namedEClass, Named.class, "Named", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -632,11 +713,28 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		initEAttribute(getWriteTrace_TraceMethodName(), ecorePackage.getEString(), "traceMethodName", null, 1, 1, WriteTrace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resolveObjectEClass, ResolveObject.class, "ResolveObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getResolveObject_ParameterType(), this.getClassName(), null, "parameterType", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResolveObject_ResolverMethodName(), ecorePackage.getEString(), "resolverMethodName", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResolveObject_ParameterType(), this.getTypeName(), null, "parameterType", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResolveObject_ParameterName(), ecorePackage.getEString(), "parameterName", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(typedEClass, Typed.class, "Typed", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTyped_Type(), this.getClassName(), null, "type", null, 1, 1, Typed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(typeNameEClass, TypeName.class, "TypeName", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(basicTypeNameEClass, BasicTypeName.class, "BasicTypeName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBasicTypeName_Type(), this.getBasicType(), "type", null, 0, 1, BasicTypeName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(basicTypeEEnum, BasicType.class, "BasicType");
+		addEEnumLiteral(basicTypeEEnum, BasicType.INT_LITERAL);
+		addEEnumLiteral(basicTypeEEnum, BasicType.BYTE_LITERAL);
+		addEEnumLiteral(basicTypeEEnum, BasicType.CHAR_LITERAL);
+		addEEnumLiteral(basicTypeEEnum, BasicType.SHORT_LITERAL);
+		addEEnumLiteral(basicTypeEEnum, BasicType.LONG_LITERAL);
+		addEEnumLiteral(basicTypeEEnum, BasicType.FLOAT_LITERAL);
+		addEEnumLiteral(basicTypeEEnum, BasicType.DOUBLE_LITERAL);
+		addEEnumLiteral(basicTypeEEnum, BasicType.BOOLEAN_LITERAL);
 
 		// Create resource
 		createResource(eNS_URI);
