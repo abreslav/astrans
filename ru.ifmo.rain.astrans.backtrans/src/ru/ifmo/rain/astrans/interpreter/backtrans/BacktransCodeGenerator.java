@@ -13,8 +13,10 @@ import org.eclipse.emf.codegen.util.ImportManager;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
+import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
+import ru.ifmo.rain.astrans.astransformation.impl.BasicTypeNameImpl;
 import ru.ifmo.rain.astrans.astransformation.impl.ClassNameImpl;
 
 public class BacktransCodeGenerator {
@@ -33,6 +35,11 @@ public class BacktransCodeGenerator {
 					String name = ((ClassName) o).getName();
 					importManager.addImport(name);
 					return importManager.getImportedName(name);
+				}
+			});
+			mainTemplate.registerRenderer(BasicTypeNameImpl.class, new AttributeRenderer() {
+				public String toString(Object o) {
+					return ((BasicTypeName) o).getType().getName();
 				}
 			});
 			
