@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="TestEveythingTransformation" main="//@mappingRules.0" resolverClassName="ITEResolver" traceClassName="ITETrace">
+<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="TestEveythingTransformation" main="//@mappingRules.0" resolverClassName="ITEResolver" traceClassName="ITETrace">
   <mappingRules name="caseTransformationAS" factoryMethodName="createTransformation">
     <parameter name="transformationAS">
       <type name="ru.ifmo.rain.astrans.astransast.TransformationAS"/>
@@ -23,13 +23,17 @@
       <type name="ru.ifmo.rain.astrans.astrans.ChangeInheritance"/>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="transformationCreated"/>
-    <resolveObjectStatements setterName="setInput" getterName="getInput" many="true" resolverMethodName="resolveTransformationInput">
+    <resolveObjectStatements setterName="setInput" getterName="getInput" many="true" resolverMethodName="resolveTransformationInput" parameterName="packageReference">
       <type name="org.eclipse.emf.ecore.EPackage"/>
-      <parameterType name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
+      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
     </resolveObjectStatements>
-    <resolveObjectStatements setterName="setSomething" getterName="getSomething" resolverMethodName="resolveSomething">
+    <resolveObjectStatements setterName="setSomething" getterName="getSomething" resolverMethodName="resolveSomething" parameterName="packageReference">
       <type name="org.eclipse.emf.ecore.EPackage"/>
-      <parameterType name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
+      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
+    </resolveObjectStatements>
+    <resolveObjectStatements setterName="setSomething1" getterName="getSomething1" resolverMethodName="resolveSomething1" parameterName="someAS">
+      <type name="org.eclipse.emf.ecore.EPackage"/>
+      <parameterType xsi:type="astransformation:BasicTypeName" type="short"/>
     </resolveObjectStatements>
   </mappingRules>
   <switchClassName name="ru.ifmo.rain.astrans.astransast.AstransastSwitch"/>

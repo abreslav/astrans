@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ru.ifmo.rain.astrans.tests/src"
+    modelPluginID="ru.ifmo.rain.astrans.tests" modelName="Ast" importerID="org.eclipse.emf.importer.ecore">
+  <foreignModel>ast.ecore</foreignModel>
+  <genPackages prefix="Ast" disposableProviderFactory="true" ecorePackage="ast.ecore#/">
+    <genClasses ecoreClass="ast.ecore#//ClassAS"/>
+  </genPackages>
+</genmodel:GenModel>

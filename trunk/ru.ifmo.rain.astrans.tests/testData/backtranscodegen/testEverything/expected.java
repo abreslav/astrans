@@ -41,6 +41,7 @@ public class TestEveythingTransformation extends ASTToModelTransformation<ITERes
 						transformation.setInput().add(getResolver().resolveTransformationInput((EPackageReference) i.next()));
 					}
 					transformation.setSomething(getResolver().resolveSomething(transformationAS.getSomething()));
+					transformation.setSomething1(getResolver().resolveSomething1(transformationAS.getSomething1()));
 				}
 			});
 		}
