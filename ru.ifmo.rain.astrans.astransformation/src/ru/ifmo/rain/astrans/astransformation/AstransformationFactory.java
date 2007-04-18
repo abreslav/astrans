@@ -107,6 +107,15 @@ public interface AstransformationFactory extends EFactory {
 	ResolveObject createResolveObject();
 
 	/**
+	 * Returns a new object of class '<em>Basic Type Name</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Basic Type Name</em>'.
+	 * @generated
+	 */
+	BasicTypeName createBasicTypeName();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

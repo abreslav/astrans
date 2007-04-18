@@ -8,6 +8,7 @@ package ru.ifmo.rain.astrans.astransformation;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -88,6 +89,25 @@ public interface AstransformationPackage extends EPackage {
 	int NAMED_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.TypeNameImpl <em>Type Name</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.TypeNameImpl
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getTypeName()
+	 * @generated
+	 */
+	int TYPE_NAME = 11;
+
+	/**
+	 * The number of structural features of the '<em>Type Name</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TYPE_NAME_FEATURE_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ClassNameImpl <em>Class Name</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -104,7 +124,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_NAME__NAME = 0;
+	int CLASS_NAME__NAME = TYPE_NAME_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Class Name</em>' class.
@@ -113,7 +133,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_NAME_FEATURE_COUNT = 1;
+	int CLASS_NAME_FEATURE_COUNT = TYPE_NAME_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl <em>Transformation</em>}' class.
@@ -556,22 +576,31 @@ public interface AstransformationPackage extends EPackage {
 	int RESOLVE_OBJECT__TYPE = ASSIGN_FEATURE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESOLVE_OBJECT__PARAMETER_TYPE = ASSIGN_FEATURE_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Resolver Method Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESOLVE_OBJECT__RESOLVER_METHOD_NAME = ASSIGN_FEATURE_FEATURE_COUNT + 2;
+	int RESOLVE_OBJECT__RESOLVER_METHOD_NAME = ASSIGN_FEATURE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Parameter Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOLVE_OBJECT__PARAMETER_TYPE = ASSIGN_FEATURE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Parameter Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOLVE_OBJECT__PARAMETER_NAME = ASSIGN_FEATURE_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Resolve Object</em>' class.
@@ -580,7 +609,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESOLVE_OBJECT_FEATURE_COUNT = ASSIGN_FEATURE_FEATURE_COUNT + 3;
+	int RESOLVE_OBJECT_FEATURE_COUNT = ASSIGN_FEATURE_FEATURE_COUNT + 4;
 
 
 	/**
@@ -610,6 +639,45 @@ public interface AstransformationPackage extends EPackage {
 	 * @ordered
 	 */
 	int TYPED_FEATURE_COUNT = 1;
+
+
+	/**
+	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.BasicTypeNameImpl <em>Basic Type Name</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.BasicTypeNameImpl
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getBasicTypeName()
+	 * @generated
+	 */
+	int BASIC_TYPE_NAME = 12;
+
+	/**
+	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_TYPE_NAME__TYPE = TYPE_NAME_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Basic Type Name</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BASIC_TYPE_NAME_FEATURE_COUNT = TYPE_NAME_FEATURE_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.BasicType <em>Basic Type</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ru.ifmo.rain.astrans.astransformation.BasicType
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getBasicType()
+	 * @generated
+	 */
+	int BASIC_TYPE = 13;
 
 
 	/**
@@ -944,6 +1012,17 @@ public interface AstransformationPackage extends EPackage {
 	EReference getResolveObject_ParameterType();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getParameterName <em>Parameter Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Parameter Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.ResolveObject#getParameterName()
+	 * @see #getResolveObject()
+	 * @generated
+	 */
+	EAttribute getResolveObject_ParameterName();
+
+	/**
 	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getResolverMethodName <em>Resolver Method Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -974,6 +1053,47 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTyped_Type();
+
+	/**
+	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.TypeName <em>Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Type Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.TypeName
+	 * @generated
+	 */
+	EClass getTypeName();
+
+	/**
+	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.BasicTypeName <em>Basic Type Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Basic Type Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.BasicTypeName
+	 * @generated
+	 */
+	EClass getBasicTypeName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.BasicTypeName#getType <em>Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Type</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.BasicTypeName#getType()
+	 * @see #getBasicTypeName()
+	 * @generated
+	 */
+	EAttribute getBasicTypeName_Type();
+
+	/**
+	 * Returns the meta object for enum '{@link ru.ifmo.rain.astrans.astransformation.BasicType <em>Basic Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Basic Type</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.BasicType
+	 * @generated
+	 */
+	EEnum getBasicType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1266,6 +1386,14 @@ public interface AstransformationPackage extends EPackage {
 		EReference RESOLVE_OBJECT__PARAMETER_TYPE = eINSTANCE.getResolveObject_ParameterType();
 
 		/**
+		 * The meta object literal for the '<em><b>Parameter Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESOLVE_OBJECT__PARAMETER_NAME = eINSTANCE.getResolveObject_ParameterName();
+
+		/**
 		 * The meta object literal for the '<em><b>Resolver Method Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1290,6 +1418,44 @@ public interface AstransformationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TYPED__TYPE = eINSTANCE.getTyped_Type();
+
+		/**
+		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.TypeNameImpl <em>Type Name</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.TypeNameImpl
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getTypeName()
+		 * @generated
+		 */
+		EClass TYPE_NAME = eINSTANCE.getTypeName();
+
+		/**
+		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.BasicTypeNameImpl <em>Basic Type Name</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.BasicTypeNameImpl
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getBasicTypeName()
+		 * @generated
+		 */
+		EClass BASIC_TYPE_NAME = eINSTANCE.getBasicTypeName();
+
+		/**
+		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BASIC_TYPE_NAME__TYPE = eINSTANCE.getBasicTypeName_Type();
+
+		/**
+		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.BasicType <em>Basic Type</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ru.ifmo.rain.astrans.astransformation.BasicType
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getBasicType()
+		 * @generated
+		 */
+		EEnum BASIC_TYPE = eINSTANCE.getBasicType();
 
 	}
 

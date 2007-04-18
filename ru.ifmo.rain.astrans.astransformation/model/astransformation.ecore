@@ -10,8 +10,22 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//ClassName"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ClassName">
+  <eClassifiers xsi:type="ecore:EClass" name="TypeName" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassName" eSuperTypes="#//TypeName">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicTypeName" eSuperTypes="#//TypeName">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//BasicType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BasicType">
+    <eLiterals name="int"/>
+    <eLiterals name="byte" value="1"/>
+    <eLiterals name="char" value="2"/>
+    <eLiterals name="short" value="3"/>
+    <eLiterals name="long" value="4"/>
+    <eLiterals name="float" value="5"/>
+    <eLiterals name="double" value="6"/>
+    <eLiterals name="boolean" value="7"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transformation" eSuperTypes="#//Named">
     <eStructuralFeatures xsi:type="ecore:EReference" name="mappingRules" upperBound="-1"
@@ -61,9 +75,11 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResolveObject" eSuperTypes="#//AssignFeature #//Typed">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterType" lowerBound="1"
-        eType="#//ClassName" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolverMethodName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterType" lowerBound="1"
+        eType="#//TypeName" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parameterName" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

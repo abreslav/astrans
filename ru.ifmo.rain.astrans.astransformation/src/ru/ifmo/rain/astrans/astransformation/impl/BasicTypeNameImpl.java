@@ -11,48 +11,49 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
-import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.BasicType;
+import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Class Name</b></em>'.
+ * An implementation of the model object '<em><b>Basic Type Name</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.ClassNameImpl#getName <em>Name</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.BasicTypeNameImpl#getType <em>Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ClassNameImpl extends TypeNameImpl implements ClassName {
+public class BasicTypeNameImpl extends TypeNameImpl implements BasicTypeName {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final BasicType TYPE_EDEFAULT = BasicType.INT_LITERAL;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getType()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected BasicType type = TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ClassNameImpl() {
+	protected BasicTypeNameImpl() {
 		super();
 	}
 
@@ -62,7 +63,7 @@ public class ClassNameImpl extends TypeNameImpl implements ClassName {
 	 * @generated
 	 */
 	protected EClass eStaticClass() {
-		return AstransformationPackage.Literals.CLASS_NAME;
+		return AstransformationPackage.Literals.BASIC_TYPE_NAME;
 	}
 
 	/**
@@ -70,8 +71,8 @@ public class ClassNameImpl extends TypeNameImpl implements ClassName {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
+	public BasicType getType() {
+		return type;
 	}
 
 	/**
@@ -79,11 +80,11 @@ public class ClassNameImpl extends TypeNameImpl implements ClassName {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
+	public void setType(BasicType newType) {
+		BasicType oldType = type;
+		type = newType == null ? TYPE_EDEFAULT : newType;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.CLASS_NAME__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.BASIC_TYPE_NAME__TYPE, oldType, type));
 	}
 
 	/**
@@ -93,8 +94,8 @@ public class ClassNameImpl extends TypeNameImpl implements ClassName {
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AstransformationPackage.CLASS_NAME__NAME:
-				return getName();
+			case AstransformationPackage.BASIC_TYPE_NAME__TYPE:
+				return getType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -106,8 +107,8 @@ public class ClassNameImpl extends TypeNameImpl implements ClassName {
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AstransformationPackage.CLASS_NAME__NAME:
-				setName((String)newValue);
+			case AstransformationPackage.BASIC_TYPE_NAME__TYPE:
+				setType((BasicType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -120,8 +121,8 @@ public class ClassNameImpl extends TypeNameImpl implements ClassName {
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AstransformationPackage.CLASS_NAME__NAME:
-				setName(NAME_EDEFAULT);
+			case AstransformationPackage.BASIC_TYPE_NAME__TYPE:
+				setType(TYPE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -134,8 +135,8 @@ public class ClassNameImpl extends TypeNameImpl implements ClassName {
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AstransformationPackage.CLASS_NAME__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case AstransformationPackage.BASIC_TYPE_NAME__TYPE:
+				return type != TYPE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -149,10 +150,10 @@ public class ClassNameImpl extends TypeNameImpl implements ClassName {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (type: ");
+		result.append(type);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ClassNameImpl
+} //BasicTypeNameImpl

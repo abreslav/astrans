@@ -7,14 +7,25 @@
 package ru.ifmo.rain.astrans.astransformation.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import ru.ifmo.rain.astrans.astransformation.*;
+import ru.ifmo.rain.astrans.astransformation.AssignAttribute;
+import ru.ifmo.rain.astrans.astransformation.AssignFeature;
+import ru.ifmo.rain.astrans.astransformation.AssignReference;
+import ru.ifmo.rain.astrans.astransformation.AstransformationFactory;
+import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
+import ru.ifmo.rain.astrans.astransformation.BasicType;
+import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
+import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.MappingRule;
+import ru.ifmo.rain.astrans.astransformation.Parameter;
+import ru.ifmo.rain.astrans.astransformation.ResolveObject;
+import ru.ifmo.rain.astrans.astransformation.Transformation;
+import ru.ifmo.rain.astrans.astransformation.WriteTrace;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,8 +79,37 @@ public class AstransformationFactoryImpl extends EFactoryImpl implements Astrans
 			case AstransformationPackage.ASSIGN_REFERENCE: return createAssignReference();
 			case AstransformationPackage.WRITE_TRACE: return createWriteTrace();
 			case AstransformationPackage.RESOLVE_OBJECT: return createResolveObject();
+			case AstransformationPackage.BASIC_TYPE_NAME: return createBasicTypeName();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case AstransformationPackage.BASIC_TYPE:
+				return createBasicTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case AstransformationPackage.BASIC_TYPE:
+				return convertBasicTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -161,6 +201,36 @@ public class AstransformationFactoryImpl extends EFactoryImpl implements Astrans
 	public ResolveObject createResolveObject() {
 		ResolveObjectImpl resolveObject = new ResolveObjectImpl();
 		return resolveObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BasicTypeName createBasicTypeName() {
+		BasicTypeNameImpl basicTypeName = new BasicTypeNameImpl();
+		return basicTypeName;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BasicType createBasicTypeFromString(EDataType eDataType, String initialValue) {
+		BasicType result = BasicType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBasicTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

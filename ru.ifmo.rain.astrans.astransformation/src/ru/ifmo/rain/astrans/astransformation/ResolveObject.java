@@ -15,8 +15,9 @@ package ru.ifmo.rain.astrans.astransformation;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getParameterType <em>Parameter Type</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getResolverMethodName <em>Resolver Method Name</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getParameterType <em>Parameter Type</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getParameterName <em>Parameter Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -34,12 +35,12 @@ public interface ResolveObject extends AssignFeature, Typed {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Parameter Type</em>' containment reference.
-	 * @see #setParameterType(ClassName)
+	 * @see #setParameterType(TypeName)
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getResolveObject_ParameterType()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	ClassName getParameterType();
+	TypeName getParameterType();
 
 	/**
 	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getParameterType <em>Parameter Type</em>}' containment reference.
@@ -49,7 +50,33 @@ public interface ResolveObject extends AssignFeature, Typed {
 	 * @see #getParameterType()
 	 * @generated
 	 */
-	void setParameterType(ClassName value);
+	void setParameterType(TypeName value);
+
+	/**
+	 * Returns the value of the '<em><b>Parameter Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parameter Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Parameter Name</em>' attribute.
+	 * @see #setParameterName(String)
+	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getResolveObject_ParameterName()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getParameterName();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getParameterName <em>Parameter Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parameter Name</em>' attribute.
+	 * @see #getParameterName()
+	 * @generated
+	 */
+	void setParameterName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Resolver Method Name</b></em>' attribute.
