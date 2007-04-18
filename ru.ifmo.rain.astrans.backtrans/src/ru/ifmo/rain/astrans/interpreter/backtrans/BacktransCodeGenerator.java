@@ -36,6 +36,9 @@ public class BacktransCodeGenerator {
 				}
 			});
 			
+			importManager.addImport(targetPackage + "." + transformation.getName());
+			importManager.addImport(targetPackage + "." + transformation.getResolverClassName());
+			importManager.addImport(targetPackage + "." + transformation.getTraceClassName());
 			addCustomImports(importManager, transformation);
 			
 			FileWriter writer = null;
@@ -91,13 +94,8 @@ public class BacktransCodeGenerator {
 		private static final String TEMPLATE = "ru/ifmo/rain/astrans/interpreter/backtrans/trace.stg";
 
 		@Override
-		protected void addCustomImports(ImportManager importManager, Transformation transformation) {
-			importManager.addImport(transformation.getTraceClassName().getName());
-		}
-		
-		@Override
 		protected String getFileName(Transformation transformation, ImportManager importManager) {
-			return importManager.getImportedName(transformation.getTraceClassName().getName()) + ".java";
+			return transformation.getTraceClassName() + ".java";
 		}
 
 		@Override
@@ -112,13 +110,8 @@ public class BacktransCodeGenerator {
 		private static final String TEMPLATE = "ru/ifmo/rain/astrans/interpreter/backtrans/resolver.stg";
 
 		@Override
-		protected void addCustomImports(ImportManager importManager, Transformation transformation) {
-			importManager.addImport(transformation.getResolverClassName().getName());
-		}
-		
-		@Override
 		protected String getFileName(Transformation transformation, ImportManager importManager) {
-			return importManager.getImportedName(transformation.getResolverClassName().getName()) + ".java";
+			return transformation.getResolverClassName() + ".java";
 		}
 
 		@Override
