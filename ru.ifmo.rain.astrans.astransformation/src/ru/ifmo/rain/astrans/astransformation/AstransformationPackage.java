@@ -153,7 +153,7 @@ public interface AstransformationPackage extends EPackage {
 	int TRANSFORMATION__MAIN = NAMED_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Resolver Class Name</b></em>' containment reference.
+	 * The feature id for the '<em><b>Resolver Class Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -162,7 +162,7 @@ public interface AstransformationPackage extends EPackage {
 	int TRANSFORMATION__RESOLVER_CLASS_NAME = NAMED_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Trace Class Name</b></em>' containment reference.
+	 * The feature id for the '<em><b>Trace Class Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -687,26 +687,26 @@ public interface AstransformationPackage extends EPackage {
 	EReference getTransformation_Main();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}'.
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Resolver Class Name</em>'.
+	 * @return the meta object for the attribute '<em>Resolver Class Name</em>'.
 	 * @see ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName()
 	 * @see #getTransformation()
 	 * @generated
 	 */
-	EReference getTransformation_ResolverClassName();
+	EAttribute getTransformation_ResolverClassName();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}'.
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Trace Class Name</em>'.
+	 * @return the meta object for the attribute '<em>Trace Class Name</em>'.
 	 * @see ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName()
 	 * @see #getTransformation()
 	 * @generated
 	 */
-	EReference getTransformation_TraceClassName();
+	EAttribute getTransformation_TraceClassName();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getSwitchClassName <em>Switch Class Name</em>}'.
@@ -1060,20 +1060,20 @@ public interface AstransformationPackage extends EPackage {
 		EReference TRANSFORMATION__MAIN = eINSTANCE.getTransformation_Main();
 
 		/**
-		 * The meta object literal for the '<em><b>Resolver Class Name</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Resolver Class Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSFORMATION__RESOLVER_CLASS_NAME = eINSTANCE.getTransformation_ResolverClassName();
+		EAttribute TRANSFORMATION__RESOLVER_CLASS_NAME = eINSTANCE.getTransformation_ResolverClassName();
 
 		/**
-		 * The meta object literal for the '<em><b>Trace Class Name</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Trace Class Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSFORMATION__TRACE_CLASS_NAME = eINSTANCE.getTransformation_TraceClassName();
+		EAttribute TRANSFORMATION__TRACE_CLASS_NAME = eINSTANCE.getTransformation_TraceClassName();
 
 		/**
 		 * The meta object literal for the '<em><b>Switch Class Name</b></em>' containment reference feature.

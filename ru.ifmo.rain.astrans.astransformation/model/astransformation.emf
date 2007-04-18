@@ -16,8 +16,8 @@ class ClassName {
 class Transformation extends Named {
   val MappingRule[*] mappingRules;
   ref MappingRule[1] main;
-  val ClassName[1] resolverClassName;
-  val ClassName[1] traceClassName;
+  attr String[1] resolverClassName;
+  attr String[1] traceClassName;
   val ClassName[1] switchClassName;
 }
 
