@@ -72,56 +72,56 @@ public interface Transformation extends Named {
 	void setMain(MappingRule value);
 
 	/**
-	 * Returns the value of the '<em><b>Resolver Class Name</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Resolver Class Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Resolver Class Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resolver Class Name</em>' containment reference.
-	 * @see #setResolverClassName(ClassName)
+	 * @return the value of the '<em>Resolver Class Name</em>' attribute.
+	 * @see #setResolverClassName(String)
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_ResolverClassName()
-	 * @model containment="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
-	ClassName getResolverClassName();
+	String getResolverClassName();
 
 	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}' containment reference.
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resolver Class Name</em>' containment reference.
+	 * @param value the new value of the '<em>Resolver Class Name</em>' attribute.
 	 * @see #getResolverClassName()
 	 * @generated
 	 */
-	void setResolverClassName(ClassName value);
+	void setResolverClassName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Trace Class Name</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Trace Class Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Trace Class Name</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Trace Class Name</em>' containment reference.
-	 * @see #setTraceClassName(ClassName)
+	 * @return the value of the '<em>Trace Class Name</em>' attribute.
+	 * @see #setTraceClassName(String)
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_TraceClassName()
-	 * @model containment="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
-	ClassName getTraceClassName();
+	String getTraceClassName();
 
 	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}' containment reference.
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Trace Class Name</em>' containment reference.
+	 * @param value the new value of the '<em>Trace Class Name</em>' attribute.
 	 * @see #getTraceClassName()
 	 * @generated
 	 */
-	void setTraceClassName(ClassName value);
+	void setTraceClassName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Switch Class Name</b></em>' containment reference.

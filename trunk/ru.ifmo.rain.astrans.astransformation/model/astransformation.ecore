@@ -17,10 +17,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="mappingRules" upperBound="-1"
         eType="#//MappingRule" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="main" lowerBound="1" eType="#//MappingRule"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resolverClassName" lowerBound="1"
-        eType="#//ClassName" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="traceClassName" lowerBound="1"
-        eType="#//ClassName" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolverClassName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="traceClassName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="switchClassName" lowerBound="1"
         eType="#//ClassName" containment="true"/>
   </eClassifiers>

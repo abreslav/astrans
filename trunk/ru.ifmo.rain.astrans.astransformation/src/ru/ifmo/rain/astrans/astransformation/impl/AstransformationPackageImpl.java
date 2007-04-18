@@ -246,8 +246,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransformation_ResolverClassName() {
-		return (EReference)transformationEClass.getEStructuralFeatures().get(2);
+	public EAttribute getTransformation_ResolverClassName() {
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -255,8 +255,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransformation_TraceClassName() {
-		return (EReference)transformationEClass.getEStructuralFeatures().get(3);
+	public EAttribute getTransformation_TraceClassName() {
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -521,8 +521,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		transformationEClass = createEClass(TRANSFORMATION);
 		createEReference(transformationEClass, TRANSFORMATION__MAPPING_RULES);
 		createEReference(transformationEClass, TRANSFORMATION__MAIN);
-		createEReference(transformationEClass, TRANSFORMATION__RESOLVER_CLASS_NAME);
-		createEReference(transformationEClass, TRANSFORMATION__TRACE_CLASS_NAME);
+		createEAttribute(transformationEClass, TRANSFORMATION__RESOLVER_CLASS_NAME);
+		createEAttribute(transformationEClass, TRANSFORMATION__TRACE_CLASS_NAME);
 		createEReference(transformationEClass, TRANSFORMATION__SWITCH_CLASS_NAME);
 
 		parameterEClass = createEClass(PARAMETER);
@@ -602,8 +602,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		initEClass(transformationEClass, Transformation.class, "Transformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransformation_MappingRules(), this.getMappingRule(), null, "mappingRules", null, 0, -1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformation_Main(), this.getMappingRule(), null, "main", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransformation_ResolverClassName(), this.getClassName(), null, "resolverClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransformation_TraceClassName(), this.getClassName(), null, "traceClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformation_ResolverClassName(), ecorePackage.getEString(), "resolverClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformation_TraceClassName(), ecorePackage.getEString(), "traceClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformation_SwitchClassName(), this.getClassName(), null, "switchClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
