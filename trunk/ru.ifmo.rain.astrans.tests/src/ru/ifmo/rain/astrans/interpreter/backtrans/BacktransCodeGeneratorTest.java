@@ -53,35 +53,35 @@ public class BacktransCodeGeneratorTest {
 		Transformation transformation = (Transformation) transfomationResource.getContents().get(0);
 		
 		BacktransCodeGenerator.generate(transformation, "ru.astrans", dataDir);
-		
-		assertEqualFiles(dataDir + "/expected.java", dataDir + "/" + transformation.getName() + ".java");
-		assertEqualFiles(dataDir + "/expectedTrace.java", dataDir + "/" + transformation.getTraceClassName().getName() + ".java");
-		assertEqualFiles(dataDir + "/expectedResolver.java", dataDir + "/" + transformation.getResolverClassName().getName() + ".java");
+
+		assertEqualFiles("transformation", dataDir + "/expected.java", dataDir + "/" + transformation.getName() + ".java");
+		assertEqualFiles("trace", dataDir + "/expectedTrace.java", dataDir + "/" + transformation.getTraceClassName() + ".java");
+		assertEqualFiles("resolver", dataDir + "/expectedResolver.java", dataDir + "/" + transformation.getResolverClassName() + ".java");
 	}
 
 	@Test
 	public void testIM() {
 		ImportManager manager = new ImportManager("ru");
+		manager.addImport("ru.SomeClass");
 		manager.addImport("ru.amse.SomeClass");
-		manager.addImport("SomeClass");
-		assertEquals("SomeClass", manager.getImportedName("SomeClass"));
-		assertEquals("SomeClass", manager.getImportedName("ru.amse.SomeClass"));
+		assertEquals("SomeClass", manager.getImportedName("ru.SomeClass"));
+		assertEquals("ru.amse.SomeClass", manager.getImportedName("ru.amse.SomeClass"));
 	}
 
-	private static void assertEqualFiles(String expectedFile, String resultFile) throws FileNotFoundException, IOException {
+	private static void assertEqualFiles(String comment, String expectedFile, String resultFile) throws FileNotFoundException, IOException {
 		Reader expectedTransformation = new FileReader(expectedFile);
 		Reader result = new FileReader(resultFile);
 		int i = 0;
 		int resultC;
 		int expectedC;
 		do {
-			resultC = result.read();
 			expectedC = expectedTransformation.read();
-			assertEquals("transformation" + ": " + i, expectedC, resultC);
+			resultC = result.read();
+			assertEquals(comment + ": " + i, expectedC, resultC);
 			if (expectedC == -1 || resultC == -1) {
 				break;
 			}
 			i++;
-		} while (expectedC == -1 || resultC == -1);
+		} while (expectedC != -1 || resultC != -1);
 	}
 }
