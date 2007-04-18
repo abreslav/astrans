@@ -9,5 +9,5 @@ public interface <transformation.resolverClassName> {
 >>
 
 renderResolveMethod(ros) ::= <<
-<ros.type> <ros.resolverMethodName>(<ros.parameterType> reference);
+<ros.type> <ros.resolverMethodName>(<ros.parameterType> <ros.parameterName>);
 >>
