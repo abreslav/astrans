@@ -1,6 +1,5 @@
 package ru.ifmo.rain.astrans.interpreter.backtrans;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -8,6 +7,9 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -69,11 +71,13 @@ public class BacktransCreatorTest {
 		resourceSet.setPackageRegistry(EPackage.Registry.INSTANCE);
 		EPackage.Registry.INSTANCE.put(TracePackage.eNS_URI, TracePackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(AstransformationPackage.eNS_URI, AstransformationPackage.eINSTANCE);
-		EPackage package1 = EPackage.Registry.INSTANCE.getEPackage(TracePackage.eNS_URI);
-		assertNotNull(package1);
+		EPackage.Registry.INSTANCE.put(GenModelPackage.eNS_URI, GenModelPackage.eINSTANCE);
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("genmodel", new XMIResourceFactoryImpl());
+
 		resourceSet.setResourceFactoryRegistry(Resource.Factory.Registry.INSTANCE);
+		
 		resourceSet.setURIConverter(new URIConverterImpl() {
 			@Override
 			public URI normalize(URI uri) {
@@ -85,15 +89,26 @@ public class BacktransCreatorTest {
 				return super.normalize(uri);
 			}
 		});
+		
 		Resource resource = resourceSet.createResource(URI.createURI(traceFileName));
 		EMFHelper.loadResourceFromFile(resource, traceFileName);
 		Trace trace = (Trace) resource.getContents().get(0);
 
 		resource = resourceSet.createResource(URI.createURI(expectedFileName));
 		EMFHelper.loadResourceFromFile(resource, expectedFileName);
-		Transformation expected = (Transformation) resource.getContents().get(0);		
+		Transformation expected = (Transformation) resource.getContents().get(0);
+		
+		String astGenmodelPath = new File(testDir, "ast.genmodel").getPath();
+		resource = resourceSet.createResource(URI.createURI(astGenmodelPath));
+		EMFHelper.loadResourceFromFile(resource, astGenmodelPath);
+		GenModel astGenModel = (GenModel) resource.getContents().get(0);
 
-		Transformation transformation = BacktransCreator.createBackTransformation(new TraceAdapter(trace));
+		String genmodelPath = new File(testDir, "model.genmodel").getPath();
+		resource = resourceSet.createResource(URI.createURI(genmodelPath));
+		EMFHelper.loadResourceFromFile(resource, genmodelPath);
+		GenModel genModel = (GenModel) resource.getContents().get(0);
+
+		Transformation transformation = BacktransCreator.createBackTransformation(new TraceAdapter(trace), (GenPackage) genModel.getGenPackages().get(0), (GenPackage) astGenModel.getGenPackages().get(0));
 		resource = resourceSet.createResource(URI.createURI(resultFileName));
 		resource.getContents().add(transformation);
 		resource.save(null);
