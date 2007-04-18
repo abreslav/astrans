@@ -32,7 +32,7 @@
       <parameterType name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
     </resolveObjectStatements>
   </mappingRules>
-  <resolverClassName name="ru.astrans.ITEResolver"/>
-  <traceClassName name="ru.astrans.ITETrace"/>
+  <resolverClassName name="ITEResolver"/>
+  <traceClassName name="ITETrace"/>
   <switchClassName name="ru.ifmo.rain.astrans.astransast.AstransastSwitch"/>
 </astransformation:Transformation>
