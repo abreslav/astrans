@@ -12,10 +12,12 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +30,6 @@ import ru.ifmo.rain.astrans.trace.Trace;
 import ru.ifmo.rain.astrans.trace.TracePackage;
 import ru.ifmo.rain.astrans.utils.Difference;
 import ru.ifmo.rain.astrans.utils.EMFComparator;
-import ru.ifmo.rain.astrans.utils.EMFHelper;
 import utils.FileUtils;
 import utils.IFileProcessor;
 
@@ -41,9 +42,9 @@ public class BacktransCreatorTest {
 		return FileUtils.processDirectory("testData/backtrans", new IFileProcessor() {
 			public Object[] process(File file) {
 				return new Object[] {
-						file.getPath() + "/trace.xmi",
+						/*file.getPath() + */"/trace.xmi",
 						"/result.xmi",
-						file.getPath() + "/expected.xmi",
+						"/expected.xmi",
 						file
 				};
 			}
@@ -72,6 +73,7 @@ public class BacktransCreatorTest {
 		EPackage.Registry.INSTANCE.put(TracePackage.eNS_URI, TracePackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(AstransformationPackage.eNS_URI, AstransformationPackage.eINSTANCE);
 		EPackage.Registry.INSTANCE.put(GenModelPackage.eNS_URI, GenModelPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("genmodel", new XMIResourceFactoryImpl());
@@ -83,7 +85,11 @@ public class BacktransCreatorTest {
 			public URI normalize(URI uri) {
 				String scheme = uri.scheme();
 				if (scheme == null) {
-					String absolutePath = new File(testDir, uri.toFileString()).getAbsolutePath();
+					File file = new File(testDir, uri.toFileString());
+					if (!file.exists()) {
+						System.out.println(file.getAbsolutePath());
+					}
+					String absolutePath = file.getAbsolutePath();
 					return URI.createFileURI(absolutePath);
 				}
 				return super.normalize(uri);
@@ -91,21 +97,20 @@ public class BacktransCreatorTest {
 		});
 		
 		Resource resource = resourceSet.createResource(URI.createURI(traceFileName));
-		EMFHelper.loadResourceFromFile(resource, traceFileName);
+		resource.load(null);
 		Trace trace = (Trace) resource.getContents().get(0);
+		EcoreUtil.resolveAll(trace);
 
 		resource = resourceSet.createResource(URI.createURI(expectedFileName));
-		EMFHelper.loadResourceFromFile(resource, expectedFileName);
+		resource.load(null);
 		Transformation expected = (Transformation) resource.getContents().get(0);
 		
-		String astGenmodelPath = new File(testDir, "ast.genmodel").getPath();
-		resource = resourceSet.createResource(URI.createURI(astGenmodelPath));
-		EMFHelper.loadResourceFromFile(resource, astGenmodelPath);
+		resource = resourceSet.createResource(URI.createURI("ast.genmodel"));
+		resource.load(null);
 		GenModel astGenModel = (GenModel) resource.getContents().get(0);
 
-		String genmodelPath = new File(testDir, "model.genmodel").getPath();
-		resource = resourceSet.createResource(URI.createURI(genmodelPath));
-		EMFHelper.loadResourceFromFile(resource, genmodelPath);
+		resource = resourceSet.createResource(URI.createURI("model.genmodel"));
+		resource.load(null);
 		GenModel genModel = (GenModel) resource.getContents().get(0);
 
 		Transformation transformation = BacktransCreator.createBackTransformation(new TraceAdapter(trace), (GenPackage) genModel.getGenPackages().get(0), (GenPackage) astGenModel.getGenPackages().get(0));

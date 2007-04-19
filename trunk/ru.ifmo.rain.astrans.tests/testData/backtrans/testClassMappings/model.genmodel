@@ -3,7 +3,8 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ru.ifmo.rain.astrans.tests/src"
     modelPluginID="ru.ifmo.rain.astrans.tests" modelName="Model" importerID="org.eclipse.emf.importer.ecore">
   <foreignModel>model.ecore</foreignModel>
-  <genPackages prefix="Model" disposableProviderFactory="true" ecorePackage="model.ecore#/">
+  <genPackages prefix="Model" basePackage="test" disposableProviderFactory="true"
+      ecorePackage="model.ecore#/">
     <genClasses ecoreClass="model.ecore#//Class"/>
   </genPackages>
 </genmodel:GenModel>

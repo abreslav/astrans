@@ -1,30 +1,21 @@
 <?xml version="1.0" encoding="ASCII"?>
-<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="AstToModelTransformation" main="//@mappingRules.0" resolverClassName="IAstToModelResolver" traceClassName="IAstToModelTrace">
-  <mappingRules name="caseClassAS">
+<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="AstToModelTransformation" main="//@mappingRules.0" resolverClassName="IAstToModelResolver" traceClassName="IAstToModelTrace">
+  <mappingRules name="caseClassAS" factoryMethodName="createClass">
     <parameter name="classAS">
-      <type href="ast.ecore#//ClassAS"/>
+      <type name="test.ast.ClassAS"/>
     </parameter>
     <result name="class">
-      <type href="model.ecore#//Class"/>
+      <type name="test.model.Class"/>
     </result>
-    <assignAttributeStatements>
-      <source href="ast.ecore#//ClassAS/as"/>
-      <dest href="model.ecore#//Class/a"/>
-    </assignAttributeStatements>
-    <assignReferenceStatements>
-      <source href="ast.ecore#//ClassAS/ras1"/>
-      <dest href="model.ecore#//Class/r1"/>
-    </assignReferenceStatements>
-    <assignReferenceStatements mappingNeeded="false">
-      <source href="ast.ecore#//ClassAS/ras3"/>
-      <dest href="model.ecore#//Class/r3"/>
-    </assignReferenceStatements>
+    <factoryClassName name="test.model.ModelFactory"/>
+    <assignAttributeStatements setterName="setA" getterName="getAs"/>
+    <assignReferenceStatements setterName="setR1" getterName="getRas1"/>
+    <assignReferenceStatements setterName="getR3" getterName="getRas3" many="true" mappingNeeded="false"/>
     <writeTraceStatement traceMethodName="classCreated"/>
-    <resolveObjectStatements resolverMethodName="resolveClassR2">
-      <source xsi:type="ecore:EReference" href="ast.ecore#//ClassAS/ras2"/>
-      <dest href="model.ecore#//Class/r2"/>
+    <resolveObjectStatements setterName="getR2" getterName="getRas2" many="true" resolverMethodName="resolveClassR2" parameterName="classAS">
+      <type name="test.model.Class"/>
+      <parameterType xsi:type="astransformation:ClassName" name="test.ast.ClassAS"/>
     </resolveObjectStatements>
   </mappingRules>
-  <input href="ast.ecore#/"/>
-  <output href="model.ecore#/"/>
+  <switchClassName name="test.ast.util.AstSwitch"/>
 </astransformation:Transformation>
