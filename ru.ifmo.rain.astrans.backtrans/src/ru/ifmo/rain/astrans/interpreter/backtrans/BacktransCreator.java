@@ -94,7 +94,7 @@ public class BacktransCreator {
 				initAssignFeature(resolveObject, reference, imageReference, protoGM, imageGM);
 				resolveObject.setResolverMethodName("resolve" + mapping.getProto().getName() + CodeGenUtil.capName(reference.getName()));
 				
-				resolveObject.setParameterName(CodeGenUtil.uncapName(imageReference.getEType().getName()));
+				resolveObject.setParameterName(imageReference.getName());
 				resolveObject.setParameterType(getTypeName(imageGM, imageReference.getEType()));
 				resolveObject.setType((ClassName) getTypeName(protoGM, reference.getEReferenceType()));
 				rule.getResolveObjectStatements().add(resolveObject);
@@ -147,6 +147,9 @@ public class BacktransCreator {
 	private static TypeName getTypeName(GenPackage genPackage, EClassifier eClassifier) {
 		GenClassifier genClassifier = getGenClassifier(genPackage, eClassifier);
 		if (genClassifier == null) {
+			if (eClassifier.getInstanceClassName() != null) {
+				return createTypeName(eClassifier.getInstanceClassName());
+			}
 			throw new IllegalArgumentException("GenClass not found for " + eClassifier.getName());
 		}
 		if (genClassifier instanceof GenClass) {
@@ -157,14 +160,23 @@ public class BacktransCreator {
 			GenDataType genDataType = (GenDataType) genClassifier;
 			String name = genDataType.getQualifiedInstanceClassName();
 			
-			EEnumLiteral enumLiteral = AstransformationPackage.eINSTANCE.getBasicType().getEEnumLiteral(name);
-			if (enumLiteral != null) {
-				BasicTypeName typeName = AstransformationFactory.eINSTANCE.createBasicTypeName();
-				typeName.setType((BasicType) enumLiteral.getInstance());
+			TypeName typeName = createTypeName(name);
+			if (typeName != null) {
+				return typeName;
 			}
 			return createClassName(name);
 		}
 		throw new IllegalStateException();
+	}
+
+	private static TypeName createTypeName(String name) {
+		EEnumLiteral enumLiteral = AstransformationPackage.eINSTANCE.getBasicType().getEEnumLiteral(name);
+		if (enumLiteral != null) {
+			BasicTypeName typeName = AstransformationFactory.eINSTANCE.createBasicTypeName();
+			typeName.setType((BasicType) enumLiteral.getInstance());
+			return typeName;
+		}
+		return null;
 	}
 
 	private static GenClassifier getGenClassifier(GenPackage genPackage, EClassifier eClass) {
