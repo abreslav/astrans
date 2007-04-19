@@ -195,10 +195,10 @@ public interface Trace extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
-	void addClassMapping(EClass proto, EClass image);
+	ClassMapping addClassMapping(EClass proto, EClass image);
 
 	/**
 	 * <!-- begin-user-doc -->

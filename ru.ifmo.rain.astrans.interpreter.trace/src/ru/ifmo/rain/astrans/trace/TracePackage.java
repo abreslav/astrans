@@ -171,13 +171,22 @@ public interface TracePackage extends EPackage {
 	int CLASS_MAPPING__IMAGE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Resolved Abstract Class</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS_MAPPING__RESOLVED_ABSTRACT_CLASS = 2;
+
+	/**
 	 * The number of structural features of the '<em>Class Mapping</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_MAPPING_FEATURE_COUNT = 2;
+	int CLASS_MAPPING_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.trace.impl.AttributeMappingImpl <em>Attribute Mapping</em>}' class.
@@ -393,6 +402,17 @@ public interface TracePackage extends EPackage {
 	EReference getClassMapping_Image();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.trace.ClassMapping#isResolvedAbstractClass <em>Resolved Abstract Class</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resolved Abstract Class</em>'.
+	 * @see ru.ifmo.rain.astrans.trace.ClassMapping#isResolvedAbstractClass()
+	 * @see #getClassMapping()
+	 * @generated
+	 */
+	EAttribute getClassMapping_ResolvedAbstractClass();
+
+	/**
 	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.trace.AttributeMapping <em>Attribute Mapping</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -590,6 +610,14 @@ public interface TracePackage extends EPackage {
 		 * @generated
 		 */
 		EReference CLASS_MAPPING__IMAGE = eINSTANCE.getClassMapping_Image();
+
+		/**
+		 * The meta object literal for the '<em><b>Resolved Abstract Class</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CLASS_MAPPING__RESOLVED_ABSTRACT_CLASS = eINSTANCE.getClassMapping_ResolvedAbstractClass();
 
 		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.trace.impl.AttributeMappingImpl <em>Attribute Mapping</em>}' class.
