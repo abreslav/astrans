@@ -335,8 +335,10 @@ public class TraceImpl extends EObjectImpl implements Trace {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void addClassMapping(EClass proto, EClass image) {
-		getClassMappings().add(TraceFactory.eINSTANCE.createClassMapping(proto, image));
+	public ClassMapping addClassMapping(EClass proto, EClass image) {
+		ClassMapping result = TraceFactory.eINSTANCE.createClassMapping(proto, image);
+		getClassMappings().add(result);
+		return result;
 	}
 
 	/**

@@ -237,6 +237,15 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getClassMapping_ResolvedAbstractClass() {
+		return (EAttribute)classMappingEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAttributeMapping() {
 		return attributeMappingEClass;
 	}
@@ -344,6 +353,7 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 		classMappingEClass = createEClass(CLASS_MAPPING);
 		createEReference(classMappingEClass, CLASS_MAPPING__PROTO);
 		createEReference(classMappingEClass, CLASS_MAPPING__IMAGE);
+		createEAttribute(classMappingEClass, CLASS_MAPPING__RESOLVED_ABSTRACT_CLASS);
 
 		attributeMappingEClass = createEClass(ATTRIBUTE_MAPPING);
 		createEReference(attributeMappingEClass, ATTRIBUTE_MAPPING__PROTO);
@@ -393,7 +403,7 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 		initEReference(getTrace_AttributeMappings(), this.getAttributeMapping(), null, "attributeMappings", null, 0, -1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTrace_ReferenceMappings(), this.getReferenceMapping(), null, "referenceMappings", null, 0, -1, Trace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(traceEClass, null, "addClassMapping");
+		EOperation op = addEOperation(traceEClass, this.getClassMapping(), "addClassMapping", 1, 1);
 		addEParameter(op, ecorePackage.getEClass(), "proto", 0, 1);
 		addEParameter(op, ecorePackage.getEClass(), "image", 0, 1);
 
@@ -409,6 +419,7 @@ public class TracePackageImpl extends EPackageImpl implements TracePackage {
 		initEClass(classMappingEClass, ClassMapping.class, "ClassMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getClassMapping_Proto(), ecorePackage.getEClass(), null, "proto", null, 1, 1, ClassMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClassMapping_Image(), ecorePackage.getEClass(), null, "image", null, 1, 1, ClassMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getClassMapping_ResolvedAbstractClass(), ecorePackage.getEBoolean(), "resolvedAbstractClass", "false", 0, 1, ClassMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(attributeMappingEClass, AttributeMapping.class, "AttributeMapping", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAttributeMapping_Proto(), ecorePackage.getEAttribute(), null, "proto", null, 1, 1, AttributeMapping.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -9,7 +9,7 @@ class Trace {
   ref EClass[1] inputModelRoot;
   ref EClass[1] outputModelRoot;
   val ClassMapping[*] classMappings;
-  op void addClassMapping(ecore.EClass proto, ecore.EClass image);
+  op ClassMapping[1] addClassMapping(ecore.EClass proto, ecore.EClass image);
   val AttributeMapping[*] attributeMappings;
   op void addAttributeMapping(ecore.EAttribute proto, ecore.EAttribute image);
   val ReferenceMapping[*] referenceMappings;
@@ -19,6 +19,7 @@ class Trace {
 class ClassMapping {
   ref EClass[1] proto;
   ref EClass[1] image;
+  attr boolean resolvedAbstractClass = false;
 }
 
 class AttributeMapping {
