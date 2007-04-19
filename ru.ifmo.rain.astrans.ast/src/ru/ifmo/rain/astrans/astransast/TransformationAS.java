@@ -25,6 +25,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ru.ifmo.rain.astrans.astransast.TransformationAS#getChangeInheritanceActions <em>Change Inheritance Actions</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransast.TransformationAS#getSkipClassActions <em>Skip Class Actions</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransast.TransformationAS#getInput <em>Input</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransast.TransformationAS#getInputModelRoot <em>Input Model Root</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransast.TransformationAS#getAstRoot <em>Ast Root</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,7 +46,7 @@ public interface TransformationAS extends EObject {
 	 * @return the value of the '<em>Output Name</em>' attribute.
 	 * @see #setOutputName(String)
 	 * @see ru.ifmo.rain.astrans.astransast.AstransastPackage#getTransformationAS_OutputName()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getOutputName();
@@ -70,7 +72,7 @@ public interface TransformationAS extends EObject {
 	 * @return the value of the '<em>Output Ns URI</em>' attribute.
 	 * @see #setOutputNsURI(String)
 	 * @see ru.ifmo.rain.astrans.astransast.AstransastPackage#getTransformationAS_OutputNsURI()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getOutputNsURI();
@@ -160,7 +162,7 @@ public interface TransformationAS extends EObject {
 	 * @return the value of the '<em>Input</em>' containment reference.
 	 * @see #setInput(EPackageReference)
 	 * @see ru.ifmo.rain.astrans.astransast.AstransastPackage#getTransformationAS_Input()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	EPackageReference getInput();
@@ -174,5 +176,57 @@ public interface TransformationAS extends EObject {
 	 * @generated
 	 */
 	void setInput(EPackageReference value);
+
+	/**
+	 * Returns the value of the '<em><b>Input Model Root</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Input Model Root</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Input Model Root</em>' containment reference.
+	 * @see #setInputModelRoot(QualifiedName)
+	 * @see ru.ifmo.rain.astrans.astransast.AstransastPackage#getTransformationAS_InputModelRoot()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	QualifiedName getInputModelRoot();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransast.TransformationAS#getInputModelRoot <em>Input Model Root</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Input Model Root</em>' containment reference.
+	 * @see #getInputModelRoot()
+	 * @generated
+	 */
+	void setInputModelRoot(QualifiedName value);
+
+	/**
+	 * Returns the value of the '<em><b>Ast Root</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Ast Root</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Ast Root</em>' containment reference.
+	 * @see #setAstRoot(EClassifierReferenceAS)
+	 * @see ru.ifmo.rain.astrans.astransast.AstransastPackage#getTransformationAS_AstRoot()
+	 * @model containment="true" required="true"
+	 * @generated
+	 */
+	EClassifierReferenceAS getAstRoot();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransast.TransformationAS#getAstRoot <em>Ast Root</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ast Root</em>' containment reference.
+	 * @see #getAstRoot()
+	 * @generated
+	 */
+	void setAstRoot(EClassifierReferenceAS value);
 
 } // TransformationAS
