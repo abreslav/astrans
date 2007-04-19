@@ -11,5 +11,7 @@
         eType="#//Class"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="r3" lowerBound="1" upperBound="-1"
         eType="#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="r4" lowerBound="1" eType="#//Class"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
