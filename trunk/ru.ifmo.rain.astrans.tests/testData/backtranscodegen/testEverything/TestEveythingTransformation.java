@@ -15,20 +15,21 @@ import ru.ifmo.rain.astrans.astransast.EPackageReference;
 import ru.ifmo.rain.astrans.astransast.TransformationAS;
 
 import ru.ifmo.rain.astrans.asttomodel.ASTToModelTransformation;
+import ru.ifmo.rain.astrans.asttomodel.ITransformationContextFactory;
 
 public class TestEveythingTransformation extends ASTToModelTransformation<ITEResolver, ITETrace> {
 	private final AstransastSwitch transformer = new AstransastSwitch() {
 		public void doSwitch(EList target, EList source) {
 			for (Iterator i = source.iterator(); i.hasNext(); ) {
-				traget.add(doSwitch((EObject) i.next()));
+				target.add(doSwitch((EObject) i.next()));
 			}
 		}
 	
-		public Transformation caseTransformationAS(TransformationAS transformationAS) {
-			Transformation transformation = AstransFactory.eINSTANCE.createTransformation();
+		public Transformation caseTransformationAS(final TransformationAS transformationAS) {
+			final Transformation transformation = AstransFactory.eINSTANCE.createTransformation();
 		
-			transformation.setOutputName().addAll(transformationAS.getOutputName);
-			transformation.setOutputNsURI(transformationAS.getOutputNsURI);
+			transformation.setOutputName().addAll(transformationAS.getOutputName());
+			transformation.setOutputNsURI(transformationAS.getOutputNsURI());
 			transformation.setCreateClassActions((CreateClass) doSwitch(transformationAS.getCreateClassActions()));
 			transformation.getSkipClassActions().addAll(transformationAS.getSkipClassActions());
 			doSwitch(transformation.getTranslateReferencesActions(), transformationAS.getTranslateReferencesActions());
@@ -44,6 +45,12 @@ public class TestEveythingTransformation extends ASTToModelTransformation<ITERes
 					transformation.setSomething1(getResolver().resolveSomething1(transformationAS.getSomething1()));
 				}
 			});
+		
+			return transformation;
 		}
+	};
+
+	protected TestEveythingTransformation(ITransformationContextFactory<ITEResolver, ITETrace> contextFactory) {
+		super(contextFactory);
 	}
 }

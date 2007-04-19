@@ -5,33 +5,25 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.HashMap;
 
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
-import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.resource.impl.URIConverterImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
 import ru.ifmo.rain.astrans.trace.Trace;
-import ru.ifmo.rain.astrans.trace.TracePackage;
 import ru.ifmo.rain.astrans.utils.Difference;
 import ru.ifmo.rain.astrans.utils.EMFComparator;
 import utils.FileUtils;
 import utils.IFileProcessor;
+import utils.LoadUtils;
 
 @RunWith(Parameterized.class)
 public class BacktransCreatorTest {
@@ -66,35 +58,7 @@ public class BacktransCreatorTest {
 	@SuppressWarnings("unchecked")
 	@Test
 	public final void testCreateBackTransformation() throws IOException {
-		ResourceSetImpl resourceSetImpl = new ResourceSetImpl();
-		resourceSetImpl.setURIResourceMap(new HashMap());
-		ResourceSet resourceSet = resourceSetImpl;
-		resourceSet.setPackageRegistry(EPackage.Registry.INSTANCE);
-		EPackage.Registry.INSTANCE.put(TracePackage.eNS_URI, TracePackage.eINSTANCE);
-		EPackage.Registry.INSTANCE.put(AstransformationPackage.eNS_URI, AstransformationPackage.eINSTANCE);
-		EPackage.Registry.INSTANCE.put(GenModelPackage.eNS_URI, GenModelPackage.eINSTANCE);
-		EPackage.Registry.INSTANCE.put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("xmi", new XMIResourceFactoryImpl());
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("genmodel", new XMIResourceFactoryImpl());
-
-		resourceSet.setResourceFactoryRegistry(Resource.Factory.Registry.INSTANCE);
-		
-		resourceSet.setURIConverter(new URIConverterImpl() {
-			@Override
-			public URI normalize(URI uri) {
-				String scheme = uri.scheme();
-				if (scheme == null) {
-					File file = new File(testDir, uri.toFileString());
-					if (!file.exists()) {
-						System.out.println(file.getAbsolutePath());
-					}
-					String absolutePath = file.getAbsolutePath();
-					return URI.createFileURI(absolutePath);
-				}
-				return super.normalize(uri);
-			}
-		});
+		ResourceSet resourceSet = LoadUtils.createResourceSet(testDir);
 		
 		Resource resource = resourceSet.createResource(URI.createURI(traceFileName));
 		resource.load(null);
@@ -120,8 +84,6 @@ public class BacktransCreatorTest {
 		
 		Difference difference = EMFComparator.compare(expected, transformation);
 		assertTrue(difference.toString(), difference.areEqual());
-		
-		
 	}
 
 }

@@ -13,4 +13,6 @@ Require-Bundle: ru.ifmo.rain.astrans.ast,
  ru.ifmo.rain.astrans.interpreter.trace,
  ru.ifmo.rain.astrans.utils,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.codegen.ecore
+ org.eclipse.emf.codegen.ecore,
+ org.eclipse.emf.importer.ecore,
+ org.eclipse.emf.importer

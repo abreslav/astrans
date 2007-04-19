@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelName="Astrans">
+  <genPackages prefix="Astrans" basePackage="ru.ifmo.rain" disposableProviderFactory="true">
+    <ecorePackage href="http://rain.ifmo.ru/~breslav/2007/astrans#/"/>
+    <genClasses image="false">
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//Action"/>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//EClassifierReference"/>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//EClassReference"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//CreatedEClass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//CreatedEClass/create"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//MappedEClass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//MappedEClass/proto"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//ExistingEClass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//ExistingEClass/eClass"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//ExistingEDataType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//ExistingEDataType/eDataType"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences/modelReferenceTypeProto"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences/textualReferenceType"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences/includeDescendants"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//CreateClass"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="http://rain.ifmo.ru/~breslav/2007/astrans#//CreateClass/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="http://rain.ifmo.ru/~breslav/2007/astrans#//CreateClass/abstract"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//CreateClass/superclasses"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//CreateClass/structuralFeatures"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//StructuralFeature"/>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="http://rain.ifmo.ru/~breslav/2007/astrans#//StructuralFeature/name"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="http://rain.ifmo.ru/~breslav/2007/astrans#//StructuralFeature/lowerBound"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="http://rain.ifmo.ru/~breslav/2007/astrans#//StructuralFeature/upperBound"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//Attribute"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Attribute/type"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//Reference"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Reference/type"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Reference/containment"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/targetProto"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/superclasses"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//SkipClass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//SkipClass/targetProto"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="http://rain.ifmo.ru/~breslav/2007/astrans#//SkipClass/includeDescendants"/>
+      </genFeatures>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/createClassActions"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/translateReferencesActions"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/changeInheritanceActions"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/skipClassActions"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/input"/>
+      </genFeatures>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/inputModelRoot"/>
+      </genFeatures>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/astRoot"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/outputName"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation/outputNsURI"/>
+      </genFeatures>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
