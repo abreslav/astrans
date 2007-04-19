@@ -16,7 +16,7 @@ import ru.ifmo.rain.astrans.astransast.EPackageUri;
 import ru.ifmo.rain.astrans.astransast.MappedEClassAS;
 import ru.ifmo.rain.astrans.astransast.QualifiedName;
 import ru.ifmo.rain.astrans.astransast.util.AstransastSwitch;
-import ru.ifmo.rain.astrans.asttomodel.bootstrap.IResolver;
+import ru.ifmo.rain.astrans.asttomodel.bootstrap.IAstransastToAstransResolver;
 import ru.ifmo.rain.astrans.utils.EMFHelper;
 import ru.ifmo.rain.astrans.utils.OR;
 import ru.ifmo.rain.astrans.AstransFactory;
@@ -26,7 +26,7 @@ import ru.ifmo.rain.astrans.ExistingEClass;
 import ru.ifmo.rain.astrans.ExistingEDataType;
 import ru.ifmo.rain.astrans.MappedEClass;
 
-public class ResolverImpl implements IResolver {		
+public class ResolverImpl implements IAstransastToAstransResolver {		
 	
 	private class ClassifierReferenceResolver extends AstransastSwitch {
 		@Override
@@ -88,7 +88,7 @@ public class ResolverImpl implements IResolver {
 		this.fileResolver = fileResolver;
 	}
 
-	public EClassifierReference resolveTranslateReferencesTextualReferenceType(EClassifierReferenceAS textualReferenceType) {
+	public EClassifierReference resolveReferenceToEClassifierReference(EClassifierReferenceAS textualReferenceType) {
 		return (EClassifierReference) classifierReferenceResolver.doSwitch(textualReferenceType);
 	}
 
@@ -100,7 +100,7 @@ public class ResolverImpl implements IResolver {
 		return lookupProtoClass(targetProto);
 	}
 
-	public EClassReference resolveCreateClassSuperclass(EClassifierReferenceAS superClassQN) {
+	public EClassReference resolveCreateClassSuperclasses(EClassifierReferenceAS superClassQN) {
 		return lookupClass(superClassQN);
 	}
 
@@ -120,7 +120,7 @@ public class ResolverImpl implements IResolver {
 		return lookupProtoClass(targetProto);
 	}
 
-	public EClassReference resolveChangeInheritanceSuperclass(EClassifierReferenceAS superclass) {
+	public EClassReference resolveChangeInheritanceSuperclasses(EClassifierReferenceAS superclass) {
 		return lookupClass(superclass);
 	}
 	
@@ -147,6 +147,16 @@ public class ResolverImpl implements IResolver {
 
 	public EPackage resolveTransformationInput(EPackageReference inputAS) {
 		return (EPackage) inputEPackageResolver.doSwitch(inputAS);
+	}
+
+	public EClassReference resolveTransformationAstRoot(EClassifierReferenceAS astRoot) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public EClass resolveTransformationInputModelRoot(QualifiedName inputModelRoot) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

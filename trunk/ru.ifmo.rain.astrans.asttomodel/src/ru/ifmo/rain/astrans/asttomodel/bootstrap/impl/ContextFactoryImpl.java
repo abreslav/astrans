@@ -1,14 +1,14 @@
 package ru.ifmo.rain.astrans.asttomodel.bootstrap.impl;
 
 import ru.ifmo.rain.astrans.asttomodel.ITransformationContextFactory;
-import ru.ifmo.rain.astrans.asttomodel.bootstrap.IResolver;
-import ru.ifmo.rain.astrans.asttomodel.bootstrap.ITrace;
+import ru.ifmo.rain.astrans.asttomodel.bootstrap.IAstransastToAstransResolver;
+import ru.ifmo.rain.astrans.asttomodel.bootstrap.IAstransastToAstransTrace;
 import ru.ifmo.rain.astrans.AstransPackage;
 
 public class ContextFactoryImpl implements ITransformationContextFactory {
 
-	private final IResolver resolver;
-	private final ITrace trace;
+	private final IAstransastToAstransResolver resolver;
+	private final IAstransastToAstransTrace trace;
 	
 	public ContextFactoryImpl(String rootPath) {
 		TraceImpl traceImpl = new TraceImpl();
@@ -16,11 +16,11 @@ public class ContextFactoryImpl implements ITransformationContextFactory {
 		resolver = new ResolverImpl(AstransPackage.eINSTANCE, traceImpl, new FileResolver(rootPath));
 	}
 	
-	public IResolver createResolver() {
+	public IAstransastToAstransResolver createResolver() {
 		return resolver;
 	}
 
-	public ITrace createTrace() {
+	public IAstransastToAstransTrace createTrace() {
 		return trace;
 	}
 
