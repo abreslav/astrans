@@ -522,6 +522,24 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getTransformationAS_InputModelRoot() {
+		return (EReference)transformationASEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTransformationAS_AstRoot() {
+		return (EReference)transformationASEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMappedEClassAS() {
 		return mappedEClassASEClass;
 	}
@@ -678,6 +696,8 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 		createEReference(transformationASEClass, TRANSFORMATION_AS__CHANGE_INHERITANCE_ACTIONS);
 		createEReference(transformationASEClass, TRANSFORMATION_AS__SKIP_CLASS_ACTIONS);
 		createEReference(transformationASEClass, TRANSFORMATION_AS__INPUT);
+		createEReference(transformationASEClass, TRANSFORMATION_AS__INPUT_MODEL_ROOT);
+		createEReference(transformationASEClass, TRANSFORMATION_AS__AST_ROOT);
 
 		mappedEClassASEClass = createEClass(MAPPED_ECLASS_AS);
 		createEReference(mappedEClassASEClass, MAPPED_ECLASS_AS__PROTO);
@@ -767,13 +787,15 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 		initEReference(getSkipClassAS_TargetProto(), this.getQualifiedName(), null, "targetProto", null, 1, 1, SkipClassAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(transformationASEClass, TransformationAS.class, "TransformationAS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTransformationAS_OutputName(), ecorePackage.getEString(), "outputName", null, 0, 1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTransformationAS_OutputNsURI(), ecorePackage.getEString(), "outputNsURI", null, 0, 1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformationAS_OutputName(), ecorePackage.getEString(), "outputName", null, 1, 1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTransformationAS_OutputNsURI(), ecorePackage.getEString(), "outputNsURI", null, 1, 1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformationAS_CreateClassActions(), this.getCreateClassAS(), null, "createClassActions", null, 0, -1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformationAS_TranslateReferencesActions(), this.getTranslateReferencesAS(), null, "translateReferencesActions", null, 0, -1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformationAS_ChangeInheritanceActions(), this.getChangeInheritanceAS(), null, "changeInheritanceActions", null, 0, -1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformationAS_SkipClassActions(), this.getSkipClassAS(), null, "skipClassActions", null, 0, -1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransformationAS_Input(), this.getEPackageReference(), null, "input", null, 0, 1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformationAS_Input(), this.getEPackageReference(), null, "input", null, 1, 1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformationAS_InputModelRoot(), this.getQualifiedName(), null, "inputModelRoot", null, 1, 1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformationAS_AstRoot(), this.getEClassifierReferenceAS(), null, "astRoot", null, 1, 1, TransformationAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mappedEClassASEClass, MappedEClassAS.class, "MappedEClassAS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMappedEClassAS_Proto(), this.getQualifiedName(), null, "proto", null, 1, 1, MappedEClassAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
