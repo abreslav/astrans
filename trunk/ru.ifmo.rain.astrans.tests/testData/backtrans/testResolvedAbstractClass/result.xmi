@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="AstToModelTransformation" resolverClassName="IAstToModelResolver" traceClassName="IAstToModelTrace">
+  <mappingRules xsi:type="astransformation:AbstractClassMappingRule" name="caseAAS" resolverMethodName="resolveReferenceToA">
+    <parameter name="aAS">
+      <type name="test.ast.AAS"/>
+    </parameter>
+    <result name="a">
+      <type name="test.model.A"/>
+    </result>
+  </mappingRules>
+  <switchClassName name="test.ast.util.AstSwitch"/>
+</astransformation:Transformation>
