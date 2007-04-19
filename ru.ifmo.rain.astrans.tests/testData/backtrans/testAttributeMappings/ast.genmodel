@@ -4,7 +4,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ru.ifmo.rain.astrans.tests/src"
     modelPluginID="ru.ifmo.rain.astrans.tests" modelName="Ast" importerID="org.eclipse.emf.importer.ecore">
   <foreignModel>ast.ecore</foreignModel>
-  <genPackages prefix="Ast" disposableProviderFactory="true" ecorePackage="ast.ecore#/">
+  <genPackages prefix="Ast" basePackage="test" disposableProviderFactory="true" ecorePackage="ast.ecore#/">
     <genClasses ecoreClass="ast.ecore#//ClassAS">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ast.ecore#//ClassAS/as"/>
     </genClasses>
