@@ -30,6 +30,7 @@ import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
 import ru.ifmo.rain.astrans.astransformation.TypeName;
+import ru.ifmo.rain.astrans.trace.AttributeMapping;
 import ru.ifmo.rain.astrans.trace.ClassMapping;
 import ru.ifmo.rain.astrans.trace.ReferenceMapping;
 import ru.ifmo.rain.astrans.trace.ReferenceMappingType;
@@ -88,6 +89,9 @@ public class BacktransCreator {
 		for (Iterator iter = allReferences.iterator(); iter.hasNext();) {
 			EReference reference = (EReference) iter.next();
 			ReferenceMapping referenceMapping = trace.getReferenceMapping(reference);
+			if (referenceMapping == null) {
+				continue;
+			}
 			EStructuralFeature imageReference = referenceMapping.getImage();
 			if (referenceMapping.getType() == ReferenceMappingType.TRANSLATED_LITERAL) {
 				ResolveObject resolveObject = AstransformationFactory.eINSTANCE.createResolveObject();
@@ -113,11 +117,13 @@ public class BacktransCreator {
 		for (Iterator iter = allAttributes.iterator(); iter.hasNext();) {
 			EAttribute attribute = (EAttribute) iter.next();
 			AssignAttribute assignAttribute = AstransformationFactory.eINSTANCE.createAssignAttribute();
-			EAttribute imageAttribute = trace.getAttributeMapping(attribute).getImage();
-
-			initAssignFeature(assignAttribute, attribute, imageAttribute, protoGM, imageGM);
-			
-			rule.getAssignAttributeStatements().add(assignAttribute);
+			AttributeMapping attributeMapping = trace.getAttributeMapping(attribute);
+			if (attributeMapping != null) {
+				EAttribute imageAttribute = attributeMapping.getImage();
+				initAssignFeature(assignAttribute, attribute, imageAttribute, protoGM, imageGM);
+				
+				rule.getAssignAttributeStatements().add(assignAttribute);
+			}
 		}
 	}
 
@@ -183,16 +189,8 @@ public class BacktransCreator {
 		GenClassifier found = lookupGenClass(genPackage, eClass);
 		if (found == null) {
 			GenModel genModel = genPackage.getGenModel();
-			EList genPackages = genModel.getGenPackages();
-			for (Iterator iter = genPackages.iterator(); iter.hasNext();) {
-				GenPackage gPackage = (GenPackage) iter.next();
-				if (gPackage != genPackage) {
-					found = lookupGenClass(gPackage, eClass);
-					if (found != null) {
-						break;
-					}
-				}
-			}
+			GenPackage externalPackage = genModel.findGenPackage(eClass.getEPackage());
+			found = lookupGenClass(externalPackage, eClass);
 		}
 		return found;
 	}
