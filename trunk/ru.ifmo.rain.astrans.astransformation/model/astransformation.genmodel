@@ -7,31 +7,51 @@
   <foreignModel>astransformation.ecore</foreignModel>
   <genPackages prefix="Astransformation" basePackage="ru.ifmo.rain.astrans" disposableProviderFactory="true"
       ecorePackage="astransformation.ecore#/">
+    <genEnums ecoreEnum="astransformation.ecore#//BasicType">
+      <genEnumLiterals ecoreEnumLiteral="astransformation.ecore#//BasicType/int"/>
+      <genEnumLiterals ecoreEnumLiteral="astransformation.ecore#//BasicType/byte"/>
+      <genEnumLiterals ecoreEnumLiteral="astransformation.ecore#//BasicType/char"/>
+      <genEnumLiterals ecoreEnumLiteral="astransformation.ecore#//BasicType/short"/>
+      <genEnumLiterals ecoreEnumLiteral="astransformation.ecore#//BasicType/long"/>
+      <genEnumLiterals ecoreEnumLiteral="astransformation.ecore#//BasicType/float"/>
+      <genEnumLiterals ecoreEnumLiteral="astransformation.ecore#//BasicType/double"/>
+      <genEnumLiterals ecoreEnumLiteral="astransformation.ecore#//BasicType/boolean"/>
+    </genEnums>
     <genClasses ecoreClass="astransformation.ecore#//Named">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//Named/name"/>
     </genClasses>
+    <genClasses ecoreClass="astransformation.ecore#//Typed">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//Typed/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="astransformation.ecore#//TypeName"/>
     <genClasses ecoreClass="astransformation.ecore#//ClassName">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//ClassName/name"/>
+    </genClasses>
+    <genClasses ecoreClass="astransformation.ecore#//BasicTypeName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//BasicTypeName/type"/>
     </genClasses>
     <genClasses ecoreClass="astransformation.ecore#//Transformation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//Transformation/mappingRules"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference astransformation.ecore#//Transformation/main"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EReference astransformation.ecore#//Transformation/resolverClassName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EReference astransformation.ecore#//Transformation/traceClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//Transformation/resolverClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//Transformation/traceClassName"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//Transformation/switchClassName"/>
     </genClasses>
-    <genClasses ecoreClass="astransformation.ecore#//Parameter">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference astransformation.ecore#//Parameter/type"/>
-    </genClasses>
+    <genClasses ecoreClass="astransformation.ecore#//Parameter"/>
     <genClasses ecoreClass="astransformation.ecore#//MappingRule">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/parameter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/result"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/factoryClassName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//MappingRule/factoryMethodName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/assignAttributeStatements"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/assignReferenceStatements"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/writeTraceStatement"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//MappingRule/resolveObjectStatements"/>
+    </genClasses>
+    <genClasses ecoreClass="astransformation.ecore#//ConcreteClassMappingRule">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//ConcreteClassMappingRule/factoryClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//ConcreteClassMappingRule/factoryMethodName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//ConcreteClassMappingRule/assignAttributeStatements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//ConcreteClassMappingRule/assignReferenceStatements"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//ConcreteClassMappingRule/writeTraceStatement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//ConcreteClassMappingRule/resolveObjectStatements"/>
+    </genClasses>
+    <genClasses ecoreClass="astransformation.ecore#//AbstractClassMappingRule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//AbstractClassMappingRule/resolverMethodName"/>
     </genClasses>
     <genClasses ecoreClass="astransformation.ecore#//AssignFeature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//AssignFeature/setterName"/>
@@ -47,6 +67,8 @@
     </genClasses>
     <genClasses ecoreClass="astransformation.ecore#//ResolveObject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//ResolveObject/resolverMethodName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference astransformation.ecore#//ResolveObject/parameterType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute astransformation.ecore#//ResolveObject/parameterName"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

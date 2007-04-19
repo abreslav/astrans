@@ -11,12 +11,14 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
+import ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule;
 import ru.ifmo.rain.astrans.astransformation.AssignAttribute;
 import ru.ifmo.rain.astrans.astransformation.AssignFeature;
 import ru.ifmo.rain.astrans.astransformation.AssignReference;
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Named;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
@@ -84,8 +86,17 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 			public Object caseNamed(Named object) {
 				return createNamedAdapter();
 			}
+			public Object caseTyped(Typed object) {
+				return createTypedAdapter();
+			}
+			public Object caseTypeName(TypeName object) {
+				return createTypeNameAdapter();
+			}
 			public Object caseClassName(ClassName object) {
 				return createClassNameAdapter();
+			}
+			public Object caseBasicTypeName(BasicTypeName object) {
+				return createBasicTypeNameAdapter();
 			}
 			public Object caseTransformation(Transformation object) {
 				return createTransformationAdapter();
@@ -95,6 +106,12 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseMappingRule(MappingRule object) {
 				return createMappingRuleAdapter();
+			}
+			public Object caseConcreteClassMappingRule(ConcreteClassMappingRule object) {
+				return createConcreteClassMappingRuleAdapter();
+			}
+			public Object caseAbstractClassMappingRule(AbstractClassMappingRule object) {
+				return createAbstractClassMappingRuleAdapter();
 			}
 			public Object caseAssignFeature(AssignFeature object) {
 				return createAssignFeatureAdapter();
@@ -110,15 +127,6 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseResolveObject(ResolveObject object) {
 				return createResolveObjectAdapter();
-			}
-			public Object caseTyped(Typed object) {
-				return createTypedAdapter();
-			}
-			public Object caseTypeName(TypeName object) {
-				return createTypeNameAdapter();
-			}
-			public Object caseBasicTypeName(BasicTypeName object) {
-				return createBasicTypeNameAdapter();
 			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
@@ -205,6 +213,34 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMappingRuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule <em>Concrete Class Mapping Rule</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule
+	 * @generated
+	 */
+	public Adapter createConcreteClassMappingRuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule <em>Abstract Class Mapping Rule</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule
+	 * @generated
+	 */
+	public Adapter createAbstractClassMappingRuleAdapter() {
 		return null;
 	}
 
