@@ -24,4 +24,8 @@
     <proto href="model.ecore#//Class/r3"/>
     <image xsi:type="ecore:EReference" href="ast.ecore#//ClassAS/ras3"/>
   </referenceMappings>
+  <referenceMappings type="TRANSLATED">
+    <proto href="model.ecore#//Class/r4"/>
+    <image xsi:type="ecore:EAttribute" href="ast.ecore#//ClassAS/ras4"/>
+  </referenceMappings>
 </trace:Trace>

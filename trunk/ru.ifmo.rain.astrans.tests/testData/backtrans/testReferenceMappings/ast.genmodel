@@ -10,6 +10,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ast.ecore#//ClassAS/ras1"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ast.ecore#//ClassAS/ras2"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ast.ecore#//ClassAS/ras3"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ast.ecore#//ClassAS/ras4"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
