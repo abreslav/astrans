@@ -1,6 +1,7 @@
 package ru.ifmo.rain.astrans.interpreter;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
@@ -35,6 +36,8 @@ public class AstransInterpreter {
 	}
 
 	private static void mapClasses(Transformation transformation, AstransInterpreterTrace trace, Collection<EClass> classes, EClassSet skipper) {
+		Collection<EClass> resolvedAbstractClasses = new HashSet<EClass>();
+		
 		EList classifiers = transformation.getInput().getEClassifiers();
 		for (Iterator iter = classifiers.iterator(); iter.hasNext();) {
 			EClassifier eClassifier = (EClassifier) iter.next();
@@ -42,13 +45,25 @@ public class AstransInterpreter {
 				EClass proto = (EClass) eClassifier;
 
 				if (skipper.contains(proto)) {
-					continue;
-				}	
-				
-				EClass image = EcoreFactory.eINSTANCE.createEClass();
-				trace.registerMappedClass(proto, image);
-				
-				classes.add(image);
+					for (Iterator iterator = proto.getESuperTypes().iterator(); iterator.hasNext();) {
+						EClass superClass = (EClass) iterator.next();
+						if (superClass.isAbstract()) {
+							resolvedAbstractClasses.add(superClass);
+						}
+					}
+				} else {	
+					EClass image = EcoreFactory.eINSTANCE.createEClass();
+					trace.registerMappedClass(proto, image);
+					
+					classes.add(image);
+				}
+			}
+		}
+		
+		for (EClass abstractClass : resolvedAbstractClasses) {
+			EClass mappedClass = trace.getMappedClass(abstractClass);
+			if (mappedClass != null) {
+				trace.registerResolvedAbstractClass(abstractClass);
 			}
 		}
 	}
