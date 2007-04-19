@@ -19,7 +19,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import ru.ifmo.rain.astrans.astransast.AstransastPackage;
 import ru.ifmo.rain.astrans.astransast.TransformationAS;
-import ru.ifmo.rain.astrans.asttomodel.bootstrap.AstransASTToModelTransformation;
+import ru.ifmo.rain.astrans.asttomodel.bootstrap.AstransastToAstransTransformation;
 import ru.ifmo.rain.astrans.asttomodel.bootstrap.impl.ContextFactoryImpl;
 import ru.ifmo.rain.astrans.utils.Difference;
 import ru.ifmo.rain.astrans.utils.EMFComparator;
@@ -34,7 +34,7 @@ public class AstransASTToModelTransformationTest {
 
 	private TransformationAS input;
 	private Transformation expectedResult;
-	private AstransASTToModelTransformation transformation;
+	private AstransastToAstransTransformation transformation;
 	private String expectedResultFileName;
 	private String inputFileName;
 	private String resultFileName;
@@ -77,7 +77,7 @@ public class AstransASTToModelTransformationTest {
 		EMFHelper.loadResourceFromFile(resource, expectedResultFileName);
 		expectedResult = (Transformation) resource.getContents().get(0);
 		
-		transformation = new AstransASTToModelTransformation(new ContextFactoryImpl(testDir));
+		transformation = new AstransastToAstransTransformation(new ContextFactoryImpl(testDir));
 	}
 	
 

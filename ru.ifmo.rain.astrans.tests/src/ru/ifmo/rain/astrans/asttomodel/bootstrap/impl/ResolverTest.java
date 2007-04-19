@@ -13,7 +13,7 @@ import ru.ifmo.rain.astrans.astransast.AstransastFactory;
 import ru.ifmo.rain.astrans.astransast.EPackagePath;
 import ru.ifmo.rain.astrans.astransast.EPackageUri;
 import ru.ifmo.rain.astrans.astransast.QualifiedName;
-import ru.ifmo.rain.astrans.asttomodel.bootstrap.IResolver;
+import ru.ifmo.rain.astrans.asttomodel.bootstrap.IAstransastToAstransResolver;
 import utils.QNUtils;
 import ru.ifmo.rain.astrans.AstransFactory;
 import ru.ifmo.rain.astrans.AstransPackage;
@@ -26,7 +26,7 @@ import ru.ifmo.rain.astrans.ExistingEDataType;
 
 public class ResolverTest {
 
-	private IResolver resolver;
+	private IAstransastToAstransResolver resolver;
 	private QualifiedName actionQN;
 
 	@Before
@@ -42,7 +42,7 @@ public class ResolverTest {
 
 	@Test
 	public final void testResolveTranslateReferencesTextualReferenceType() {
-		EClassifierReference reference = resolver.resolveTranslateReferencesTextualReferenceType(QNUtils.createQN("ecore.EString"));
+		EClassifierReference reference = resolver.resolveReferenceToEClassifierReference(QNUtils.createQN("ecore.EString"));
 		assertEquals(EcorePackage.eINSTANCE.getEString(), ((ExistingEDataType) reference).getEDataType());
 	}
 	
@@ -60,7 +60,7 @@ public class ResolverTest {
 
 	@Test
 	public final void testResolveCreateClassSuperclass() {
-		EClassReference reference = resolver.resolveCreateClassSuperclass(QNUtils.createQN("ecore.EClass"));
+		EClassReference reference = resolver.resolveCreateClassSuperclasses(QNUtils.createQN("ecore.EClass"));
 		assertEquals(EcorePackage.eINSTANCE.getEClass(), ((ExistingEClass) reference).getEClass());
 	}
 

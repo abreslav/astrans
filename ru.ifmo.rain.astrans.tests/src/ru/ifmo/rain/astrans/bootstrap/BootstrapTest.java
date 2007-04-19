@@ -50,7 +50,7 @@ public class BootstrapTest {
 		ru.ifmo.rain.astrans.astransformation.Transformation backTransformation = BacktransCreator.createBackTransformation(new TraceAdapter(trace), protoGM, imageGM);
 		save(resourceSet, "backtrans.xmi", backTransformation);
 		
-		BacktransCodeGenerator.generate(backTransformation, "ru.ifmo.rain.astrans", "bootstrap/result/ru/ifmo/rain/astrans");
+		BacktransCodeGenerator.generate(backTransformation, "ru.ifmo.rain.astrans.asttomodel.bootstrap", "bootstrap/result/ru/ifmo/rain/astrans/asttomodel/bootstrap");
 	}
 
 	@SuppressWarnings("unchecked")

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="ASCII"?>
-<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="AstransastToAstransTransformation" main="//@mappingRules.6" resolverClassName="IAstransastToAstransResolver" traceClassName="IAstransastToAstransTrace">
-  <mappingRules name="caseTranslateReferencesAS" factoryMethodName="createTranslateReferences">
+<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="AstransastToAstransTransformation" main="//@mappingRules.7" resolverClassName="IAstransastToAstransResolver" traceClassName="IAstransastToAstransTrace">
+  <mappingRules xsi:type="astransformation:AbstractClassMappingRule" name="caseEClassifierReferenceAS" resolverMethodName="resolveReferenceToEClassifierReference">
+    <parameter name="eClassifierReferenceAS">
+      <type name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
+    </parameter>
+    <result name="eClassifierReference">
+      <type name="ru.ifmo.rain.astrans.EClassifierReference"/>
+    </result>
+  </mappingRules>
+  <mappingRules xsi:type="astransformation:ConcreteClassMappingRule" name="caseTranslateReferencesAS" factoryMethodName="createTranslateReferences">
     <parameter name="translateReferencesAS">
       <type name="ru.ifmo.rain.astrans.astransast.TranslateReferencesAS"/>
     </parameter>
@@ -18,7 +26,7 @@
       <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
     </resolveObjectStatements>
   </mappingRules>
-  <mappingRules name="caseCreateClassAS" factoryMethodName="createCreateClass">
+  <mappingRules xsi:type="astransformation:ConcreteClassMappingRule" name="caseCreateClassAS" factoryMethodName="createCreateClass">
     <parameter name="createClassAS">
       <type name="ru.ifmo.rain.astrans.astransast.CreateClassAS"/>
     </parameter>
@@ -37,7 +45,7 @@
       <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
     </resolveObjectStatements>
   </mappingRules>
-  <mappingRules name="caseAttributeAS" factoryMethodName="createAttribute">
+  <mappingRules xsi:type="astransformation:ConcreteClassMappingRule" name="caseAttributeAS" factoryMethodName="createAttribute">
     <parameter name="attributeAS">
       <type name="ru.ifmo.rain.astrans.astransast.AttributeAS"/>
     </parameter>
@@ -54,7 +62,7 @@
       <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
     </resolveObjectStatements>
   </mappingRules>
-  <mappingRules name="caseReferenceAS" factoryMethodName="createReference">
+  <mappingRules xsi:type="astransformation:ConcreteClassMappingRule" name="caseReferenceAS" factoryMethodName="createReference">
     <parameter name="referenceAS">
       <type name="ru.ifmo.rain.astrans.astransast.ReferenceAS"/>
     </parameter>
@@ -72,7 +80,7 @@
       <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
     </resolveObjectStatements>
   </mappingRules>
-  <mappingRules name="caseChangeInheritanceAS" factoryMethodName="createChangeInheritance">
+  <mappingRules xsi:type="astransformation:ConcreteClassMappingRule" name="caseChangeInheritanceAS" factoryMethodName="createChangeInheritance">
     <parameter name="changeInheritanceAS">
       <type name="ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS"/>
     </parameter>
@@ -90,7 +98,7 @@
       <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
     </resolveObjectStatements>
   </mappingRules>
-  <mappingRules name="caseSkipClassAS" factoryMethodName="createSkipClass">
+  <mappingRules xsi:type="astransformation:ConcreteClassMappingRule" name="caseSkipClassAS" factoryMethodName="createSkipClass">
     <parameter name="skipClassAS">
       <type name="ru.ifmo.rain.astrans.astransast.SkipClassAS"/>
     </parameter>
@@ -105,7 +113,7 @@
       <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
     </resolveObjectStatements>
   </mappingRules>
-  <mappingRules name="caseTransformationAS" factoryMethodName="createTransformation">
+  <mappingRules xsi:type="astransformation:ConcreteClassMappingRule" name="caseTransformationAS" factoryMethodName="createTransformation">
     <parameter name="transformationAS">
       <type name="ru.ifmo.rain.astrans.astransast.TransformationAS"/>
     </parameter>

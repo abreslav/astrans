@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<trace:Trace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:trace="http://rain.ifmo.ru/~breslav/2007/astrans/interperter/trace">
+  <input href="model.ecore#/"/>
+  <output href="ast.ecore#/"/>
+  <inputModelRoot href="model.ecore#//Class"/>
+  <outputModelRoot href="ast.ecore#//ClassAS"/>
+  <classMappings resolvedAbstractClass="true">
+    <proto href="model.ecore#//A"/>
+    <image href="ast.ecore#//AAS"/>
+  </classMappings>
+</trace:Trace>

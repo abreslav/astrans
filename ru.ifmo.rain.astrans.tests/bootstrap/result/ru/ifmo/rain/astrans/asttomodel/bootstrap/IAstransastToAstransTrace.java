@@ -1,4 +1,12 @@
-package ru.ifmo.rain.astrans;
+package ru.ifmo.rain.astrans.asttomodel.bootstrap;
+
+import ru.ifmo.rain.astrans.Attribute;
+import ru.ifmo.rain.astrans.ChangeInheritance;
+import ru.ifmo.rain.astrans.CreateClass;
+import ru.ifmo.rain.astrans.Reference;
+import ru.ifmo.rain.astrans.SkipClass;
+import ru.ifmo.rain.astrans.Transformation;
+import ru.ifmo.rain.astrans.TranslateReferences;
 
 import ru.ifmo.rain.astrans.astransast.AttributeAS;
 import ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS;
@@ -9,6 +17,8 @@ import ru.ifmo.rain.astrans.astransast.TransformationAS;
 import ru.ifmo.rain.astrans.astransast.TranslateReferencesAS;
 
 public interface IAstransastToAstransTrace {
+
+
 	void translateReferencesCreated(TranslateReferencesAS translateReferencesAS, TranslateReferences translateReferences);
 
 	void createClassCreated(CreateClassAS createClassAS, CreateClass createClass);
