@@ -4,10 +4,12 @@ main(transformation) ::= <<
 
 
 public interface <transformation.traceClassName> {
-	<transformation.mappingRules:renderRuleTraceMethod(); separator="\n\n">
+	<transformation.mappingRules:{rule| <rule:(rule.class.simpleName)()>}; separator="\n\n">
 }
 >>
 
-renderRuleTraceMethod(rule) ::= <<
+ConcreteClassMappingRuleImpl(rule) ::= <<
 void <rule.writeTraceStatement.traceMethodName>(<rule.parameter.type> <rule.parameter.name>, <rule.result.type> <rule.result.name>);
 >>
+
+AbstractClassMappingRuleImpl(rule) ::= ""

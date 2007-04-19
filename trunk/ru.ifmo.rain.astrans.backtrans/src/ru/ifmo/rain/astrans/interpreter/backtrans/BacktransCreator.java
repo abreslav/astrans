@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule;
 import ru.ifmo.rain.astrans.astransformation.AssignAttribute;
 import ru.ifmo.rain.astrans.astransformation.AssignFeature;
 import ru.ifmo.rain.astrans.astransformation.AssignReference;
@@ -26,6 +27,7 @@ import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.BasicType;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
@@ -51,44 +53,51 @@ public class BacktransCreator {
 		return backTransformation;
 	}
 
-	@SuppressWarnings("unchecked")
 	private static void processMappings(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, Transformation backTransformation) {
 		Collection<ClassMapping> mappings = trace.getClassMappings();
 		for (ClassMapping mapping : mappings) {
 			if (mapping.getProto().isAbstract()) {
-				continue;
-			}
-			
-			MappingRule rule = AstransformationFactory.eINSTANCE.createMappingRule();
-			backTransformation.getMappingRules().add(rule);
-		
-			rule.setName("case" + mapping.getImage().getName());
-			rule.setFactoryClassName(createClassName(protoGM.getQualifiedFactoryInterfaceName()));
-			rule.setFactoryMethodName("create" + mapping.getProto().getName()); 
+				if (mapping.isResolvedAbstractClass()) {
+					AbstractClassMappingRule rule = AstransformationFactory.eINSTANCE.createAbstractClassMappingRule();
+					initMappingRule(protoGM, imageGM, backTransformation, mapping, rule, trace);
 
-			rule.setResult(AstransformationFactory.eINSTANCE.createParameter());
-			rule.getResult().setName(CodeGenUtil.uncapName(mapping.getProto().getName()));
-			rule.getResult().setType((ClassName) getTypeName(protoGM, mapping.getProto()));
-			
-			rule.setParameter(AstransformationFactory.eINSTANCE.createParameter());
-			rule.getParameter().setType((ClassName) getTypeName(imageGM, mapping.getImage()));
-			rule.getParameter().setName(CodeGenUtil.uncapName(mapping.getImage().getName()));
-			
-			rule.setWriteTraceStatement(AstransformationFactory.eINSTANCE.createWriteTrace());
-			rule.getWriteTraceStatement().setTraceMethodName(CodeGenUtil.uncapName(mapping.getProto().getName()) + "Created");
-			
-			if (mapping.getProto() == trace.getInputRoot() && mapping.getImage() == trace.getOutputRoot()) {
-				backTransformation.setMain(rule);
+					rule.setResolverMethodName("resolveReferenceTo" + mapping.getProto().getName());
+				}
+			} else {
+				ConcreteClassMappingRule rule = AstransformationFactory.eINSTANCE.createConcreteClassMappingRule();
+				initMappingRule(protoGM, imageGM, backTransformation, mapping, rule, trace);
+				
+				rule.setFactoryClassName(createClassName(protoGM.getQualifiedFactoryInterfaceName()));
+				rule.setFactoryMethodName("create" + mapping.getProto().getName()); 
+				rule.setWriteTraceStatement(AstransformationFactory.eINSTANCE.createWriteTrace());
+				rule.getWriteTraceStatement().setTraceMethodName(CodeGenUtil.uncapName(mapping.getProto().getName()) + "Created");
+				processAttributes(trace, protoGM, imageGM, mapping, rule);
+				processReferences(trace, protoGM, imageGM, mapping, rule);
 			}
-		
-			processAttributes(trace, protoGM, imageGM, mapping, rule);
-			
-			processReferences(trace, protoGM, imageGM, mapping, rule);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void processReferences(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, ClassMapping mapping, MappingRule rule) {
+	private static void initMappingRule(GenPackage protoGM, GenPackage imageGM, Transformation backTransformation, ClassMapping mapping, MappingRule rule, TraceAdapter trace) {
+		backTransformation.getMappingRules().add(rule);
+
+		rule.setName("case" + mapping.getImage().getName());
+
+		rule.setResult(AstransformationFactory.eINSTANCE.createParameter());
+		rule.getResult().setName(CodeGenUtil.uncapName(mapping.getProto().getName()));
+		rule.getResult().setType((ClassName) getTypeName(protoGM, mapping.getProto()));
+		
+		rule.setParameter(AstransformationFactory.eINSTANCE.createParameter());
+		rule.getParameter().setType((ClassName) getTypeName(imageGM, mapping.getImage()));
+		rule.getParameter().setName(CodeGenUtil.uncapName(mapping.getImage().getName()));
+
+		if (mapping.getProto() == trace.getInputRoot() && mapping.getImage() == trace.getOutputRoot()) {
+			backTransformation.setMain(rule);
+		}		
+	}
+
+	@SuppressWarnings("unchecked")
+	private static void processReferences(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, ClassMapping mapping, ConcreteClassMappingRule rule) {
 		EList allReferences = mapping.getProto().getEAllReferences();
 		for (Iterator iter = allReferences.iterator(); iter.hasNext();) {
 			EReference reference = (EReference) iter.next();
@@ -117,7 +126,7 @@ public class BacktransCreator {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void processAttributes(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, ClassMapping mapping, MappingRule rule) {
+	private static void processAttributes(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, ClassMapping mapping, ConcreteClassMappingRule rule) {
 		EList allAttributes = mapping.getProto().getEAllAttributes();
 		for (Iterator iter = allAttributes.iterator(); iter.hasNext();) {
 			EAttribute attribute = (EAttribute) iter.next();

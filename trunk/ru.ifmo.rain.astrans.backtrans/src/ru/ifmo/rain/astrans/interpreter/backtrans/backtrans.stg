@@ -6,9 +6,13 @@ main(transformation) ::= <<
 public class <transformation.name> extends ASTToModelTransformation\<<transformation.resolverClassName>, <transformation.traceClassName>\> {
 	<switch(...)>
 
-	protected <transformation.name>(ITransformationContextFactory\<<transformation.resolverClassName>, <transformation.traceClassName>\> contextFactory) {
+	public <transformation.name>(ITransformationContextFactory\<<transformation.resolverClassName>, <transformation.traceClassName>\> contextFactory) {
 		super(contextFactory);
 	}
+	
+<if (transformation.main)>
+	<renderMain(rule=transformation.main)>
+<endif>	
 }
 >>
 
@@ -26,28 +30,36 @@ private final <transformation.switchClassName> transformer = new <transformation
 
 toCaseMethod(rule) ::= <<
 public <rule.result.type> <rule.name>(final <rule.parameter.type> <rule.parameter.name>) {
-	final <rule.result.type> <rule.result.name> = <rule.factoryClassName>.eINSTANCE.<rule.factoryMethodName>();
+	<rule:(rule.class.SimpleName)()>
+}
+>>
+
+ConcreteClassMappingRuleImpl(rule) ::= <<
+final <rule.result.type> <rule.result.name> = <rule.factoryClassName>.eINSTANCE.<rule.factoryMethodName>();
 <if(rule.assignAttributeStatements)>
 
-	<rule.assignAttributeStatements:{a | <renderAttributeAssignment(a=a, rule=rule)>}; separator="\n">
+<rule.assignAttributeStatements:{a | <renderAttributeAssignment(a=a, rule=rule)>}; separator="\n">
 <endif>
 <if(rule.assignReferenceStatements)>
 
-	<rule.assignReferenceStatements:{r | <renderReferenceAssignment(r=r, rule=rule)>}; separator="\n">
+<rule.assignReferenceStatements:{r | <renderReferenceAssignment(r=r, rule=rule)>}; separator="\n">
 <endif>
 
-	getTrace().<rule.writeTraceStatement.traceMethodName>(<rule.parameter.name>, <rule.result.name>);
+getTrace().<rule.writeTraceStatement.traceMethodName>(<rule.parameter.name>, <rule.result.name>);
 <if(rule.resolveObjectStatements)>
 
-	addCommand(new Runnable() {
-		public void run() {
-			<rule.resolveObjectStatements:{r | <renderResolveObject(r=r, rule=rule)>}; separator="\n">
-		}
-	});
+addCommand(new Runnable() {
+	public void run() {
+		<rule.resolveObjectStatements:{r | <renderResolveObject(r=r, rule=rule)>}; separator="\n">
+	}
+});
 <endif>
 <\n>
-	return <rule.result.name>;
-}
+return <rule.result.name>;
+>>
+
+AbstractClassMappingRuleImpl(rule) ::= <<
+return getResolver().<rule.resolverMethodName>(<rule.parameter.name>);
 >>
 
 renderAttributeAssignment(a, rule) ::= <<
@@ -74,10 +86,18 @@ doSwitch(<rule.result.name>.<r.setterName>(), <rule.parameter.name>.<r.getterNam
 
 renderResolveObject(r, rule) ::= <<
 <if(r.many)>
-for (Iterator i = <rule.result.name>.<r.getterName>().iterator(); i.hasNext(); ) {
+for (Iterator i = <rule.parameter.name>.<r.getterName>().iterator(); i.hasNext(); ) {
 	<rule.result.name>.<r.setterName>().add(getResolver().<r.resolverMethodName>((<r.parameterType>) i.next()));
 }
 <else>
 <rule.result.name>.<r.setterName>(getResolver().<r.resolverMethodName>(<rule.parameter.name>.<r.getterName>()));
 <endif>
+>>
+
+renderMain(rule) ::= <<
+public <rule.result.type> run(<rule.parameter.type> <rule.parameter.name>) {
+	<rule.result.type> <rule.result.name> = (<rule.result.type>) transformer.doSwitch(<rule.parameter.name>);
+	performAllCommands();
+	return <rule.result.name>;
+}
 >>
