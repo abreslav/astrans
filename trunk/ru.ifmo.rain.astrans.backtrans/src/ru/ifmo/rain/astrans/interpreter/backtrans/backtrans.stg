@@ -5,6 +5,10 @@ main(transformation) ::= <<
 
 public class <transformation.name> extends ASTToModelTransformation\<<transformation.resolverClassName>, <transformation.traceClassName>\> {
 	<switch(...)>
+
+	protected <transformation.name>(ITransformationContextFactory\<<transformation.resolverClassName>, <transformation.traceClassName>\> contextFactory) {
+		super(contextFactory);
+	}
 }
 >>
 
@@ -12,17 +16,17 @@ switch(transformation) ::= <<
 private final <transformation.switchClassName> transformer = new <transformation.switchClassName>() {
 	public void doSwitch(EList target, EList source) {
 		for (Iterator i = source.iterator(); i.hasNext(); ) {
-			traget.add(doSwitch((EObject) i.next()));
+			target.add(doSwitch((EObject) i.next()));
 		}
 	}
 
 	<transformation.mappingRules:toCaseMethod(); separator="\n\n">
-}
+};
 >>
 
 toCaseMethod(rule) ::= <<
-public <rule.result.type> <rule.name>(<rule.parameter.type> <rule.parameter.name>) {
-	<rule.result.type> <rule.result.name> = <rule.factoryClassName>.eINSTANCE.<rule.factoryMethodName>();
+public <rule.result.type> <rule.name>(final <rule.parameter.type> <rule.parameter.name>) {
+	final <rule.result.type> <rule.result.name> = <rule.factoryClassName>.eINSTANCE.<rule.factoryMethodName>();
 <if(rule.assignAttributeStatements)>
 
 	<rule.assignAttributeStatements:{a | <renderAttributeAssignment(a=a, rule=rule)>}; separator="\n">
@@ -41,15 +45,16 @@ public <rule.result.type> <rule.name>(<rule.parameter.type> <rule.parameter.name
 		}
 	});
 <endif>
-
+<\n>
+	return <rule.result.name>;
 }
 >>
 
 renderAttributeAssignment(a, rule) ::= <<
 <if(a.many)>
-<rule.result.name>.<a.setterName>().addAll(<rule.parameter.name>.<a.getterName>);
+<rule.result.name>.<a.setterName>().addAll(<rule.parameter.name>.<a.getterName>());
 <else>
-<rule.result.name>.<a.setterName>(<rule.parameter.name>.<a.getterName>);
+<rule.result.name>.<a.setterName>(<rule.parameter.name>.<a.getterName>());
 <endif>
 >>
 

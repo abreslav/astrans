@@ -81,6 +81,7 @@ public class BacktransCodeGenerator {
 			importManager.addImport(Runnable.class.getCanonicalName());
 			importManager.addImport(EList.class.getCanonicalName());
 			importManager.addImport(EObject.class.getCanonicalName());
+			importManager.addImport("ru.ifmo.rain.astrans.asttomodel.ITransformationContextFactory");
 			importManager.addImport("ru.ifmo.rain.astrans.asttomodel.ASTToModelTransformation");
 		}
 
