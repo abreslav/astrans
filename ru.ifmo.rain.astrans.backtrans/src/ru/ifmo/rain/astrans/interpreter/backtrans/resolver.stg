@@ -4,8 +4,16 @@ main(transformation) ::= <<
 
 
 public interface <transformation.resolverClassName> {
-	<transformation.mappingRules:{r| <r.resolveObjectStatements:renderResolveMethod(); separator="\n\n">}>
+	<transformation.mappingRules:renderMappingRule()>
 }
+>>
+
+renderMappingRule(r) ::= <<
+<if (r.resolveObjectStatements)>
+// <r.name>
+<r.resolveObjectStatements:renderResolveMethod(); separator="\n">
+<\n>
+<endif>
 >>
 
 renderResolveMethod(ros) ::= <<

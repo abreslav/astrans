@@ -55,6 +55,10 @@ public class BacktransCreator {
 	private static void processMappings(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, Transformation backTransformation) {
 		Collection<ClassMapping> mappings = trace.getClassMappings();
 		for (ClassMapping mapping : mappings) {
+			if (mapping.getProto().isAbstract()) {
+				continue;
+			}
+			
 			MappingRule rule = AstransformationFactory.eINSTANCE.createMappingRule();
 			backTransformation.getMappingRules().add(rule);
 		
@@ -106,6 +110,7 @@ public class BacktransCreator {
 				AssignReference assignReference = AstransformationFactory.eINSTANCE.createAssignReference();
 				initAssignFeature(assignReference, reference, imageReference, protoGM, imageGM);
 				assignReference.setMappingNeeded(referenceMapping.getType() != ReferenceMappingType.NONE_LITERAL);
+				assignReference.setType((ClassName) getTypeName(protoGM, reference.getEType()));
 				rule.getAssignReferenceStatements().add(assignReference);
 			}
 		}
