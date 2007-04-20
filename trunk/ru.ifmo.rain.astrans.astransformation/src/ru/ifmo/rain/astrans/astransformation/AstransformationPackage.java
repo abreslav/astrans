@@ -139,26 +139,6 @@ public interface AstransformationPackage extends EPackage {
 	int MAPPING_RULE = 7;
 
 	/**
-	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ConcreteClassMappingRuleImpl <em>Concrete Class Mapping Rule</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ru.ifmo.rain.astrans.astransformation.impl.ConcreteClassMappingRuleImpl
-	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getConcreteClassMappingRule()
-	 * @generated
-	 */
-	int CONCRETE_CLASS_MAPPING_RULE = 8;
-
-	/**
-	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AbstractClassMappingRuleImpl <em>Abstract Class Mapping Rule</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see ru.ifmo.rain.astrans.astransformation.impl.AbstractClassMappingRuleImpl
-	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getAbstractClassMappingRule()
-	 * @generated
-	 */
-	int ABSTRACT_CLASS_MAPPING_RULE = 9;
-
-	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AssignFeatureImpl <em>Assign Feature</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -166,7 +146,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getAssignFeature()
 	 * @generated
 	 */
-	int ASSIGN_FEATURE = 10;
+	int ASSIGN_FEATURE = 8;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AssignAttributeImpl <em>Assign Attribute</em>}' class.
@@ -176,7 +156,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getAssignAttribute()
 	 * @generated
 	 */
-	int ASSIGN_ATTRIBUTE = 11;
+	int ASSIGN_ATTRIBUTE = 9;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AssignReferenceImpl <em>Assign Reference</em>}' class.
@@ -186,7 +166,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getAssignReference()
 	 * @generated
 	 */
-	int ASSIGN_REFERENCE = 12;
+	int ASSIGN_REFERENCE = 10;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.WriteTraceImpl <em>Write Trace</em>}' class.
@@ -196,7 +176,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getWriteTrace()
 	 * @generated
 	 */
-	int WRITE_TRACE = 13;
+	int WRITE_TRACE = 11;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ResolveObjectImpl <em>Resolve Object</em>}' class.
@@ -206,7 +186,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getResolveObject()
 	 * @generated
 	 */
-	int RESOLVE_OBJECT = 14;
+	int RESOLVE_OBJECT = 12;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.Typed <em>Typed</em>}' class.
@@ -410,49 +390,13 @@ public interface AstransformationPackage extends EPackage {
 	int MAPPING_RULE__RESULT = NAMED_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Mapping Rule</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAPPING_RULE_FEATURE_COUNT = NAMED_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCRETE_CLASS_MAPPING_RULE__NAME = MAPPING_RULE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCRETE_CLASS_MAPPING_RULE__PARAMETER = MAPPING_RULE__PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCRETE_CLASS_MAPPING_RULE__RESULT = MAPPING_RULE__RESULT;
-
-	/**
 	 * The feature id for the '<em><b>Factory Class Name</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCRETE_CLASS_MAPPING_RULE__FACTORY_CLASS_NAME = MAPPING_RULE_FEATURE_COUNT + 0;
+	int MAPPING_RULE__FACTORY_CLASS_NAME = NAMED_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Factory Method Name</b></em>' attribute.
@@ -461,7 +405,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCRETE_CLASS_MAPPING_RULE__FACTORY_METHOD_NAME = MAPPING_RULE_FEATURE_COUNT + 1;
+	int MAPPING_RULE__FACTORY_METHOD_NAME = NAMED_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Assign Attribute Statements</b></em>' containment reference list.
@@ -470,7 +414,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCRETE_CLASS_MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS = MAPPING_RULE_FEATURE_COUNT + 2;
+	int MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS = NAMED_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Assign Reference Statements</b></em>' containment reference list.
@@ -479,7 +423,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCRETE_CLASS_MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS = MAPPING_RULE_FEATURE_COUNT + 3;
+	int MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS = NAMED_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Write Trace Statement</b></em>' containment reference.
@@ -488,7 +432,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCRETE_CLASS_MAPPING_RULE__WRITE_TRACE_STATEMENT = MAPPING_RULE_FEATURE_COUNT + 4;
+	int MAPPING_RULE__WRITE_TRACE_STATEMENT = NAMED_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Resolve Object Statements</b></em>' containment reference list.
@@ -497,61 +441,16 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCRETE_CLASS_MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS = MAPPING_RULE_FEATURE_COUNT + 5;
+	int MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS = NAMED_FEATURE_COUNT + 7;
 
 	/**
-	 * The number of structural features of the '<em>Concrete Class Mapping Rule</em>' class.
+	 * The number of structural features of the '<em>Mapping Rule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCRETE_CLASS_MAPPING_RULE_FEATURE_COUNT = MAPPING_RULE_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CLASS_MAPPING_RULE__NAME = MAPPING_RULE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Parameter</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CLASS_MAPPING_RULE__PARAMETER = MAPPING_RULE__PARAMETER;
-
-	/**
-	 * The feature id for the '<em><b>Result</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CLASS_MAPPING_RULE__RESULT = MAPPING_RULE__RESULT;
-
-	/**
-	 * The feature id for the '<em><b>Resolver Method Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CLASS_MAPPING_RULE__RESOLVER_METHOD_NAME = MAPPING_RULE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Abstract Class Mapping Rule</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CLASS_MAPPING_RULE_FEATURE_COUNT = MAPPING_RULE_FEATURE_COUNT + 1;
+	int MAPPING_RULE_FEATURE_COUNT = NAMED_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Setter Name</b></em>' attribute.
@@ -778,7 +677,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getBasicType()
 	 * @generated
 	 */
-	int BASIC_TYPE = 15;
+	int BASIC_TYPE = 13;
 
 
 	/**
@@ -931,101 +830,70 @@ public interface AstransformationPackage extends EPackage {
 	EReference getMappingRule_Result();
 
 	/**
-	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule <em>Concrete Class Mapping Rule</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Concrete Class Mapping Rule</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule
-	 * @generated
-	 */
-	EClass getConcreteClassMappingRule();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getFactoryClassName <em>Factory Class Name</em>}'.
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryClassName <em>Factory Class Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Factory Class Name</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getFactoryClassName()
-	 * @see #getConcreteClassMappingRule()
+	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryClassName()
+	 * @see #getMappingRule()
 	 * @generated
 	 */
-	EReference getConcreteClassMappingRule_FactoryClassName();
+	EReference getMappingRule_FactoryClassName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getFactoryMethodName <em>Factory Method Name</em>}'.
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryMethodName <em>Factory Method Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Factory Method Name</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getFactoryMethodName()
-	 * @see #getConcreteClassMappingRule()
+	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryMethodName()
+	 * @see #getMappingRule()
 	 * @generated
 	 */
-	EAttribute getConcreteClassMappingRule_FactoryMethodName();
+	EAttribute getMappingRule_FactoryMethodName();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getAssignAttributeStatements <em>Assign Attribute Statements</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getAssignAttributeStatements <em>Assign Attribute Statements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Assign Attribute Statements</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getAssignAttributeStatements()
-	 * @see #getConcreteClassMappingRule()
+	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getAssignAttributeStatements()
+	 * @see #getMappingRule()
 	 * @generated
 	 */
-	EReference getConcreteClassMappingRule_AssignAttributeStatements();
+	EReference getMappingRule_AssignAttributeStatements();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getAssignReferenceStatements <em>Assign Reference Statements</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getAssignReferenceStatements <em>Assign Reference Statements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Assign Reference Statements</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getAssignReferenceStatements()
-	 * @see #getConcreteClassMappingRule()
+	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getAssignReferenceStatements()
+	 * @see #getMappingRule()
 	 * @generated
 	 */
-	EReference getConcreteClassMappingRule_AssignReferenceStatements();
+	EReference getMappingRule_AssignReferenceStatements();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getWriteTraceStatement <em>Write Trace Statement</em>}'.
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getWriteTraceStatement <em>Write Trace Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Write Trace Statement</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getWriteTraceStatement()
-	 * @see #getConcreteClassMappingRule()
+	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getWriteTraceStatement()
+	 * @see #getMappingRule()
 	 * @generated
 	 */
-	EReference getConcreteClassMappingRule_WriteTraceStatement();
+	EReference getMappingRule_WriteTraceStatement();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getResolveObjectStatements <em>Resolve Object Statements</em>}'.
+	 * Returns the meta object for the containment reference list '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getResolveObjectStatements <em>Resolve Object Statements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Resolve Object Statements</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule#getResolveObjectStatements()
-	 * @see #getConcreteClassMappingRule()
+	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getResolveObjectStatements()
+	 * @see #getMappingRule()
 	 * @generated
 	 */
-	EReference getConcreteClassMappingRule_ResolveObjectStatements();
-
-	/**
-	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule <em>Abstract Class Mapping Rule</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Abstract Class Mapping Rule</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule
-	 * @generated
-	 */
-	EClass getAbstractClassMappingRule();
-
-	/**
-	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule#getResolverMethodName <em>Resolver Method Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Resolver Method Name</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule#getResolverMethodName()
-	 * @see #getAbstractClassMappingRule()
-	 * @generated
-	 */
-	EAttribute getAbstractClassMappingRule_ResolverMethodName();
+	EReference getMappingRule_ResolveObjectStatements();
 
 	/**
 	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.AssignFeature <em>Assign Feature</em>}'.
@@ -1372,22 +1240,12 @@ public interface AstransformationPackage extends EPackage {
 		EReference MAPPING_RULE__RESULT = eINSTANCE.getMappingRule_Result();
 
 		/**
-		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.ConcreteClassMappingRuleImpl <em>Concrete Class Mapping Rule</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see ru.ifmo.rain.astrans.astransformation.impl.ConcreteClassMappingRuleImpl
-		 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getConcreteClassMappingRule()
-		 * @generated
-		 */
-		EClass CONCRETE_CLASS_MAPPING_RULE = eINSTANCE.getConcreteClassMappingRule();
-
-		/**
 		 * The meta object literal for the '<em><b>Factory Class Name</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONCRETE_CLASS_MAPPING_RULE__FACTORY_CLASS_NAME = eINSTANCE.getConcreteClassMappingRule_FactoryClassName();
+		EReference MAPPING_RULE__FACTORY_CLASS_NAME = eINSTANCE.getMappingRule_FactoryClassName();
 
 		/**
 		 * The meta object literal for the '<em><b>Factory Method Name</b></em>' attribute feature.
@@ -1395,7 +1253,7 @@ public interface AstransformationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONCRETE_CLASS_MAPPING_RULE__FACTORY_METHOD_NAME = eINSTANCE.getConcreteClassMappingRule_FactoryMethodName();
+		EAttribute MAPPING_RULE__FACTORY_METHOD_NAME = eINSTANCE.getMappingRule_FactoryMethodName();
 
 		/**
 		 * The meta object literal for the '<em><b>Assign Attribute Statements</b></em>' containment reference list feature.
@@ -1403,7 +1261,7 @@ public interface AstransformationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONCRETE_CLASS_MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS = eINSTANCE.getConcreteClassMappingRule_AssignAttributeStatements();
+		EReference MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS = eINSTANCE.getMappingRule_AssignAttributeStatements();
 
 		/**
 		 * The meta object literal for the '<em><b>Assign Reference Statements</b></em>' containment reference list feature.
@@ -1411,7 +1269,7 @@ public interface AstransformationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONCRETE_CLASS_MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS = eINSTANCE.getConcreteClassMappingRule_AssignReferenceStatements();
+		EReference MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS = eINSTANCE.getMappingRule_AssignReferenceStatements();
 
 		/**
 		 * The meta object literal for the '<em><b>Write Trace Statement</b></em>' containment reference feature.
@@ -1419,7 +1277,7 @@ public interface AstransformationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONCRETE_CLASS_MAPPING_RULE__WRITE_TRACE_STATEMENT = eINSTANCE.getConcreteClassMappingRule_WriteTraceStatement();
+		EReference MAPPING_RULE__WRITE_TRACE_STATEMENT = eINSTANCE.getMappingRule_WriteTraceStatement();
 
 		/**
 		 * The meta object literal for the '<em><b>Resolve Object Statements</b></em>' containment reference list feature.
@@ -1427,25 +1285,7 @@ public interface AstransformationPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONCRETE_CLASS_MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS = eINSTANCE.getConcreteClassMappingRule_ResolveObjectStatements();
-
-		/**
-		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AbstractClassMappingRuleImpl <em>Abstract Class Mapping Rule</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see ru.ifmo.rain.astrans.astransformation.impl.AbstractClassMappingRuleImpl
-		 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getAbstractClassMappingRule()
-		 * @generated
-		 */
-		EClass ABSTRACT_CLASS_MAPPING_RULE = eINSTANCE.getAbstractClassMappingRule();
-
-		/**
-		 * The meta object literal for the '<em><b>Resolver Method Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ABSTRACT_CLASS_MAPPING_RULE__RESOLVER_METHOD_NAME = eINSTANCE.getAbstractClassMappingRule_ResolverMethodName();
+		EReference MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS = eINSTANCE.getMappingRule_ResolveObjectStatements();
 
 		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.AssignFeatureImpl <em>Assign Feature</em>}' class.

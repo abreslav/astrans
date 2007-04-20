@@ -42,22 +42,15 @@ class Transformation extends Named {
 class Parameter extends Named, Typed {
 }
 
-abstract class MappingRule extends Named {
+class MappingRule extends Named {
   val Parameter[1] parameter;
   val Parameter[1] result;
-}
-
-class ConcreteClassMappingRule extends MappingRule {
   val ClassName[1] factoryClassName;
   attr String[1] factoryMethodName;
   val AssignAttribute[*] assignAttributeStatements;
   val AssignReference[*] assignReferenceStatements;
   val WriteTrace[1] writeTraceStatement;
   val ResolveObject[*] resolveObjectStatements;
-}
-
-class AbstractClassMappingRule extends MappingRule {
-  attr String[1] resolverMethodName;
 }
 
 class AssignFeature {
