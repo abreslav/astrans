@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link ru.ifmo.rain.astrans.trace.ClassMapping#getProto <em>Proto</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.trace.ClassMapping#getImage <em>Image</em>}</li>
- *   <li>{@link ru.ifmo.rain.astrans.trace.ClassMapping#isResolvedAbstractClass <em>Resolved Abstract Class</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,32 +78,5 @@ public interface ClassMapping extends EObject {
 	 * @generated
 	 */
 	void setImage(EClass value);
-
-	/**
-	 * Returns the value of the '<em><b>Resolved Abstract Class</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Resolved Abstract Class</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resolved Abstract Class</em>' attribute.
-	 * @see #setResolvedAbstractClass(boolean)
-	 * @see ru.ifmo.rain.astrans.trace.TracePackage#getClassMapping_ResolvedAbstractClass()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isResolvedAbstractClass();
-
-	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.trace.ClassMapping#isResolvedAbstractClass <em>Resolved Abstract Class</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resolved Abstract Class</em>' attribute.
-	 * @see #isResolvedAbstractClass()
-	 * @generated
-	 */
-	void setResolvedAbstractClass(boolean value);
 
 } // ClassMapping
