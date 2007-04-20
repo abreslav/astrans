@@ -6,6 +6,4 @@ import ru.ifmo.rain.astrans.astransast.TransformationAS;
 
 public interface ITETrace {
 	void transformationCreated(TransformationAS transformationAS, Transformation transformation);
-
-
 }

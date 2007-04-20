@@ -2,8 +2,6 @@ package ru.astrans;
 
 import org.eclipse.emf.ecore.EPackage;
 
-import ru.ifmo.rain.astrans.astransast.Action;
-import ru.ifmo.rain.astrans.astransast.ActionAS;
 import ru.ifmo.rain.astrans.astransast.EPackageReference;
 
 public interface ITEResolver {
@@ -12,8 +10,5 @@ public interface ITEResolver {
 	EPackage resolveSomething(EPackageReference packageReference);
 	EPackage resolveSomething1(short someAS);
 
-	// caseMyAbstractClass
-	Action resolveReferenceToMyAbstractClass(ActionAS actionAS);
-	
 
 }

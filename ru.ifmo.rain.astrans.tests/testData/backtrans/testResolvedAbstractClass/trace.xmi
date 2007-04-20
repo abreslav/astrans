@@ -4,7 +4,7 @@
   <output href="ast.ecore#/"/>
   <inputModelRoot href="model.ecore#//Class"/>
   <outputModelRoot href="ast.ecore#//ClassAS"/>
-  <classMappings resolvedAbstractClass="true">
+  <classMappings>
     <proto href="model.ecore#//A"/>
     <image href="ast.ecore#//AAS"/>
   </classMappings>

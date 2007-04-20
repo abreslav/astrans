@@ -8,7 +8,7 @@
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//Action"/>
     <image href="astransast.ecore#//ActionAS"/>
   </classMappings>
-  <classMappings resolvedAbstractClass="true">
+  <classMappings>
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//EClassifierReference"/>
     <image href="astransast.ecore#//EClassifierReferenceAS"/>
   </classMappings>

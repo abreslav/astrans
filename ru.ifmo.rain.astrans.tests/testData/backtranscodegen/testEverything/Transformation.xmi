@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="TestEveythingTransformation" main="//@mappingRules.0" resolverClassName="ITEResolver" traceClassName="ITETrace">
-  <mappingRules xsi:type="astransformation:ConcreteClassMappingRule" name="caseTransformationAS" factoryMethodName="createTransformation">
+  <mappingRules name="caseTransformationAS" factoryMethodName="createTransformation">
     <parameter name="transformationAS">
       <type name="ru.ifmo.rain.astrans.astransast.TransformationAS"/>
     </parameter>
@@ -35,14 +35,6 @@
       <type name="org.eclipse.emf.ecore.EPackage"/>
       <parameterType xsi:type="astransformation:BasicTypeName" type="short"/>
     </resolveObjectStatements>
-  </mappingRules>
-  <mappingRules xsi:type="astransformation:AbstractClassMappingRule" name="caseMyAbstractClass" resolverMethodName="resolveReferenceToMyAbstractClass">
-    <parameter name="actionAS">
-      <type name="ru.ifmo.rain.astrans.astransast.ActionAS"/>
-    </parameter>
-    <result name="action">
-      <type name="ru.ifmo.rain.astrans.astransast.Action"/>
-    </result>
   </mappingRules>
   <switchClassName name="ru.ifmo.rain.astrans.astransast.AstransastSwitch"/>
 </astransformation:Transformation>
