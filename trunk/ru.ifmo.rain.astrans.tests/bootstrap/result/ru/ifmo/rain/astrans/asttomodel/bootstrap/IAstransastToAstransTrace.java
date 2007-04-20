@@ -17,8 +17,6 @@ import ru.ifmo.rain.astrans.astransast.TransformationAS;
 import ru.ifmo.rain.astrans.astransast.TranslateReferencesAS;
 
 public interface IAstransastToAstransTrace {
-
-
 	void translateReferencesCreated(TranslateReferencesAS translateReferencesAS, TranslateReferences translateReferences);
 
 	void createClassCreated(CreateClassAS createClassAS, CreateClass createClass);

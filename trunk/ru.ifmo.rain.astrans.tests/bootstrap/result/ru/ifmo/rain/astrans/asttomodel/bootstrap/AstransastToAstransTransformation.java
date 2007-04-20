@@ -38,15 +38,13 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			}
 		}
 	
-		public EClassifierReference caseEClassifierReferenceAS(final EClassifierReferenceAS eClassifierReferenceAS) {
-			return getResolver().resolveReferenceToEClassifierReference(eClassifierReferenceAS);
-		}
-
 		public TranslateReferences caseTranslateReferencesAS(final TranslateReferencesAS translateReferencesAS) {
 			final TranslateReferences translateReferences = AstransFactory.eINSTANCE.createTranslateReferences();
 			
 			translateReferences.setIncludeDescendants(translateReferencesAS.isIncludeDescendants());
+			
 			translateReferences.setTextualReferenceType((EClassifierReference) doSwitch(translateReferencesAS.getTextualReferenceType()));
+			
 			getTrace().translateReferencesCreated(translateReferencesAS, translateReferences);
 			
 			addCommand(new Runnable() {
@@ -54,7 +52,8 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 					translateReferences.setModelReferenceTypeProto(getResolver().resolveTranslateReferencesModelReferenceTypeProto(translateReferencesAS.getModelReferenceTypeProto()));
 				}
 			});
-			
+
+		
 			return translateReferences;
 		}
 
@@ -63,7 +62,9 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			createClass.setName(createClassAS.getName());
 			createClass.setAbstract(createClassAS.isAbstract());
+			
 			doSwitch(createClass.getStructuralFeatures(), createClassAS.getStructuralFeatures());
+			
 			getTrace().createClassCreated(createClassAS, createClass);
 			
 			addCommand(new Runnable() {
@@ -73,7 +74,8 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 					}
 				}
 			});
-			
+
+		
 			return createClass;
 		}
 
@@ -83,6 +85,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			attribute.setName(attributeAS.getName());
 			attribute.setLowerBound(attributeAS.getLowerBound());
 			attribute.setUpperBound(attributeAS.getUpperBound());
+			
 			getTrace().attributeCreated(attributeAS, attribute);
 			
 			addCommand(new Runnable() {
@@ -90,7 +93,8 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 					attribute.setType(getResolver().resolveAttributeType(attributeAS.getType()));
 				}
 			});
-			
+
+		
 			return attribute;
 		}
 
@@ -101,6 +105,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			reference.setLowerBound(referenceAS.getLowerBound());
 			reference.setUpperBound(referenceAS.getUpperBound());
 			reference.setContainment(referenceAS.isContainment());
+			
 			getTrace().referenceCreated(referenceAS, reference);
 			
 			addCommand(new Runnable() {
@@ -108,7 +113,8 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 					reference.setType(getResolver().resolveReferenceType(referenceAS.getType()));
 				}
 			});
-			
+
+		
 			return reference;
 		}
 
@@ -125,7 +131,8 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 					}
 				}
 			});
-			
+
+		
 			return changeInheritance;
 		}
 
@@ -133,6 +140,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			final SkipClass skipClass = AstransFactory.eINSTANCE.createSkipClass();
 			
 			skipClass.setIncludeDescendants(skipClassAS.isIncludeDescendants());
+			
 			getTrace().skipClassCreated(skipClassAS, skipClass);
 			
 			addCommand(new Runnable() {
@@ -140,7 +148,8 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 					skipClass.setTargetProto(getResolver().resolveSkipClassTargetProto(skipClassAS.getTargetProto()));
 				}
 			});
-			
+
+		
 			return skipClass;
 		}
 
@@ -149,10 +158,12 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			transformation.setOutputName(transformationAS.getOutputName());
 			transformation.setOutputNsURI(transformationAS.getOutputNsURI());
+			
 			doSwitch(transformation.getCreateClassActions(), transformationAS.getCreateClassActions());
 			doSwitch(transformation.getTranslateReferencesActions(), transformationAS.getTranslateReferencesActions());
 			doSwitch(transformation.getChangeInheritanceActions(), transformationAS.getChangeInheritanceActions());
 			doSwitch(transformation.getSkipClassActions(), transformationAS.getSkipClassActions());
+			
 			getTrace().transformationCreated(transformationAS, transformation);
 			
 			addCommand(new Runnable() {
@@ -162,7 +173,8 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 					transformation.setAstRoot(getResolver().resolveTransformationAstRoot(transformationAS.getAstRoot()));
 				}
 			});
-			
+
+		
 			return transformation;
 		}
 	};
