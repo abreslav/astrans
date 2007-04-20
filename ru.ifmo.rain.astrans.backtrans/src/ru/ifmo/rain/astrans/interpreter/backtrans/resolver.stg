@@ -4,11 +4,11 @@ main(transformation) ::= <<
 
 
 public interface <transformation.resolverClassName> {
-	<transformation.mappingRules:{rule| <rule:(rule.class.simpleName)()>}>
+	<transformation.mappingRules:{rule| <rule:renderMappingRule()>}>
 }
 >>
 
-ConcreteClassMappingRuleImpl(r) ::= <<
+renderMappingRule(r) ::= <<
 <if (r.resolveObjectStatements)>
 // <r.name>
 <r.resolveObjectStatements:renderResolveMethod(); separator="\n">
@@ -19,11 +19,3 @@ ConcreteClassMappingRuleImpl(r) ::= <<
 renderResolveMethod(ros) ::= <<
 <ros.type> <ros.resolverMethodName>(<ros.parameterType> <ros.parameterName>);
 >>
-
-AbstractClassMappingRuleImpl(r) ::= <<
-// <r.name>
-<r.result.type> <r.resolverMethodName>(<r.parameter.type> <r.parameter.name>);
-
-
->>
-

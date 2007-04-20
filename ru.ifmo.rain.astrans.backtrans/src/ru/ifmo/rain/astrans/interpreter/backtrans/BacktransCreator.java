@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule;
 import ru.ifmo.rain.astrans.astransformation.AssignAttribute;
 import ru.ifmo.rain.astrans.astransformation.AssignFeature;
 import ru.ifmo.rain.astrans.astransformation.AssignReference;
@@ -27,7 +26,6 @@ import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.BasicType;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
-import ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
@@ -56,15 +54,8 @@ public class BacktransCreator {
 	private static void processMappings(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, Transformation backTransformation) {
 		Collection<ClassMapping> mappings = trace.getClassMappings();
 		for (ClassMapping mapping : mappings) {
-			if (mapping.getProto().isAbstract()) {
-				if (mapping.isResolvedAbstractClass()) {
-					AbstractClassMappingRule rule = AstransformationFactory.eINSTANCE.createAbstractClassMappingRule();
-					initMappingRule(protoGM, imageGM, backTransformation, mapping, rule, trace);
-
-					rule.setResolverMethodName("resolveReferenceTo" + mapping.getProto().getName());
-				}
-			} else {
-				ConcreteClassMappingRule rule = AstransformationFactory.eINSTANCE.createConcreteClassMappingRule();
+			if (!mapping.getProto().isAbstract()) {
+				MappingRule rule = AstransformationFactory.eINSTANCE.createMappingRule();
 				initMappingRule(protoGM, imageGM, backTransformation, mapping, rule, trace);
 				
 				rule.setFactoryClassName(createClassName(protoGM.getQualifiedFactoryInterfaceName()));
@@ -97,7 +88,7 @@ public class BacktransCreator {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void processReferences(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, ClassMapping mapping, ConcreteClassMappingRule rule) {
+	private static void processReferences(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, ClassMapping mapping, MappingRule rule) {
 		EList allReferences = mapping.getProto().getEAllReferences();
 		for (Iterator iter = allReferences.iterator(); iter.hasNext();) {
 			EReference reference = (EReference) iter.next();
@@ -126,7 +117,7 @@ public class BacktransCreator {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void processAttributes(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, ClassMapping mapping, ConcreteClassMappingRule rule) {
+	private static void processAttributes(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, ClassMapping mapping, MappingRule rule) {
 		EList allAttributes = mapping.getProto().getEAllAttributes();
 		for (Iterator iter = allAttributes.iterator(); iter.hasNext();) {
 			EAttribute attribute = (EAttribute) iter.next();
