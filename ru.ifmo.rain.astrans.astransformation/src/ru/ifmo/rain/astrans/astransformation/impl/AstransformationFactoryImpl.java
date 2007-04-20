@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule;
 import ru.ifmo.rain.astrans.astransformation.AssignAttribute;
 import ru.ifmo.rain.astrans.astransformation.AssignFeature;
 import ru.ifmo.rain.astrans.astransformation.AssignReference;
@@ -22,7 +21,7 @@ import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.BasicType;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
-import ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule;
+import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
@@ -75,8 +74,7 @@ public class AstransformationFactoryImpl extends EFactoryImpl implements Astrans
 			case AstransformationPackage.BASIC_TYPE_NAME: return createBasicTypeName();
 			case AstransformationPackage.TRANSFORMATION: return createTransformation();
 			case AstransformationPackage.PARAMETER: return createParameter();
-			case AstransformationPackage.CONCRETE_CLASS_MAPPING_RULE: return createConcreteClassMappingRule();
-			case AstransformationPackage.ABSTRACT_CLASS_MAPPING_RULE: return createAbstractClassMappingRule();
+			case AstransformationPackage.MAPPING_RULE: return createMappingRule();
 			case AstransformationPackage.ASSIGN_FEATURE: return createAssignFeature();
 			case AstransformationPackage.ASSIGN_ATTRIBUTE: return createAssignAttribute();
 			case AstransformationPackage.ASSIGN_REFERENCE: return createAssignReference();
@@ -150,19 +148,9 @@ public class AstransformationFactoryImpl extends EFactoryImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConcreteClassMappingRule createConcreteClassMappingRule() {
-		ConcreteClassMappingRuleImpl concreteClassMappingRule = new ConcreteClassMappingRuleImpl();
-		return concreteClassMappingRule;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AbstractClassMappingRule createAbstractClassMappingRule() {
-		AbstractClassMappingRuleImpl abstractClassMappingRule = new AbstractClassMappingRuleImpl();
-		return abstractClassMappingRule;
+	public MappingRule createMappingRule() {
+		MappingRuleImpl mappingRule = new MappingRuleImpl();
+		return mappingRule;
 	}
 
 	/**

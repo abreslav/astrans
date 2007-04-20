@@ -11,14 +11,12 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import ru.ifmo.rain.astrans.astransformation.AbstractClassMappingRule;
 import ru.ifmo.rain.astrans.astransformation.AssignAttribute;
 import ru.ifmo.rain.astrans.astransformation.AssignFeature;
 import ru.ifmo.rain.astrans.astransformation.AssignReference;
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
-import ru.ifmo.rain.astrans.astransformation.ConcreteClassMappingRule;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Named;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
@@ -156,22 +154,6 @@ public class AstransformationSwitch {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case AstransformationPackage.CONCRETE_CLASS_MAPPING_RULE: {
-				ConcreteClassMappingRule concreteClassMappingRule = (ConcreteClassMappingRule)theEObject;
-				Object result = caseConcreteClassMappingRule(concreteClassMappingRule);
-				if (result == null) result = caseMappingRule(concreteClassMappingRule);
-				if (result == null) result = caseNamed(concreteClassMappingRule);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case AstransformationPackage.ABSTRACT_CLASS_MAPPING_RULE: {
-				AbstractClassMappingRule abstractClassMappingRule = (AbstractClassMappingRule)theEObject;
-				Object result = caseAbstractClassMappingRule(abstractClassMappingRule);
-				if (result == null) result = caseMappingRule(abstractClassMappingRule);
-				if (result == null) result = caseNamed(abstractClassMappingRule);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case AstransformationPackage.ASSIGN_FEATURE: {
 				AssignFeature assignFeature = (AssignFeature)theEObject;
 				Object result = caseAssignFeature(assignFeature);
@@ -283,36 +265,6 @@ public class AstransformationSwitch {
 	 * @generated
 	 */
 	public Object caseMappingRule(MappingRule object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Concrete Class Mapping Rule</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Concrete Class Mapping Rule</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseConcreteClassMappingRule(ConcreteClassMappingRule object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpretting the object as an instance of '<em>Abstract Class Mapping Rule</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpretting the object as an instance of '<em>Abstract Class Mapping Rule</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public Object caseAbstractClassMappingRule(AbstractClassMappingRule object) {
 		return null;
 	}
 

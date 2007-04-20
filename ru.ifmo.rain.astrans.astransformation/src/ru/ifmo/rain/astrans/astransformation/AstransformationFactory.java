@@ -53,22 +53,13 @@ public interface AstransformationFactory extends EFactory {
 	Parameter createParameter();
 
 	/**
-	 * Returns a new object of class '<em>Concrete Class Mapping Rule</em>'.
+	 * Returns a new object of class '<em>Mapping Rule</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Concrete Class Mapping Rule</em>'.
+	 * @return a new object of class '<em>Mapping Rule</em>'.
 	 * @generated
 	 */
-	ConcreteClassMappingRule createConcreteClassMappingRule();
-
-	/**
-	 * Returns a new object of class '<em>Abstract Class Mapping Rule</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Abstract Class Mapping Rule</em>'.
-	 * @generated
-	 */
-	AbstractClassMappingRule createAbstractClassMappingRule();
+	MappingRule createMappingRule();
 
 	/**
 	 * Returns a new object of class '<em>Assign Feature</em>'.
