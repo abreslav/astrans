@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see ru.ifmo.rain.astrans.AstransPackage#getSkipClass()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='FullyDefineAbstractClasses'"
  * @generated
  */
 public interface SkipClass extends Action {

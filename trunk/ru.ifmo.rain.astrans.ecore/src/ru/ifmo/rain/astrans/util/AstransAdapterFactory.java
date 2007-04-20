@@ -8,12 +8,25 @@ package ru.ifmo.rain.astrans.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
 
-import ru.ifmo.rain.astrans.*;
+import ru.ifmo.rain.astrans.Action;
+import ru.ifmo.rain.astrans.AstransPackage;
+import ru.ifmo.rain.astrans.Attribute;
+import ru.ifmo.rain.astrans.ChangeInheritance;
+import ru.ifmo.rain.astrans.CreateClass;
+import ru.ifmo.rain.astrans.CreatedEClass;
+import ru.ifmo.rain.astrans.EClassReference;
+import ru.ifmo.rain.astrans.EClassifierReference;
+import ru.ifmo.rain.astrans.ExistingEClass;
+import ru.ifmo.rain.astrans.ExistingEDataType;
+import ru.ifmo.rain.astrans.MappedEClass;
+import ru.ifmo.rain.astrans.Reference;
+import ru.ifmo.rain.astrans.SkipClass;
+import ru.ifmo.rain.astrans.StructuralFeature;
+import ru.ifmo.rain.astrans.Transformation;
+import ru.ifmo.rain.astrans.TranslateReferences;
 
 /**
  * <!-- begin-user-doc -->

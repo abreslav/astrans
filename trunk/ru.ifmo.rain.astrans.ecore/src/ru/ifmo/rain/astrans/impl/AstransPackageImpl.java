@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import ru.ifmo.rain.astrans.Action;
@@ -30,6 +30,7 @@ import ru.ifmo.rain.astrans.SkipClass;
 import ru.ifmo.rain.astrans.StructuralFeature;
 import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.TranslateReferences;
+import ru.ifmo.rain.astrans.util.AstransValidator;
 
 /**
  * <!-- begin-user-doc -->
@@ -204,6 +205,15 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 
 		// Initialize created meta-data
 		theAstransPackage.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theAstransPackage, 
+			 new EValidator.Descriptor() {
+				 public EValidator getEValidator() {
+					 return AstransValidator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theAstransPackage.freeze();
@@ -804,6 +814,26 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";		
+		addAnnotation
+		  (skipClassEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "FullyDefineAbstractClasses"
+		   });
 	}
 
 } //AstransPackageImpl
