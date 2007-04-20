@@ -1,49 +1,42 @@
 @namespace(uri="http://rain.ifmo.ru/~breslav/2007/astrans", prefix="astrans")
 package astrans;
 
-/*
- * Any - any class
- * Proto - any class that existed before this transformation started
- * Created - a class which was created by Create actions
- * Mapped - a class created by MapClass actions
- */
-
 abstract class Action {
 }
 
-abstract class EClassifierReference{
+abstract class EClassifierReference {
 }
 
-abstract class EClassReference extends EClassifierReference {	
+abstract class EClassReference extends EClassifierReference {
 }
 
 class CreatedEClass extends EClassReference {
-	ref CreateClass[1] create;
+  ref CreateClass[1] create;
 }
 
 class MappedEClass extends EClassReference {
-	ref ecore.EClass[1] proto;
+  ref EClass[1] proto;
 }
 
 class ExistingEClass extends EClassReference {
-	ref ecore.EClass[1] eClass;
+  ref EClass[1] eClass;
 }
 
 class ExistingEDataType extends EClassifierReference {
-	ref ecore.EDataType[1] eDataType;
+  ref ecore.EDataType[1] eDataType;
 }
 
 class TranslateReferences extends Action {
-    ref ecore.EClass[1] modelReferenceTypeProto; // proto
-    val EClassifierReference[1] textualReferenceType; // any
-    attr boolean includeDescendants = false;
+  ref EClass[1] modelReferenceTypeProto;
+  val EClassifierReference[1] textualReferenceType;
+  attr boolean includeDescendants = false;
 }
 
 class CreateClass extends Action {
-    attr String[1] name;
-    attr boolean ~abstract = false;
-    val EClassReference[*] superclasses; // Any
-    val StructuralFeature[*] structuralFeatures;    
+  attr String[1] name;
+  attr boolean ~abstract = false;
+  val EClassReference[*] superclasses;
+  val StructuralFeature[*] structuralFeatures;
 }
 
 abstract class StructuralFeature {
@@ -62,25 +55,25 @@ class Reference extends StructuralFeature {
 }
 
 class ChangeInheritance extends Action {
-    ref ecore.EClass[1] targetProto; // Proto
-    val EClassReference[*] superclasses; // Any
+  ref EClass[1] targetProto;
+  val EClassReference[*] superclasses;
 }
 
+@Ecore(constraints="FullyDefineAbstractClasses")
 class SkipClass extends Action {
-    ref ecore.EClass[1] targetProto; // Proto
-    attr boolean includeDescendants = false;
+  ref EClass[1] targetProto;
+  attr boolean includeDescendants = false;
 }
 
 class Transformation {
-    val CreateClass[*] createClassActions;
-    val TranslateReferences[*] translateReferencesActions;
-    val ChangeInheritance[*] changeInheritanceActions;
-    val SkipClass[*] skipClassActions;
-    
-    ref ecore.EPackage[1] input;
-    ref ecore.EClass[1] inputModelRoot;
-    val EClassReference[1] astRoot;
-    
-    attr String[1] outputName;
-    attr String[1] outputNsURI;
+  val CreateClass[*] createClassActions;
+  val TranslateReferences[*] translateReferencesActions;
+  val ChangeInheritance[*] changeInheritanceActions;
+  val SkipClass[*] skipClassActions;
+  ref ecore.EPackage[1] input;
+  ref EClass[1] inputModelRoot;
+  val EClassReference[1] astRoot;
+  attr String[1] outputName;
+  attr String[1] outputNsURI;
 }
+
