@@ -19,7 +19,6 @@ class Trace {
 class ClassMapping {
   ref EClass[1] proto;
   ref EClass[1] image;
-  attr boolean resolvedAbstractClass = false;
 }
 
 class AttributeMapping {

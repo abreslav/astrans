@@ -8,12 +8,14 @@ package ru.ifmo.rain.astrans.trace.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
 
-import ru.ifmo.rain.astrans.trace.*;
+import ru.ifmo.rain.astrans.trace.AttributeMapping;
+import ru.ifmo.rain.astrans.trace.ClassMapping;
+import ru.ifmo.rain.astrans.trace.ReferenceMapping;
+import ru.ifmo.rain.astrans.trace.Trace;
+import ru.ifmo.rain.astrans.trace.TracePackage;
 
 /**
  * <!-- begin-user-doc -->

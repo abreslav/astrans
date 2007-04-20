@@ -11,7 +11,11 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
-import ru.ifmo.rain.astrans.trace.*;
+import ru.ifmo.rain.astrans.trace.AttributeMapping;
+import ru.ifmo.rain.astrans.trace.ClassMapping;
+import ru.ifmo.rain.astrans.trace.ReferenceMapping;
+import ru.ifmo.rain.astrans.trace.Trace;
+import ru.ifmo.rain.astrans.trace.TracePackage;
 
 /**
  * <!-- begin-user-doc -->
