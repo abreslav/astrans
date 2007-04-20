@@ -1,4 +1,4 @@
-package ru.ifmo.rain.astrans.interpreter;
+package ru.ifmo.rain.astrans.util;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNull;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.junit.Before;
 import org.junit.Test;
+
+import ru.ifmo.rain.astrans.util.EClassMap;
 
 public class EClassMapTest {
 
