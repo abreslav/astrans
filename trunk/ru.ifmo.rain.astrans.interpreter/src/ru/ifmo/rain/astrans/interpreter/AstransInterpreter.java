@@ -1,7 +1,6 @@
 package ru.ifmo.rain.astrans.interpreter;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
@@ -10,14 +9,13 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 
-import ru.ifmo.rain.astrans.trace.Trace;
-
 import ru.ifmo.rain.astrans.ChangeInheritance;
 import ru.ifmo.rain.astrans.CreateClass;
 import ru.ifmo.rain.astrans.EClassReference;
 import ru.ifmo.rain.astrans.SkipClass;
 import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.TranslateReferences;
+import ru.ifmo.rain.astrans.trace.Trace;
 
 
 /*
@@ -36,34 +34,18 @@ public class AstransInterpreter {
 	}
 
 	private static void mapClasses(Transformation transformation, AstransInterpreterTrace trace, Collection<EClass> classes, EClassSet skipper) {
-		Collection<EClass> resolvedAbstractClasses = new HashSet<EClass>();
-		
 		EList classifiers = transformation.getInput().getEClassifiers();
 		for (Iterator iter = classifiers.iterator(); iter.hasNext();) {
 			EClassifier eClassifier = (EClassifier) iter.next();
 			if (eClassifier instanceof EClass) {
 				EClass proto = (EClass) eClassifier;
 
-				if (skipper.contains(proto)) {
-					for (Iterator iterator = proto.getESuperTypes().iterator(); iterator.hasNext();) {
-						EClass superClass = (EClass) iterator.next();
-						if (superClass.isAbstract()) {
-							resolvedAbstractClasses.add(superClass);
-						}
-					}
-				} else {	
+				if (!skipper.contains(proto)) {
 					EClass image = EcoreFactory.eINSTANCE.createEClass();
 					trace.registerMappedClass(proto, image);
 					
 					classes.add(image);
 				}
-			}
-		}
-		
-		for (EClass abstractClass : resolvedAbstractClasses) {
-			EClass mappedClass = trace.getMappedClass(abstractClass);
-			if (mappedClass != null) {
-				trace.registerResolvedAbstractClass(abstractClass);
 			}
 		}
 	}
