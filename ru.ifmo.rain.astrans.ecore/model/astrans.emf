@@ -14,6 +14,7 @@ class CreatedEClass extends EClassReference {
   ref CreateClass[1] create;
 }
 
+@Ecore(constraints="PrototypeIsNotSkipped")
 class MappedEClass extends EClassReference {
   ref EClass[1] proto;
 }
@@ -55,7 +56,7 @@ class Reference extends StructuralFeature {
 }
 
 class ChangeInheritance extends Action {
-  ref EClass[1] targetProto;
+  val MappedEClass[1] subject;
   val EClassReference[*] superclasses;
 }
 
