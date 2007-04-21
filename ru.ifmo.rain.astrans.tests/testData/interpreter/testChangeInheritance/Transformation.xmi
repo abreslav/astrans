@@ -14,7 +14,9 @@
     </structuralFeatures>
   </createClassActions>
   <changeInheritanceActions>
-    <targetProto href="input.ecore#//Reference"/>
+    <subject>
+      <proto href="input.ecore#//Reference"/>
+    </subject>
     <superclasses xsi:type="astrans:CreatedEClass" create="//@createClassActions.0"/>
     <superclasses xsi:type="astrans:MappedEClass">
       <proto href="input.ecore#//ChangeInheritance"/>
