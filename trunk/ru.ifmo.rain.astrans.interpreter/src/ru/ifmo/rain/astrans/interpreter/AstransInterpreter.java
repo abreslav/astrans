@@ -80,7 +80,7 @@ public class AstransInterpreter {
 		for (Iterator iter = changeInheritanceActions.iterator(); iter
 				.hasNext();) {
 			ChangeInheritance action = (ChangeInheritance) iter.next();
-			EClass mappedClass = trace.getMappedClass(action.getTargetProto());
+			EClass mappedClass = (EClass) referenceResolver.resolveEClassifierReference(action.getSubject());
 			mappedClass.getESuperTypes().clear();
 			EList superclasses = action.getSuperclasses();
 			for (Iterator iterator = superclasses.iterator(); iterator
