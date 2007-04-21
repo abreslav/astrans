@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<astrans:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astrans="http://rain.ifmo.ru/~breslav/2007/astrans" outputName="astransast" outputNsURI="http://rain.ifmo.ru/~breslav/2007/astransast">
+  <skipClassActions>
+    <targetProto href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation"/>
+  </skipClassActions>
+  <input href="http://rain.ifmo.ru/~breslav/2007/astrans#/"/>
+  <inputModelRoot href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation"/>
+  <astRoot xsi:type="astrans:MappedEClass">
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//Transformation"/>
+  </astRoot>
+</astrans:Transformation>
