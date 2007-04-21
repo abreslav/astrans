@@ -24,6 +24,8 @@ import ru.ifmo.rain.astrans.Reference;
 import ru.ifmo.rain.astrans.StructuralFeature;
 import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.util.AstransSwitch;
+import ru.ifmo.rain.astrans.util.EClassMap;
+import ru.ifmo.rain.astrans.util.EClassSet;
 
 class Composer extends AstransSwitch {
 

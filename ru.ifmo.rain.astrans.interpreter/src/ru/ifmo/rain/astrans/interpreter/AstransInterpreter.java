@@ -2,20 +2,25 @@ package ru.ifmo.rain.astrans.interpreter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
+import org.eclipse.emf.ecore.util.Diagnostician;
 
 import ru.ifmo.rain.astrans.ChangeInheritance;
 import ru.ifmo.rain.astrans.CreateClass;
 import ru.ifmo.rain.astrans.EClassReference;
-import ru.ifmo.rain.astrans.SkipClass;
 import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.TranslateReferences;
 import ru.ifmo.rain.astrans.trace.Trace;
+import ru.ifmo.rain.astrans.util.AstransUtil;
+import ru.ifmo.rain.astrans.util.EClassMap;
+import ru.ifmo.rain.astrans.util.EClassSet;
 
 
 /*
@@ -48,15 +53,6 @@ public class AstransInterpreter {
 				}
 			}
 		}
-	}
-
-	private static EClassSet enumerateSkippedClasses(Transformation transformation) {
-		EClassSet skipper = new EClassSet();
-		for (Iterator iter = transformation.getSkipClassActions().iterator(); iter.hasNext();) {
-			SkipClass action = (SkipClass) iter.next();
-			skipper.addEClass(action.getTargetProto(), action.isIncludeDescendants());
-		}
-		return skipper;
 	}
 
 	private static void createClasses(Transformation transformation, AstransInterpreterTrace trace, Collection<EClass> classes) {
@@ -108,8 +104,19 @@ public class AstransInterpreter {
 	}
 
 	public static EPackage run(Transformation transformation, Trace traceModel) {
+		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(transformation);
+		if (diagnostic.getSeverity() != Diagnostic.OK) {
+			StringBuilder message = new StringBuilder(diagnostic.getMessage());
+			List children = diagnostic.getChildren();
+			for (Iterator iter = children.iterator(); iter.hasNext();) {
+				Diagnostic child = (Diagnostic) iter.next();
+				message.append("\n    ").append(child.getMessage());
+			}
+			throw new IllegalArgumentException(message.toString());
+		}		
+		
 		AstransInterpreterTrace trace = new AstransInterpreterTrace(traceModel);
-		EClassSet skippedClasses = enumerateSkippedClasses(transformation);
+		EClassSet skippedClasses = AstransUtil.getSkippedClasses(transformation);
 
 		Collection<EClass> classes = createEClassObjects(transformation, trace, skippedClasses);
 
