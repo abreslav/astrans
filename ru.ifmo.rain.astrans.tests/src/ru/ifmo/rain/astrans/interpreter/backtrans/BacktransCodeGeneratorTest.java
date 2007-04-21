@@ -3,10 +3,7 @@ package ru.ifmo.rain.astrans.interpreter.backtrans;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.Collection;
 
 import org.eclipse.emf.codegen.util.ImportManager;
@@ -54,9 +51,9 @@ public class BacktransCodeGeneratorTest {
 		
 		BacktransCodeGenerator.generate(transformation, "ru.astrans", dataDir);
 
-		assertEqualFiles("transformation", dataDir + "/expected.java", dataDir + "/" + transformation.getName() + ".java");
-		assertEqualFiles("trace", dataDir + "/expectedTrace.java", dataDir + "/" + transformation.getTraceClassName() + ".java");
-		assertEqualFiles("resolver", dataDir + "/expectedResolver.java", dataDir + "/" + transformation.getResolverClassName() + ".java");
+		FileUtils.assertEqualFiles("transformation", dataDir + "/expected.java", dataDir + "/" + transformation.getName() + ".java");
+		FileUtils.assertEqualFiles("trace", dataDir + "/expectedTrace.java", dataDir + "/" + transformation.getTraceClassName() + ".java");
+		FileUtils.assertEqualFiles("resolver", dataDir + "/expectedResolver.java", dataDir + "/" + transformation.getResolverClassName() + ".java");
 	}
 
 	@Test
@@ -66,22 +63,5 @@ public class BacktransCodeGeneratorTest {
 		manager.addImport("ru.amse.SomeClass");
 		assertEquals("SomeClass", manager.getImportedName("ru.SomeClass"));
 		assertEquals("ru.amse.SomeClass", manager.getImportedName("ru.amse.SomeClass"));
-	}
-
-	private static void assertEqualFiles(String comment, String expectedFile, String resultFile) throws FileNotFoundException, IOException {
-		Reader expectedTransformation = new FileReader(expectedFile);
-		Reader result = new FileReader(resultFile);
-		int i = 0;
-		int resultC;
-		int expectedC;
-		do {
-			expectedC = expectedTransformation.read();
-			resultC = result.read();
-			assertEquals(comment + ": " + i, expectedC, resultC);
-			if (expectedC == -1 || resultC == -1) {
-				break;
-			}
-			i++;
-		} while (expectedC != -1 || resultC != -1);
 	}
 }
