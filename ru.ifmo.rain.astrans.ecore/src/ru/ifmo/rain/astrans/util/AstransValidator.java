@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
@@ -195,14 +196,15 @@ public class AstransValidator extends EObjectValidator {
 	 * Validates the PrototypeIsNotSkipped constraint of '<em>Mapped EClass</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateMappedEClass_PrototypeIsNotSkipped(MappedEClass mappedEClass, DiagnosticChain diagnostics, Map context) {
-		// TODO implement the constraint
-		// -> specify the condition that violates the constraint
-		// -> verify the diagnostic details, including severity, code, and message
-		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
+		EObject parent = mappedEClass.eContainer();
+		while (false == parent instanceof Transformation && parent != null) {
+			parent = parent.eContainer();
+		}
+		EClassSet skippedClasses = AstransUtil.getSkippedClasses((Transformation) parent);
+		if (skippedClasses.contains(mappedEClass.getProto())) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
