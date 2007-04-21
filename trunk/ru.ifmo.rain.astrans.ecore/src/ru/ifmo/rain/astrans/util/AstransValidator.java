@@ -183,7 +183,38 @@ public class AstransValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMappedEClass(MappedEClass mappedEClass, DiagnosticChain diagnostics, Map context) {
-		return validate_EveryDefaultConstraint(mappedEClass, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms(mappedEClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(mappedEClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(mappedEClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(mappedEClass, diagnostics, context);
+		if (result || diagnostics != null) result &= validateMappedEClass_PrototypeIsNotSkipped(mappedEClass, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * Validates the PrototypeIsNotSkipped constraint of '<em>Mapped EClass</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMappedEClass_PrototypeIsNotSkipped(MappedEClass mappedEClass, DiagnosticChain diagnostics, Map context) {
+		// TODO implement the constraint
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		if (false) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(new BasicDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "PrototypeIsNotSkipped", getObjectLabel(mappedEClass, context) }),
+						 new Object[] { mappedEClass }));
+			}
+			return false;
+		}
+		return true;
 	}
 
 	/**

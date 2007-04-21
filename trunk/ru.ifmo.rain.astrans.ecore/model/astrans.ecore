@@ -11,6 +11,9 @@
         eType="#//CreateClass"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MappedEClass" eSuperTypes="#//EClassReference">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="PrototypeIsNotSkipped"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="proto" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExistingEClass" eSuperTypes="#//EClassReference">
@@ -55,8 +58,8 @@
         defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ChangeInheritance" eSuperTypes="#//Action">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetProto" lowerBound="1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subject" lowerBound="1"
+        eType="#//MappedEClass" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="superclasses" upperBound="-1"
         eType="#//EClassReference" containment="true"/>
   </eClassifiers>

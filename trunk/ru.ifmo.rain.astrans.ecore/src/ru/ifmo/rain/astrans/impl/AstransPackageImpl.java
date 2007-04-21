@@ -496,7 +496,7 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChangeInheritance_TargetProto() {
+	public EReference getChangeInheritance_Subject() {
 		return (EReference)changeInheritanceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -696,7 +696,7 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 		createEAttribute(referenceEClass, REFERENCE__CONTAINMENT);
 
 		changeInheritanceEClass = createEClass(CHANGE_INHERITANCE);
-		createEReference(changeInheritanceEClass, CHANGE_INHERITANCE__TARGET_PROTO);
+		createEReference(changeInheritanceEClass, CHANGE_INHERITANCE__SUBJECT);
 		createEReference(changeInheritanceEClass, CHANGE_INHERITANCE__SUPERCLASSES);
 
 		skipClassEClass = createEClass(SKIP_CLASS);
@@ -794,7 +794,7 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 		initEAttribute(getReference_Containment(), ecorePackage.getEBoolean(), "containment", "false", 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(changeInheritanceEClass, ChangeInheritance.class, "ChangeInheritance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChangeInheritance_TargetProto(), ecorePackage.getEClass(), null, "targetProto", null, 1, 1, ChangeInheritance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChangeInheritance_Subject(), this.getMappedEClass(), null, "subject", null, 1, 1, ChangeInheritance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChangeInheritance_Superclasses(), this.getEClassReference(), null, "superclasses", null, 0, -1, ChangeInheritance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(skipClassEClass, SkipClass.class, "SkipClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -828,6 +828,12 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 	 */
 	protected void createEcoreAnnotations() {
 		String source = "http://www.eclipse.org/emf/2002/Ecore";		
+		addAnnotation
+		  (mappedEClassEClass, 
+		   source, 
+		   new String[] {
+			 "constraints", "PrototypeIsNotSkipped"
+		   });		
 		addAnnotation
 		  (skipClassEClass, 
 		   source, 

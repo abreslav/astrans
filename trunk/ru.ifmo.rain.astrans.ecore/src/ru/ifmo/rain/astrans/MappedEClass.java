@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EClass;
  * </p>
  *
  * @see ru.ifmo.rain.astrans.AstransPackage#getMappedEClass()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='PrototypeIsNotSkipped'"
  * @generated
  */
 public interface MappedEClass extends EClassReference {

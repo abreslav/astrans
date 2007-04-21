@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import ru.ifmo.rain.astrans.AstransPackage;
 import ru.ifmo.rain.astrans.ChangeInheritance;
 import ru.ifmo.rain.astrans.EClassReference;
+import ru.ifmo.rain.astrans.MappedEClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +29,7 @@ import ru.ifmo.rain.astrans.EClassReference;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ru.ifmo.rain.astrans.impl.ChangeInheritanceImpl#getTargetProto <em>Target Proto</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.impl.ChangeInheritanceImpl#getSubject <em>Subject</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.impl.ChangeInheritanceImpl#getSuperclasses <em>Superclasses</em>}</li>
  * </ul>
  * </p>
@@ -37,14 +38,14 @@ import ru.ifmo.rain.astrans.EClassReference;
  */
 public class ChangeInheritanceImpl extends ActionImpl implements ChangeInheritance {
 	/**
-	 * The cached value of the '{@link #getTargetProto() <em>Target Proto</em>}' reference.
+	 * The cached value of the '{@link #getSubject() <em>Subject</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTargetProto()
+	 * @see #getSubject()
 	 * @generated
 	 * @ordered
 	 */
-	protected EClass targetProto = null;
+	protected MappedEClass subject = null;
 
 	/**
 	 * The cached value of the '{@link #getSuperclasses() <em>Superclasses</em>}' containment reference list.
@@ -79,16 +80,23 @@ public class ChangeInheritanceImpl extends ActionImpl implements ChangeInheritan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTargetProto() {
-		if (targetProto != null && targetProto.eIsProxy()) {
-			InternalEObject oldTargetProto = (InternalEObject)targetProto;
-			targetProto = (EClass)eResolveProxy(oldTargetProto);
-			if (targetProto != oldTargetProto) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AstransPackage.CHANGE_INHERITANCE__TARGET_PROTO, oldTargetProto, targetProto));
-			}
+	public MappedEClass getSubject() {
+		return subject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetSubject(MappedEClass newSubject, NotificationChain msgs) {
+		MappedEClass oldSubject = subject;
+		subject = newSubject;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransPackage.CHANGE_INHERITANCE__SUBJECT, oldSubject, newSubject);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
-		return targetProto;
+		return msgs;
 	}
 
 	/**
@@ -96,20 +104,18 @@ public class ChangeInheritanceImpl extends ActionImpl implements ChangeInheritan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass basicGetTargetProto() {
-		return targetProto;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTargetProto(EClass newTargetProto) {
-		EClass oldTargetProto = targetProto;
-		targetProto = newTargetProto;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AstransPackage.CHANGE_INHERITANCE__TARGET_PROTO, oldTargetProto, targetProto));
+	public void setSubject(MappedEClass newSubject) {
+		if (newSubject != subject) {
+			NotificationChain msgs = null;
+			if (subject != null)
+				msgs = ((InternalEObject)subject).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransPackage.CHANGE_INHERITANCE__SUBJECT, null, msgs);
+			if (newSubject != null)
+				msgs = ((InternalEObject)newSubject).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransPackage.CHANGE_INHERITANCE__SUBJECT, null, msgs);
+			msgs = basicSetSubject(newSubject, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransPackage.CHANGE_INHERITANCE__SUBJECT, newSubject, newSubject));
 	}
 
 	/**
@@ -131,6 +137,8 @@ public class ChangeInheritanceImpl extends ActionImpl implements ChangeInheritan
 	 */
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case AstransPackage.CHANGE_INHERITANCE__SUBJECT:
+				return basicSetSubject(null, msgs);
 			case AstransPackage.CHANGE_INHERITANCE__SUPERCLASSES:
 				return ((InternalEList)getSuperclasses()).basicRemove(otherEnd, msgs);
 		}
@@ -144,9 +152,8 @@ public class ChangeInheritanceImpl extends ActionImpl implements ChangeInheritan
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case AstransPackage.CHANGE_INHERITANCE__TARGET_PROTO:
-				if (resolve) return getTargetProto();
-				return basicGetTargetProto();
+			case AstransPackage.CHANGE_INHERITANCE__SUBJECT:
+				return getSubject();
 			case AstransPackage.CHANGE_INHERITANCE__SUPERCLASSES:
 				return getSuperclasses();
 		}
@@ -160,8 +167,8 @@ public class ChangeInheritanceImpl extends ActionImpl implements ChangeInheritan
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case AstransPackage.CHANGE_INHERITANCE__TARGET_PROTO:
-				setTargetProto((EClass)newValue);
+			case AstransPackage.CHANGE_INHERITANCE__SUBJECT:
+				setSubject((MappedEClass)newValue);
 				return;
 			case AstransPackage.CHANGE_INHERITANCE__SUPERCLASSES:
 				getSuperclasses().clear();
@@ -178,8 +185,8 @@ public class ChangeInheritanceImpl extends ActionImpl implements ChangeInheritan
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case AstransPackage.CHANGE_INHERITANCE__TARGET_PROTO:
-				setTargetProto((EClass)null);
+			case AstransPackage.CHANGE_INHERITANCE__SUBJECT:
+				setSubject((MappedEClass)null);
 				return;
 			case AstransPackage.CHANGE_INHERITANCE__SUPERCLASSES:
 				getSuperclasses().clear();
@@ -195,8 +202,8 @@ public class ChangeInheritanceImpl extends ActionImpl implements ChangeInheritan
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case AstransPackage.CHANGE_INHERITANCE__TARGET_PROTO:
-				return targetProto != null;
+			case AstransPackage.CHANGE_INHERITANCE__SUBJECT:
+				return subject != null;
 			case AstransPackage.CHANGE_INHERITANCE__SUPERCLASSES:
 				return superclasses != null && !superclasses.isEmpty();
 		}
