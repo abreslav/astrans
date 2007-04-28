@@ -28,16 +28,6 @@ public class TestEveythingTransformation extends ASTToModelTransformation<ITERes
 		public Transformation caseTransformationAS(final TransformationAS transformationAS) {
 			final Transformation transformation = AstransFactory.eINSTANCE.createTransformation();
 			
-			transformation.setOutputName().addAll(transformationAS.getOutputName());
-			transformation.setOutputNsURI(transformationAS.getOutputNsURI());
-			
-			transformation.setCreateClassActions((CreateClass) doSwitch(transformationAS.getCreateClassActions()));
-			transformation.getSkipClassActions().addAll(transformationAS.getSkipClassActions());
-			doSwitch(transformation.getTranslateReferencesActions(), transformationAS.getTranslateReferencesActions());
-			transformation.setChangeInheritanceActions(transformationAS.getChangeInheritanceActions());
-			
-			getTrace().transformationCreated(transformationAS, transformation);
-			
 			addCommand(new Runnable() {
 				public void run() {
 					for (Iterator i = transformationAS.getInput().iterator(); i.hasNext(); ) {
@@ -47,7 +37,17 @@ public class TestEveythingTransformation extends ASTToModelTransformation<ITERes
 					transformation.setSomething1(getResolver().resolveSomething1(transformationAS.getSomething1()));
 				}
 			});
-
+		
+			
+			transformation.setOutputName().addAll(transformationAS.getOutputName());
+			transformation.setOutputNsURI(transformationAS.getOutputNsURI());
+			
+			transformation.setCreateClassActions((CreateClass) doSwitch(transformationAS.getCreateClassActions()));
+			transformation.getSkipClassActions().addAll(transformationAS.getSkipClassActions());
+			doSwitch(transformation.getTranslateReferencesActions(), transformationAS.getTranslateReferencesActions());
+			transformation.setChangeInheritanceActions(transformationAS.getChangeInheritanceActions());
+			
+			getTrace().transformationCreated(transformationAS, transformation);
 		
 			return transformation;
 		}

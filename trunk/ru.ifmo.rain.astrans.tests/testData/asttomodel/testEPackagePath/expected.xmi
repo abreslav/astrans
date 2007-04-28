@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
-<astrans:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:astrans="http://rain.ifmo.ru/~breslav/2007/astrans" outputName="output" outputNsURI="http://uri">
+<astrans:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astrans="http://rain.ifmo.ru/~breslav/2007/astrans" outputName="output" outputNsURI="http://uri">
   <input href="sample.ecore#/"/>
+  <inputModelRoot href="sample.ecore#//A"/>
+  <astRoot xsi:type="astrans:MappedEClass">
+    <proto href="sample.ecore#//A"/>
+  </astRoot>
 </astrans:Transformation>

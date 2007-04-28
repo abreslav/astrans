@@ -25,9 +25,11 @@
     </textualReferenceType>
   </translateReferencesActions>
   <changeInheritanceActions>
-    <targetProto name="ecore">
-      <subQN name="EAnnotation"/>
-    </targetProto>
+    <subject>
+      <proto name="ecore">
+        <subQN name="EAnnotation"/>
+      </proto>
+    </subject>
     <superclasses xsi:type="astransast:MappedEClassAS">
       <proto name="ecore">
         <subQN name="EEnum"/>
@@ -35,4 +37,12 @@
     </superclasses>
   </changeInheritanceActions>
   <input xsi:type="astransast:EPackageUri" uri="http://www.eclipse.org/emf/2002/Ecore"/>
+  <inputModelRoot name="ecore">
+    <subQN name="EAnnotation"/>
+  </inputModelRoot>
+  <astRoot xsi:type="astransast:MappedEClassAS">
+    <proto name="ecore">
+      <subQN name="EAnnotation"/>
+    </proto>
+  </astRoot>
 </astransast:TransformationAS>

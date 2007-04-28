@@ -2,7 +2,9 @@
 <astrans:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astrans="http://rain.ifmo.ru/~breslav/2007/astrans" outputName="output" outputNsURI="http://uri">
   <createClassActions name="A"/>
   <changeInheritanceActions>
-    <targetProto href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+    <subject>
+      <proto href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+    </subject>
     <superclasses xsi:type="astrans:ExistingEClass">
       <eClass href="http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
     </superclasses>
@@ -12,4 +14,8 @@
     </superclasses>
   </changeInheritanceActions>
   <input href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  <inputModelRoot href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+  <astRoot xsi:type="astrans:MappedEClass">
+    <proto href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+  </astRoot>
 </astrans:Transformation>

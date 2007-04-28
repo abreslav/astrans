@@ -2,7 +2,7 @@
 <astransast:TransformationAS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransast="http://rain.ifmo.ru/~breslav/2007/astransast" outputName="astransast" outputNsURI="http://rain.ifmo.ru/~breslav/2007/astransast">
   <createClassActions name="QualifiedName">
     <structuralFeatures xsi:type="astransast:AttributeAS" name="name" lowerBound="1">
-      <type xsi:type="astransast:QualifiedName" name="ecore">
+      <type name="ecore">
         <subQN name="EString"/>
       </type>
     </structuralFeatures>
@@ -14,7 +14,7 @@
   <createClassActions name="EPackageUri">
     <superclasses xsi:type="astransast:QualifiedName" name="EPackageReference"/>
     <structuralFeatures xsi:type="astransast:AttributeAS" name="uri" lowerBound="1">
-      <type xsi:type="astransast:QualifiedName" name="ecore">
+      <type name="ecore">
         <subQN name="EString"/>
       </type>
     </structuralFeatures>
@@ -22,38 +22,46 @@
   <createClassActions name="EPackagePath">
     <superclasses xsi:type="astransast:QualifiedName" name="EPackageReference"/>
     <structuralFeatures xsi:type="astransast:AttributeAS" name="path" lowerBound="1">
-      <type xsi:type="astransast:QualifiedName" name="ecore">
+      <type name="ecore">
         <subQN name="EString"/>
       </type>
     </structuralFeatures>
   </createClassActions>
   <translateReferencesActions includeDescendants="true">
-    <modelReferenceTypeProto xsi:type="astransast:QualifiedName" name="astrans">
+    <modelReferenceTypeProto name="astrans">
       <subQN name="EClassifierReference"/>
     </modelReferenceTypeProto>
     <textualReferenceType xsi:type="astransast:QualifiedName" name="QualifiedName"/>
   </translateReferencesActions>
   <translateReferencesActions includeDescendants="true">
-    <modelReferenceTypeProto xsi:type="astransast:QualifiedName" name="ecore">
+    <modelReferenceTypeProto name="ecore">
       <subQN name="EClassifier"/>
     </modelReferenceTypeProto>
     <textualReferenceType xsi:type="astransast:QualifiedName" name="QualifiedName"/>
   </translateReferencesActions>
   <translateReferencesActions>
-    <modelReferenceTypeProto xsi:type="astransast:QualifiedName" name="ecore">
+    <modelReferenceTypeProto name="ecore">
       <subQN name="EPackage"/>
     </modelReferenceTypeProto>
     <textualReferenceType xsi:type="astransast:QualifiedName" name="EPackageReference"/>
   </translateReferencesActions>
   <skipClassActions includeDescendants="true">
-    <targetProto xsi:type="astransast:QualifiedName" name="ecore">
+    <targetProto name="ecore">
       <subQN name="EClassifier"/>
     </targetProto>
   </skipClassActions>
   <skipClassActions includeDescendants="true">
-    <targetProto xsi:type="astransast:QualifiedName" name="astrans">
+    <targetProto name="astrans">
       <subQN name="EClassifierReference"/>
     </targetProto>
   </skipClassActions>
   <input xsi:type="astransast:EPackageUri" uri="http://rain.ifmo.ru/~breslav/2007/astrans"/>
+  <inputModelRoot name="astrans">
+    <subQN name="Transformation"/>
+  </inputModelRoot>
+  <astRoot xsi:type="astransast:MappedEClassAS">
+    <proto name="astrans">
+      <subQN name="Transformation"/>
+    </proto>
+  </astRoot>
 </astransast:TransformationAS>

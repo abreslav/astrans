@@ -6,11 +6,11 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import ru.ifmo.rain.astrans.astransast.AstransastFactory;
-import ru.ifmo.rain.astrans.astransast.QualifiedName;
 import ru.ifmo.rain.astrans.AstransFactory;
 import ru.ifmo.rain.astrans.CreateClass;
 import ru.ifmo.rain.astrans.CreatedEClass;
+import ru.ifmo.rain.astrans.astransast.AstransastFactory;
+import ru.ifmo.rain.astrans.astransast.QualifiedName;
 
 public class CreatedClassesTest {
 
