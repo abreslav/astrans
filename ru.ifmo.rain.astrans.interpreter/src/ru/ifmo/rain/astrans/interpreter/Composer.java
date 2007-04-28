@@ -103,7 +103,10 @@ class Composer extends AstransSwitch {
 		EList superTypes = proto.getESuperTypes();
 		for (Iterator iter = superTypes.iterator(); iter.hasNext();) {
 			EClass eClass = (EClass) iter.next();
-			image.getESuperTypes().add(trace.getMappedClass(eClass));
+			if (!skippedClasses.contains(eClass)) {
+				EClass mappedSuperClass = trace.getMappedClass(eClass);
+				image.getESuperTypes().add(mappedSuperClass != null ? mappedSuperClass : eClass);
+			}
 		}
 	}
 
