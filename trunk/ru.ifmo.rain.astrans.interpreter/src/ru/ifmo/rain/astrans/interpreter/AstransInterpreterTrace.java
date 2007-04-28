@@ -57,17 +57,9 @@ public class AstransInterpreterTrace {
 		trace.addAttributeMapping(proto, image);
 	}
 	
-	public EAttribute getCorrespondingAttribute(EAttribute proto) {
-		return attributeTrace.get(proto);
-	}
-
 	public void registerReference(EReference proto, EStructuralFeature image, ReferenceMappingType mappingType) {
 		referenceTrace.put(proto, image);
 		trace.addReferenceMapping(proto, image, mappingType);
-	}
-	
-	public EStructuralFeature getCorrespondingFeature(EReference proto) {
-		return referenceTrace.get(proto);
 	}
 	
 	public void registerOutput(EPackage input, EPackage output, EClass inputRoot, EClass astRoot) {
