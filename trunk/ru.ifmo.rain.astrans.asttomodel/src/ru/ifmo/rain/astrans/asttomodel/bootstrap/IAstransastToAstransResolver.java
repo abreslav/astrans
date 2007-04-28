@@ -6,17 +6,17 @@ import org.eclipse.emf.ecore.EPackage;
 
 import ru.ifmo.rain.astrans.EClassReference;
 import ru.ifmo.rain.astrans.EClassifierReference;
-
 import ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS;
 import ru.ifmo.rain.astrans.astransast.EPackageReference;
 import ru.ifmo.rain.astrans.astransast.QualifiedName;
 
 public interface IAstransastToAstransResolver {
-	// caseEClassifierReferenceAS
-	EClassifierReference resolveReferenceToEClassifierReference(EClassifierReferenceAS eClassifierReferenceAS);
-	
+	// caseMappedEClassAS
+	EClass resolveMappedEClassProto(QualifiedName proto);
+
 	// caseTranslateReferencesAS
 	EClass resolveTranslateReferencesModelReferenceTypeProto(QualifiedName modelReferenceTypeProto);
+	EClassifierReference resolveTranslateReferencesTextualReferenceType(EClassifierReferenceAS textualReferenceType);
 
 	// caseCreateClassAS
 	EClassReference resolveCreateClassSuperclasses(EClassifierReferenceAS superclasses);
@@ -28,7 +28,6 @@ public interface IAstransastToAstransResolver {
 	EClassReference resolveReferenceType(EClassifierReferenceAS type);
 
 	// caseChangeInheritanceAS
-	EClass resolveChangeInheritanceTargetProto(QualifiedName targetProto);
 	EClassReference resolveChangeInheritanceSuperclasses(EClassifierReferenceAS superclasses);
 
 	// caseSkipClassAS

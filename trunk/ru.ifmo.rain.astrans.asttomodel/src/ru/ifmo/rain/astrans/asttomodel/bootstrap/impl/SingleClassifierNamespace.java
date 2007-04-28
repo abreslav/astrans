@@ -5,8 +5,8 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import ru.ifmo.rain.astrans.astransast.QualifiedName;
 import ru.ifmo.rain.astrans.EClassifierReference;
+import ru.ifmo.rain.astrans.astransast.QualifiedName;
 
 public abstract class SingleClassifierNamespace<T extends EClassifierReference, V> {
 

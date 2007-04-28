@@ -9,6 +9,12 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import ru.ifmo.rain.astrans.AstransFactory;
+import ru.ifmo.rain.astrans.EClassReference;
+import ru.ifmo.rain.astrans.EClassifierReference;
+import ru.ifmo.rain.astrans.ExistingEClass;
+import ru.ifmo.rain.astrans.ExistingEDataType;
+import ru.ifmo.rain.astrans.MappedEClass;
 import ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS;
 import ru.ifmo.rain.astrans.astransast.EPackagePath;
 import ru.ifmo.rain.astrans.astransast.EPackageReference;
@@ -19,12 +25,6 @@ import ru.ifmo.rain.astrans.astransast.util.AstransastSwitch;
 import ru.ifmo.rain.astrans.asttomodel.bootstrap.IAstransastToAstransResolver;
 import ru.ifmo.rain.astrans.utils.EMFHelper;
 import ru.ifmo.rain.astrans.utils.OR;
-import ru.ifmo.rain.astrans.AstransFactory;
-import ru.ifmo.rain.astrans.EClassReference;
-import ru.ifmo.rain.astrans.EClassifierReference;
-import ru.ifmo.rain.astrans.ExistingEClass;
-import ru.ifmo.rain.astrans.ExistingEDataType;
-import ru.ifmo.rain.astrans.MappedEClass;
 
 public class ResolverImpl implements IAstransastToAstransResolver {		
 	
@@ -61,7 +61,7 @@ public class ResolverImpl implements IAstransastToAstransResolver {
 	
 	private final CreatedClasses createdClasses;
 	private final EPackageResolver ecore = new EPackageResolver(EcorePackage.eINSTANCE);
-	private final EPackageResolver proto;
+	private EPackageResolver proto;
 	private final FileResolver fileResolver;
 	private final AstransastSwitch inputEPackageResolver = new AstransastSwitch() {
 		@Override
@@ -82,14 +82,9 @@ public class ResolverImpl implements IAstransastToAstransResolver {
 	};			
 
 	
-	public ResolverImpl(EPackage sourceEPackage, TraceImpl trace, FileResolver fileResolver) {
+	public ResolverImpl(TraceImpl trace, FileResolver fileResolver) {
 		this.createdClasses = trace.getCreatedClasses();
-		this.proto = new EPackageResolver(sourceEPackage);
 		this.fileResolver = fileResolver;
-	}
-
-	public EClassifierReference resolveReferenceToEClassifierReference(EClassifierReferenceAS textualReferenceType) {
-		return (EClassifierReference) classifierReferenceResolver.doSwitch(textualReferenceType);
 	}
 
 	public EClass resolveTranslateReferencesModelReferenceTypeProto(QualifiedName modelReferenceTypeProto) {
@@ -114,10 +109,6 @@ public class ResolverImpl implements IAstransastToAstransResolver {
 			.or(proto.getExistingEDataType(type))
 			.getObj();
 		return ref == null ? null : ref.getEDataType();
-	}
-
-	public EClass resolveChangeInheritanceTargetProto(QualifiedName targetProto) {
-		return lookupProtoClass(targetProto);
 	}
 
 	public EClassReference resolveChangeInheritanceSuperclasses(EClassifierReferenceAS superclass) {
@@ -146,17 +137,25 @@ public class ResolverImpl implements IAstransastToAstransResolver {
 	}
 
 	public EPackage resolveTransformationInput(EPackageReference inputAS) {
-		return (EPackage) inputEPackageResolver.doSwitch(inputAS);
+		EPackage inputPackage = (EPackage) inputEPackageResolver.doSwitch(inputAS);
+		this.proto = new EPackageResolver(inputPackage);
+		return inputPackage;
 	}
 
 	public EClassReference resolveTransformationAstRoot(EClassifierReferenceAS astRoot) {
-		// TODO Auto-generated method stub
-		return null;
+		return lookupClass(astRoot);
 	}
 
 	public EClass resolveTransformationInputModelRoot(QualifiedName inputModelRoot) {
-		// TODO Auto-generated method stub
-		return null;
+		return lookupProtoClass(inputModelRoot);
+	}
+
+	public EClass resolveMappedEClassProto(QualifiedName proto) {
+		return lookupProtoClass(proto);
+	}
+
+	public EClassifierReference resolveTranslateReferencesTextualReferenceType(EClassifierReferenceAS textualReferenceType) {
+		return (EClassifierReference) classifierReferenceResolver.doSwitch(textualReferenceType);
 	}
 	
 }
