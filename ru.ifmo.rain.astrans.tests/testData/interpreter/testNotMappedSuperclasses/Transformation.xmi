@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<astrans:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astrans="http://rain.ifmo.ru/~breslav/2007/astrans" outputName="astransast" outputNsURI="http://ast.ast">
+  <skipClassActions>
+    <targetProto href="input.ecore#//A"/>
+  </skipClassActions>
+  <input href="input.ecore#/"/>
+  <inputModelRoot href="input.ecore#//B"/>
+  <astRoot xsi:type="astrans:MappedEClass">
+    <proto href="input.ecore#//B"/>
+  </astRoot>
+</astrans:Transformation>
