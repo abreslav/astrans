@@ -7,7 +7,6 @@
 package ru.ifmo.rain.astrans.astransast;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**

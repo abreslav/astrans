@@ -9,12 +9,22 @@ package ru.ifmo.rain.astrans.astransast.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import ru.ifmo.rain.astrans.astransast.*;
+import ru.ifmo.rain.astrans.astransast.AstransastFactory;
+import ru.ifmo.rain.astrans.astransast.AstransastPackage;
+import ru.ifmo.rain.astrans.astransast.AttributeAS;
+import ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS;
+import ru.ifmo.rain.astrans.astransast.CreateClassAS;
+import ru.ifmo.rain.astrans.astransast.EPackagePath;
+import ru.ifmo.rain.astrans.astransast.EPackageUri;
+import ru.ifmo.rain.astrans.astransast.MappedEClassAS;
+import ru.ifmo.rain.astrans.astransast.QualifiedName;
+import ru.ifmo.rain.astrans.astransast.ReferenceAS;
+import ru.ifmo.rain.astrans.astransast.SkipClassAS;
+import ru.ifmo.rain.astrans.astransast.TransformationAS;
+import ru.ifmo.rain.astrans.astransast.TranslateReferencesAS;
 
 /**
  * <!-- begin-user-doc -->
