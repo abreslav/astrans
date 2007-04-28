@@ -5,8 +5,11 @@
     <genClasses image="false">
       <ecoreClass href="astransast.ecore#//ActionAS"/>
     </genClasses>
-    <genClasses image="false">
-      <ecoreClass href="astransast.ecore#//EClassifierReferenceAS"/>
+    <genClasses>
+      <ecoreClass href="astransast.ecore#//MappedEClassAS"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="astransast.ecore#//MappedEClassAS/proto"/>
+      </genFeatures>
     </genClasses>
     <genClasses>
       <ecoreClass href="astransast.ecore#//TranslateReferencesAS"/>
@@ -65,7 +68,7 @@
     <genClasses>
       <ecoreClass href="astransast.ecore#//ChangeInheritanceAS"/>
       <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="astransast.ecore#//ChangeInheritanceAS/targetProto"/>
+        <ecoreFeature xsi:type="ecore:EReference" href="astransast.ecore#//ChangeInheritanceAS/subject"/>
       </genFeatures>
       <genFeatures property="None" children="true" createChild="true">
         <ecoreFeature xsi:type="ecore:EReference" href="astransast.ecore#//ChangeInheritanceAS/superclasses"/>
@@ -111,12 +114,6 @@
       </genFeatures>
     </genClasses>
     <genClasses>
-      <ecoreClass href="astransast.ecore#//MappedEClassAS"/>
-      <genFeatures property="None" children="true" createChild="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="astransast.ecore#//MappedEClassAS/proto"/>
-      </genFeatures>
-    </genClasses>
-    <genClasses>
       <ecoreClass href="astransast.ecore#//QualifiedName"/>
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="astransast.ecore#//QualifiedName/name"/>
@@ -139,6 +136,9 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="astransast.ecore#//EPackagePath/path"/>
       </genFeatures>
+    </genClasses>
+    <genClasses image="false">
+      <ecoreClass href="astransast.ecore#//EClassifierReferenceAS"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

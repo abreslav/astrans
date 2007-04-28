@@ -17,10 +17,16 @@
     </textualReferenceType>
   </translateReferencesActions>
   <changeInheritanceActions>
-    <targetProto href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+    <subject>
+      <proto href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+    </subject>
     <superclasses xsi:type="astrans:MappedEClass">
       <proto href="http://www.eclipse.org/emf/2002/Ecore#//EEnum"/>
     </superclasses>
   </changeInheritanceActions>
   <input href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  <inputModelRoot href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+  <astRoot xsi:type="astrans:MappedEClass">
+    <proto href="http://www.eclipse.org/emf/2002/Ecore#//EAnnotation"/>
+  </astRoot>
 </astrans:Transformation>

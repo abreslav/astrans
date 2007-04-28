@@ -2,9 +2,11 @@
 <astransast:TransformationAS xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransast="http://rain.ifmo.ru/~breslav/2007/astransast" outputName="output" outputNsURI="http://uri">
   <createClassActions name="A"/>
   <changeInheritanceActions>
-    <targetProto name="ecore">
-      <subQN name="EAnnotation"/>
-    </targetProto>
+    <subject>
+      <proto name="ecore">
+        <subQN name="EAnnotation"/>
+      </proto>
+    </subject>
     <superclasses xsi:type="astransast:QualifiedName" name="ecore">
       <subQN name="EDataType"/>
     </superclasses>
@@ -16,4 +18,12 @@
     </superclasses>
   </changeInheritanceActions>
   <input xsi:type="astransast:EPackageUri" uri="http://www.eclipse.org/emf/2002/Ecore"/>
+  <inputModelRoot name="ecore">
+    <subQN name="EAnnotation"/>
+  </inputModelRoot>
+  <astRoot xsi:type="astransast:MappedEClassAS">
+    <proto name="ecore">
+      <subQN name="EAnnotation"/>
+    </proto>
+  </astRoot>
 </astransast:TransformationAS>

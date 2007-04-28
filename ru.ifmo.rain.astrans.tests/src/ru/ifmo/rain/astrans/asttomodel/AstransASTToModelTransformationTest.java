@@ -17,6 +17,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import ru.ifmo.rain.astrans.AstransPackage;
+import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.astransast.AstransastPackage;
 import ru.ifmo.rain.astrans.astransast.TransformationAS;
 import ru.ifmo.rain.astrans.asttomodel.bootstrap.AstransastToAstransTransformation;
@@ -24,8 +26,6 @@ import ru.ifmo.rain.astrans.asttomodel.bootstrap.impl.ContextFactoryImpl;
 import ru.ifmo.rain.astrans.utils.Difference;
 import ru.ifmo.rain.astrans.utils.EMFComparator;
 import ru.ifmo.rain.astrans.utils.EMFHelper;
-import ru.ifmo.rain.astrans.AstransPackage;
-import ru.ifmo.rain.astrans.Transformation;
 import utils.FileUtils;
 import utils.IFileProcessor;
 

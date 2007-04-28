@@ -8,13 +8,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.junit.Before;
 import org.junit.Test;
 
-import ru.ifmo.rain.astrans.utils.EMFHelper;
 import ru.ifmo.rain.astrans.trace.AttributeMapping;
 import ru.ifmo.rain.astrans.trace.ClassMapping;
 import ru.ifmo.rain.astrans.trace.ReferenceMapping;
 import ru.ifmo.rain.astrans.trace.ReferenceMappingType;
 import ru.ifmo.rain.astrans.trace.Trace;
 import ru.ifmo.rain.astrans.trace.TracePackage;
+import ru.ifmo.rain.astrans.utils.EMFHelper;
 
 public class TraceAdapterTest {
 

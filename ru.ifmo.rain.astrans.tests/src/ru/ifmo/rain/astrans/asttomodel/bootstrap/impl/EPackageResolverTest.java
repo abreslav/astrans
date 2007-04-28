@@ -8,10 +8,10 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.junit.Before;
 import org.junit.Test;
 
+import ru.ifmo.rain.astrans.AstransPackage;
 import ru.ifmo.rain.astrans.astransast.AstransastFactory;
 import ru.ifmo.rain.astrans.astransast.QualifiedName;
 import utils.QNUtils;
-import ru.ifmo.rain.astrans.AstransPackage;
 
 public class EPackageResolverTest {
 

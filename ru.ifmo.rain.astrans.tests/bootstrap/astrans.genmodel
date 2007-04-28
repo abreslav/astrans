@@ -91,8 +91,8 @@
     </genClasses>
     <genClasses>
       <ecoreClass href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true">
-        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/targetProto"/>
+      <genFeatures property="None" children="true" createChild="true">
+        <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/subject"/>
       </genFeatures>
       <genFeatures property="None" children="true" createChild="true">
         <ecoreFeature xsi:type="ecore:EReference" href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/superclasses"/>

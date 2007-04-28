@@ -7,8 +7,6 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.junit.Before;
 import org.junit.Test;
 
-import ru.ifmo.rain.astrans.util.EClassMap;
-
 public class EClassMapTest {
 
 	private EClassMap<String> map;

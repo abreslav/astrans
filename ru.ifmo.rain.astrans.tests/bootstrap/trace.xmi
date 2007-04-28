@@ -9,8 +9,8 @@
     <image href="astransast.ecore#//ActionAS"/>
   </classMappings>
   <classMappings>
-    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//EClassifierReference"/>
-    <image href="astransast.ecore#//EClassifierReferenceAS"/>
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//MappedEClass"/>
+    <image href="astransast.ecore#//MappedEClassAS"/>
   </classMappings>
   <classMappings>
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences"/>
@@ -85,10 +85,14 @@
     <image href="astransast.ecore#//TransformationAS/outputNsURI"/>
   </attributeMappings>
   <referenceMappings type="TRANSLATED">
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//MappedEClass/proto"/>
+    <image xsi:type="ecore:EReference" href="astransast.ecore#//MappedEClassAS/proto"/>
+  </referenceMappings>
+  <referenceMappings type="TRANSLATED">
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences/modelReferenceTypeProto"/>
     <image xsi:type="ecore:EReference" href="astransast.ecore#//TranslateReferencesAS/modelReferenceTypeProto"/>
   </referenceMappings>
-  <referenceMappings type="MAPPED">
+  <referenceMappings type="TRANSLATED">
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences/textualReferenceType"/>
     <image xsi:type="ecore:EReference" href="astransast.ecore#//TranslateReferencesAS/textualReferenceType"/>
   </referenceMappings>
@@ -108,9 +112,9 @@
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//Reference/type"/>
     <image xsi:type="ecore:EReference" href="astransast.ecore#//ReferenceAS/type"/>
   </referenceMappings>
-  <referenceMappings type="TRANSLATED">
-    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/targetProto"/>
-    <image xsi:type="ecore:EReference" href="astransast.ecore#//ChangeInheritanceAS/targetProto"/>
+  <referenceMappings type="MAPPED">
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/subject"/>
+    <image xsi:type="ecore:EReference" href="astransast.ecore#//ChangeInheritanceAS/subject"/>
   </referenceMappings>
   <referenceMappings type="TRANSLATED">
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/superclasses"/>

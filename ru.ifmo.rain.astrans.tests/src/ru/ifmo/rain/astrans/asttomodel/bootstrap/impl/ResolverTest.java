@@ -9,12 +9,6 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.junit.Before;
 import org.junit.Test;
 
-import ru.ifmo.rain.astrans.astransast.AstransastFactory;
-import ru.ifmo.rain.astrans.astransast.EPackagePath;
-import ru.ifmo.rain.astrans.astransast.EPackageUri;
-import ru.ifmo.rain.astrans.astransast.QualifiedName;
-import ru.ifmo.rain.astrans.asttomodel.bootstrap.IAstransastToAstransResolver;
-import utils.QNUtils;
 import ru.ifmo.rain.astrans.AstransFactory;
 import ru.ifmo.rain.astrans.AstransPackage;
 import ru.ifmo.rain.astrans.CreateClass;
@@ -23,12 +17,19 @@ import ru.ifmo.rain.astrans.EClassReference;
 import ru.ifmo.rain.astrans.EClassifierReference;
 import ru.ifmo.rain.astrans.ExistingEClass;
 import ru.ifmo.rain.astrans.ExistingEDataType;
+import ru.ifmo.rain.astrans.astransast.AstransastFactory;
+import ru.ifmo.rain.astrans.astransast.EPackagePath;
+import ru.ifmo.rain.astrans.astransast.EPackageUri;
+import ru.ifmo.rain.astrans.astransast.QualifiedName;
+import ru.ifmo.rain.astrans.asttomodel.bootstrap.IAstransastToAstransResolver;
+import utils.QNUtils;
 
 public class ResolverTest {
 
 	private IAstransastToAstransResolver resolver;
 	private QualifiedName actionQN;
 
+	@SuppressWarnings("unchecked")
 	@Before
 	public void setUp() throws Exception {
 		actionQN = QNUtils.createQN("astrans.Action");
@@ -37,12 +38,16 @@ public class ResolverTest {
 		CreateClass b = AstransFactory.eINSTANCE.createCreateClass();
 		b.setName("B");
 		trace.createClassCreated(null, b);
-		resolver = new ResolverImpl(AstransPackage.eINSTANCE, trace, new FileResolver("."));
+		resolver = new ResolverImpl(trace, new FileResolver("."));
+		EPackageUri uri = AstransastFactory.eINSTANCE.createEPackageUri();
+		EPackage.Registry.INSTANCE.put(AstransPackage.eNS_URI, AstransPackage.eINSTANCE);
+		uri.setUri(AstransPackage.eNS_URI);
+		resolver.resolveTransformationInput(uri);
 	}
 
 	@Test
 	public final void testResolveTranslateReferencesTextualReferenceType() {
-		EClassifierReference reference = resolver.resolveReferenceToEClassifierReference(QNUtils.createQN("ecore.EString"));
+		EClassifierReference reference = resolver.resolveTranslateReferencesTextualReferenceType(QNUtils.createQN("ecore.EString"));
 		assertEquals(EcorePackage.eINSTANCE.getEString(), ((ExistingEDataType) reference).getEDataType());
 	}
 	
@@ -80,12 +85,6 @@ public class ResolverTest {
 	public final void testResolveAttributeType() {
 		EDataType type = resolver.resolveAttributeType(QNUtils.createQN("ecore.EInt"));
 		assertEquals(EcorePackage.eINSTANCE.getEInt(), type);
-	}
-
-	@Test
-	public void testResolveChangeInheritanceTargetProto() {
-		EClass eClass = resolver.resolveChangeInheritanceTargetProto(actionQN);
-		assertEquals(AstransPackage.eINSTANCE.getAction(), eClass);
 	}
 
 	@Test
