@@ -17,6 +17,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import ru.ifmo.rain.astrans.AstransFactory;
 import ru.ifmo.rain.astrans.AstransPackage;
 import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.trace.Trace;
@@ -105,4 +106,8 @@ public class AstransInterpreterTest {
 		assertTrue("trace: " + traceDifference.toString(), traceDifference.areEqual());
 	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void testFail() {
+		AstransInterpreter.run(AstransFactory.eINSTANCE.createTransformation(), null);
+	}
 }
