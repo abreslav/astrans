@@ -3,6 +3,7 @@
   <input href="input.ecore#/"/>
   <output href="output.ecore#/"/>
   <inputModelRoot href="input.ecore#//Transformation"/>
+  <outputModelRoot href="output.ecore#//EClassifierReferenceAS"/>
   <classMappings>
     <proto href="input.ecore#//EClassifierReference"/>
     <image href="output.ecore#//EClassifierReferenceAS"/>
