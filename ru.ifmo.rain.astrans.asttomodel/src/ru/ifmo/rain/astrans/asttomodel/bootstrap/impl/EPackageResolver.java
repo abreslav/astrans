@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 
-import ru.ifmo.rain.astrans.astransast.QualifiedName;
 import ru.ifmo.rain.astrans.AstransFactory;
 import ru.ifmo.rain.astrans.ExistingEClass;
 import ru.ifmo.rain.astrans.ExistingEDataType;
+import ru.ifmo.rain.astrans.astransast.QualifiedName;
 
 class EPackageResolver extends ClassifierNamespace {
 

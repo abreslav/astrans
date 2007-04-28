@@ -1,12 +1,12 @@
 package ru.ifmo.rain.astrans.asttomodel.bootstrap.impl;
 
-import ru.ifmo.rain.astrans.astransast.QualifiedName;
 import ru.ifmo.rain.astrans.CreatedEClass;
 import ru.ifmo.rain.astrans.EClassReference;
 import ru.ifmo.rain.astrans.EClassifierReference;
 import ru.ifmo.rain.astrans.ExistingEClass;
 import ru.ifmo.rain.astrans.ExistingEDataType;
 import ru.ifmo.rain.astrans.MappedEClass;
+import ru.ifmo.rain.astrans.astransast.QualifiedName;
 
 public abstract class ClassifierNamespace implements IClassifierNamespace {
 
