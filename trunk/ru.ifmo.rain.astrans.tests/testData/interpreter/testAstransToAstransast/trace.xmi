@@ -9,8 +9,8 @@
     <image href="output.ecore#//ActionAS"/>
   </classMappings>
   <classMappings>
-    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//EClassifierReference"/>
-    <image href="output.ecore#//EClassifierReferenceAS"/>
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//MappedEClass"/>
+    <image href="output.ecore#//MappedEClassAS"/>
   </classMappings>
   <classMappings>
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences"/>
@@ -85,10 +85,14 @@
     <image href="output.ecore#//TransformationAS/outputNsURI"/>
   </attributeMappings>
   <referenceMappings type="TRANSLATED">
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//MappedEClass/proto"/>
+    <image xsi:type="ecore:EReference" href="output.ecore#//MappedEClassAS/proto"/>
+  </referenceMappings>
+  <referenceMappings type="TRANSLATED">
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences/modelReferenceTypeProto"/>
     <image xsi:type="ecore:EReference" href="output.ecore#//TranslateReferencesAS/modelReferenceTypeProto"/>
   </referenceMappings>
-  <referenceMappings type="MAPPED">
+  <referenceMappings type="TRANSLATED">
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences/textualReferenceType"/>
     <image xsi:type="ecore:EReference" href="output.ecore#//TranslateReferencesAS/textualReferenceType"/>
   </referenceMappings>
@@ -108,9 +112,9 @@
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//Reference/type"/>
     <image xsi:type="ecore:EReference" href="output.ecore#//ReferenceAS/type"/>
   </referenceMappings>
-  <referenceMappings type="TRANSLATED">
-    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/targetProto"/>
-    <image xsi:type="ecore:EReference" href="output.ecore#//ChangeInheritanceAS/targetProto"/>
+  <referenceMappings type="MAPPED">
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/subject"/>
+    <image xsi:type="ecore:EReference" href="output.ecore#//ChangeInheritanceAS/subject"/>
   </referenceMappings>
   <referenceMappings type="TRANSLATED">
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//ChangeInheritance/superclasses"/>

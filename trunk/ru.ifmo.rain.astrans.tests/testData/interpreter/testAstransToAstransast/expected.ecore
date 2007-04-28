@@ -4,7 +4,10 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="astransast"
     nsURI="http://rain.ifmo.ru/~breslav/2007/astransast" nsPrefix="astransast">
   <eClassifiers xsi:type="ecore:EClass" name="ActionAS" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="EClassifierReferenceAS" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MappedEClassAS" eSuperTypes="#//EClassifierReferenceAS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="proto" lowerBound="1" eType="#//QualifiedName"
+        containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TranslateReferencesAS" eSuperTypes="#//ActionAS">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeDescendants" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
@@ -40,8 +43,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ChangeInheritanceAS" eSuperTypes="#//ActionAS">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="targetProto" lowerBound="1"
-        eType="#//QualifiedName" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subject" lowerBound="1"
+        eType="#//MappedEClassAS" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="superclasses" upperBound="-1"
         eType="#//EClassifierReferenceAS" containment="true"/>
   </eClassifiers>
@@ -71,10 +74,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="astRoot" lowerBound="1"
         eType="#//EClassifierReferenceAS" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="MappedEClassAS" eSuperTypes="#//EClassifierReferenceAS">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="proto" lowerBound="1" eType="#//QualifiedName"
-        containment="true"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QualifiedName" eSuperTypes="#//EClassifierReferenceAS">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subQN" eType="#//QualifiedName"
@@ -87,4 +86,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="EPackagePath" eSuperTypes="#//EPackageReference">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EClassifierReferenceAS" abstract="true"/>
 </ecore:EPackage>
