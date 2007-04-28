@@ -1,5 +1,6 @@
 package utils;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
 import java.util.Date;
@@ -56,5 +57,16 @@ public class ORTest {
 	@SuppressWarnings("unchecked")
 	public void testArrayOrTypes() {
 		assertSame(c, OR.or(c, b));
+	}
+	
+	@Test
+	public void testOrReturningNull() {
+		assertNull(OR.<Object>get(null).getObj());
+		assertNull(OR.<Object>get(null).or(null).or(null).getObj());
+	}
+	
+	@Test
+	public void testStaticOrReturningNull() {
+		assertNull(OR.or(new Object[] {null}));
 	}
 }

@@ -1,9 +1,11 @@
 package ru.ifmo.rain.astrans.asttomodel.bootstrap.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,10 +21,22 @@ public class EPackageResolverTest {
 	private QualifiedName astrans;
 	private QualifiedName transformation;
 	private EPackageResolver resolver;
+	private EPackage a;
+	private EPackage b;
+	private EClass c;
 	
 	@Before
+	@SuppressWarnings("unchecked")
 	public void setUp() {
-		resolver = new EPackageResolver(EcorePackage.eINSTANCE, AstransPackage.eINSTANCE);
+		a = EcoreFactory.eINSTANCE.createEPackage();
+		a.setName("a");
+		b = EcoreFactory.eINSTANCE.createEPackage();
+		b.setName("b");
+		a.getESubpackages().add(b);
+		c = EcoreFactory.eINSTANCE.createEClass();
+		c.setName("c");
+		b.getEClassifiers().add(c);
+		resolver = new EPackageResolver(EcorePackage.eINSTANCE, AstransPackage.eINSTANCE, a);
 	}
 
 	@Test
@@ -44,8 +58,20 @@ public class EPackageResolverTest {
 	}
 
 	@Test
+	public void testGetClassifierTwoPackages() {
+		QualifiedName qn = QNUtils.createQN("a.b.c");
+		EClassifier classifier = resolver.getEClassifier(qn);
+		assertSame(c, classifier);
+	}
+	
+	@Test
 	public void testGetEClassifierNameOnUnexistentPackage() {
 		EClassifier classifier = resolver.getEClassifier(QNUtils.createQN("a.b"));
 		assertNull(classifier);
+	}
+	
+	@Test
+	public void testGetExistingEDataTypeNullResult() {
+		assertNull(resolver.getExistingEDataType(QNUtils.createQN("a.b.c")));
 	}
 }
