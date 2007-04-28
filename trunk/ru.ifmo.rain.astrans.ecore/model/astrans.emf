@@ -30,6 +30,7 @@ class ExistingEDataType extends EClassifierReference {
 class TranslateReferences extends Action {
   ref EClass[1] modelReferenceTypeProto;
   val EClassifierReference[1] textualReferenceType;
+//  attr boolean crossReferencesOnly = false;
   attr boolean includeDescendants = false;
 }
 
