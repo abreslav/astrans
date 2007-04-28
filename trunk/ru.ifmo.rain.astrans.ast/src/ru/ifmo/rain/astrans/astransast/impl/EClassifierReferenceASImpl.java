@@ -7,7 +7,6 @@
 package ru.ifmo.rain.astrans.astransast.impl;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import ru.ifmo.rain.astrans.astransast.AstransastPackage;

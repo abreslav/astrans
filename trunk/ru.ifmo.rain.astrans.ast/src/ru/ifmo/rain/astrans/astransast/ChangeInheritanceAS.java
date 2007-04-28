@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS#getTargetProto <em>Target Proto</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS#getSubject <em>Subject</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS#getSuperclasses <em>Superclasses</em>}</li>
  * </ul>
  * </p>
@@ -27,30 +27,30 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface ChangeInheritanceAS extends ActionAS {
 	/**
-	 * Returns the value of the '<em><b>Target Proto</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Subject</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Target Proto</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Subject</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Proto</em>' containment reference.
-	 * @see #setTargetProto(QualifiedName)
-	 * @see ru.ifmo.rain.astrans.astransast.AstransastPackage#getChangeInheritanceAS_TargetProto()
+	 * @return the value of the '<em>Subject</em>' containment reference.
+	 * @see #setSubject(MappedEClassAS)
+	 * @see ru.ifmo.rain.astrans.astransast.AstransastPackage#getChangeInheritanceAS_Subject()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	QualifiedName getTargetProto();
+	MappedEClassAS getSubject();
 
 	/**
-	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS#getTargetProto <em>Target Proto</em>}' containment reference.
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS#getSubject <em>Subject</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Proto</em>' containment reference.
-	 * @see #getTargetProto()
+	 * @param value the new value of the '<em>Subject</em>' containment reference.
+	 * @see #getSubject()
 	 * @generated
 	 */
-	void setTargetProto(QualifiedName value);
+	void setSubject(MappedEClassAS value);
 
 	/**
 	 * Returns the value of the '<em><b>Superclasses</b></em>' containment reference list.

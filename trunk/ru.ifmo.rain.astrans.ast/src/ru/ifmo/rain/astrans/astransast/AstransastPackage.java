@@ -374,13 +374,13 @@ public interface AstransastPackage extends EPackage {
 	int CHANGE_INHERITANCE_AS = 7;
 
 	/**
-	 * The feature id for the '<em><b>Target Proto</b></em>' containment reference.
+	 * The feature id for the '<em><b>Subject</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CHANGE_INHERITANCE_AS__TARGET_PROTO = ACTION_AS_FEATURE_COUNT + 0;
+	int CHANGE_INHERITANCE_AS__SUBJECT = ACTION_AS_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Superclasses</b></em>' containment reference list.
@@ -902,15 +902,15 @@ public interface AstransastPackage extends EPackage {
 	EClass getChangeInheritanceAS();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS#getTargetProto <em>Target Proto</em>}'.
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS#getSubject <em>Subject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Target Proto</em>'.
-	 * @see ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS#getTargetProto()
+	 * @return the meta object for the containment reference '<em>Subject</em>'.
+	 * @see ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS#getSubject()
 	 * @see #getChangeInheritanceAS()
 	 * @generated
 	 */
-	EReference getChangeInheritanceAS_TargetProto();
+	EReference getChangeInheritanceAS_Subject();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS#getSuperclasses <em>Superclasses</em>}'.
@@ -1376,12 +1376,12 @@ public interface AstransastPackage extends EPackage {
 		EClass CHANGE_INHERITANCE_AS = eINSTANCE.getChangeInheritanceAS();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Proto</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Subject</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CHANGE_INHERITANCE_AS__TARGET_PROTO = eINSTANCE.getChangeInheritanceAS_TargetProto();
+		EReference CHANGE_INHERITANCE_AS__SUBJECT = eINSTANCE.getChangeInheritanceAS_Subject();
 
 		/**
 		 * The meta object literal for the '<em><b>Superclasses</b></em>' containment reference list feature.

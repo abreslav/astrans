@@ -10,7 +10,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import ru.ifmo.rain.astrans.astransast.ActionAS;
@@ -405,7 +404,7 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getChangeInheritanceAS_TargetProto() {
+	public EReference getChangeInheritanceAS_Subject() {
 		return (EReference)changeInheritanceASEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -681,7 +680,7 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 		createEReference(referenceASEClass, REFERENCE_AS__TYPE);
 
 		changeInheritanceASEClass = createEClass(CHANGE_INHERITANCE_AS);
-		createEReference(changeInheritanceASEClass, CHANGE_INHERITANCE_AS__TARGET_PROTO);
+		createEReference(changeInheritanceASEClass, CHANGE_INHERITANCE_AS__SUBJECT);
 		createEReference(changeInheritanceASEClass, CHANGE_INHERITANCE_AS__SUPERCLASSES);
 
 		skipClassASEClass = createEClass(SKIP_CLASS_AS);
@@ -779,7 +778,7 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 		initEReference(getReferenceAS_Type(), this.getEClassifierReferenceAS(), null, "type", null, 1, 1, ReferenceAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(changeInheritanceASEClass, ChangeInheritanceAS.class, "ChangeInheritanceAS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChangeInheritanceAS_TargetProto(), this.getQualifiedName(), null, "targetProto", null, 1, 1, ChangeInheritanceAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChangeInheritanceAS_Subject(), this.getMappedEClassAS(), null, "subject", null, 1, 1, ChangeInheritanceAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getChangeInheritanceAS_Superclasses(), this.getEClassifierReferenceAS(), null, "superclasses", null, 0, -1, ChangeInheritanceAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(skipClassASEClass, SkipClassAS.class, "SkipClassAS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
