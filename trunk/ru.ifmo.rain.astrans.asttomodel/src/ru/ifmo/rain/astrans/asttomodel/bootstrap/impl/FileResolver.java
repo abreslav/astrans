@@ -11,7 +11,7 @@ public class FileResolver {
 	}
 
 	public FileResolver(final String rootPath) {
-		this.root = new File(rootPath);
+		this(new File(rootPath));
 	}
 
 	public File getFile(String fileName) {
