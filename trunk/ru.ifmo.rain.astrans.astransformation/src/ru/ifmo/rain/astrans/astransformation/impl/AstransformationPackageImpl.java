@@ -21,7 +21,9 @@ import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.BasicType;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.CustomMainMethod;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
+import ru.ifmo.rain.astrans.astransformation.Method;
 import ru.ifmo.rain.astrans.astransformation.Named;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
@@ -106,6 +108,20 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * @generated
 	 */
 	private EClass resolveObjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass methodEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass customMainMethodEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -271,8 +287,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTransformation_ResolverClassName() {
-		return (EAttribute)transformationEClass.getEStructuralFeatures().get(2);
+	public EReference getTransformation_CustomMain() {
+		return (EReference)transformationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -280,7 +296,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTransformation_TraceClassName() {
+	public EAttribute getTransformation_ResolverClassName() {
 		return (EAttribute)transformationEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -289,8 +305,17 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTransformation_TraceClassName() {
+		return (EAttribute)transformationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getTransformation_SwitchClassName() {
-		return (EReference)transformationEClass.getEStructuralFeatures().get(4);
+		return (EReference)transformationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -316,7 +341,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingRule_Parameter() {
+	public EReference getMappingRule_FactoryClassName() {
 		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -325,26 +350,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMappingRule_Result() {
-		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getMappingRule_FactoryClassName() {
-		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getMappingRule_FactoryMethodName() {
-		return (EAttribute)mappingRuleEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)mappingRuleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -353,7 +360,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * @generated
 	 */
 	public EReference getMappingRule_AssignAttributeStatements() {
-		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(4);
+		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -362,7 +369,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * @generated
 	 */
 	public EReference getMappingRule_AssignReferenceStatements() {
-		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(5);
+		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -371,7 +378,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * @generated
 	 */
 	public EReference getMappingRule_WriteTraceStatement() {
-		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(6);
+		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -380,7 +387,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * @generated
 	 */
 	public EReference getMappingRule_ResolveObjectStatements() {
-		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(7);
+		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -496,6 +503,51 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getMethod() {
+		return methodEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMethod_Parameter() {
+		return (EReference)methodEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getMethod_Result() {
+		return (EReference)methodEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCustomMainMethod() {
+		return customMainMethodEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCustomMainMethod_ResolverMethodName() {
+		return (EAttribute)customMainMethodEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getResolveObject_ResolverMethodName() {
 		return (EAttribute)resolveObjectEClass.getEStructuralFeatures().get(0);
 	}
@@ -599,6 +651,7 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		transformationEClass = createEClass(TRANSFORMATION);
 		createEReference(transformationEClass, TRANSFORMATION__MAPPING_RULES);
 		createEReference(transformationEClass, TRANSFORMATION__MAIN);
+		createEReference(transformationEClass, TRANSFORMATION__CUSTOM_MAIN);
 		createEAttribute(transformationEClass, TRANSFORMATION__RESOLVER_CLASS_NAME);
 		createEAttribute(transformationEClass, TRANSFORMATION__TRACE_CLASS_NAME);
 		createEReference(transformationEClass, TRANSFORMATION__SWITCH_CLASS_NAME);
@@ -606,8 +659,6 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		parameterEClass = createEClass(PARAMETER);
 
 		mappingRuleEClass = createEClass(MAPPING_RULE);
-		createEReference(mappingRuleEClass, MAPPING_RULE__PARAMETER);
-		createEReference(mappingRuleEClass, MAPPING_RULE__RESULT);
 		createEReference(mappingRuleEClass, MAPPING_RULE__FACTORY_CLASS_NAME);
 		createEAttribute(mappingRuleEClass, MAPPING_RULE__FACTORY_METHOD_NAME);
 		createEReference(mappingRuleEClass, MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS);
@@ -632,6 +683,13 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		createEAttribute(resolveObjectEClass, RESOLVE_OBJECT__RESOLVER_METHOD_NAME);
 		createEReference(resolveObjectEClass, RESOLVE_OBJECT__PARAMETER_TYPE);
 		createEAttribute(resolveObjectEClass, RESOLVE_OBJECT__PARAMETER_NAME);
+
+		methodEClass = createEClass(METHOD);
+		createEReference(methodEClass, METHOD__PARAMETER);
+		createEReference(methodEClass, METHOD__RESULT);
+
+		customMainMethodEClass = createEClass(CUSTOM_MAIN_METHOD);
+		createEAttribute(customMainMethodEClass, CUSTOM_MAIN_METHOD__RESOLVER_METHOD_NAME);
 
 		// Create enums
 		basicTypeEEnum = createEEnum(BASIC_TYPE);
@@ -666,12 +724,14 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		transformationEClass.getESuperTypes().add(this.getNamed());
 		parameterEClass.getESuperTypes().add(this.getNamed());
 		parameterEClass.getESuperTypes().add(this.getTyped());
-		mappingRuleEClass.getESuperTypes().add(this.getNamed());
+		mappingRuleEClass.getESuperTypes().add(this.getMethod());
 		assignAttributeEClass.getESuperTypes().add(this.getAssignFeature());
 		assignReferenceEClass.getESuperTypes().add(this.getAssignFeature());
 		assignReferenceEClass.getESuperTypes().add(this.getTyped());
 		resolveObjectEClass.getESuperTypes().add(this.getAssignFeature());
 		resolveObjectEClass.getESuperTypes().add(this.getTyped());
+		methodEClass.getESuperTypes().add(this.getNamed());
+		customMainMethodEClass.getESuperTypes().add(this.getMethod());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(namedEClass, Named.class, "Named", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -690,7 +750,8 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 
 		initEClass(transformationEClass, Transformation.class, "Transformation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTransformation_MappingRules(), this.getMappingRule(), null, "mappingRules", null, 0, -1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransformation_Main(), this.getMappingRule(), null, "main", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_Main(), this.getMappingRule(), null, "main", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransformation_CustomMain(), this.getCustomMainMethod(), null, "customMain", null, 0, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransformation_ResolverClassName(), ecorePackage.getEString(), "resolverClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTransformation_TraceClassName(), ecorePackage.getEString(), "traceClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTransformation_SwitchClassName(), this.getClassName(), null, "switchClassName", null, 1, 1, Transformation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -698,8 +759,6 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(mappingRuleEClass, MappingRule.class, "MappingRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMappingRule_Parameter(), this.getParameter(), null, "parameter", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMappingRule_Result(), this.getParameter(), null, "result", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingRule_FactoryClassName(), this.getClassName(), null, "factoryClassName", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMappingRule_FactoryMethodName(), ecorePackage.getEString(), "factoryMethodName", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingRule_AssignAttributeStatements(), this.getAssignAttribute(), null, "assignAttributeStatements", null, 0, -1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -724,6 +783,13 @@ public class AstransformationPackageImpl extends EPackageImpl implements Astrans
 		initEAttribute(getResolveObject_ResolverMethodName(), ecorePackage.getEString(), "resolverMethodName", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResolveObject_ParameterType(), this.getTypeName(), null, "parameterType", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResolveObject_ParameterName(), ecorePackage.getEString(), "parameterName", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(methodEClass, Method.class, "Method", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMethod_Parameter(), this.getParameter(), null, "parameter", null, 1, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMethod_Result(), this.getParameter(), null, "result", null, 1, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(customMainMethodEClass, CustomMainMethod.class, "CustomMainMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCustomMainMethod_ResolverMethodName(), ecorePackage.getEString(), "resolverMethodName", null, 1, 1, CustomMainMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(basicTypeEEnum, BasicType.class, "BasicType");

@@ -17,7 +17,9 @@ import ru.ifmo.rain.astrans.astransformation.AssignReference;
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.CustomMainMethod;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
+import ru.ifmo.rain.astrans.astransformation.Method;
 import ru.ifmo.rain.astrans.astransformation.Named;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
@@ -119,6 +121,12 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 			}
 			public Object caseResolveObject(ResolveObject object) {
 				return createResolveObjectAdapter();
+			}
+			public Object caseMethod(Method object) {
+				return createMethodAdapter();
+			}
+			public Object caseCustomMainMethod(CustomMainMethod object) {
+				return createCustomMainMethodAdapter();
 			}
 			public Object defaultCase(EObject object) {
 				return createEObjectAdapter();
@@ -275,6 +283,34 @@ public class AstransformationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createResolveObjectAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ru.ifmo.rain.astrans.astransformation.Method <em>Method</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ru.ifmo.rain.astrans.astransformation.Method
+	 * @generated
+	 */
+	public Adapter createMethodAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link ru.ifmo.rain.astrans.astransformation.CustomMainMethod <em>Custom Main Method</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see ru.ifmo.rain.astrans.astransformation.CustomMainMethod
+	 * @generated
+	 */
+	public Adapter createCustomMainMethodAdapter() {
 		return null;
 	}
 

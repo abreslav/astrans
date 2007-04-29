@@ -21,6 +21,7 @@ import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.BasicType;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.CustomMainMethod;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
@@ -80,6 +81,7 @@ public class AstransformationFactoryImpl extends EFactoryImpl implements Astrans
 			case AstransformationPackage.ASSIGN_REFERENCE: return createAssignReference();
 			case AstransformationPackage.WRITE_TRACE: return createWriteTrace();
 			case AstransformationPackage.RESOLVE_OBJECT: return createResolveObject();
+			case AstransformationPackage.CUSTOM_MAIN_METHOD: return createCustomMainMethod();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -201,6 +203,16 @@ public class AstransformationFactoryImpl extends EFactoryImpl implements Astrans
 	public ResolveObject createResolveObject() {
 		ResolveObjectImpl resolveObject = new ResolveObjectImpl();
 		return resolveObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CustomMainMethod createCustomMainMethod() {
+		CustomMainMethodImpl customMainMethod = new CustomMainMethodImpl();
+		return customMainMethod;
 	}
 
 	/**

@@ -17,7 +17,9 @@ import ru.ifmo.rain.astrans.astransformation.AssignReference;
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.CustomMainMethod;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
+import ru.ifmo.rain.astrans.astransformation.Method;
 import ru.ifmo.rain.astrans.astransformation.Named;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
@@ -150,6 +152,7 @@ public class AstransformationSwitch {
 			case AstransformationPackage.MAPPING_RULE: {
 				MappingRule mappingRule = (MappingRule)theEObject;
 				Object result = caseMappingRule(mappingRule);
+				if (result == null) result = caseMethod(mappingRule);
 				if (result == null) result = caseNamed(mappingRule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -186,6 +189,21 @@ public class AstransformationSwitch {
 				Object result = caseResolveObject(resolveObject);
 				if (result == null) result = caseAssignFeature(resolveObject);
 				if (result == null) result = caseTyped(resolveObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AstransformationPackage.METHOD: {
+				Method method = (Method)theEObject;
+				Object result = caseMethod(method);
+				if (result == null) result = caseNamed(method);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case AstransformationPackage.CUSTOM_MAIN_METHOD: {
+				CustomMainMethod customMainMethod = (CustomMainMethod)theEObject;
+				Object result = caseCustomMainMethod(customMainMethod);
+				if (result == null) result = caseMethod(customMainMethod);
+				if (result == null) result = caseNamed(customMainMethod);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -340,6 +358,36 @@ public class AstransformationSwitch {
 	 * @generated
 	 */
 	public Object caseResolveObject(ResolveObject object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Method</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Method</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseMethod(Method object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpretting the object as an instance of '<em>Custom Main Method</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpretting the object as an instance of '<em>Custom Main Method</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public Object caseCustomMainMethod(CustomMainMethod object) {
 		return null;
 	}
 

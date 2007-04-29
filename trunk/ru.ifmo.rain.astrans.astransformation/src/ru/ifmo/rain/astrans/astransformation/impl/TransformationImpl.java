@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.CustomMainMethod;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
 
@@ -33,6 +34,7 @@ import ru.ifmo.rain.astrans.astransformation.Transformation;
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getName <em>Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getMappingRules <em>Mapping Rules</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getMain <em>Main</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getCustomMain <em>Custom Main</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getResolverClassName <em>Resolver Class Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getTraceClassName <em>Trace Class Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.impl.TransformationImpl#getSwitchClassName <em>Switch Class Name</em>}</li>
@@ -81,6 +83,16 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * @ordered
 	 */
 	protected MappingRule main = null;
+
+	/**
+	 * The cached value of the '{@link #getCustomMain() <em>Custom Main</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCustomMain()
+	 * @generated
+	 * @ordered
+	 */
+	protected CustomMainMethod customMain = null;
 
 	/**
 	 * The default value of the '{@link #getResolverClassName() <em>Resolver Class Name</em>}' attribute.
@@ -226,6 +238,49 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public CustomMainMethod getCustomMain() {
+		return customMain;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCustomMain(CustomMainMethod newCustomMain, NotificationChain msgs) {
+		CustomMainMethod oldCustomMain = customMain;
+		customMain = newCustomMain;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__CUSTOM_MAIN, oldCustomMain, newCustomMain);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCustomMain(CustomMainMethod newCustomMain) {
+		if (newCustomMain != customMain) {
+			NotificationChain msgs = null;
+			if (customMain != null)
+				msgs = ((InternalEObject)customMain).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.TRANSFORMATION__CUSTOM_MAIN, null, msgs);
+			if (newCustomMain != null)
+				msgs = ((InternalEObject)newCustomMain).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.TRANSFORMATION__CUSTOM_MAIN, null, msgs);
+			msgs = basicSetCustomMain(newCustomMain, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.TRANSFORMATION__CUSTOM_MAIN, newCustomMain, newCustomMain));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getResolverClassName() {
 		return resolverClassName;
 	}
@@ -315,6 +370,8 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 		switch (featureID) {
 			case AstransformationPackage.TRANSFORMATION__MAPPING_RULES:
 				return ((InternalEList)getMappingRules()).basicRemove(otherEnd, msgs);
+			case AstransformationPackage.TRANSFORMATION__CUSTOM_MAIN:
+				return basicSetCustomMain(null, msgs);
 			case AstransformationPackage.TRANSFORMATION__SWITCH_CLASS_NAME:
 				return basicSetSwitchClassName(null, msgs);
 		}
@@ -335,6 +392,8 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 			case AstransformationPackage.TRANSFORMATION__MAIN:
 				if (resolve) return getMain();
 				return basicGetMain();
+			case AstransformationPackage.TRANSFORMATION__CUSTOM_MAIN:
+				return getCustomMain();
 			case AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME:
 				return getResolverClassName();
 			case AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME:
@@ -361,6 +420,9 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 				return;
 			case AstransformationPackage.TRANSFORMATION__MAIN:
 				setMain((MappingRule)newValue);
+				return;
+			case AstransformationPackage.TRANSFORMATION__CUSTOM_MAIN:
+				setCustomMain((CustomMainMethod)newValue);
 				return;
 			case AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME:
 				setResolverClassName((String)newValue);
@@ -391,6 +453,9 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 			case AstransformationPackage.TRANSFORMATION__MAIN:
 				setMain((MappingRule)null);
 				return;
+			case AstransformationPackage.TRANSFORMATION__CUSTOM_MAIN:
+				setCustomMain((CustomMainMethod)null);
+				return;
 			case AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME:
 				setResolverClassName(RESOLVER_CLASS_NAME_EDEFAULT);
 				return;
@@ -417,6 +482,8 @@ public class TransformationImpl extends EObjectImpl implements Transformation {
 				return mappingRules != null && !mappingRules.isEmpty();
 			case AstransformationPackage.TRANSFORMATION__MAIN:
 				return main != null;
+			case AstransformationPackage.TRANSFORMATION__CUSTOM_MAIN:
+				return customMain != null;
 			case AstransformationPackage.TRANSFORMATION__RESOLVER_CLASS_NAME:
 				return RESOLVER_CLASS_NAME_EDEFAULT == null ? resolverClassName != null : !RESOLVER_CLASS_NAME_EDEFAULT.equals(resolverClassName);
 			case AstransformationPackage.TRANSFORMATION__TRACE_CLASS_NAME:

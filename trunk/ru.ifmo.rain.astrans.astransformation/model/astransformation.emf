@@ -33,7 +33,8 @@ enum BasicType {
 
 class Transformation extends Named {
   val MappingRule[*] mappingRules;
-  ref MappingRule[1] main;
+  ref MappingRule[0..1] main;
+  val CustomMainMethod[0..1] customMain;
   attr String[1] resolverClassName;
   attr String[1] traceClassName;
   val ClassName[1] switchClassName;
@@ -42,9 +43,16 @@ class Transformation extends Named {
 class Parameter extends Named, Typed {
 }
 
-class MappingRule extends Named {
+abstract class Method extends Named {
   val Parameter[1] parameter;
   val Parameter[1] result;
+}
+
+class CustomMainMethod extends Method {
+  attr String[1] resolverMethodName;
+}
+
+class MappingRule extends Method {
   val ClassName[1] factoryClassName;
   attr String[1] factoryMethodName;
   val AssignAttribute[*] assignAttributeStatements;
