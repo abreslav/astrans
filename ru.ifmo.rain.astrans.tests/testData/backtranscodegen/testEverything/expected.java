@@ -58,7 +58,7 @@ public class TestEveythingTransformation extends ASTToModelTransformation<ITERes
 	}
 	
 	public Transformation run(TransformationAS transformationAS) {
-		Transformation transformation = (Transformation) transformer.doSwitch(transformationAS);
+		Transformation transformation = (Transformation) this.transformer.doSwitch(transformationAS);
 		performAllCommands();
 		return transformation;
 	}	

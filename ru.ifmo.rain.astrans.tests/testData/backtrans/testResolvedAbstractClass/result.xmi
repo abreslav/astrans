@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="ASCII"?>
 <astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="AstToModelTransformation" resolverClassName="IAstToModelResolver" traceClassName="IAstToModelTrace">
+  <customMain name="run" resolverMethodName="runTransformation">
+    <parameter name="bAS">
+      <type name="test.ast.BAS"/>
+    </parameter>
+    <result name="b">
+      <type name="test.model.B"/>
+    </result>
+  </customMain>
   <switchClassName name="test.ast.util.AstSwitch"/>
 </astransformation:Transformation>
