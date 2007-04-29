@@ -13,6 +13,7 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EReference;
@@ -26,7 +27,9 @@ import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.BasicType;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.CustomMainMethod;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
+import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
 import ru.ifmo.rain.astrans.astransformation.TypeName;
@@ -47,6 +50,15 @@ public class BacktransCreator {
 		backTransformation.setSwitchClassName(createClassName(imageGM.getQualifiedSwitchClassName()));
 	
 		processMappings(trace, protoGM, imageGM, backTransformation);
+		
+		if (backTransformation.getMain() == null) {
+			CustomMainMethod method = AstransformationFactory.eINSTANCE.createCustomMainMethod();
+			method.setName("run");
+			method.setParameter(createParameter(trace.getOutputRoot(), imageGM));
+			method.setResult(createParameter(trace.getInputRoot(), protoGM));
+			method.setResolverMethodName("runTransformation");
+			backTransformation.setCustomMain(method);
+		}
 		
 		return backTransformation;
 	}
@@ -74,13 +86,8 @@ public class BacktransCreator {
 
 		rule.setName("case" + mapping.getImage().getName());
 
-		rule.setResult(AstransformationFactory.eINSTANCE.createParameter());
-		rule.getResult().setName(CodeGenUtil.uncapName(mapping.getProto().getName()));
-		rule.getResult().setType((ClassName) getTypeName(protoGM, mapping.getProto()));
-		
-		rule.setParameter(AstransformationFactory.eINSTANCE.createParameter());
-		rule.getParameter().setType((ClassName) getTypeName(imageGM, mapping.getImage()));
-		rule.getParameter().setName(CodeGenUtil.uncapName(mapping.getImage().getName()));
+		rule.setResult(createParameter(mapping.getProto(), protoGM));
+		rule.setParameter(createParameter(mapping.getImage(), imageGM));
 
 		if (mapping.getProto() == trace.getInputRoot() && mapping.getImage() == trace.getOutputRoot()) {
 			backTransformation.setMain(rule);
@@ -221,6 +228,13 @@ public class BacktransCreator {
 		ClassName result = AstransformationFactory.eINSTANCE.createClassName();
 		result.setName(className);
 		return result;
+	}
+	
+	private static Parameter createParameter(EClass type, GenPackage genPackage) {
+		Parameter parameter = AstransformationFactory.eINSTANCE.createParameter();
+		parameter.setName(CodeGenUtil.uncapName(type.getName()));
+		parameter.setType((ClassName) getTypeName(genPackage, type));
+		return parameter;
 	}
 }
  
