@@ -12,6 +12,8 @@ public class <transformation.name> extends ASTToModelTransformation\<<transforma
 	
 <if (transformation.main)>
 	<renderMain(rule=transformation.main)>
+<else>
+	<renderCustomMain(method=transformation.customMain)>
 <endif>	
 }
 >>
@@ -89,8 +91,16 @@ for (Iterator i = <rule.parameter.name>.<r.getterName>().iterator(); i.hasNext()
 
 renderMain(rule) ::= <<
 public <rule.result.type> run(<rule.parameter.type> <rule.parameter.name>) {
-	<rule.result.type> <rule.result.name> = (<rule.result.type>) transformer.doSwitch(<rule.parameter.name>);
+	<rule.result.type> <rule.result.name> = (<rule.result.type>) this.transformer.doSwitch(<rule.parameter.name>);
 	performAllCommands();
 	return <rule.result.name>;
+}
+>>
+
+renderCustomMain(method) ::= <<
+public <method.result.type> run(<method.parameter.type> <method.parameter.name>) {
+	<method.result.type> <method.result.name> = getResolver().<method.resolverMethodName>(<method.parameter.name>, this.transformer);
+	performAllCommands();
+	return <method.result.name>;
 }
 >>

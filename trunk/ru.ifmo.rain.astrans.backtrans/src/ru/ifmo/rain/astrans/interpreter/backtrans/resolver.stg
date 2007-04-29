@@ -4,6 +4,9 @@ main(transformation) ::= <<
 
 
 public interface <transformation.resolverClassName> {
+<if(transformation.customMain)>
+	<renderCustomMain(transformation=transformation, method=transformation.customMain)>
+<endif>
 	<transformation.mappingRules:{rule| <rule:renderMappingRule()>}>
 }
 >>
@@ -18,4 +21,8 @@ renderMappingRule(r) ::= <<
 
 renderResolveMethod(ros) ::= <<
 <ros.type> <ros.resolverMethodName>(<ros.parameterType> <ros.parameterName>);
+>>
+
+renderCustomMain(transformation, method) ::= <<
+<method.result.type> <method.resolverMethodName>(<method.parameter.type> <method.parameter.name>, <transformation.switchClassName> transformer);
 >>
