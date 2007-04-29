@@ -30,7 +30,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Transformation" eSuperTypes="#//Named">
     <eStructuralFeatures xsi:type="ecore:EReference" name="mappingRules" upperBound="-1"
         eType="#//MappingRule" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="main" lowerBound="1" eType="#//MappingRule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="main" eType="#//MappingRule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="customMain" eType="#//CustomMainMethod"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolverClassName" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="traceClassName" lowerBound="1"
@@ -39,11 +41,17 @@
         eType="#//ClassName" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//Named #//Typed"/>
-  <eClassifiers xsi:type="ecore:EClass" name="MappingRule" eSuperTypes="#//Named">
+  <eClassifiers xsi:type="ecore:EClass" name="Method" abstract="true" eSuperTypes="#//Named">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
         eType="#//Parameter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="result" lowerBound="1"
         eType="#//Parameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomMainMethod" eSuperTypes="#//Method">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resolverMethodName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MappingRule" eSuperTypes="#//Method">
     <eStructuralFeatures xsi:type="ecore:EReference" name="factoryClassName" lowerBound="1"
         eType="#//ClassName" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="factoryMethodName" lowerBound="1"

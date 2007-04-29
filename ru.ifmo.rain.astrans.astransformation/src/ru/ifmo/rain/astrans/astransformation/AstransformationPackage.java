@@ -300,13 +300,22 @@ public interface AstransformationPackage extends EPackage {
 	int TRANSFORMATION__MAIN = NAMED_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Custom Main</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSFORMATION__CUSTOM_MAIN = NAMED_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Resolver Class Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION__RESOLVER_CLASS_NAME = NAMED_FEATURE_COUNT + 2;
+	int TRANSFORMATION__RESOLVER_CLASS_NAME = NAMED_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Trace Class Name</b></em>' attribute.
@@ -315,7 +324,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION__TRACE_CLASS_NAME = NAMED_FEATURE_COUNT + 3;
+	int TRANSFORMATION__TRACE_CLASS_NAME = NAMED_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Switch Class Name</b></em>' containment reference.
@@ -324,7 +333,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION__SWITCH_CLASS_NAME = NAMED_FEATURE_COUNT + 4;
+	int TRANSFORMATION__SWITCH_CLASS_NAME = NAMED_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Transformation</em>' class.
@@ -333,7 +342,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSFORMATION_FEATURE_COUNT = NAMED_FEATURE_COUNT + 5;
+	int TRANSFORMATION_FEATURE_COUNT = NAMED_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -363,13 +372,23 @@ public interface AstransformationPackage extends EPackage {
 	int PARAMETER_FEATURE_COUNT = NAMED_FEATURE_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.MethodImpl <em>Method</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.MethodImpl
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getMethod()
+	 * @generated
+	 */
+	int METHOD = 13;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__NAME = NAMED__NAME;
+	int METHOD__NAME = NAMED__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Parameter</b></em>' containment reference.
@@ -378,7 +397,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__PARAMETER = NAMED_FEATURE_COUNT + 0;
+	int METHOD__PARAMETER = NAMED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Result</b></em>' containment reference.
@@ -387,7 +406,43 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__RESULT = NAMED_FEATURE_COUNT + 1;
+	int METHOD__RESULT = NAMED_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Method</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METHOD_FEATURE_COUNT = NAMED_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPING_RULE__NAME = METHOD__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPING_RULE__PARAMETER = METHOD__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAPPING_RULE__RESULT = METHOD__RESULT;
 
 	/**
 	 * The feature id for the '<em><b>Factory Class Name</b></em>' containment reference.
@@ -396,7 +451,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__FACTORY_CLASS_NAME = NAMED_FEATURE_COUNT + 2;
+	int MAPPING_RULE__FACTORY_CLASS_NAME = METHOD_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Factory Method Name</b></em>' attribute.
@@ -405,7 +460,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__FACTORY_METHOD_NAME = NAMED_FEATURE_COUNT + 3;
+	int MAPPING_RULE__FACTORY_METHOD_NAME = METHOD_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Assign Attribute Statements</b></em>' containment reference list.
@@ -414,7 +469,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS = NAMED_FEATURE_COUNT + 4;
+	int MAPPING_RULE__ASSIGN_ATTRIBUTE_STATEMENTS = METHOD_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Assign Reference Statements</b></em>' containment reference list.
@@ -423,7 +478,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS = NAMED_FEATURE_COUNT + 5;
+	int MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS = METHOD_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Write Trace Statement</b></em>' containment reference.
@@ -432,7 +487,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__WRITE_TRACE_STATEMENT = NAMED_FEATURE_COUNT + 6;
+	int MAPPING_RULE__WRITE_TRACE_STATEMENT = METHOD_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Resolve Object Statements</b></em>' containment reference list.
@@ -441,7 +496,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS = NAMED_FEATURE_COUNT + 7;
+	int MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS = METHOD_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Mapping Rule</em>' class.
@@ -450,7 +505,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAPPING_RULE_FEATURE_COUNT = NAMED_FEATURE_COUNT + 8;
+	int MAPPING_RULE_FEATURE_COUNT = METHOD_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Setter Name</b></em>' attribute.
@@ -670,6 +725,61 @@ public interface AstransformationPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.impl.CustomMainMethodImpl <em>Custom Main Method</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.CustomMainMethodImpl
+	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getCustomMainMethod()
+	 * @generated
+	 */
+	int CUSTOM_MAIN_METHOD = 14;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_MAIN_METHOD__NAME = METHOD__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Parameter</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_MAIN_METHOD__PARAMETER = METHOD__PARAMETER;
+
+	/**
+	 * The feature id for the '<em><b>Result</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_MAIN_METHOD__RESULT = METHOD__RESULT;
+
+	/**
+	 * The feature id for the '<em><b>Resolver Method Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_MAIN_METHOD__RESOLVER_METHOD_NAME = METHOD_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Custom Main Method</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CUSTOM_MAIN_METHOD_FEATURE_COUNT = METHOD_FEATURE_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.BasicType <em>Basic Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -677,7 +787,7 @@ public interface AstransformationPackage extends EPackage {
 	 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getBasicType()
 	 * @generated
 	 */
-	int BASIC_TYPE = 13;
+	int BASIC_TYPE = 15;
 
 
 	/**
@@ -755,6 +865,17 @@ public interface AstransformationPackage extends EPackage {
 	EReference getTransformation_Main();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getCustomMain <em>Custom Main</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Custom Main</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.Transformation#getCustomMain()
+	 * @see #getTransformation()
+	 * @generated
+	 */
+	EReference getTransformation_CustomMain();
+
+	/**
 	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -806,28 +927,6 @@ public interface AstransformationPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getMappingRule();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getParameter <em>Parameter</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Parameter</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getParameter()
-	 * @see #getMappingRule()
-	 * @generated
-	 */
-	EReference getMappingRule_Parameter();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getResult <em>Result</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Result</em>'.
-	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getResult()
-	 * @see #getMappingRule()
-	 * @generated
-	 */
-	EReference getMappingRule_Result();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getFactoryClassName <em>Factory Class Name</em>}'.
@@ -1023,6 +1122,59 @@ public interface AstransformationPackage extends EPackage {
 	EAttribute getResolveObject_ParameterName();
 
 	/**
+	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.Method <em>Method</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Method</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.Method
+	 * @generated
+	 */
+	EClass getMethod();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.Method#getParameter <em>Parameter</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Parameter</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.Method#getParameter()
+	 * @see #getMethod()
+	 * @generated
+	 */
+	EReference getMethod_Parameter();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.Method#getResult <em>Result</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Result</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.Method#getResult()
+	 * @see #getMethod()
+	 * @generated
+	 */
+	EReference getMethod_Result();
+
+	/**
+	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.CustomMainMethod <em>Custom Main Method</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Custom Main Method</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.CustomMainMethod
+	 * @generated
+	 */
+	EClass getCustomMainMethod();
+
+	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.CustomMainMethod#getResolverMethodName <em>Resolver Method Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resolver Method Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.CustomMainMethod#getResolverMethodName()
+	 * @see #getCustomMainMethod()
+	 * @generated
+	 */
+	EAttribute getCustomMainMethod_ResolverMethodName();
+
+	/**
 	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.ResolveObject#getResolverMethodName <em>Resolver Method Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1180,6 +1332,14 @@ public interface AstransformationPackage extends EPackage {
 		EReference TRANSFORMATION__MAIN = eINSTANCE.getTransformation_Main();
 
 		/**
+		 * The meta object literal for the '<em><b>Custom Main</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRANSFORMATION__CUSTOM_MAIN = eINSTANCE.getTransformation_CustomMain();
+
+		/**
 		 * The meta object literal for the '<em><b>Resolver Class Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1222,22 +1382,6 @@ public interface AstransformationPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MAPPING_RULE = eINSTANCE.getMappingRule();
-
-		/**
-		 * The meta object literal for the '<em><b>Parameter</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MAPPING_RULE__PARAMETER = eINSTANCE.getMappingRule_Parameter();
-
-		/**
-		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MAPPING_RULE__RESULT = eINSTANCE.getMappingRule_Result();
 
 		/**
 		 * The meta object literal for the '<em><b>Factory Class Name</b></em>' containment reference feature.
@@ -1392,6 +1536,50 @@ public interface AstransformationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESOLVE_OBJECT__PARAMETER_NAME = eINSTANCE.getResolveObject_ParameterName();
+
+		/**
+		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.MethodImpl <em>Method</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.MethodImpl
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getMethod()
+		 * @generated
+		 */
+		EClass METHOD = eINSTANCE.getMethod();
+
+		/**
+		 * The meta object literal for the '<em><b>Parameter</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference METHOD__PARAMETER = eINSTANCE.getMethod_Parameter();
+
+		/**
+		 * The meta object literal for the '<em><b>Result</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference METHOD__RESULT = eINSTANCE.getMethod_Result();
+
+		/**
+		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.impl.CustomMainMethodImpl <em>Custom Main Method</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.CustomMainMethodImpl
+		 * @see ru.ifmo.rain.astrans.astransformation.impl.AstransformationPackageImpl#getCustomMainMethod()
+		 * @generated
+		 */
+		EClass CUSTOM_MAIN_METHOD = eINSTANCE.getCustomMainMethod();
+
+		/**
+		 * The meta object literal for the '<em><b>Resolver Method Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CUSTOM_MAIN_METHOD__RESOLVER_METHOD_NAME = eINSTANCE.getCustomMainMethod_ResolverMethodName();
 
 		/**
 		 * The meta object literal for the '<em><b>Resolver Method Name</b></em>' attribute feature.

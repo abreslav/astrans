@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getMappingRules <em>Mapping Rules</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getMain <em>Main</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getCustomMain <em>Custom Main</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getResolverClassName <em>Resolver Class Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getTraceClassName <em>Trace Class Name</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.Transformation#getSwitchClassName <em>Switch Class Name</em>}</li>
@@ -56,7 +57,7 @@ public interface Transformation extends Named {
 	 * @return the value of the '<em>Main</em>' reference.
 	 * @see #setMain(MappingRule)
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_Main()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	MappingRule getMain();
@@ -70,6 +71,32 @@ public interface Transformation extends Named {
 	 * @generated
 	 */
 	void setMain(MappingRule value);
+
+	/**
+	 * Returns the value of the '<em><b>Custom Main</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Custom Main</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Custom Main</em>' containment reference.
+	 * @see #setCustomMain(CustomMainMethod)
+	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTransformation_CustomMain()
+	 * @model containment="true"
+	 * @generated
+	 */
+	CustomMainMethod getCustomMain();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.Transformation#getCustomMain <em>Custom Main</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Custom Main</em>' containment reference.
+	 * @see #getCustomMain()
+	 * @generated
+	 */
+	void setCustomMain(CustomMainMethod value);
 
 	/**
 	 * Returns the value of the '<em><b>Resolver Class Name</b></em>' attribute.
