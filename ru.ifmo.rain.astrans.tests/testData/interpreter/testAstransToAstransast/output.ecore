@@ -5,6 +5,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="proto" lowerBound="1" eType="//QualifiedName" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TranslateReferencesAS" eSuperTypes="//ActionAS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="crossReferencesOnly" defaultValueLiteral="false">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="includeDescendants" defaultValueLiteral="false">
       <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     </eStructuralFeatures>
