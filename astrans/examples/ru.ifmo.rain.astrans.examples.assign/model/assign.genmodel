@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ru.ifmo.rain.astrans.examples.assign/src"
+    modelPluginID="ru.ifmo.rain.astrans.examples.assign" modelName="Assign" importerID="org.eclipse.emf.importer.ecore">
+  <foreignModel>assign.ecore</foreignModel>
+  <genPackages prefix="Assign" disposableProviderFactory="true" ecorePackage="assign.ecore#/">
+    <genClasses ecoreClass="assign.ecore#//AssignModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assign.ecore#//AssignModel/assignments"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="assign.ecore#//Assignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assign.ecore#//Assignment/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="assign.ecore#//VariableAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assign.ecore#//VariableAssignment/variableName"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="assign.ecore#//AbstractFeatureAssignment">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assign.ecore#//AbstractFeatureAssignment/object"/>
+    </genClasses>
+    <genClasses ecoreClass="assign.ecore#//ManyFeatureAppend"/>
+    <genClasses ecoreClass="assign.ecore#//SingleFeatureAssignment"/>
+    <genClasses image="false" ecoreClass="assign.ecore#//Expression"/>
+    <genClasses ecoreClass="assign.ecore#//Variable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assign.ecore#//Variable/variableAssignment"/>
+    </genClasses>
+    <genClasses ecoreClass="assign.ecore#//FeatureAccess">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assign.ecore#//FeatureAccess/object"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assign.ecore#//FeatureAccess/feature"/>
+    </genClasses>
+    <genClasses ecoreClass="assign.ecore#//EObjectReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assign.ecore#//EObjectReference/object"/>
+    </genClasses>
+    <genClasses ecoreClass="assign.ecore#//CreateInstance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assign.ecore#//CreateInstance/eClassReference"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="assign.ecore#//EClassReference"/>
+    <genClasses ecoreClass="assign.ecore#//StaticEClassReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assign.ecore#//StaticEClassReference/eClass"/>
+    </genClasses>
+    <genClasses ecoreClass="assign.ecore#//DynamicEClassReference">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assign.ecore#//DynamicEClassReference/eClass"/>
+    </genClasses>
+    <genClasses ecoreClass="assign.ecore#//CopyObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference assign.ecore#//CopyObject/object"/>
+    </genClasses>
+    <genClasses ecoreClass="assign.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assign.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="assign.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute assign.ecore#//BooleanLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="assign.ecore#//EnumLiteral">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference assign.ecore#//EnumLiteral/literal"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
