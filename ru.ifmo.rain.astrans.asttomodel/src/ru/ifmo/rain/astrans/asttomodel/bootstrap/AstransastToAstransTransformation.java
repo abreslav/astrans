@@ -61,6 +61,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			});
 		
 			
+			translateReferences.setCrossReferencesOnly(translateReferencesAS.isCrossReferencesOnly());
 			translateReferences.setIncludeDescendants(translateReferencesAS.isIncludeDescendants());
 			
 			getTrace().translateReferencesCreated(translateReferencesAS, translateReferences);
@@ -196,7 +197,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 	}
 	
 	public Transformation run(TransformationAS transformationAS) {
-		Transformation transformation = (Transformation) transformer.doSwitch(transformationAS);
+		Transformation transformation = (Transformation) this.transformer.doSwitch(transformationAS);
 		performAllCommands();
 		return transformation;
 	}	
