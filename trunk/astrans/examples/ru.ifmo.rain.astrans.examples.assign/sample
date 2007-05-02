@@ -1,0 +1,37 @@
+import ecore : "http://www.eclipse.org/emf/2002/Ecore";
+import astrans : "http://....";
+
+v = new ecore.EClass;
+v.name = "C";
+v.eSuperClasses += object(ecore.EClass);
+v.sStructuralFeatures += ecore.EClass.name;
+a = new ecore.EClass;
+a.eSuperClasses += v;
+
+y = new class(x.type);
+foo = new class(object(astrans.Some));
+z = object(ecore);
+
+f.x = X:LITERAL1;
+f.y = 1;
+f.z = "sadfsd";
+f.b = true;
+
+m = copy f;
+
+/*
+import
+variable assignment (only once for a variable)
+object feature assignment
+append to collection
+
+qualified name: variable, variable feature, package, class, feature
+unsupported: operations and other ecore things
+object creation with "new"
+object clone with "copy"
+string literals ""
+int literals
+boolean literals: true, false
+enum literals Enum.LITERAL
+*/
+

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ASCII"?>
+<astrans:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astrans="http://rain.ifmo.ru/~breslav/2007/astrans" outputName="assignast" outputNsURI="http://rain.ifmo.ru/~breslav/astrans/examples/2002/assign/ast">
+  <createClassActions name="Unit">
+    <structuralFeatures xsi:type="astrans:Reference" name="imports" upperBound="-1" containment="true">
+      <type xsi:type="astrans:CreatedEClass" create="//@createClassActions.1"/>
+    </structuralFeatures>
+    <structuralFeatures xsi:type="astrans:Reference" name="model" lowerBound="1" containment="true">
+      <type xsi:type="astrans:MappedEClass">
+        <proto href="model/assign.ecore#//AssignModel"/>
+      </type>
+    </structuralFeatures>
+  </createClassActions>
+  <createClassActions name="Import">
+    <structuralFeatures xsi:type="astrans:Attribute" name="packageName" lowerBound="1">
+      <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </structuralFeatures>
+    <structuralFeatures xsi:type="astrans:Attribute" name="packageUri" lowerBound="1">
+      <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </structuralFeatures>
+  </createClassActions>
+  <createClassActions name="EClassDesignator">
+    <structuralFeatures xsi:type="astrans:Attribute" name="package" lowerBound="1">
+      <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </structuralFeatures>
+    <structuralFeatures xsi:type="astrans:Attribute" name="class" lowerBound="1">
+      <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </structuralFeatures>
+  </createClassActions>
+  <createClassActions name="EcoreObjectDesignator">
+    <structuralFeatures xsi:type="astrans:Attribute" name="package" lowerBound="1">
+      <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </structuralFeatures>
+    <structuralFeatures xsi:type="astrans:Attribute" name="class">
+      <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </structuralFeatures>
+    <structuralFeatures xsi:type="astrans:Attribute" name="feature">
+      <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </structuralFeatures>
+  </createClassActions>
+  <createClassActions name="EEnumLiteralDesignator">
+    <structuralFeatures xsi:type="astrans:Attribute" name="package" lowerBound="1">
+      <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </structuralFeatures>
+    <structuralFeatures xsi:type="astrans:Attribute" name="enum" lowerBound="1">
+      <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </structuralFeatures>
+    <structuralFeatures xsi:type="astrans:Attribute" name="literal" lowerBound="1">
+      <type href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </structuralFeatures>
+  </createClassActions>
+  <translateReferencesActions>
+    <modelReferenceTypeProto href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <textualReferenceType xsi:type="astrans:CreatedEClass" create="//@createClassActions.2"/>
+  </translateReferencesActions>
+  <translateReferencesActions crossReferencesOnly="true">
+    <modelReferenceTypeProto href="model/assign.ecore#//VariableAssignment"/>
+    <textualReferenceType xsi:type="astrans:ExistingEDataType">
+      <eDataType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </textualReferenceType>
+  </translateReferencesActions>
+  <translateReferencesActions>
+    <modelReferenceTypeProto href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+    <textualReferenceType xsi:type="astrans:ExistingEDataType">
+      <eDataType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </textualReferenceType>
+  </translateReferencesActions>
+  <translateReferencesActions>
+    <modelReferenceTypeProto href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <textualReferenceType xsi:type="astrans:CreatedEClass" create="//@createClassActions.3"/>
+  </translateReferencesActions>
+  <translateReferencesActions>
+    <modelReferenceTypeProto href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral"/>
+    <textualReferenceType xsi:type="astrans:CreatedEClass" create="//@createClassActions.4"/>
+  </translateReferencesActions>
+  <input href="model/assign.ecore#/"/>
+  <inputModelRoot href="model/assign.ecore#//AssignModel"/>
+  <astRoot xsi:type="astrans:CreatedEClass" create="//@createClassActions.0"/>
+</astrans:Transformation>

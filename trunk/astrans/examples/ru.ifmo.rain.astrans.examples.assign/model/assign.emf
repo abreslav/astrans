@@ -1,0 +1,81 @@
+@namespace(uri="http://rain.ifmo.ru/~breslav/astrans/examples/2007/assign", prefix="assign")
+package assign;
+
+class AssignModel {
+  val Assignment[*] assignments;
+}
+
+abstract class Assignment {
+  val Expression[1] expression;
+}
+
+@Ecore(constraints="VariableNameIsNotDefinedBefore")
+class VariableAssignment extends Assignment {
+  attr String[1] variableName;
+}
+
+@Ecore(constraints="FeatureIsChangeable")
+@Ecore(constraints="TypesAreCompatible")
+abstract class AbstractFeatureAssignment extends Assignment {
+  val FeatureAccess[1] object;
+}
+
+@Ecore(constraints="FeatureIsMany")
+class ManyFeatureAppend extends AbstractFeatureAssignment {
+}
+
+@Ecore(constraints="FeatureIsNotMany")
+class SingleFeatureAssignment extends AbstractFeatureAssignment {
+}
+
+abstract class Expression {
+  readonly volatile transient derived !resolve ref ecore.EClassifier[1] type;
+}
+
+class Variable extends Expression {
+  ref VariableAssignment[1] variableAssignment;
+}
+
+@Ecore(constraints="FeatureBelongsToObjectType")
+class FeatureAccess extends Expression {
+  val Expression[1] object;
+  val ecore.EStructuralFeature[1] feature;
+}
+
+class EObjectReference extends Expression {
+  ref EObject[1] object;
+}
+
+class CreateInstance extends Expression {
+  val EClassReference[1] eClassReference;
+}
+
+abstract class EClassReference {
+  readonly volatile transient derived !resolve ref ecore.EClassifier[1] type;
+}
+
+class StaticEClassReference extends EClassReference {
+  ref EClass[1] eClass;
+}
+
+@Ecore(constraints="ExpressionEvaluatesToAClass")
+class DynamicEClassReference extends EClassReference {
+  val Expression[1] eClass;
+}
+
+class CopyObject extends Expression {
+  val Expression[1] object;
+}
+
+class StringLiteral extends Expression {
+  attr String[1] value;
+}
+
+class BooleanLiteral extends Expression {
+  attr boolean[1] value;
+}
+
+class EnumLiteral extends Expression {
+  ref ecore.EEnumLiteral[1] literal;
+}
+

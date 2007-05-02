@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ASCII"?>
+<trace:Trace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:trace="http://rain.ifmo.ru/~breslav/2007/astrans/interperter/trace">
+  <input href="model/assign.ecore#/"/>
+  <output href="model/ast.ecore#/"/>
+  <inputModelRoot href="model/assign.ecore#//AssignModel"/>
+  <outputModelRoot href="model/ast.ecore#//Unit"/>
+  <classMappings>
+    <proto href="model/assign.ecore#//AssignModel"/>
+    <image href="model/ast.ecore#//AssignModelAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//Assignment"/>
+    <image href="model/ast.ecore#//AssignmentAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//VariableAssignment"/>
+    <image href="model/ast.ecore#//VariableAssignmentAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//AbstractFeatureAssignment"/>
+    <image href="model/ast.ecore#//AbstractFeatureAssignmentAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//ManyFeatureAppend"/>
+    <image href="model/ast.ecore#//ManyFeatureAppendAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//SingleFeatureAssignment"/>
+    <image href="model/ast.ecore#//SingleFeatureAssignmentAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//Expression"/>
+    <image href="model/ast.ecore#//ExpressionAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//Variable"/>
+    <image href="model/ast.ecore#//VariableAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//FeatureAccess"/>
+    <image href="model/ast.ecore#//FeatureAccessAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//EObjectReference"/>
+    <image href="model/ast.ecore#//EObjectReferenceAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//CreateInstance"/>
+    <image href="model/ast.ecore#//CreateInstanceAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//EClassReference"/>
+    <image href="model/ast.ecore#//EClassReferenceAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//StaticEClassReference"/>
+    <image href="model/ast.ecore#//StaticEClassReferenceAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//DynamicEClassReference"/>
+    <image href="model/ast.ecore#//DynamicEClassReferenceAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//CopyObject"/>
+    <image href="model/ast.ecore#//CopyObjectAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//StringLiteral"/>
+    <image href="model/ast.ecore#//StringLiteralAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//BooleanLiteral"/>
+    <image href="model/ast.ecore#//BooleanLiteralAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="model/assign.ecore#//EnumLiteral"/>
+    <image href="model/ast.ecore#//EnumLiteralAS"/>
+  </classMappings>
+  <attributeMappings>
+    <proto href="model/assign.ecore#//VariableAssignment/variableName"/>
+    <image href="model/ast.ecore#//VariableAssignmentAS/variableName"/>
+  </attributeMappings>
+  <attributeMappings>
+    <proto href="model/assign.ecore#//StringLiteral/value"/>
+    <image href="model/ast.ecore#//StringLiteralAS/value"/>
+  </attributeMappings>
+  <attributeMappings>
+    <proto href="model/assign.ecore#//BooleanLiteral/value"/>
+    <image href="model/ast.ecore#//BooleanLiteralAS/value"/>
+  </attributeMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="model/assign.ecore#//AssignModel/assignments"/>
+    <image xsi:type="ecore:EReference" href="model/ast.ecore#//AssignModelAS/assignments"/>
+  </referenceMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="model/assign.ecore#//Assignment/expression"/>
+    <image xsi:type="ecore:EReference" href="model/ast.ecore#//AssignmentAS/expression"/>
+  </referenceMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="model/assign.ecore#//AbstractFeatureAssignment/object"/>
+    <image xsi:type="ecore:EReference" href="model/ast.ecore#//AbstractFeatureAssignmentAS/object"/>
+  </referenceMappings>
+  <referenceMappings type="TRANSLATED">
+    <proto href="model/assign.ecore#//Variable/variableAssignment"/>
+    <image xsi:type="ecore:EAttribute" href="model/ast.ecore#//VariableAS/variableAssignment"/>
+  </referenceMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="model/assign.ecore#//FeatureAccess/object"/>
+    <image xsi:type="ecore:EReference" href="model/ast.ecore#//FeatureAccessAS/object"/>
+  </referenceMappings>
+  <referenceMappings type="TRANSLATED">
+    <proto href="model/assign.ecore#//FeatureAccess/feature"/>
+    <image xsi:type="ecore:EAttribute" href="model/ast.ecore#//FeatureAccessAS/feature"/>
+  </referenceMappings>
+  <referenceMappings type="TRANSLATED">
+    <proto href="model/assign.ecore#//EObjectReference/object"/>
+    <image xsi:type="ecore:EReference" href="model/ast.ecore#//EObjectReferenceAS/object"/>
+  </referenceMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="model/assign.ecore#//CreateInstance/eClassReference"/>
+    <image xsi:type="ecore:EReference" href="model/ast.ecore#//CreateInstanceAS/eClassReference"/>
+  </referenceMappings>
+  <referenceMappings type="TRANSLATED">
+    <proto href="model/assign.ecore#//StaticEClassReference/eClass"/>
+    <image xsi:type="ecore:EReference" href="model/ast.ecore#//StaticEClassReferenceAS/eClass"/>
+  </referenceMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="model/assign.ecore#//DynamicEClassReference/eClass"/>
+    <image xsi:type="ecore:EReference" href="model/ast.ecore#//DynamicEClassReferenceAS/eClass"/>
+  </referenceMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="model/assign.ecore#//CopyObject/object"/>
+    <image xsi:type="ecore:EReference" href="model/ast.ecore#//CopyObjectAS/object"/>
+  </referenceMappings>
+  <referenceMappings type="TRANSLATED">
+    <proto href="model/assign.ecore#//EnumLiteral/literal"/>
+    <image xsi:type="ecore:EReference" href="model/ast.ecore#//EnumLiteralAS/literal"/>
+  </referenceMappings>
+</trace:Trace>
