@@ -1,6 +1,3 @@
-/**
- * 
- */
 package ru.ifmo.rain.astrans.interpreter;
 
 import java.util.Iterator;
@@ -27,26 +24,56 @@ import ru.ifmo.rain.astrans.util.AstransSwitch;
 import ru.ifmo.rain.astrans.util.EClassMap;
 import ru.ifmo.rain.astrans.util.EClassSet;
 
-class Composer extends AstransSwitch {
+class Composer {
 
-	private final EClassMap<EClassifier> translatedTypes;
+	private final EClassMap<TranslateReferenceRecord> translatedTypes;
 	private final AstransInterpreterTrace trace;
 	private final EClassSet skippedClasses;
 	private final ReferenceResolver referenceResolver;
+	private final AstransSwitch  featureCreator = new AstransSwitch() {
+		@Override
+		public EAttribute caseAttribute(Attribute attribute) {
+			assert attribute != null;
+			
+			EAttribute result = EcoreFactory.eINSTANCE.createEAttribute();
+			result.setName(attribute.getName());
+			result.setLowerBound(attribute.getLowerBound());
+			result.setUpperBound(attribute.getUpperBound());
+			result.setEType(attribute.getType());
+			return result;
+		}
 
-	public Composer(final EClassMap<EClassifier> translatedTypes, final AstransInterpreterTrace trace, final EClassSet skippedClasses, final ReferenceResolver referenceResolver) {
+		@Override
+		public EStructuralFeature caseReference(Reference reference) {
+			assert reference != null;
+		
+			EClass resolvedType = (EClass) referenceResolver.resolveEClassifierReference(reference.getType());
+			EReference result = EcoreFactory.eINSTANCE.createEReference();
+			result.setEType(resolvedType);
+			result.setContainment(reference.isContainment());
+			
+			result.setName(reference.getName());
+			result.setLowerBound(reference.getLowerBound());
+			result.setUpperBound(reference.getUpperBound());
+			
+			return result;
+		}
+	};
+
+	public Composer(final EClassMap<TranslateReferenceRecord> translatedTypes, final AstransInterpreterTrace trace, final EClassSet skippedClasses, final ReferenceResolver referenceResolver) {
 		this.translatedTypes = translatedTypes;
 		this.trace = trace;
 		this.skippedClasses = skippedClasses;
 		this.referenceResolver = referenceResolver;
 	}
 
-	private EClassifier translateReferenceType(EClass eClass) {
-		EClassifier translatedType = translatedTypes.get(eClass);
+	private EClassifier translateReferenceType(EReference reference) {
+		EClassifier translatedType = getTranslatedType(reference);
 		if (translatedType != null) {
 			return translatedType;
 		}
 		
+		EClass eClass = reference.getEReferenceType();		
 		EClassifier result = trace.getMappedClass(eClass);
 		if (result == null) {
 			if (!skippedClasses.contains(eClass)) {
@@ -55,6 +82,16 @@ class Composer extends AstransSwitch {
 		}
 		
 		return result;
+	}
+
+	private EClassifier getTranslatedType(EReference reference) {
+		TranslateReferenceRecord translateReferenceRecord = translatedTypes.get(reference.getEReferenceType());
+		if (translateReferenceRecord != null) {
+			if (!reference.isContainment() || !translateReferenceRecord.crossReferencesOnly) {
+				return translateReferenceRecord.type;
+			}
+		}
+		return null;
 	}
 	
 	public void run(Transformation transformation) {
@@ -88,14 +125,8 @@ class Composer extends AstransSwitch {
 		EList references = proto.getEReferences();
 		for (Iterator iter = references.iterator(); iter.hasNext();) {
 			EReference eReference = (EReference) iter.next();
-			EStructuralFeature feature = createReferenceFeature(
-											eReference.getEReferenceType(), 
-											true // AST has no cross-references in it
-											/*eReference.isContainment()*/);
+			EStructuralFeature feature = createReferenceFeature(eReference);
 			image.getEStructuralFeatures().add(feature);
-			feature.setName(eReference.getName());
-			feature.setLowerBound(eReference.getLowerBound());
-			feature.setUpperBound(eReference.getUpperBound());
 			
 			trace.registerReference(eReference, feature, getMappingType(eReference));
 		}
@@ -112,7 +143,7 @@ class Composer extends AstransSwitch {
 
 	private ReferenceMappingType getMappingType(EReference eReference) {
 		ReferenceMappingType mappingType;
-		if (translatedTypes.get(eReference.getEReferenceType()) != null) {
+		if (getTranslatedType(eReference) != null) {
 			mappingType = ReferenceMappingType.TRANSLATED_LITERAL;
 		} else {
 			mappingType = skippedClasses.contains(eReference.getEReferenceType()) 
@@ -133,7 +164,7 @@ class Composer extends AstransSwitch {
 		EList structuralFeatures = action.getStructuralFeatures();
 		for (Iterator iter = structuralFeatures.iterator(); iter.hasNext();) {
 			StructuralFeature feature = (StructuralFeature) iter.next();
-			result.getEStructuralFeatures().add(doSwitch(feature));
+			result.getEStructuralFeatures().add(featureCreator.doSwitch(feature));
 		}
 		
 		EList superclasses = action.getSuperclasses();
@@ -143,46 +174,22 @@ class Composer extends AstransSwitch {
 		}
 	}
 
-	@Override
-	public EAttribute caseAttribute(Attribute attribute) {
-		assert attribute != null;
-		
-		EAttribute result = EcoreFactory.eINSTANCE.createEAttribute();
-		result.setName(attribute.getName());
-		result.setLowerBound(attribute.getLowerBound());
-		result.setUpperBound(attribute.getUpperBound());
-		result.setEType(attribute.getType());
-		return result;
-	}
-
-	@Override
-	public EStructuralFeature caseReference(Reference reference) {
-		assert reference != null;
-	
-		EClass resolvedType = (EClass) referenceResolver.resolveEClassifierReference(reference.getType());
-		boolean containment = reference.isContainment();
-		EStructuralFeature result = createReferenceFeature(resolvedType, containment);
-		
-		result.setName(reference.getName());
-		result.setLowerBound(reference.getLowerBound());
-		result.setUpperBound(reference.getUpperBound());
-		
-		return result;
-	}
-
-	private EStructuralFeature createReferenceFeature(EClass type, boolean containment) {
-		EClassifier calculatedType = translateReferenceType(type);
+	private EStructuralFeature createReferenceFeature(EReference reference) {
+		EClassifier calculatedType = translateReferenceType(reference);
 		
 		EStructuralFeature result;
 		if (calculatedType instanceof EClass || calculatedType == null) {
 			EReference ref = EcoreFactory.eINSTANCE.createEReference();
-			ref.setContainment(containment);
+			ref.setContainment(true); // AST has no cross-references
 			result = ref;
 		} else {
 			result = EcoreFactory.eINSTANCE.createEAttribute();
 		}
 		assert result != null;
 		result.setEType(calculatedType);
+		result.setName(reference.getName());
+		result.setLowerBound(reference.getLowerBound());
+		result.setUpperBound(reference.getUpperBound());
 		return result;
 	}
 

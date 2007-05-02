@@ -91,14 +91,18 @@ public class AstransInterpreter {
 		}
 	}
 
-	private static EClassMap<EClassifier> createTranslatedTypesMap(Transformation transformation, ReferenceResolver referenceResolver) {
-		EClassMap<EClassifier> translatedTypes = new EClassMap<EClassifier>();
+	private static EClassMap<TranslateReferenceRecord> createTranslatedTypesMap(Transformation transformation, ReferenceResolver referenceResolver) {
+		EClassMap<TranslateReferenceRecord> translatedTypes = new EClassMap<TranslateReferenceRecord>();
 		for (Iterator iter = transformation.getTranslateReferencesActions().iterator(); iter.hasNext();) {
 			TranslateReferences action = (TranslateReferences) iter.next();
 			translatedTypes.put(
-					action.getModelReferenceTypeProto(), 
-					(EClassifier) referenceResolver.doSwitch(action.getTextualReferenceType()), 
-					action.isIncludeDescendants());
+					action.getModelReferenceTypeProto(),
+					new TranslateReferenceRecord(
+							(EClassifier) referenceResolver.doSwitch(action.getTextualReferenceType()),
+							action.isCrossReferencesOnly()
+					),
+					action.isIncludeDescendants()
+			);
 		}
 		return translatedTypes;
 	}
@@ -121,7 +125,7 @@ public class AstransInterpreter {
 		Collection<EClass> classes = createEClassObjects(transformation, trace, skippedClasses);
 
 		ReferenceResolver referenceResolver = new ReferenceResolver(trace);
-		EClassMap<EClassifier> translatedTypes = createTranslatedTypesMap(transformation, referenceResolver);
+		EClassMap<TranslateReferenceRecord> translatedTypes = createTranslatedTypesMap(transformation, referenceResolver);
 		
 		Composer composer = new Composer(translatedTypes, trace, skippedClasses, referenceResolver);
 		composer.run(transformation);
