@@ -65,6 +65,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			});
 		
 			
+			translateReferences.setCrossReferencesOnly(translateReferencesAS.isCrossReferencesOnly());
 			translateReferences.setIncludeDescendants(translateReferencesAS.isIncludeDescendants());
 			
 			getTrace().translateReferencesCreated(translateReferencesAS, translateReferences);

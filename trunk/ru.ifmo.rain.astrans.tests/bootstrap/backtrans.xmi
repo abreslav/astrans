@@ -22,6 +22,7 @@
       <type name="ru.ifmo.rain.astrans.TranslateReferences"/>
     </result>
     <factoryClassName name="ru.ifmo.rain.astrans.AstransFactory"/>
+    <assignAttributeStatements setterName="setCrossReferencesOnly" getterName="isCrossReferencesOnly"/>
     <assignAttributeStatements setterName="setIncludeDescendants" getterName="isIncludeDescendants"/>
     <writeTraceStatement traceMethodName="translateReferencesCreated"/>
     <resolveObjectStatements setterName="setModelReferenceTypeProto" getterName="getModelReferenceTypeProto" resolverMethodName="resolveTranslateReferencesModelReferenceTypeProto" parameterName="modelReferenceTypeProto">

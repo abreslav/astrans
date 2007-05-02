@@ -45,6 +45,10 @@
     <image href="astransast.ecore#//TransformationAS"/>
   </classMappings>
   <attributeMappings>
+    <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences/crossReferencesOnly"/>
+    <image href="astransast.ecore#//TranslateReferencesAS/crossReferencesOnly"/>
+  </attributeMappings>
+  <attributeMappings>
     <proto href="http://rain.ifmo.ru/~breslav/2007/astrans#//TranslateReferences/includeDescendants"/>
     <image href="astransast.ecore#//TranslateReferencesAS/includeDescendants"/>
   </attributeMappings>
