@@ -108,13 +108,22 @@ public interface AstransastPackage extends EPackage {
 	int TRANSLATE_REFERENCES_AS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Cross References Only</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSLATE_REFERENCES_AS__CROSS_REFERENCES_ONLY = ACTION_AS_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Include Descendants</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATE_REFERENCES_AS__INCLUDE_DESCENDANTS = ACTION_AS_FEATURE_COUNT + 0;
+	int TRANSLATE_REFERENCES_AS__INCLUDE_DESCENDANTS = ACTION_AS_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Model Reference Type Proto</b></em>' containment reference.
@@ -123,7 +132,7 @@ public interface AstransastPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATE_REFERENCES_AS__MODEL_REFERENCE_TYPE_PROTO = ACTION_AS_FEATURE_COUNT + 1;
+	int TRANSLATE_REFERENCES_AS__MODEL_REFERENCE_TYPE_PROTO = ACTION_AS_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Textual Reference Type</b></em>' containment reference.
@@ -132,7 +141,7 @@ public interface AstransastPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATE_REFERENCES_AS__TEXTUAL_REFERENCE_TYPE = ACTION_AS_FEATURE_COUNT + 2;
+	int TRANSLATE_REFERENCES_AS__TEXTUAL_REFERENCE_TYPE = ACTION_AS_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Translate References AS</em>' class.
@@ -141,7 +150,7 @@ public interface AstransastPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATE_REFERENCES_AS_FEATURE_COUNT = ACTION_AS_FEATURE_COUNT + 3;
+	int TRANSLATE_REFERENCES_AS_FEATURE_COUNT = ACTION_AS_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransast.impl.CreateClassASImpl <em>Create Class AS</em>}' class.
@@ -709,6 +718,17 @@ public interface AstransastPackage extends EPackage {
 	EClass getTranslateReferencesAS();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransast.TranslateReferencesAS#isCrossReferencesOnly <em>Cross References Only</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cross References Only</em>'.
+	 * @see ru.ifmo.rain.astrans.astransast.TranslateReferencesAS#isCrossReferencesOnly()
+	 * @see #getTranslateReferencesAS()
+	 * @generated
+	 */
+	EAttribute getTranslateReferencesAS_CrossReferencesOnly();
+
+	/**
 	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransast.TranslateReferencesAS#isIncludeDescendants <em>Include Descendants</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1220,6 +1240,14 @@ public interface AstransastPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TRANSLATE_REFERENCES_AS = eINSTANCE.getTranslateReferencesAS();
+
+		/**
+		 * The meta object literal for the '<em><b>Cross References Only</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSLATE_REFERENCES_AS__CROSS_REFERENCES_ONLY = eINSTANCE.getTranslateReferencesAS_CrossReferencesOnly();
 
 		/**
 		 * The meta object literal for the '<em><b>Include Descendants</b></em>' attribute feature.
