@@ -257,13 +257,22 @@ public interface AstransPackage extends EPackage {
 	int TRANSLATE_REFERENCES__TEXTUAL_REFERENCE_TYPE = ACTION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Cross References Only</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSLATE_REFERENCES__CROSS_REFERENCES_ONLY = ACTION_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Include Descendants</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATE_REFERENCES__INCLUDE_DESCENDANTS = ACTION_FEATURE_COUNT + 2;
+	int TRANSLATE_REFERENCES__INCLUDE_DESCENDANTS = ACTION_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Translate References</em>' class.
@@ -272,7 +281,7 @@ public interface AstransPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TRANSLATE_REFERENCES_FEATURE_COUNT = ACTION_FEATURE_COUNT + 3;
+	int TRANSLATE_REFERENCES_FEATURE_COUNT = ACTION_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.impl.CreateClassImpl <em>Create Class</em>}' class.
@@ -816,6 +825,17 @@ public interface AstransPackage extends EPackage {
 	EReference getTranslateReferences_TextualReferenceType();
 
 	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.TranslateReferences#isCrossReferencesOnly <em>Cross References Only</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cross References Only</em>'.
+	 * @see ru.ifmo.rain.astrans.TranslateReferences#isCrossReferencesOnly()
+	 * @see #getTranslateReferences()
+	 * @generated
+	 */
+	EAttribute getTranslateReferences_CrossReferencesOnly();
+
+	/**
 	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.TranslateReferences#isIncludeDescendants <em>Include Descendants</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1298,6 +1318,14 @@ public interface AstransPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TRANSLATE_REFERENCES__TEXTUAL_REFERENCE_TYPE = eINSTANCE.getTranslateReferences_TextualReferenceType();
+
+		/**
+		 * The meta object literal for the '<em><b>Cross References Only</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TRANSLATE_REFERENCES__CROSS_REFERENCES_ONLY = eINSTANCE.getTranslateReferences_CrossReferencesOnly();
 
 		/**
 		 * The meta object literal for the '<em><b>Include Descendants</b></em>' attribute feature.

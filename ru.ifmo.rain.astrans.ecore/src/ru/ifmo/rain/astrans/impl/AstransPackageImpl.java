@@ -352,8 +352,17 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTranslateReferences_IncludeDescendants() {
+	public EAttribute getTranslateReferences_CrossReferencesOnly() {
 		return (EAttribute)translateReferencesEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTranslateReferences_IncludeDescendants() {
+		return (EAttribute)translateReferencesEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -675,6 +684,7 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 		translateReferencesEClass = createEClass(TRANSLATE_REFERENCES);
 		createEReference(translateReferencesEClass, TRANSLATE_REFERENCES__MODEL_REFERENCE_TYPE_PROTO);
 		createEReference(translateReferencesEClass, TRANSLATE_REFERENCES__TEXTUAL_REFERENCE_TYPE);
+		createEAttribute(translateReferencesEClass, TRANSLATE_REFERENCES__CROSS_REFERENCES_ONLY);
 		createEAttribute(translateReferencesEClass, TRANSLATE_REFERENCES__INCLUDE_DESCENDANTS);
 
 		createClassEClass = createEClass(CREATE_CLASS);
@@ -773,6 +783,7 @@ public class AstransPackageImpl extends EPackageImpl implements AstransPackage {
 		initEClass(translateReferencesEClass, TranslateReferences.class, "TranslateReferences", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTranslateReferences_ModelReferenceTypeProto(), ecorePackage.getEClass(), null, "modelReferenceTypeProto", null, 1, 1, TranslateReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTranslateReferences_TextualReferenceType(), this.getEClassifierReference(), null, "textualReferenceType", null, 1, 1, TranslateReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTranslateReferences_CrossReferencesOnly(), ecorePackage.getEBoolean(), "crossReferencesOnly", "false", 0, 1, TranslateReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTranslateReferences_IncludeDescendants(), ecorePackage.getEBoolean(), "includeDescendants", "false", 0, 1, TranslateReferences.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(createClassEClass, CreateClass.class, "CreateClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

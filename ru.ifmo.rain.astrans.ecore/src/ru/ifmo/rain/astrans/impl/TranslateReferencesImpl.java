@@ -25,6 +25,7 @@ import ru.ifmo.rain.astrans.TranslateReferences;
  * <ul>
  *   <li>{@link ru.ifmo.rain.astrans.impl.TranslateReferencesImpl#getModelReferenceTypeProto <em>Model Reference Type Proto</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.impl.TranslateReferencesImpl#getTextualReferenceType <em>Textual Reference Type</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.impl.TranslateReferencesImpl#isCrossReferencesOnly <em>Cross References Only</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.impl.TranslateReferencesImpl#isIncludeDescendants <em>Include Descendants</em>}</li>
  * </ul>
  * </p>
@@ -51,6 +52,26 @@ public class TranslateReferencesImpl extends ActionImpl implements TranslateRefe
 	 * @ordered
 	 */
 	protected EClassifierReference textualReferenceType = null;
+
+	/**
+	 * The default value of the '{@link #isCrossReferencesOnly() <em>Cross References Only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCrossReferencesOnly()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CROSS_REFERENCES_ONLY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isCrossReferencesOnly() <em>Cross References Only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCrossReferencesOnly()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean crossReferencesOnly = CROSS_REFERENCES_ONLY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isIncludeDescendants() <em>Include Descendants</em>}' attribute.
@@ -176,6 +197,27 @@ public class TranslateReferencesImpl extends ActionImpl implements TranslateRefe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isCrossReferencesOnly() {
+		return crossReferencesOnly;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCrossReferencesOnly(boolean newCrossReferencesOnly) {
+		boolean oldCrossReferencesOnly = crossReferencesOnly;
+		crossReferencesOnly = newCrossReferencesOnly;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransPackage.TRANSLATE_REFERENCES__CROSS_REFERENCES_ONLY, oldCrossReferencesOnly, crossReferencesOnly));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isIncludeDescendants() {
 		return includeDescendants;
 	}
@@ -217,6 +259,8 @@ public class TranslateReferencesImpl extends ActionImpl implements TranslateRefe
 				return basicGetModelReferenceTypeProto();
 			case AstransPackage.TRANSLATE_REFERENCES__TEXTUAL_REFERENCE_TYPE:
 				return getTextualReferenceType();
+			case AstransPackage.TRANSLATE_REFERENCES__CROSS_REFERENCES_ONLY:
+				return isCrossReferencesOnly() ? Boolean.TRUE : Boolean.FALSE;
 			case AstransPackage.TRANSLATE_REFERENCES__INCLUDE_DESCENDANTS:
 				return isIncludeDescendants() ? Boolean.TRUE : Boolean.FALSE;
 		}
@@ -235,6 +279,9 @@ public class TranslateReferencesImpl extends ActionImpl implements TranslateRefe
 				return;
 			case AstransPackage.TRANSLATE_REFERENCES__TEXTUAL_REFERENCE_TYPE:
 				setTextualReferenceType((EClassifierReference)newValue);
+				return;
+			case AstransPackage.TRANSLATE_REFERENCES__CROSS_REFERENCES_ONLY:
+				setCrossReferencesOnly(((Boolean)newValue).booleanValue());
 				return;
 			case AstransPackage.TRANSLATE_REFERENCES__INCLUDE_DESCENDANTS:
 				setIncludeDescendants(((Boolean)newValue).booleanValue());
@@ -256,6 +303,9 @@ public class TranslateReferencesImpl extends ActionImpl implements TranslateRefe
 			case AstransPackage.TRANSLATE_REFERENCES__TEXTUAL_REFERENCE_TYPE:
 				setTextualReferenceType((EClassifierReference)null);
 				return;
+			case AstransPackage.TRANSLATE_REFERENCES__CROSS_REFERENCES_ONLY:
+				setCrossReferencesOnly(CROSS_REFERENCES_ONLY_EDEFAULT);
+				return;
 			case AstransPackage.TRANSLATE_REFERENCES__INCLUDE_DESCENDANTS:
 				setIncludeDescendants(INCLUDE_DESCENDANTS_EDEFAULT);
 				return;
@@ -274,6 +324,8 @@ public class TranslateReferencesImpl extends ActionImpl implements TranslateRefe
 				return modelReferenceTypeProto != null;
 			case AstransPackage.TRANSLATE_REFERENCES__TEXTUAL_REFERENCE_TYPE:
 				return textualReferenceType != null;
+			case AstransPackage.TRANSLATE_REFERENCES__CROSS_REFERENCES_ONLY:
+				return crossReferencesOnly != CROSS_REFERENCES_ONLY_EDEFAULT;
 			case AstransPackage.TRANSLATE_REFERENCES__INCLUDE_DESCENDANTS:
 				return includeDescendants != INCLUDE_DESCENDANTS_EDEFAULT;
 		}
@@ -289,7 +341,9 @@ public class TranslateReferencesImpl extends ActionImpl implements TranslateRefe
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (includeDescendants: ");
+		result.append(" (crossReferencesOnly: ");
+		result.append(crossReferencesOnly);
+		result.append(", includeDescendants: ");
 		result.append(includeDescendants);
 		result.append(')');
 		return result.toString();

@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
  * <ul>
  *   <li>{@link ru.ifmo.rain.astrans.TranslateReferences#getModelReferenceTypeProto <em>Model Reference Type Proto</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.TranslateReferences#getTextualReferenceType <em>Textual Reference Type</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.TranslateReferences#isCrossReferencesOnly <em>Cross References Only</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.TranslateReferences#isIncludeDescendants <em>Include Descendants</em>}</li>
  * </ul>
  * </p>
@@ -78,6 +79,33 @@ public interface TranslateReferences extends Action {
 	 * @generated
 	 */
 	void setTextualReferenceType(EClassifierReference value);
+
+	/**
+	 * Returns the value of the '<em><b>Cross References Only</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cross References Only</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cross References Only</em>' attribute.
+	 * @see #setCrossReferencesOnly(boolean)
+	 * @see ru.ifmo.rain.astrans.AstransPackage#getTranslateReferences_CrossReferencesOnly()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isCrossReferencesOnly();
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.TranslateReferences#isCrossReferencesOnly <em>Cross References Only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cross References Only</em>' attribute.
+	 * @see #isCrossReferencesOnly()
+	 * @generated
+	 */
+	void setCrossReferencesOnly(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Include Descendants</b></em>' attribute.
