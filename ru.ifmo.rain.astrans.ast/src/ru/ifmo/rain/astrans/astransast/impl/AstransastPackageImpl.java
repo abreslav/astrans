@@ -242,7 +242,7 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTranslateReferencesAS_IncludeDescendants() {
+	public EAttribute getTranslateReferencesAS_CrossReferencesOnly() {
 		return (EAttribute)translateReferencesASEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -251,8 +251,17 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getTranslateReferencesAS_IncludeDescendants() {
+		return (EAttribute)translateReferencesASEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getTranslateReferencesAS_ModelReferenceTypeProto() {
-		return (EReference)translateReferencesASEClass.getEStructuralFeatures().get(1);
+		return (EReference)translateReferencesASEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -261,7 +270,7 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 	 * @generated
 	 */
 	public EReference getTranslateReferencesAS_TextualReferenceType() {
-		return (EReference)translateReferencesASEClass.getEStructuralFeatures().get(2);
+		return (EReference)translateReferencesASEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -657,6 +666,7 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 		eClassifierReferenceASEClass = createEClass(ECLASSIFIER_REFERENCE_AS);
 
 		translateReferencesASEClass = createEClass(TRANSLATE_REFERENCES_AS);
+		createEAttribute(translateReferencesASEClass, TRANSLATE_REFERENCES_AS__CROSS_REFERENCES_ONLY);
 		createEAttribute(translateReferencesASEClass, TRANSLATE_REFERENCES_AS__INCLUDE_DESCENDANTS);
 		createEReference(translateReferencesASEClass, TRANSLATE_REFERENCES_AS__MODEL_REFERENCE_TYPE_PROTO);
 		createEReference(translateReferencesASEClass, TRANSLATE_REFERENCES_AS__TEXTUAL_REFERENCE_TYPE);
@@ -755,6 +765,7 @@ public class AstransastPackageImpl extends EPackageImpl implements AstransastPac
 		initEClass(eClassifierReferenceASEClass, EClassifierReferenceAS.class, "EClassifierReferenceAS", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(translateReferencesASEClass, TranslateReferencesAS.class, "TranslateReferencesAS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTranslateReferencesAS_CrossReferencesOnly(), ecorePackage.getEBoolean(), "crossReferencesOnly", "false", 0, 1, TranslateReferencesAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTranslateReferencesAS_IncludeDescendants(), ecorePackage.getEBoolean(), "includeDescendants", "false", 0, 1, TranslateReferencesAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTranslateReferencesAS_ModelReferenceTypeProto(), this.getQualifiedName(), null, "modelReferenceTypeProto", null, 1, 1, TranslateReferencesAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTranslateReferencesAS_TextualReferenceType(), this.getEClassifierReferenceAS(), null, "textualReferenceType", null, 1, 1, TranslateReferencesAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

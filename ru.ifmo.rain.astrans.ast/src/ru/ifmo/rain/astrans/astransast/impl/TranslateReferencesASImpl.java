@@ -24,6 +24,7 @@ import ru.ifmo.rain.astrans.astransast.TranslateReferencesAS;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link ru.ifmo.rain.astrans.astransast.impl.TranslateReferencesASImpl#isCrossReferencesOnly <em>Cross References Only</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransast.impl.TranslateReferencesASImpl#isIncludeDescendants <em>Include Descendants</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransast.impl.TranslateReferencesASImpl#getModelReferenceTypeProto <em>Model Reference Type Proto</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransast.impl.TranslateReferencesASImpl#getTextualReferenceType <em>Textual Reference Type</em>}</li>
@@ -33,6 +34,26 @@ import ru.ifmo.rain.astrans.astransast.TranslateReferencesAS;
  * @generated
  */
 public class TranslateReferencesASImpl extends ActionASImpl implements TranslateReferencesAS {
+	/**
+	 * The default value of the '{@link #isCrossReferencesOnly() <em>Cross References Only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCrossReferencesOnly()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CROSS_REFERENCES_ONLY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isCrossReferencesOnly() <em>Cross References Only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCrossReferencesOnly()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean crossReferencesOnly = CROSS_REFERENCES_ONLY_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #isIncludeDescendants() <em>Include Descendants</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -89,6 +110,27 @@ public class TranslateReferencesASImpl extends ActionASImpl implements Translate
 	 */
 	protected EClass eStaticClass() {
 		return AstransastPackage.Literals.TRANSLATE_REFERENCES_AS;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isCrossReferencesOnly() {
+		return crossReferencesOnly;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCrossReferencesOnly(boolean newCrossReferencesOnly) {
+		boolean oldCrossReferencesOnly = crossReferencesOnly;
+		crossReferencesOnly = newCrossReferencesOnly;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransastPackage.TRANSLATE_REFERENCES_AS__CROSS_REFERENCES_ONLY, oldCrossReferencesOnly, crossReferencesOnly));
 	}
 
 	/**
@@ -220,6 +262,8 @@ public class TranslateReferencesASImpl extends ActionASImpl implements Translate
 	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case AstransastPackage.TRANSLATE_REFERENCES_AS__CROSS_REFERENCES_ONLY:
+				return isCrossReferencesOnly() ? Boolean.TRUE : Boolean.FALSE;
 			case AstransastPackage.TRANSLATE_REFERENCES_AS__INCLUDE_DESCENDANTS:
 				return isIncludeDescendants() ? Boolean.TRUE : Boolean.FALSE;
 			case AstransastPackage.TRANSLATE_REFERENCES_AS__MODEL_REFERENCE_TYPE_PROTO:
@@ -237,6 +281,9 @@ public class TranslateReferencesASImpl extends ActionASImpl implements Translate
 	 */
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case AstransastPackage.TRANSLATE_REFERENCES_AS__CROSS_REFERENCES_ONLY:
+				setCrossReferencesOnly(((Boolean)newValue).booleanValue());
+				return;
 			case AstransastPackage.TRANSLATE_REFERENCES_AS__INCLUDE_DESCENDANTS:
 				setIncludeDescendants(((Boolean)newValue).booleanValue());
 				return;
@@ -257,6 +304,9 @@ public class TranslateReferencesASImpl extends ActionASImpl implements Translate
 	 */
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case AstransastPackage.TRANSLATE_REFERENCES_AS__CROSS_REFERENCES_ONLY:
+				setCrossReferencesOnly(CROSS_REFERENCES_ONLY_EDEFAULT);
+				return;
 			case AstransastPackage.TRANSLATE_REFERENCES_AS__INCLUDE_DESCENDANTS:
 				setIncludeDescendants(INCLUDE_DESCENDANTS_EDEFAULT);
 				return;
@@ -277,6 +327,8 @@ public class TranslateReferencesASImpl extends ActionASImpl implements Translate
 	 */
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case AstransastPackage.TRANSLATE_REFERENCES_AS__CROSS_REFERENCES_ONLY:
+				return crossReferencesOnly != CROSS_REFERENCES_ONLY_EDEFAULT;
 			case AstransastPackage.TRANSLATE_REFERENCES_AS__INCLUDE_DESCENDANTS:
 				return includeDescendants != INCLUDE_DESCENDANTS_EDEFAULT;
 			case AstransastPackage.TRANSLATE_REFERENCES_AS__MODEL_REFERENCE_TYPE_PROTO:
@@ -296,7 +348,9 @@ public class TranslateReferencesASImpl extends ActionASImpl implements Translate
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (includeDescendants: ");
+		result.append(" (crossReferencesOnly: ");
+		result.append(crossReferencesOnly);
+		result.append(", includeDescendants: ");
 		result.append(includeDescendants);
 		result.append(')');
 		return result.toString();
