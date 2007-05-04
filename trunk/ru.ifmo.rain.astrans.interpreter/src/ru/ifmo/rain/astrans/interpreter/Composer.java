@@ -117,18 +117,22 @@ class Composer {
 		EList attributes = proto.getEAttributes();
 		for (Iterator iter = attributes.iterator(); iter.hasNext();) {
 			EAttribute attribute = (EAttribute) iter.next();
-			EAttribute copy = (EAttribute) EcoreUtil.copy(attribute);
-			image.getEStructuralFeatures().add(copy);
-			trace.registerAttribute(attribute, copy);
+			if (attribute.isChangeable()) {
+				EAttribute copy = (EAttribute) EcoreUtil.copy(attribute);
+				image.getEStructuralFeatures().add(copy);
+				trace.registerAttribute(attribute, copy);
+			}
 		}
 		
 		EList references = proto.getEReferences();
 		for (Iterator iter = references.iterator(); iter.hasNext();) {
 			EReference eReference = (EReference) iter.next();
-			EStructuralFeature feature = createReferenceFeature(eReference);
-			image.getEStructuralFeatures().add(feature);
-			
-			trace.registerReference(eReference, feature, getMappingType(eReference));
+			if (eReference.isChangeable()) {
+				EStructuralFeature feature = createReferenceFeature(eReference);
+				image.getEStructuralFeatures().add(feature);
+				
+				trace.registerReference(eReference, feature, getMappingType(eReference));
+			}
 		}
 		
 		EList superTypes = proto.getESuperTypes();
