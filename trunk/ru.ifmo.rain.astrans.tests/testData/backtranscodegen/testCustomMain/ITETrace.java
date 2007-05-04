@@ -1,4 +1,5 @@
 package ru.astrans;
 
 
-public interface 
+public interface ITETrace {
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<trace:Trace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:trace="http://rain.ifmo.ru/~breslav/2007/astrans/interperter/trace">
+  <input href="input.ecore#/"/>
+  <output href="output.ecore#/"/>
+  <inputModelRoot href="input.ecore#//B"/>
+  <outputModelRoot href="output.ecore#//BAS"/>
+  <classMappings>
+    <proto href="input.ecore#//A"/>
+    <image href="output.ecore#//AAS"/>
+  </classMappings>
+  <classMappings>
+    <proto href="input.ecore#//B"/>
+    <image href="output.ecore#//BAS"/>
+  </classMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="input.ecore#//A/nonc"/>
+    <image xsi:type="ecore:EReference" href="output.ecore#//AAS/nonc"/>
+  </referenceMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="input.ecore#//A/c"/>
+    <image xsi:type="ecore:EReference" href="output.ecore#//AAS/c"/>
+  </referenceMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="input.ecore#//B/b"/>
+    <image xsi:type="ecore:EReference" href="output.ecore#//BAS/b"/>
+  </referenceMappings>
+</trace:Trace>
