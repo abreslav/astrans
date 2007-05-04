@@ -20,7 +20,7 @@ renderMappingRule(r) ::= <<
 >>
 
 renderResolveMethod(ros) ::= <<
-<ros.type> <ros.resolverMethodName>(<ros.parameterType> <ros.parameterName>);
+<ros.type> <ros.resolverMethodName>(<ros.parameterType> <ros.parameterName>, <r.result.type> contextObject);
 >>
 
 renderCustomMain(transformation, method) ::= <<

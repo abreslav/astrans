@@ -5,7 +5,7 @@ Bundle-SymbolicName: ru.ifmo.rain.astrans.backtrans
 Bundle-Version: 1.0.0
 Bundle-Localization: plugin
 Require-Bundle: ru.ifmo.rain.astrans.interpreter.trace,
- ru.ifmo.rain.astrans.astransformation,
+ ru.ifmo.rain.astrans.astransformation;visibility:=reexport,
  ru.ifmo.rain.astrans.utils,
- org.eclipse.emf.codegen.ecore
+ org.eclipse.emf.codegen.ecore;visibility:=reexport
 Export-Package: ru.ifmo.rain.astrans.interpreter.backtrans
