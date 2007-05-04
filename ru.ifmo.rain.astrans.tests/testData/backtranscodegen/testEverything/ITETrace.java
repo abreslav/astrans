@@ -1,4 +1,9 @@
 package ru.astrans;
 
+import ru.ifmo.rain.astrans.astrans.Transformation;
 
-public interface 
+import ru.ifmo.rain.astrans.astransast.TransformationAS;
+
+public interface ITETrace {
+	void transformationCreated(TransformationAS transformationAS, Transformation transformation);
+}

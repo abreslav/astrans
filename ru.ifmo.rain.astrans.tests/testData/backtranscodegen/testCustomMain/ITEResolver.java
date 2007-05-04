@@ -1,4 +1,11 @@
 package ru.astrans;
 
+import ru.ifmo.rain.astrans.astransast.AstransastSwitch;
 
-public interface 
+import ru.model.Result;
+
+import ru.some.ast.Node;
+
+public interface ITEResolver {
+	Result runTransformation(Node astNode, AstransastSwitch transformer);
+}
