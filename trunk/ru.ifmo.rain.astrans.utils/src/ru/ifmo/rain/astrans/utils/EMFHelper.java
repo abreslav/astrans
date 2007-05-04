@@ -83,9 +83,13 @@ public class EMFHelper {
 		}
 	}
 	
-	public static EObject loadEObjectFromXMIResource(EPackage ePackage, String fileName) throws IOException {
-		Resource resource = getXMIResource(ePackage, fileName);
+	public static EObject loadEObjectFromXMIResource(EPackage ePackage, String resourceName, String fileName) throws IOException {
+		Resource resource = getXMIResource(ePackage, resourceName);
 		loadResourceFromFile(resource, fileName);
 		return (EObject) resource.getContents().get(0);
+	}
+	
+	public static EObject loadEObjectFromXMIResource(EPackage ePackage, String fileName) throws IOException {
+		return loadEObjectFromXMIResource(ePackage, fileName, fileName);
 	}
 }
