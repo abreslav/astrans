@@ -31,10 +31,10 @@ public class TestEveythingTransformation extends ASTToModelTransformation<ITERes
 			addCommand(new Runnable() {
 				public void run() {
 					for (Iterator i = transformationAS.getInput().iterator(); i.hasNext(); ) {
-						transformation.setInput().add(getResolver().resolveTransformationInput((EPackageReference) i.next()));
+						transformation.setInput().add(getResolver().resolveTransformationInput((EPackageReference) i.next(), transformation));
 					}
-					transformation.setSomething(getResolver().resolveSomething(transformationAS.getSomething()));
-					transformation.setSomething1(getResolver().resolveSomething1(transformationAS.getSomething1()));
+					transformation.setSomething(getResolver().resolveSomething(transformationAS.getSomething(), transformation));
+					transformation.setSomething1(getResolver().resolveSomething1(transformationAS.getSomething1(), transformation));
 				}
 			});
 		
