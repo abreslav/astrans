@@ -19,10 +19,10 @@ import org.junit.runners.Parameterized.Parameters;
 
 import ru.ifmo.rain.astrans.astransformation.Transformation;
 import ru.ifmo.rain.astrans.trace.Trace;
-import ru.ifmo.rain.astrans.utils.Difference;
-import ru.ifmo.rain.astrans.utils.EMFComparator;
-import utils.FileUtils;
-import utils.IFileProcessor;
+import ru.ifmo.rain.tests.utils.FileUtils;
+import ru.ifmo.rain.tests.utils.IFileProcessor;
+import ru.ifmo.rain.tests.utils.emf.Difference;
+import ru.ifmo.rain.tests.utils.emf.EMFComparator;
 import utils.LoadUtils;
 
 @RunWith(Parameterized.class)

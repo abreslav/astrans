@@ -16,8 +16,8 @@ import org.junit.runners.Parameterized.Parameters;
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
 import ru.ifmo.rain.astrans.utils.EMFHelper;
-import utils.FileUtils;
-import utils.IFileProcessor;
+import ru.ifmo.rain.tests.utils.FileUtils;
+import ru.ifmo.rain.tests.utils.IFileProcessor;
 
 @RunWith(Parameterized.class)
 public class BacktransCodeGeneratorTest {

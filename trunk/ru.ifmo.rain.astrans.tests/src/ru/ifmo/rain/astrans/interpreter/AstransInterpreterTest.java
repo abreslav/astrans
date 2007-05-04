@@ -23,11 +23,11 @@ import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.trace.Trace;
 import ru.ifmo.rain.astrans.trace.TraceFactory;
 import ru.ifmo.rain.astrans.trace.TracePackage;
-import ru.ifmo.rain.astrans.utils.Difference;
-import ru.ifmo.rain.astrans.utils.EMFComparator;
 import ru.ifmo.rain.astrans.utils.EMFHelper;
-import utils.FileUtils;
-import utils.IFileProcessor;
+import ru.ifmo.rain.tests.utils.FileUtils;
+import ru.ifmo.rain.tests.utils.IFileProcessor;
+import ru.ifmo.rain.tests.utils.emf.Difference;
+import ru.ifmo.rain.tests.utils.emf.EMFComparator;
 
 @RunWith(Parameterized.class)
 public class AstransInterpreterTest {

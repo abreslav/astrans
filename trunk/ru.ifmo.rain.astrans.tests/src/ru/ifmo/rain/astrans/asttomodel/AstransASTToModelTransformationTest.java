@@ -23,11 +23,11 @@ import ru.ifmo.rain.astrans.astransast.AstransastPackage;
 import ru.ifmo.rain.astrans.astransast.TransformationAS;
 import ru.ifmo.rain.astrans.asttomodel.bootstrap.AstransastToAstransTransformation;
 import ru.ifmo.rain.astrans.asttomodel.bootstrap.impl.ContextFactoryImpl;
-import ru.ifmo.rain.astrans.utils.Difference;
-import ru.ifmo.rain.astrans.utils.EMFComparator;
 import ru.ifmo.rain.astrans.utils.EMFHelper;
-import utils.FileUtils;
-import utils.IFileProcessor;
+import ru.ifmo.rain.tests.utils.FileUtils;
+import ru.ifmo.rain.tests.utils.IFileProcessor;
+import ru.ifmo.rain.tests.utils.emf.Difference;
+import ru.ifmo.rain.tests.utils.emf.EMFComparator;
 
 @RunWith(Parameterized.class)
 public class AstransASTToModelTransformationTest {
