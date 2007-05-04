@@ -82,10 +82,10 @@ doSwitch(<rule.result.name>.<r.setterName>(), <rule.parameter.name>.<r.getterNam
 renderResolveObject(r, rule) ::= <<
 <if(r.many)>
 for (Iterator i = <rule.parameter.name>.<r.getterName>().iterator(); i.hasNext(); ) {
-	<rule.result.name>.<r.setterName>().add(getResolver().<r.resolverMethodName>((<r.parameterType>) i.next()));
+	<rule.result.name>.<r.setterName>().add(getResolver().<r.resolverMethodName>((<r.parameterType>) i.next(), <rule.result.name>));
 }
 <else>
-<rule.result.name>.<r.setterName>(getResolver().<r.resolverMethodName>(<rule.parameter.name>.<r.getterName>()));
+<rule.result.name>.<r.setterName>(getResolver().<r.resolverMethodName>(<rule.parameter.name>.<r.getterName>(), <rule.result.name>));
 <endif>
 >>
 
