@@ -24,8 +24,8 @@ import org.junit.runners.Parameterized.Parameters;
 
 import ru.ifmo.rain.astrans.AstransPackage;
 import ru.ifmo.rain.astrans.utils.EMFHelper;
-import utils.FileUtils;
-import utils.IFileProcessor;
+import ru.ifmo.rain.tests.utils.FileUtils;
+import ru.ifmo.rain.tests.utils.IFileProcessor;
 
 @RunWith(Parameterized.class)
 public class AstransValidatorTest {

@@ -15,4 +15,5 @@ Require-Bundle: ru.ifmo.rain.astrans.ast,
  org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.codegen.ecore,
  org.eclipse.emf.importer.ecore,
- org.eclipse.emf.importer
+ org.eclipse.emf.importer,
+ ru.ifmo.rain.tests.utils
