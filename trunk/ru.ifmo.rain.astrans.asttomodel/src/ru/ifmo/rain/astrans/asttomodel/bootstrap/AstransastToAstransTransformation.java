@@ -3,6 +3,7 @@ package ru.ifmo.rain.astrans.asttomodel.bootstrap;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 import ru.ifmo.rain.astrans.AstransFactory;
@@ -14,6 +15,7 @@ import ru.ifmo.rain.astrans.Reference;
 import ru.ifmo.rain.astrans.SkipClass;
 import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.TranslateReferences;
+
 import ru.ifmo.rain.astrans.astransast.AttributeAS;
 import ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS;
 import ru.ifmo.rain.astrans.astransast.CreateClassAS;
@@ -23,7 +25,9 @@ import ru.ifmo.rain.astrans.astransast.ReferenceAS;
 import ru.ifmo.rain.astrans.astransast.SkipClassAS;
 import ru.ifmo.rain.astrans.astransast.TransformationAS;
 import ru.ifmo.rain.astrans.astransast.TranslateReferencesAS;
+
 import ru.ifmo.rain.astrans.astransast.util.AstransastSwitch;
+
 import ru.ifmo.rain.astrans.asttomodel.ASTToModelTransformation;
 import ru.ifmo.rain.astrans.asttomodel.ITransformationContextFactory;
 
@@ -40,7 +44,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					mappedEClass.setProto(getResolver().resolveMappedEClassProto(mappedEClassAS.getProto()));
+					mappedEClass.setProto(getResolver().resolveMappedEClassProto(mappedEClassAS.getProto(), mappedEClass));
 				}
 			});
 		
@@ -55,8 +59,8 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					translateReferences.setModelReferenceTypeProto(getResolver().resolveTranslateReferencesModelReferenceTypeProto(translateReferencesAS.getModelReferenceTypeProto()));
-					translateReferences.setTextualReferenceType(getResolver().resolveTranslateReferencesTextualReferenceType(translateReferencesAS.getTextualReferenceType()));
+					translateReferences.setModelReferenceTypeProto(getResolver().resolveTranslateReferencesModelReferenceTypeProto(translateReferencesAS.getModelReferenceTypeProto(), translateReferences));
+					translateReferences.setTextualReferenceType(getResolver().resolveTranslateReferencesTextualReferenceType(translateReferencesAS.getTextualReferenceType(), translateReferences));
 				}
 			});
 		
@@ -75,7 +79,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			addCommand(new Runnable() {
 				public void run() {
 					for (Iterator i = createClassAS.getSuperclasses().iterator(); i.hasNext(); ) {
-						createClass.getSuperclasses().add(getResolver().resolveCreateClassSuperclasses((EClassifierReferenceAS) i.next()));
+						createClass.getSuperclasses().add(getResolver().resolveCreateClassSuperclasses((EClassifierReferenceAS) i.next(), createClass));
 					}
 				}
 			});
@@ -96,7 +100,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					attribute.setType(getResolver().resolveAttributeType(attributeAS.getType()));
+					attribute.setType(getResolver().resolveAttributeType(attributeAS.getType(), attribute));
 				}
 			});
 		
@@ -115,7 +119,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					reference.setType(getResolver().resolveReferenceType(referenceAS.getType()));
+					reference.setType(getResolver().resolveReferenceType(referenceAS.getType(), reference));
 				}
 			});
 		
@@ -136,7 +140,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			addCommand(new Runnable() {
 				public void run() {
 					for (Iterator i = changeInheritanceAS.getSuperclasses().iterator(); i.hasNext(); ) {
-						changeInheritance.getSuperclasses().add(getResolver().resolveChangeInheritanceSuperclasses((EClassifierReferenceAS) i.next()));
+						changeInheritance.getSuperclasses().add(getResolver().resolveChangeInheritanceSuperclasses((EClassifierReferenceAS) i.next(), changeInheritance));
 					}
 				}
 			});
@@ -154,7 +158,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					skipClass.setTargetProto(getResolver().resolveSkipClassTargetProto(skipClassAS.getTargetProto()));
+					skipClass.setTargetProto(getResolver().resolveSkipClassTargetProto(skipClassAS.getTargetProto(), skipClass));
 				}
 			});
 		
@@ -171,9 +175,9 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					transformation.setInput(getResolver().resolveTransformationInput(transformationAS.getInput()));
-					transformation.setInputModelRoot(getResolver().resolveTransformationInputModelRoot(transformationAS.getInputModelRoot()));
-					transformation.setAstRoot(getResolver().resolveTransformationAstRoot(transformationAS.getAstRoot()));
+					transformation.setInput(getResolver().resolveTransformationInput(transformationAS.getInput(), transformation));
+					transformation.setInputModelRoot(getResolver().resolveTransformationInputModelRoot(transformationAS.getInputModelRoot(), transformation));
+					transformation.setAstRoot(getResolver().resolveTransformationAstRoot(transformationAS.getAstRoot(), transformation));
 				}
 			});
 		

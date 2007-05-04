@@ -10,11 +10,18 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import ru.ifmo.rain.astrans.AstransFactory;
+import ru.ifmo.rain.astrans.Attribute;
+import ru.ifmo.rain.astrans.ChangeInheritance;
+import ru.ifmo.rain.astrans.CreateClass;
 import ru.ifmo.rain.astrans.EClassReference;
 import ru.ifmo.rain.astrans.EClassifierReference;
 import ru.ifmo.rain.astrans.ExistingEClass;
 import ru.ifmo.rain.astrans.ExistingEDataType;
 import ru.ifmo.rain.astrans.MappedEClass;
+import ru.ifmo.rain.astrans.Reference;
+import ru.ifmo.rain.astrans.SkipClass;
+import ru.ifmo.rain.astrans.Transformation;
+import ru.ifmo.rain.astrans.TranslateReferences;
 import ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS;
 import ru.ifmo.rain.astrans.astransast.EPackagePath;
 import ru.ifmo.rain.astrans.astransast.EPackageReference;
@@ -87,23 +94,23 @@ public class ResolverImpl implements IAstransastToAstransResolver {
 		this.fileResolver = fileResolver;
 	}
 
-	public EClass resolveTranslateReferencesModelReferenceTypeProto(QualifiedName modelReferenceTypeProto) {
+	public EClass resolveTranslateReferencesModelReferenceTypeProto(QualifiedName modelReferenceTypeProto, TranslateReferences contextObject) {
 		return lookupProtoClass(modelReferenceTypeProto);
 	}
 
-	public EClass resolveSkipClassTargetProto(QualifiedName targetProto) {
+	public EClass resolveSkipClassTargetProto(QualifiedName targetProto, SkipClass contextObject) {
 		return lookupProtoClass(targetProto);
 	}
 
-	public EClassReference resolveCreateClassSuperclasses(EClassifierReferenceAS superClassQN) {
+	public EClassReference resolveCreateClassSuperclasses(EClassifierReferenceAS superClassQN, CreateClass contextObject) {
 		return lookupClass(superClassQN);
 	}
 
-	public EClassReference resolveReferenceType(EClassifierReferenceAS type) {
+	public EClassReference resolveReferenceType(EClassifierReferenceAS type, Reference contextObject) {
 		return lookupClass(type);
 	}
 
-	public EDataType resolveAttributeType(QualifiedName type) {
+	public EDataType resolveAttributeType(QualifiedName type, Attribute contextObject) {
 		ExistingEDataType ref = OR
 			.get(ecore.getExistingEDataType(type))
 			.or(proto.getExistingEDataType(type))
@@ -111,7 +118,7 @@ public class ResolverImpl implements IAstransastToAstransResolver {
 		return ref == null ? null : ref.getEDataType();
 	}
 
-	public EClassReference resolveChangeInheritanceSuperclasses(EClassifierReferenceAS superclass) {
+	public EClassReference resolveChangeInheritanceSuperclasses(EClassifierReferenceAS superclass, ChangeInheritance contextObject) {
 		return lookupClass(superclass);
 	}
 	
@@ -136,25 +143,25 @@ public class ResolverImpl implements IAstransastToAstransResolver {
 		return (EClassReference) classReferenceResolver.doSwitch(classifierReferenceAS);
 	}
 
-	public EPackage resolveTransformationInput(EPackageReference inputAS) {
+	public EPackage resolveTransformationInput(EPackageReference inputAS, Transformation contextObject) {
 		EPackage inputPackage = (EPackage) inputEPackageResolver.doSwitch(inputAS);
 		this.proto = new EPackageResolver(inputPackage);
 		return inputPackage;
 	}
 
-	public EClassReference resolveTransformationAstRoot(EClassifierReferenceAS astRoot) {
+	public EClassReference resolveTransformationAstRoot(EClassifierReferenceAS astRoot, Transformation contextObject) {
 		return lookupClass(astRoot);
 	}
 
-	public EClass resolveTransformationInputModelRoot(QualifiedName inputModelRoot) {
+	public EClass resolveTransformationInputModelRoot(QualifiedName inputModelRoot, Transformation contextObject) {
 		return lookupProtoClass(inputModelRoot);
 	}
 
-	public EClass resolveMappedEClassProto(QualifiedName proto) {
+	public EClass resolveMappedEClassProto(QualifiedName proto, MappedEClass contextObject) {
 		return lookupProtoClass(proto);
 	}
 
-	public EClassifierReference resolveTranslateReferencesTextualReferenceType(EClassifierReferenceAS textualReferenceType) {
+	public EClassifierReference resolveTranslateReferencesTextualReferenceType(EClassifierReferenceAS textualReferenceType, TranslateReferences contextObject) {
 		return (EClassifierReference) classifierReferenceResolver.doSwitch(textualReferenceType);
 	}
 	
