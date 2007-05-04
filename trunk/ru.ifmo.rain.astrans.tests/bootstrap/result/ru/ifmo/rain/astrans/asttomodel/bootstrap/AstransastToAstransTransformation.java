@@ -44,7 +44,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					mappedEClass.setProto(getResolver().resolveMappedEClassProto(mappedEClassAS.getProto()));
+					mappedEClass.setProto(getResolver().resolveMappedEClassProto(mappedEClassAS.getProto(), mappedEClass));
 				}
 			});
 		
@@ -59,8 +59,8 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					translateReferences.setModelReferenceTypeProto(getResolver().resolveTranslateReferencesModelReferenceTypeProto(translateReferencesAS.getModelReferenceTypeProto()));
-					translateReferences.setTextualReferenceType(getResolver().resolveTranslateReferencesTextualReferenceType(translateReferencesAS.getTextualReferenceType()));
+					translateReferences.setModelReferenceTypeProto(getResolver().resolveTranslateReferencesModelReferenceTypeProto(translateReferencesAS.getModelReferenceTypeProto(), translateReferences));
+					translateReferences.setTextualReferenceType(getResolver().resolveTranslateReferencesTextualReferenceType(translateReferencesAS.getTextualReferenceType(), translateReferences));
 				}
 			});
 		
@@ -79,7 +79,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			addCommand(new Runnable() {
 				public void run() {
 					for (Iterator i = createClassAS.getSuperclasses().iterator(); i.hasNext(); ) {
-						createClass.getSuperclasses().add(getResolver().resolveCreateClassSuperclasses((EClassifierReferenceAS) i.next()));
+						createClass.getSuperclasses().add(getResolver().resolveCreateClassSuperclasses((EClassifierReferenceAS) i.next(), createClass));
 					}
 				}
 			});
@@ -100,7 +100,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					attribute.setType(getResolver().resolveAttributeType(attributeAS.getType()));
+					attribute.setType(getResolver().resolveAttributeType(attributeAS.getType(), attribute));
 				}
 			});
 		
@@ -119,7 +119,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					reference.setType(getResolver().resolveReferenceType(referenceAS.getType()));
+					reference.setType(getResolver().resolveReferenceType(referenceAS.getType(), reference));
 				}
 			});
 		
@@ -140,7 +140,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			addCommand(new Runnable() {
 				public void run() {
 					for (Iterator i = changeInheritanceAS.getSuperclasses().iterator(); i.hasNext(); ) {
-						changeInheritance.getSuperclasses().add(getResolver().resolveChangeInheritanceSuperclasses((EClassifierReferenceAS) i.next()));
+						changeInheritance.getSuperclasses().add(getResolver().resolveChangeInheritanceSuperclasses((EClassifierReferenceAS) i.next(), changeInheritance));
 					}
 				}
 			});
@@ -158,7 +158,7 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					skipClass.setTargetProto(getResolver().resolveSkipClassTargetProto(skipClassAS.getTargetProto()));
+					skipClass.setTargetProto(getResolver().resolveSkipClassTargetProto(skipClassAS.getTargetProto(), skipClass));
 				}
 			});
 		
@@ -175,9 +175,9 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			
 			addCommand(new Runnable() {
 				public void run() {
-					transformation.setInput(getResolver().resolveTransformationInput(transformationAS.getInput()));
-					transformation.setInputModelRoot(getResolver().resolveTransformationInputModelRoot(transformationAS.getInputModelRoot()));
-					transformation.setAstRoot(getResolver().resolveTransformationAstRoot(transformationAS.getAstRoot()));
+					transformation.setInput(getResolver().resolveTransformationInput(transformationAS.getInput(), transformation));
+					transformation.setInputModelRoot(getResolver().resolveTransformationInputModelRoot(transformationAS.getInputModelRoot(), transformation));
+					transformation.setAstRoot(getResolver().resolveTransformationAstRoot(transformationAS.getAstRoot(), transformation));
 				}
 			});
 		

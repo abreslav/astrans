@@ -42,48 +42,48 @@ public class ResolverTest {
 		EPackageUri uri = AstransastFactory.eINSTANCE.createEPackageUri();
 		EPackage.Registry.INSTANCE.put(AstransPackage.eNS_URI, AstransPackage.eINSTANCE);
 		uri.setUri(AstransPackage.eNS_URI);
-		resolver.resolveTransformationInput(uri);
+		resolver.resolveTransformationInput(uri, null);
 	}
 
 	@Test
 	public final void testResolveTranslateReferencesTextualReferenceType() {
-		EClassifierReference reference = resolver.resolveTranslateReferencesTextualReferenceType(QNUtils.createQN("ecore.EString"));
+		EClassifierReference reference = resolver.resolveTranslateReferencesTextualReferenceType(QNUtils.createQN("ecore.EString"), null);
 		assertEquals(EcorePackage.eINSTANCE.getEString(), ((ExistingEDataType) reference).getEDataType());
 	}
 	
 	@Test
 	public final void testResolveTranslateReferencesModelReferenceTypeProto() {
-		EClass eClass = resolver.resolveTranslateReferencesModelReferenceTypeProto(actionQN);
+		EClass eClass = resolver.resolveTranslateReferencesModelReferenceTypeProto(actionQN, null);
 		assertEquals(AstransPackage.eINSTANCE.getAction(), eClass);
 	}
 
 	@Test
 	public final void testResolveSkipClassTargetProto() {
-		EClass eClass = resolver.resolveSkipClassTargetProto(actionQN);
+		EClass eClass = resolver.resolveSkipClassTargetProto(actionQN, null);
 		assertEquals(AstransPackage.eINSTANCE.getAction(), eClass);
 	}
 
 	@Test
 	public final void testResolveCreateClassSuperclass() {
-		EClassReference reference = resolver.resolveCreateClassSuperclasses(QNUtils.createQN("ecore.EClass"));
+		EClassReference reference = resolver.resolveCreateClassSuperclasses(QNUtils.createQN("ecore.EClass"), null);
 		assertEquals(EcorePackage.eINSTANCE.getEClass(), ((ExistingEClass) reference).getEClass());
 	}
 
 	@Test
 	public final void testResolveReferenceType() {
-		EClassReference reference = resolver.resolveReferenceType(QNUtils.createQN("B"));
+		EClassReference reference = resolver.resolveReferenceType(QNUtils.createQN("B"), null);
 		assertEquals("B", ((CreatedEClass) reference).getCreate().getName());
 	}
 
 	@Test
 	public final void testResolveReferenceTypeExistringEClass() {
-		EClassReference reference = resolver.resolveReferenceType(QNUtils.createQN("ecore.EClass"));
+		EClassReference reference = resolver.resolveReferenceType(QNUtils.createQN("ecore.EClass"), null);
 		assertEquals(EcorePackage.eINSTANCE.getEClass(), ((ExistingEClass) reference).getEClass());
 	}
 
 	@Test
 	public final void testResolveAttributeType() {
-		EDataType type = resolver.resolveAttributeType(QNUtils.createQN("ecore.EInt"));
+		EDataType type = resolver.resolveAttributeType(QNUtils.createQN("ecore.EInt"), null);
 		assertEquals(EcorePackage.eINSTANCE.getEInt(), type);
 	}
 
@@ -91,7 +91,7 @@ public class ResolverTest {
 	public void testResolveTransformationInputUri() {
 		EPackageUri uri = AstransastFactory.eINSTANCE.createEPackageUri();
 		uri.setUri("http://www.eclipse.org/emf/2002/Ecore");
-		EPackage input = resolver.resolveTransformationInput(uri);
+		EPackage input = resolver.resolveTransformationInput(uri, null);
 		assertEquals(EcorePackage.eINSTANCE, input);
 	}
 
@@ -99,7 +99,7 @@ public class ResolverTest {
 	public void testResolveTransformationInputPath() {
 		EPackagePath path = AstransastFactory.eINSTANCE.createEPackagePath();
 		path.setPath("testdata/test.ecore");
-		EPackage input = resolver.resolveTransformationInput(path);
+		EPackage input = resolver.resolveTransformationInput(path, null);
 		assertEquals(input.getNsURI(), "http:///test");
 	}
 }
