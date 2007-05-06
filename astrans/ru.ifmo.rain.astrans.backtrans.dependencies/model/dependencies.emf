@@ -1,0 +1,17 @@
+@namespace(uri="http://rain.ifmo.ru/~breslav/2007/backtrans/dependencies", prefix="btd")
+package dependencies;
+
+class DependencyModel {
+	val EClassContext[*] contexts;
+}
+
+@Ecore(constraints="AllFeaturesBelongToAClass")
+class EClassContext {
+	ref ecore.EClass[1] eClass;
+	val FeatureDependency[*] dependencies;
+}
+
+class FeatureDependency {
+	ref ecore.EReference[1] reference;
+	ref ecore.EReference[*] dependsOn;
+}
