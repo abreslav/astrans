@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests
+Bundle-SymbolicName: ru.ifmo.rain.astrans.examples.assign.tests
+Bundle-Version: 1.0.0
+Bundle-Localization: plugin
+Require-Bundle: ru.ifmo.rain.astrans.examples.assign,
+ ru.ifmo.rain.tests.utils,
+ org.eclipse.emf.ecore.xmi,
+ ru.ifmo.rain.astrans.asttomodel
