@@ -59,11 +59,17 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignAttributeStatements"
         upperBound="-1" eType="#//AssignAttribute" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="assignReferenceStatements"
-        upperBound="-1" eType="#//AssignReference" containment="true"/>
+        upperBound="-1" eType="#//AssignReferenceStatement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resolveObjectStatements"
+        upperBound="-1" eType="#//ResolveObject" changeable="false" volatile="true"
+        transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceStatement" lowerBound="1"
         eType="#//WriteTrace" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssignReferenceStatement" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ResolveObjects" eSuperTypes="#//AssignReferenceStatement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="resolveObjectStatements"
-        upperBound="-1" eType="#//ResolveObject" containment="true"/>
+        lowerBound="1" upperBound="-1" eType="#//ResolveObject" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssignFeature">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="setterName" lowerBound="1"
@@ -74,7 +80,7 @@
         defaultValueLiteral="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssignAttribute" eSuperTypes="#//AssignFeature"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AssignReference" eSuperTypes="#//AssignFeature #//Typed">
+  <eClassifiers xsi:type="ecore:EClass" name="AssignReference" eSuperTypes="#//AssignFeature #//Typed #//AssignReferenceStatement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mappingNeeded" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
   </eClassifiers>

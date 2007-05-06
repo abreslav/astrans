@@ -6,131 +6,275 @@
  */
 package ru.ifmo.rain.astrans.astransformation;
 
-import org.eclipse.emf.ecore.EFactory;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.impl.EFactoryImpl;
+import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage
  * @generated
  */
-public interface AstransformationFactory extends EFactory {
+public class AstransformationFactory extends EFactoryImpl {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	AstransformationFactory eINSTANCE = ru.ifmo.rain.astrans.astransformation.impl.AstransformationFactoryImpl.init();
+	public static final AstransformationFactory eINSTANCE = init();
 
 	/**
-	 * Returns a new object of class '<em>Class Name</em>'.
+	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Class Name</em>'.
 	 * @generated
 	 */
-	ClassName createClassName();
+	public static final AstransformationFactory INSTANCE = ru.ifmo.rain.astrans.astransformation.AstransformationFactory.eINSTANCE;
 
 	/**
-	 * Returns a new object of class '<em>Transformation</em>'.
+	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Transformation</em>'.
 	 * @generated
 	 */
-	Transformation createTransformation();
+	public static AstransformationFactory init() {
+		try {
+			AstransformationFactory theAstransformationFactory = (AstransformationFactory)EPackage.Registry.INSTANCE.getEFactory("http://rain.ifmo.ru/~breslav/2007/astransformation"); 
+			if (theAstransformationFactory != null) {
+				return theAstransformationFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new AstransformationFactory();
+	}
 
 	/**
-	 * Returns a new object of class '<em>Parameter</em>'.
+	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Parameter</em>'.
 	 * @generated
 	 */
-	Parameter createParameter();
+	public AstransformationFactory() {
+		super();
+	}
 
 	/**
-	 * Returns a new object of class '<em>Mapping Rule</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Mapping Rule</em>'.
 	 * @generated
 	 */
-	MappingRule createMappingRule();
+	public EObject create(EClass eClass) {
+		switch (eClass.getClassifierID()) {
+			case AstransformationPackage.CLASS_NAME: return createClassName();
+			case AstransformationPackage.BASIC_TYPE_NAME: return createBasicTypeName();
+			case AstransformationPackage.TRANSFORMATION: return createTransformation();
+			case AstransformationPackage.PARAMETER: return createParameter();
+			case AstransformationPackage.CUSTOM_MAIN_METHOD: return createCustomMainMethod();
+			case AstransformationPackage.MAPPING_RULE: return createMappingRule();
+			case AstransformationPackage.RESOLVE_OBJECTS: return createResolveObjects();
+			case AstransformationPackage.ASSIGN_FEATURE: return createAssignFeature();
+			case AstransformationPackage.ASSIGN_ATTRIBUTE: return createAssignAttribute();
+			case AstransformationPackage.ASSIGN_REFERENCE: return createAssignReference();
+			case AstransformationPackage.WRITE_TRACE: return createWriteTrace();
+			case AstransformationPackage.RESOLVE_OBJECT: return createResolveObject();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
 	/**
-	 * Returns a new object of class '<em>Assign Feature</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Assign Feature</em>'.
 	 * @generated
 	 */
-	AssignFeature createAssignFeature();
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case AstransformationPackage.BASIC_TYPE:
+				return createBasicTypeFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
 	/**
-	 * Returns a new object of class '<em>Assign Attribute</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Assign Attribute</em>'.
 	 * @generated
 	 */
-	AssignAttribute createAssignAttribute();
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case AstransformationPackage.BASIC_TYPE:
+				return convertBasicTypeToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
 	/**
-	 * Returns a new object of class '<em>Assign Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Assign Reference</em>'.
 	 * @generated
 	 */
-	AssignReference createAssignReference();
+	public ClassName createClassName() {
+		ClassName className = new ClassName();
+		return className;
+	}
 
 	/**
-	 * Returns a new object of class '<em>Write Trace</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Write Trace</em>'.
 	 * @generated
 	 */
-	WriteTrace createWriteTrace();
+	public BasicTypeName createBasicTypeName() {
+		BasicTypeName basicTypeName = new BasicTypeName();
+		return basicTypeName;
+	}
 
 	/**
-	 * Returns a new object of class '<em>Resolve Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Resolve Object</em>'.
 	 * @generated
 	 */
-	ResolveObject createResolveObject();
+	public Transformation createTransformation() {
+		Transformation transformation = new Transformation();
+		return transformation;
+	}
 
 	/**
-	 * Returns a new object of class '<em>Custom Main Method</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Custom Main Method</em>'.
 	 * @generated
 	 */
-	CustomMainMethod createCustomMainMethod();
+	public Parameter createParameter() {
+		Parameter parameter = new Parameter();
+		return parameter;
+	}
 
 	/**
-	 * Returns a new object of class '<em>Basic Type Name</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Basic Type Name</em>'.
 	 * @generated
 	 */
-	BasicTypeName createBasicTypeName();
+	public MappingRule createMappingRule() {
+		MappingRule mappingRule = new MappingRule();
+		return mappingRule;
+	}
 
 	/**
-	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	AstransformationPackage getAstransformationPackage();
+	public ResolveObjects createResolveObjects() {
+		ResolveObjects resolveObjects = new ResolveObjects();
+		return resolveObjects;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssignFeature createAssignFeature() {
+		AssignFeature assignFeature = new AssignFeature();
+		return assignFeature;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssignAttribute createAssignAttribute() {
+		AssignAttribute assignAttribute = new AssignAttribute();
+		return assignAttribute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AssignReference createAssignReference() {
+		AssignReference assignReference = new AssignReference();
+		return assignReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WriteTrace createWriteTrace() {
+		WriteTrace writeTrace = new WriteTrace();
+		return writeTrace;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResolveObject createResolveObject() {
+		ResolveObject resolveObject = new ResolveObject();
+		return resolveObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CustomMainMethod createCustomMainMethod() {
+		CustomMainMethod customMainMethod = new CustomMainMethod();
+		return customMainMethod;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BasicType createBasicTypeFromString(EDataType eDataType, String initialValue) {
+		BasicType result = BasicType.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBasicTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public AstransformationPackage getAstransformationPackage() {
+		return (AstransformationPackage)getEPackage();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @deprecated
+	 * @generated
+	 */
+	public static AstransformationPackage getPackage() {
+		return AstransformationPackage.eINSTANCE;
+	}
 
 } //AstransformationFactory

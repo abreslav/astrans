@@ -56,9 +56,16 @@ class MappingRule extends Method {
   val ClassName[1] factoryClassName;
   attr String[1] factoryMethodName;
   val AssignAttribute[*] assignAttributeStatements;
-  val AssignReference[*] assignReferenceStatements;
+  ordered val AssignReferenceStatement[*] assignReferenceStatements;
+  derived transient volatile readonly ref ResolveObject[*] resolveObjectStatements;
   val WriteTrace[1] writeTraceStatement;
-  val ResolveObject[*] resolveObjectStatements;
+}
+
+interface AssignReferenceStatement {
+}
+
+class ResolveObjects extends AssignReferenceStatement {
+  val ResolveObject[1..*] resolveObjectStatements;
 }
 
 class AssignFeature {
@@ -70,7 +77,7 @@ class AssignFeature {
 class AssignAttribute extends AssignFeature {
 }
 
-class AssignReference extends AssignFeature, Typed {
+class AssignReference extends AssignFeature, Typed, AssignReferenceStatement {
   attr boolean mappingNeeded = true;
 }
 
