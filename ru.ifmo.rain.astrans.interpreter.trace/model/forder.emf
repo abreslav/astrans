@@ -1,0 +1,34 @@
+@namespace(uri="http://rain.ifmo.ru/~breslav/2007/astrans/resolver/FeatureOrder", prefix="forder")
+package forder;
+
+import "platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore";
+
+class FeatureOrderModel {
+  val ClassFeatureOrder[*] classSpecifications;
+}
+
+@Ecore(constraints="NotMoreThanOneOthersReferenceOfEachType")
+@Ecore(constraints="AllFeaturesReferenced")
+@Ecore(constraints="AllFeaturesBelongToSpecifiedClass")
+class ClassFeatureOrder {
+  ref ecore.EClass[1] eClass;
+  val AbstractFeatureReference[*] features;
+}
+
+abstract class AbstractFeatureReference {
+}
+
+class FeatureReference extends AbstractFeatureReference {
+	ref ecore.EStructuralFeature[1] feature;
+}
+
+class OtherMappedFeatures extends AbstractFeatureReference {	
+}
+
+class OtherResolvedFeatures extends AbstractFeatureReference {	
+}
+
+
+
+
+
