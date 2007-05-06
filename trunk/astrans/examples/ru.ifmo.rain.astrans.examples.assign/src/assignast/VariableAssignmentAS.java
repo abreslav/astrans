@@ -16,6 +16,7 @@ package assignast;
  * The following features are supported:
  * <ul>
  *   <li>{@link assignast.VariableAssignmentAS#getVariableName <em>Variable Name</em>}</li>
+ *   <li>{@link assignast.VariableAssignmentAS#isReturned <em>Returned</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,5 +50,32 @@ public interface VariableAssignmentAS extends AssignmentAS {
 	 * @generated
 	 */
 	void setVariableName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Returned</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Returned</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Returned</em>' attribute.
+	 * @see #setReturned(boolean)
+	 * @see assignast.AssignastPackage#getVariableAssignmentAS_Returned()
+	 * @model default="false"
+	 * @generated
+	 */
+	boolean isReturned();
+
+	/**
+	 * Sets the value of the '{@link assignast.VariableAssignmentAS#isReturned <em>Returned</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Returned</em>' attribute.
+	 * @see #isReturned()
+	 * @generated
+	 */
+	void setReturned(boolean value);
 
 } // VariableAssignmentAS

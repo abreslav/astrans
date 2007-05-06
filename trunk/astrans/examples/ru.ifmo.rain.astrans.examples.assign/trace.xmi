@@ -81,6 +81,10 @@
     <image href="model/ast.ecore#//VariableAssignmentAS/variableName"/>
   </attributeMappings>
   <attributeMappings>
+    <proto href="model/assign.ecore#//VariableAssignment/returned"/>
+    <image href="model/ast.ecore#//VariableAssignmentAS/returned"/>
+  </attributeMappings>
+  <attributeMappings>
     <proto href="model/assign.ecore#//StringLiteral/value"/>
     <image href="model/ast.ecore#//StringLiteralAS/value"/>
   </attributeMappings>

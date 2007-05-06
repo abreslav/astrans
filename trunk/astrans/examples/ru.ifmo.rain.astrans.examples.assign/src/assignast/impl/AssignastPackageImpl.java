@@ -334,6 +334,15 @@ public class AssignastPackageImpl extends EPackageImpl implements AssignastPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getVariableAssignmentAS_Returned() {
+		return (EAttribute)variableAssignmentASEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAbstractFeatureAssignmentAS() {
 		return abstractFeatureAssignmentASEClass;
 	}
@@ -761,6 +770,7 @@ public class AssignastPackageImpl extends EPackageImpl implements AssignastPacka
 
 		variableAssignmentASEClass = createEClass(VARIABLE_ASSIGNMENT_AS);
 		createEAttribute(variableAssignmentASEClass, VARIABLE_ASSIGNMENT_AS__VARIABLE_NAME);
+		createEAttribute(variableAssignmentASEClass, VARIABLE_ASSIGNMENT_AS__RETURNED);
 
 		abstractFeatureAssignmentASEClass = createEClass(ABSTRACT_FEATURE_ASSIGNMENT_AS);
 		createEReference(abstractFeatureAssignmentASEClass, ABSTRACT_FEATURE_ASSIGNMENT_AS__OBJECT);
@@ -875,6 +885,7 @@ public class AssignastPackageImpl extends EPackageImpl implements AssignastPacka
 
 		initEClass(variableAssignmentASEClass, VariableAssignmentAS.class, "VariableAssignmentAS", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariableAssignmentAS_VariableName(), ecorePackage.getEString(), "variableName", null, 1, 1, VariableAssignmentAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariableAssignmentAS_Returned(), ecorePackage.getEBoolean(), "returned", "false", 0, 1, VariableAssignmentAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractFeatureAssignmentASEClass, AbstractFeatureAssignmentAS.class, "AbstractFeatureAssignmentAS", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAbstractFeatureAssignmentAS_Object(), this.getFeatureAccessAS(), null, "object", null, 1, 1, AbstractFeatureAssignmentAS.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

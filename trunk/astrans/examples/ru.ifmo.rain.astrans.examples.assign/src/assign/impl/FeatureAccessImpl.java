@@ -46,7 +46,7 @@ public class FeatureAccessImpl extends ExpressionImpl implements FeatureAccess {
 	protected Expression object = null;
 
 	/**
-	 * The cached value of the '{@link #getFeature() <em>Feature</em>}' containment reference.
+	 * The cached value of the '{@link #getFeature() <em>Feature</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFeature()
@@ -122,6 +122,14 @@ public class FeatureAccessImpl extends ExpressionImpl implements FeatureAccess {
 	 * @generated
 	 */
 	public EStructuralFeature getFeature() {
+		if (feature != null && feature.eIsProxy()) {
+			InternalEObject oldFeature = (InternalEObject)feature;
+			feature = (EStructuralFeature)eResolveProxy(oldFeature);
+			if (feature != oldFeature) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, AssignPackage.FEATURE_ACCESS__FEATURE, oldFeature, feature));
+			}
+		}
 		return feature;
 	}
 
@@ -130,14 +138,8 @@ public class FeatureAccessImpl extends ExpressionImpl implements FeatureAccess {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFeature(EStructuralFeature newFeature, NotificationChain msgs) {
-		EStructuralFeature oldFeature = feature;
-		feature = newFeature;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AssignPackage.FEATURE_ACCESS__FEATURE, oldFeature, newFeature);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public EStructuralFeature basicGetFeature() {
+		return feature;
 	}
 
 	/**
@@ -146,17 +148,10 @@ public class FeatureAccessImpl extends ExpressionImpl implements FeatureAccess {
 	 * @generated
 	 */
 	public void setFeature(EStructuralFeature newFeature) {
-		if (newFeature != feature) {
-			NotificationChain msgs = null;
-			if (feature != null)
-				msgs = ((InternalEObject)feature).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AssignPackage.FEATURE_ACCESS__FEATURE, null, msgs);
-			if (newFeature != null)
-				msgs = ((InternalEObject)newFeature).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AssignPackage.FEATURE_ACCESS__FEATURE, null, msgs);
-			msgs = basicSetFeature(newFeature, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, AssignPackage.FEATURE_ACCESS__FEATURE, newFeature, newFeature));
+		EStructuralFeature oldFeature = feature;
+		feature = newFeature;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AssignPackage.FEATURE_ACCESS__FEATURE, oldFeature, feature));
 	}
 
 	/**
@@ -168,8 +163,6 @@ public class FeatureAccessImpl extends ExpressionImpl implements FeatureAccess {
 		switch (featureID) {
 			case AssignPackage.FEATURE_ACCESS__OBJECT:
 				return basicSetObject(null, msgs);
-			case AssignPackage.FEATURE_ACCESS__FEATURE:
-				return basicSetFeature(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -184,7 +177,8 @@ public class FeatureAccessImpl extends ExpressionImpl implements FeatureAccess {
 			case AssignPackage.FEATURE_ACCESS__OBJECT:
 				return getObject();
 			case AssignPackage.FEATURE_ACCESS__FEATURE:
-				return getFeature();
+				if (resolve) return getFeature();
+				return basicGetFeature();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -237,7 +231,7 @@ public class FeatureAccessImpl extends ExpressionImpl implements FeatureAccess {
 		}
 		return super.eIsSet(featureID);
 	}
-	
+
 	@Override
 	public EClassifier getType() {
 		return getFeature().getEType();

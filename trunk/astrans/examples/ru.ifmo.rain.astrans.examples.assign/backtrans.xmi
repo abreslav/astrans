@@ -22,6 +22,7 @@
     </result>
     <factoryClassName name="assign.AssignFactory"/>
     <assignAttributeStatements setterName="setVariableName" getterName="getVariableName"/>
+    <assignAttributeStatements setterName="setReturned" getterName="isReturned"/>
     <assignReferenceStatements setterName="setExpression" getterName="getExpression">
       <type name="assign.Expression"/>
     </assignReferenceStatements>

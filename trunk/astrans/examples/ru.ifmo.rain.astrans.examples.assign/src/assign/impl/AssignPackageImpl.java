@@ -306,6 +306,15 @@ public class AssignPackageImpl extends EPackageImpl implements AssignPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getVariableAssignment_Returned() {
+		return (EAttribute)variableAssignmentEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAbstractFeatureAssignment() {
 		return abstractFeatureAssignmentEClass;
 	}
@@ -598,6 +607,7 @@ public class AssignPackageImpl extends EPackageImpl implements AssignPackage {
 
 		variableAssignmentEClass = createEClass(VARIABLE_ASSIGNMENT);
 		createEAttribute(variableAssignmentEClass, VARIABLE_ASSIGNMENT__VARIABLE_NAME);
+		createEAttribute(variableAssignmentEClass, VARIABLE_ASSIGNMENT__RETURNED);
 
 		abstractFeatureAssignmentEClass = createEClass(ABSTRACT_FEATURE_ASSIGNMENT);
 		createEReference(abstractFeatureAssignmentEClass, ABSTRACT_FEATURE_ASSIGNMENT__OBJECT);
@@ -692,6 +702,7 @@ public class AssignPackageImpl extends EPackageImpl implements AssignPackage {
 
 		initEClass(variableAssignmentEClass, VariableAssignment.class, "VariableAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVariableAssignment_VariableName(), ecorePackage.getEString(), "variableName", null, 1, 1, VariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariableAssignment_Returned(), ecorePackage.getEBoolean(), "returned", "false", 0, 1, VariableAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractFeatureAssignmentEClass, AbstractFeatureAssignment.class, "AbstractFeatureAssignment", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAbstractFeatureAssignment_Object(), this.getFeatureAccess(), null, "object", null, 1, 1, AbstractFeatureAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -708,7 +719,7 @@ public class AssignPackageImpl extends EPackageImpl implements AssignPackage {
 
 		initEClass(featureAccessEClass, FeatureAccess.class, "FeatureAccess", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getFeatureAccess_Object(), this.getExpression(), null, "object", null, 1, 1, FeatureAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getFeatureAccess_Feature(), ecorePackage.getEStructuralFeature(), null, "feature", null, 1, 1, FeatureAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFeatureAccess_Feature(), ecorePackage.getEStructuralFeature(), null, "feature", null, 1, 1, FeatureAccess.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(eObjectReferenceEClass, EObjectReference.class, "EObjectReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEObjectReference_Object(), ecorePackage.getEObject(), null, "object", null, 1, 1, EObjectReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

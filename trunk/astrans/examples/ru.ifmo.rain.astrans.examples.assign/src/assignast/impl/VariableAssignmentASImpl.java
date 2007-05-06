@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link assignast.impl.VariableAssignmentASImpl#getVariableName <em>Variable Name</em>}</li>
+ *   <li>{@link assignast.impl.VariableAssignmentASImpl#isReturned <em>Returned</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,6 +49,26 @@ public class VariableAssignmentASImpl extends AssignmentASImpl implements Variab
 	 * @ordered
 	 */
 	protected String variableName = VARIABLE_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isReturned() <em>Returned</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isReturned()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RETURNED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isReturned() <em>Returned</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isReturned()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean returned = RETURNED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -93,10 +114,33 @@ public class VariableAssignmentASImpl extends AssignmentASImpl implements Variab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isReturned() {
+		return returned;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setReturned(boolean newReturned) {
+		boolean oldReturned = returned;
+		returned = newReturned;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AssignastPackage.VARIABLE_ASSIGNMENT_AS__RETURNED, oldReturned, returned));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case AssignastPackage.VARIABLE_ASSIGNMENT_AS__VARIABLE_NAME:
 				return getVariableName();
+			case AssignastPackage.VARIABLE_ASSIGNMENT_AS__RETURNED:
+				return isReturned() ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,6 +154,9 @@ public class VariableAssignmentASImpl extends AssignmentASImpl implements Variab
 		switch (featureID) {
 			case AssignastPackage.VARIABLE_ASSIGNMENT_AS__VARIABLE_NAME:
 				setVariableName((String)newValue);
+				return;
+			case AssignastPackage.VARIABLE_ASSIGNMENT_AS__RETURNED:
+				setReturned(((Boolean)newValue).booleanValue());
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -125,6 +172,9 @@ public class VariableAssignmentASImpl extends AssignmentASImpl implements Variab
 			case AssignastPackage.VARIABLE_ASSIGNMENT_AS__VARIABLE_NAME:
 				setVariableName(VARIABLE_NAME_EDEFAULT);
 				return;
+			case AssignastPackage.VARIABLE_ASSIGNMENT_AS__RETURNED:
+				setReturned(RETURNED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -138,6 +188,8 @@ public class VariableAssignmentASImpl extends AssignmentASImpl implements Variab
 		switch (featureID) {
 			case AssignastPackage.VARIABLE_ASSIGNMENT_AS__VARIABLE_NAME:
 				return VARIABLE_NAME_EDEFAULT == null ? variableName != null : !VARIABLE_NAME_EDEFAULT.equals(variableName);
+			case AssignastPackage.VARIABLE_ASSIGNMENT_AS__RETURNED:
+				return returned != RETURNED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -153,6 +205,8 @@ public class VariableAssignmentASImpl extends AssignmentASImpl implements Variab
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (variableName: ");
 		result.append(variableName);
+		result.append(", returned: ");
+		result.append(returned);
 		result.append(')');
 		return result.toString();
 	}

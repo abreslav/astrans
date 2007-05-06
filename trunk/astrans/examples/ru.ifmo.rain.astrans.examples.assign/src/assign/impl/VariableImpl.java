@@ -152,7 +152,7 @@ public class VariableImpl extends ExpressionImpl implements Variable {
 		}
 		return super.eIsSet(featureID);
 	}
-	
+
 	@Override
 	public EClassifier getType() {
 		return getVariableAssignment().getExpression().getType();

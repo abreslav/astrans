@@ -144,13 +144,22 @@ public interface AssignastPackage extends EPackage {
 	int VARIABLE_ASSIGNMENT_AS__VARIABLE_NAME = ASSIGNMENT_AS_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Returned</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_ASSIGNMENT_AS__RETURNED = ASSIGNMENT_AS_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Variable Assignment AS</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_ASSIGNMENT_AS_FEATURE_COUNT = ASSIGNMENT_AS_FEATURE_COUNT + 1;
+	int VARIABLE_ASSIGNMENT_AS_FEATURE_COUNT = ASSIGNMENT_AS_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link assignast.impl.AbstractFeatureAssignmentASImpl <em>Abstract Feature Assignment AS</em>}' class.
@@ -858,6 +867,17 @@ public interface AssignastPackage extends EPackage {
 	EAttribute getVariableAssignmentAS_VariableName();
 
 	/**
+	 * Returns the meta object for the attribute '{@link assignast.VariableAssignmentAS#isReturned <em>Returned</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Returned</em>'.
+	 * @see assignast.VariableAssignmentAS#isReturned()
+	 * @see #getVariableAssignmentAS()
+	 * @generated
+	 */
+	EAttribute getVariableAssignmentAS_Returned();
+
+	/**
 	 * Returns the meta object for class '{@link assignast.AbstractFeatureAssignmentAS <em>Abstract Feature Assignment AS</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1342,7 +1362,7 @@ public interface AssignastPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	interface Literals {
+	interface Literals  {
 		/**
 		 * The meta object literal for the '{@link assignast.impl.AssignModelASImpl <em>Assign Model AS</em>}' class.
 		 * <!-- begin-user-doc -->
@@ -1396,6 +1416,14 @@ public interface AssignastPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VARIABLE_ASSIGNMENT_AS__VARIABLE_NAME = eINSTANCE.getVariableAssignmentAS_VariableName();
+
+		/**
+		 * The meta object literal for the '<em><b>Returned</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE_ASSIGNMENT_AS__RETURNED = eINSTANCE.getVariableAssignmentAS_Returned();
 
 		/**
 		 * The meta object literal for the '{@link assignast.impl.AbstractFeatureAssignmentASImpl <em>Abstract Feature Assignment AS</em>}' class.

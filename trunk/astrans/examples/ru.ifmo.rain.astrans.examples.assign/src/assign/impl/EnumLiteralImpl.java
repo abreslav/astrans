@@ -152,7 +152,7 @@ public class EnumLiteralImpl extends ExpressionImpl implements EnumLiteral {
 		}
 		return super.eIsSet(featureID);
 	}
-	
+
 	@Override
 	public EClassifier getType() {
 		return getLiteral().getEEnum();

@@ -69,6 +69,7 @@ public class AssignastToAssignTransformation extends ASTToModelTransformation<IA
 		
 			
 			variableAssignment.setVariableName(variableAssignmentAS.getVariableName());
+			variableAssignment.setReturned(variableAssignmentAS.isReturned());
 			
 			variableAssignment.setExpression((Expression) doSwitch(variableAssignmentAS.getExpression()));
 			
@@ -119,14 +120,14 @@ public class AssignastToAssignTransformation extends ASTToModelTransformation<IA
 		public FeatureAccess caseFeatureAccessAS(final FeatureAccessAS featureAccessAS) {
 			final FeatureAccess featureAccess = AssignFactory.eINSTANCE.createFeatureAccess();
 			
+			featureAccess.setObject((Expression) doSwitch(featureAccessAS.getObject()));
+			
 			addCommand(new Runnable() {
 				public void run() {
 					featureAccess.setFeature(getResolver().resolveFeatureAccessFeature(featureAccessAS.getFeature(), featureAccess));
 				}
 			});
 		
-			
-			featureAccess.setObject((Expression) doSwitch(featureAccessAS.getObject()));
 			
 			getTrace().featureAccessCreated(featureAccessAS, featureAccess);
 		
