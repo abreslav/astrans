@@ -41,13 +41,13 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 	
 		public MappedEClass caseMappedEClassAS(final MappedEClassAS mappedEClassAS) {
 			final MappedEClass mappedEClass = AstransFactory.eINSTANCE.createMappedEClass();
+		
 			
 			addCommand(new Runnable() {
 				public void run() {
 					mappedEClass.setProto(getResolver().resolveMappedEClassProto(mappedEClassAS.getProto(), mappedEClass));
 				}
 			});
-		
 			
 			getTrace().mappedEClassCreated(mappedEClassAS, mappedEClass);
 		
@@ -56,6 +56,10 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 
 		public TranslateReferences caseTranslateReferencesAS(final TranslateReferencesAS translateReferencesAS) {
 			final TranslateReferences translateReferences = AstransFactory.eINSTANCE.createTranslateReferences();
+		
+			
+			translateReferences.setCrossReferencesOnly(translateReferencesAS.isCrossReferencesOnly());
+			translateReferences.setIncludeDescendants(translateReferencesAS.isIncludeDescendants());
 			
 			addCommand(new Runnable() {
 				public void run() {
@@ -63,10 +67,6 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 					translateReferences.setTextualReferenceType(getResolver().resolveTranslateReferencesTextualReferenceType(translateReferencesAS.getTextualReferenceType(), translateReferences));
 				}
 			});
-		
-			
-			translateReferences.setCrossReferencesOnly(translateReferencesAS.isCrossReferencesOnly());
-			translateReferences.setIncludeDescendants(translateReferencesAS.isIncludeDescendants());
 			
 			getTrace().translateReferencesCreated(translateReferencesAS, translateReferences);
 		
@@ -75,6 +75,10 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 
 		public CreateClass caseCreateClassAS(final CreateClassAS createClassAS) {
 			final CreateClass createClass = AstransFactory.eINSTANCE.createCreateClass();
+		
+			
+			createClass.setName(createClassAS.getName());
+			createClass.setAbstract(createClassAS.isAbstract());
 			
 			addCommand(new Runnable() {
 				public void run() {
@@ -83,11 +87,6 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 					}
 				}
 			});
-		
-			
-			createClass.setName(createClassAS.getName());
-			createClass.setAbstract(createClassAS.isAbstract());
-			
 			doSwitch(createClass.getStructuralFeatures(), createClassAS.getStructuralFeatures());
 			
 			getTrace().createClassCreated(createClassAS, createClass);
@@ -97,17 +96,17 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 
 		public Attribute caseAttributeAS(final AttributeAS attributeAS) {
 			final Attribute attribute = AstransFactory.eINSTANCE.createAttribute();
+		
+			
+			attribute.setName(attributeAS.getName());
+			attribute.setLowerBound(attributeAS.getLowerBound());
+			attribute.setUpperBound(attributeAS.getUpperBound());
 			
 			addCommand(new Runnable() {
 				public void run() {
 					attribute.setType(getResolver().resolveAttributeType(attributeAS.getType(), attribute));
 				}
 			});
-		
-			
-			attribute.setName(attributeAS.getName());
-			attribute.setLowerBound(attributeAS.getLowerBound());
-			attribute.setUpperBound(attributeAS.getUpperBound());
 			
 			getTrace().attributeCreated(attributeAS, attribute);
 		
@@ -116,18 +115,18 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 
 		public Reference caseReferenceAS(final ReferenceAS referenceAS) {
 			final Reference reference = AstransFactory.eINSTANCE.createReference();
-			
-			addCommand(new Runnable() {
-				public void run() {
-					reference.setType(getResolver().resolveReferenceType(referenceAS.getType(), reference));
-				}
-			});
 		
 			
 			reference.setName(referenceAS.getName());
 			reference.setLowerBound(referenceAS.getLowerBound());
 			reference.setUpperBound(referenceAS.getUpperBound());
 			reference.setContainment(referenceAS.isContainment());
+			
+			addCommand(new Runnable() {
+				public void run() {
+					reference.setType(getResolver().resolveReferenceType(referenceAS.getType(), reference));
+				}
+			});
 			
 			getTrace().referenceCreated(referenceAS, reference);
 		
@@ -136,7 +135,9 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 
 		public ChangeInheritance caseChangeInheritanceAS(final ChangeInheritanceAS changeInheritanceAS) {
 			final ChangeInheritance changeInheritance = AstransFactory.eINSTANCE.createChangeInheritance();
+		
 			
+			changeInheritance.setSubject((MappedEClass) doSwitch(changeInheritanceAS.getSubject()));
 			addCommand(new Runnable() {
 				public void run() {
 					for (Iterator i = changeInheritanceAS.getSuperclasses().iterator(); i.hasNext(); ) {
@@ -144,9 +145,6 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 					}
 				}
 			});
-		
-			
-			changeInheritance.setSubject((MappedEClass) doSwitch(changeInheritanceAS.getSubject()));
 			
 			getTrace().changeInheritanceCreated(changeInheritanceAS, changeInheritance);
 		
@@ -155,15 +153,15 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 
 		public SkipClass caseSkipClassAS(final SkipClassAS skipClassAS) {
 			final SkipClass skipClass = AstransFactory.eINSTANCE.createSkipClass();
+		
+			
+			skipClass.setIncludeDescendants(skipClassAS.isIncludeDescendants());
 			
 			addCommand(new Runnable() {
 				public void run() {
 					skipClass.setTargetProto(getResolver().resolveSkipClassTargetProto(skipClassAS.getTargetProto(), skipClass));
 				}
 			});
-		
-			
-			skipClass.setIncludeDescendants(skipClassAS.isIncludeDescendants());
 			
 			getTrace().skipClassCreated(skipClassAS, skipClass);
 		
@@ -172,23 +170,26 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 
 		public Transformation caseTransformationAS(final TransformationAS transformationAS) {
 			final Transformation transformation = AstransFactory.eINSTANCE.createTransformation();
-			
-			addCommand(new Runnable() {
-				public void run() {
-					transformation.setInput(getResolver().resolveTransformationInput(transformationAS.getInput(), transformation));
-					transformation.setInputModelRoot(getResolver().resolveTransformationInputModelRoot(transformationAS.getInputModelRoot(), transformation));
-					transformation.setAstRoot(getResolver().resolveTransformationAstRoot(transformationAS.getAstRoot(), transformation));
-				}
-			});
 		
 			
 			transformation.setOutputName(transformationAS.getOutputName());
 			transformation.setOutputNsURI(transformationAS.getOutputNsURI());
 			
+			addCommand(new Runnable() {
+				public void run() {
+					transformation.setInput(getResolver().resolveTransformationInput(transformationAS.getInput(), transformation));
+				}
+			});
 			doSwitch(transformation.getCreateClassActions(), transformationAS.getCreateClassActions());
 			doSwitch(transformation.getTranslateReferencesActions(), transformationAS.getTranslateReferencesActions());
 			doSwitch(transformation.getChangeInheritanceActions(), transformationAS.getChangeInheritanceActions());
 			doSwitch(transformation.getSkipClassActions(), transformationAS.getSkipClassActions());
+			addCommand(new Runnable() {
+				public void run() {
+					transformation.setInputModelRoot(getResolver().resolveTransformationInputModelRoot(transformationAS.getInputModelRoot(), transformation));
+					transformation.setAstRoot(getResolver().resolveTransformationAstRoot(transformationAS.getAstRoot(), transformation));
+				}
+			});
 			
 			getTrace().transformationCreated(transformationAS, transformation);
 		
