@@ -7,4 +7,5 @@ Bundle-Localization: plugin
 Require-Bundle: ru.ifmo.rain.astrans.examples.assign,
  ru.ifmo.rain.tests.utils,
  org.eclipse.emf.ecore.xmi,
- ru.ifmo.rain.astrans.asttomodel
+ ru.ifmo.rain.astrans.asttomodel,
+ ru.ifmo.rain.astrans.interpreter.trace

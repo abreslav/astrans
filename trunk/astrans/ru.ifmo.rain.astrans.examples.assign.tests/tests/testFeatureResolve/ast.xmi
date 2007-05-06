@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<assignast:Unit xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:assignast="http://rain.ifmo.ru/~breslav/astrans/examples/2002/assign/ast" xsi:schemaLocation="http://rain.ifmo.ru/~breslav/astrans/examples/2002/assign/ast ../../../ru.ifmo.rain.astrans.examples.assign/model/ast.ecore">
+  <imports packageName="ecore" packageUri="http://www.eclipse.org/emf/2002/Ecore"/>
+  <model>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="package">
+      <expression xsi:type="assignast:CreateInstanceAS">
+        <eClassReference xsi:type="assignast:StaticEClassReferenceAS">
+          <eClass package="ecore" class="EPackage"/>
+        </eClassReference>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="Model">
+      <expression xsi:type="assignast:CreateInstanceAS">
+        <eClassReference xsi:type="assignast:StaticEClassReferenceAS">
+          <eClass package="ecore" class="EClass"/>
+        </eClassReference>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:ManyFeatureAppendAS">
+      <expression xsi:type="assignast:VariableAS" variableAssignment="Model"/>
+      <object feature="eClassifiers">
+        <object xsi:type="assignast:VariableAS" variableAssignment="package"/>
+      </object>
+    </assignments>
+  </model>
+</assignast:Unit>
