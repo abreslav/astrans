@@ -20,8 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTyped()
- * @model interface="true" abstract="true"
  * @generated
  */
 public interface Typed extends EObject {
@@ -35,8 +33,6 @@ public interface Typed extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(ClassName)
-	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTyped_Type()
-	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ClassName getType();

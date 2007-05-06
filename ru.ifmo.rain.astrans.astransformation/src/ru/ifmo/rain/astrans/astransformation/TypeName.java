@@ -6,7 +6,9 @@
  */
 package ru.ifmo.rain.astrans.astransformation;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,9 +16,25 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getTypeName()
- * @model abstract="true"
  * @generated
  */
-public interface TypeName extends EObject {
+public abstract class TypeName extends EObjectImpl implements EObject {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TypeName() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EClass eStaticClass() {
+		return AstransformationPackage.Literals.TYPE_NAME;
+	}
+
 } // TypeName

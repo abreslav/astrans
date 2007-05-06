@@ -18,7 +18,6 @@ import org.eclipse.emf.common.util.AbstractEnumerator;
  * and utility methods for working with them.
  * <!-- end-user-doc -->
  * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getBasicType()
- * @model
  * @generated
  */
 public final class BasicType extends AbstractEnumerator {
@@ -31,7 +30,6 @@ public final class BasicType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INT_LITERAL
-	 * @model name="int"
 	 * @generated
 	 * @ordered
 	 */
@@ -46,7 +44,6 @@ public final class BasicType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BYTE_LITERAL
-	 * @model name="byte"
 	 * @generated
 	 * @ordered
 	 */
@@ -61,7 +58,6 @@ public final class BasicType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CHAR_LITERAL
-	 * @model name="char"
 	 * @generated
 	 * @ordered
 	 */
@@ -76,7 +72,6 @@ public final class BasicType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SHORT_LITERAL
-	 * @model name="short"
 	 * @generated
 	 * @ordered
 	 */
@@ -91,7 +86,6 @@ public final class BasicType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LONG_LITERAL
-	 * @model name="long"
 	 * @generated
 	 * @ordered
 	 */
@@ -106,7 +100,6 @@ public final class BasicType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #FLOAT_LITERAL
-	 * @model name="float"
 	 * @generated
 	 * @ordered
 	 */
@@ -121,7 +114,6 @@ public final class BasicType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DOUBLE_LITERAL
-	 * @model name="double"
 	 * @generated
 	 * @ordered
 	 */
@@ -136,7 +128,6 @@ public final class BasicType extends AbstractEnumerator {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BOOLEAN_LITERAL
-	 * @model name="boolean"
 	 * @generated
 	 * @ordered
 	 */

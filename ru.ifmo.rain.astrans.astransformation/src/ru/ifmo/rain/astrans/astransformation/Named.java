@@ -20,8 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  * </p>
  *
- * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getNamed()
- * @model interface="true" abstract="true"
  * @generated
  */
 public interface Named extends EObject {
@@ -35,8 +33,6 @@ public interface Named extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getNamed_Name()
-	 * @model required="true"
 	 * @generated
 	 */
 	String getName();

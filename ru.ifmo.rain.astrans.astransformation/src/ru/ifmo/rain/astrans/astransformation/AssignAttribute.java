@@ -6,6 +6,7 @@
  */
 package ru.ifmo.rain.astrans.astransformation;
 
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,9 +14,25 @@ package ru.ifmo.rain.astrans.astransformation;
  * <!-- end-user-doc -->
  *
  *
- * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getAssignAttribute()
- * @model
  * @generated
  */
-public interface AssignAttribute extends AssignFeature {
+public class AssignAttribute extends AssignFeature {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected AssignAttribute() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected EClass eStaticClass() {
+		return AstransformationPackage.Literals.ASSIGN_ATTRIBUTE;
+	}
+
 } // AssignAttribute
