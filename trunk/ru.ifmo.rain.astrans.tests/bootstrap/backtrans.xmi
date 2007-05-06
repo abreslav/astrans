@@ -8,11 +8,13 @@
       <type name="ru.ifmo.rain.astrans.MappedEClass"/>
     </result>
     <factoryClassName name="ru.ifmo.rain.astrans.AstransFactory"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setProto" getterName="getProto" resolverMethodName="resolveMappedEClassProto" parameterName="proto">
+        <type name="org.eclipse.emf.ecore.EClass"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="mappedEClassCreated"/>
-    <resolveObjectStatements setterName="setProto" getterName="getProto" resolverMethodName="resolveMappedEClassProto" parameterName="proto">
-      <type name="org.eclipse.emf.ecore.EClass"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseTranslateReferencesAS" factoryMethodName="createTranslateReferences">
     <parameter name="translateReferencesAS">
@@ -24,15 +26,19 @@
     <factoryClassName name="ru.ifmo.rain.astrans.AstransFactory"/>
     <assignAttributeStatements setterName="setCrossReferencesOnly" getterName="isCrossReferencesOnly"/>
     <assignAttributeStatements setterName="setIncludeDescendants" getterName="isIncludeDescendants"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setModelReferenceTypeProto" getterName="getModelReferenceTypeProto" resolverMethodName="resolveTranslateReferencesModelReferenceTypeProto" parameterName="modelReferenceTypeProto">
+        <type name="org.eclipse.emf.ecore.EClass"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setTextualReferenceType" getterName="getTextualReferenceType" resolverMethodName="resolveTranslateReferencesTextualReferenceType" parameterName="textualReferenceType">
+        <type name="ru.ifmo.rain.astrans.EClassifierReference"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="translateReferencesCreated"/>
-    <resolveObjectStatements setterName="setModelReferenceTypeProto" getterName="getModelReferenceTypeProto" resolverMethodName="resolveTranslateReferencesModelReferenceTypeProto" parameterName="modelReferenceTypeProto">
-      <type name="org.eclipse.emf.ecore.EClass"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
-    </resolveObjectStatements>
-    <resolveObjectStatements setterName="setTextualReferenceType" getterName="getTextualReferenceType" resolverMethodName="resolveTranslateReferencesTextualReferenceType" parameterName="textualReferenceType">
-      <type name="ru.ifmo.rain.astrans.EClassifierReference"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseCreateClassAS" factoryMethodName="createCreateClass">
     <parameter name="createClassAS">
@@ -44,14 +50,16 @@
     <factoryClassName name="ru.ifmo.rain.astrans.AstransFactory"/>
     <assignAttributeStatements setterName="setName" getterName="getName"/>
     <assignAttributeStatements setterName="setAbstract" getterName="isAbstract"/>
-    <assignReferenceStatements setterName="getStructuralFeatures" getterName="getStructuralFeatures" many="true">
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="getSuperclasses" getterName="getSuperclasses" many="true" resolverMethodName="resolveCreateClassSuperclasses" parameterName="superclasses">
+        <type name="ru.ifmo.rain.astrans.EClassReference"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="getStructuralFeatures" getterName="getStructuralFeatures" many="true">
       <type name="ru.ifmo.rain.astrans.StructuralFeature"/>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="createClassCreated"/>
-    <resolveObjectStatements setterName="getSuperclasses" getterName="getSuperclasses" many="true" resolverMethodName="resolveCreateClassSuperclasses" parameterName="superclasses">
-      <type name="ru.ifmo.rain.astrans.EClassReference"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseAttributeAS" factoryMethodName="createAttribute">
     <parameter name="attributeAS">
@@ -64,11 +72,13 @@
     <assignAttributeStatements setterName="setName" getterName="getName"/>
     <assignAttributeStatements setterName="setLowerBound" getterName="getLowerBound"/>
     <assignAttributeStatements setterName="setUpperBound" getterName="getUpperBound"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setType" getterName="getType" resolverMethodName="resolveAttributeType" parameterName="type">
+        <type name="org.eclipse.emf.ecore.EDataType"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="attributeCreated"/>
-    <resolveObjectStatements setterName="setType" getterName="getType" resolverMethodName="resolveAttributeType" parameterName="type">
-      <type name="org.eclipse.emf.ecore.EDataType"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseReferenceAS" factoryMethodName="createReference">
     <parameter name="referenceAS">
@@ -82,11 +92,13 @@
     <assignAttributeStatements setterName="setLowerBound" getterName="getLowerBound"/>
     <assignAttributeStatements setterName="setUpperBound" getterName="getUpperBound"/>
     <assignAttributeStatements setterName="setContainment" getterName="isContainment"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setType" getterName="getType" resolverMethodName="resolveReferenceType" parameterName="type">
+        <type name="ru.ifmo.rain.astrans.EClassReference"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="referenceCreated"/>
-    <resolveObjectStatements setterName="setType" getterName="getType" resolverMethodName="resolveReferenceType" parameterName="type">
-      <type name="ru.ifmo.rain.astrans.EClassReference"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseChangeInheritanceAS" factoryMethodName="createChangeInheritance">
     <parameter name="changeInheritanceAS">
@@ -96,14 +108,16 @@
       <type name="ru.ifmo.rain.astrans.ChangeInheritance"/>
     </result>
     <factoryClassName name="ru.ifmo.rain.astrans.AstransFactory"/>
-    <assignReferenceStatements setterName="setSubject" getterName="getSubject">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setSubject" getterName="getSubject">
       <type name="ru.ifmo.rain.astrans.MappedEClass"/>
     </assignReferenceStatements>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="getSuperclasses" getterName="getSuperclasses" many="true" resolverMethodName="resolveChangeInheritanceSuperclasses" parameterName="superclasses">
+        <type name="ru.ifmo.rain.astrans.EClassReference"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="changeInheritanceCreated"/>
-    <resolveObjectStatements setterName="getSuperclasses" getterName="getSuperclasses" many="true" resolverMethodName="resolveChangeInheritanceSuperclasses" parameterName="superclasses">
-      <type name="ru.ifmo.rain.astrans.EClassReference"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseSkipClassAS" factoryMethodName="createSkipClass">
     <parameter name="skipClassAS">
@@ -114,11 +128,13 @@
     </result>
     <factoryClassName name="ru.ifmo.rain.astrans.AstransFactory"/>
     <assignAttributeStatements setterName="setIncludeDescendants" getterName="isIncludeDescendants"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setTargetProto" getterName="getTargetProto" resolverMethodName="resolveSkipClassTargetProto" parameterName="targetProto">
+        <type name="org.eclipse.emf.ecore.EClass"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="skipClassCreated"/>
-    <resolveObjectStatements setterName="setTargetProto" getterName="getTargetProto" resolverMethodName="resolveSkipClassTargetProto" parameterName="targetProto">
-      <type name="org.eclipse.emf.ecore.EClass"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseTransformationAS" factoryMethodName="createTransformation">
     <parameter name="transformationAS">
@@ -130,31 +146,37 @@
     <factoryClassName name="ru.ifmo.rain.astrans.AstransFactory"/>
     <assignAttributeStatements setterName="setOutputName" getterName="getOutputName"/>
     <assignAttributeStatements setterName="setOutputNsURI" getterName="getOutputNsURI"/>
-    <assignReferenceStatements setterName="getCreateClassActions" getterName="getCreateClassActions" many="true">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="getCreateClassActions" getterName="getCreateClassActions" many="true">
       <type name="ru.ifmo.rain.astrans.CreateClass"/>
     </assignReferenceStatements>
-    <assignReferenceStatements setterName="getTranslateReferencesActions" getterName="getTranslateReferencesActions" many="true">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="getTranslateReferencesActions" getterName="getTranslateReferencesActions" many="true">
       <type name="ru.ifmo.rain.astrans.TranslateReferences"/>
     </assignReferenceStatements>
-    <assignReferenceStatements setterName="getChangeInheritanceActions" getterName="getChangeInheritanceActions" many="true">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="getChangeInheritanceActions" getterName="getChangeInheritanceActions" many="true">
       <type name="ru.ifmo.rain.astrans.ChangeInheritance"/>
     </assignReferenceStatements>
-    <assignReferenceStatements setterName="getSkipClassActions" getterName="getSkipClassActions" many="true">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="getSkipClassActions" getterName="getSkipClassActions" many="true">
       <type name="ru.ifmo.rain.astrans.SkipClass"/>
     </assignReferenceStatements>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setInput" getterName="getInput" resolverMethodName="resolveTransformationInput" parameterName="input">
+        <type name="org.eclipse.emf.ecore.EPackage"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setInputModelRoot" getterName="getInputModelRoot" resolverMethodName="resolveTransformationInputModelRoot" parameterName="inputModelRoot">
+        <type name="org.eclipse.emf.ecore.EClass"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setAstRoot" getterName="getAstRoot" resolverMethodName="resolveTransformationAstRoot" parameterName="astRoot">
+        <type name="ru.ifmo.rain.astrans.EClassReference"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="transformationCreated"/>
-    <resolveObjectStatements setterName="setInput" getterName="getInput" resolverMethodName="resolveTransformationInput" parameterName="input">
-      <type name="org.eclipse.emf.ecore.EPackage"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
-    </resolveObjectStatements>
-    <resolveObjectStatements setterName="setInputModelRoot" getterName="getInputModelRoot" resolverMethodName="resolveTransformationInputModelRoot" parameterName="inputModelRoot">
-      <type name="org.eclipse.emf.ecore.EClass"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
-    </resolveObjectStatements>
-    <resolveObjectStatements setterName="setAstRoot" getterName="getAstRoot" resolverMethodName="resolveTransformationAstRoot" parameterName="astRoot">
-      <type name="ru.ifmo.rain.astrans.EClassReference"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
-    </resolveObjectStatements>
   </mappingRules>
   <switchClassName name="ru.ifmo.rain.astrans.astransast.util.AstransastSwitch"/>
 </astransformation:Transformation>

@@ -8,11 +8,13 @@
       <type name="test.model.Class"/>
     </result>
     <factoryClassName name="test.model.ModelFactory"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setR4" getterName="isRas4" resolverMethodName="resolveClassR4" parameterName="ras4">
+        <type name="test.external.ExClass"/>
+        <parameterType xsi:type="astransformation:BasicTypeName" type="boolean"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="classCreated"/>
-    <resolveObjectStatements setterName="setR4" getterName="isRas4" resolverMethodName="resolveClassR4" parameterName="ras4">
-      <type name="test.external.ExClass"/>
-      <parameterType xsi:type="astransformation:BasicTypeName" type="boolean"/>
-    </resolveObjectStatements>
   </mappingRules>
   <switchClassName name="test.ast.util.AstSwitch"/>
 </astransformation:Transformation>

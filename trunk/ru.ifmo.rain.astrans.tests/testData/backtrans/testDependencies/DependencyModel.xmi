@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<btd:DependencyModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:btd="http://rain.ifmo.ru/~breslav/2007/backtrans/dependencies" xsi:schemaLocation="http://rain.ifmo.ru/~breslav/2007/backtrans/dependencies ../../../../ru.ifmo.rain.astrans.backtrans.dependencies/model/dependencies.ecore">
+  <contexts>
+    <eClass href="model.ecore#//Class"/>
+    <dependencies>
+      <reference href="model.ecore#//Class/r1"/>
+      <dependsOn href="model.ecore#//Class/r2"/>
+      <dependsOn href="model.ecore#//Class/r4"/>
+    </dependencies>
+    <dependencies>
+      <reference href="model.ecore#//Class/r4"/>
+      <dependsOn href="model.ecore#//Class/r3"/>
+    </dependencies>
+  </contexts>
+</btd:DependencyModel>

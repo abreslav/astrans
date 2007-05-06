@@ -10,31 +10,33 @@
     <factoryClassName name="ru.ifmo.rain.astrans.astrans.AstransFactory"/>
     <assignAttributeStatements setterName="setOutputName" getterName="getOutputName" many="true"/>
     <assignAttributeStatements setterName="setOutputNsURI" getterName="getOutputNsURI"/>
-    <assignReferenceStatements setterName="setCreateClassActions" getterName="getCreateClassActions">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setCreateClassActions" getterName="getCreateClassActions">
       <type name="ru.ifmo.rain.astrans.astrans.CreateClass"/>
     </assignReferenceStatements>
-    <assignReferenceStatements setterName="getSkipClassActions" getterName="getSkipClassActions" many="true" mappingNeeded="false">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="getSkipClassActions" getterName="getSkipClassActions" many="true" mappingNeeded="false">
       <type name="ru.ifmo.rain.astrans.astrans.SkipClass"/>
     </assignReferenceStatements>
-    <assignReferenceStatements setterName="getTranslateReferencesActions" getterName="getTranslateReferencesActions" many="true">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="getTranslateReferencesActions" getterName="getTranslateReferencesActions" many="true">
       <type name="ru.ifmo.rain.astrans.astrans.TranslateReferences"/>
     </assignReferenceStatements>
-    <assignReferenceStatements setterName="setChangeInheritanceActions" getterName="getChangeInheritanceActions" mappingNeeded="false">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setChangeInheritanceActions" getterName="getChangeInheritanceActions" mappingNeeded="false">
       <type name="ru.ifmo.rain.astrans.astrans.ChangeInheritance"/>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="transformationCreated"/>
-    <resolveObjectStatements setterName="setInput" getterName="getInput" many="true" resolverMethodName="resolveTransformationInput" parameterName="packageReference">
-      <type name="org.eclipse.emf.ecore.EPackage"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
-    </resolveObjectStatements>
-    <resolveObjectStatements setterName="setSomething" getterName="getSomething" resolverMethodName="resolveSomething" parameterName="packageReference">
-      <type name="org.eclipse.emf.ecore.EPackage"/>
-      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
-    </resolveObjectStatements>
-    <resolveObjectStatements setterName="setSomething1" getterName="getSomething1" resolverMethodName="resolveSomething1" parameterName="someAS">
-      <type name="org.eclipse.emf.ecore.EPackage"/>
-      <parameterType xsi:type="astransformation:BasicTypeName" type="short"/>
-    </resolveObjectStatements>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+	    <resolveObjectStatements setterName="setInput" getterName="getInput" many="true" resolverMethodName="resolveTransformationInput" parameterName="packageReference">
+	      <type name="org.eclipse.emf.ecore.EPackage"/>
+	      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
+	    </resolveObjectStatements>
+	    <resolveObjectStatements setterName="setSomething" getterName="getSomething" resolverMethodName="resolveSomething" parameterName="packageReference">
+	      <type name="org.eclipse.emf.ecore.EPackage"/>
+	      <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
+	    </resolveObjectStatements>
+	    <resolveObjectStatements setterName="setSomething1" getterName="getSomething1" resolverMethodName="resolveSomething1" parameterName="someAS">
+	      <type name="org.eclipse.emf.ecore.EPackage"/>
+	      <parameterType xsi:type="astransformation:BasicTypeName" type="short"/>
+	    </resolveObjectStatements>
+    </assignReferenceStatements>
   </mappingRules>
   <switchClassName name="ru.ifmo.rain.astrans.astransast.AstransastSwitch"/>
 </astransformation:Transformation>

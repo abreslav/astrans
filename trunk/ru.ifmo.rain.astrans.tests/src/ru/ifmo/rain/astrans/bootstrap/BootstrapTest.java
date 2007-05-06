@@ -20,6 +20,7 @@ import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.interpreter.AstransInterpreter;
 import ru.ifmo.rain.astrans.interpreter.backtrans.BacktransCodeGenerator;
 import ru.ifmo.rain.astrans.interpreter.backtrans.BacktransCreator;
+import ru.ifmo.rain.astrans.interpreter.backtrans.SimpleReferenceOrderProvider;
 import ru.ifmo.rain.astrans.interpreter.backtrans.TraceAdapter;
 import ru.ifmo.rain.astrans.trace.Trace;
 import ru.ifmo.rain.astrans.trace.TraceFactory;
@@ -47,7 +48,9 @@ public class BootstrapTest {
 		GenPackage imageGM = createGenPackage(astPackage, "ru.ifmo.rain.astrans");
 		save(resourceSet, "astransast.genmodel", imageGM.getGenModel());
 		
-		ru.ifmo.rain.astrans.astransformation.Transformation backTransformation = BacktransCreator.createBackTransformation(new TraceAdapter(trace), protoGM, imageGM);
+		
+		BacktransCreator backtransCreator = new BacktransCreator(new TraceAdapter(trace), protoGM, imageGM, new SimpleReferenceOrderProvider());
+		ru.ifmo.rain.astrans.astransformation.Transformation backTransformation = backtransCreator.createBackTransformation();
 		save(resourceSet, "backtrans.xmi", backTransformation);
 		
 		BacktransCodeGenerator.generate(backTransformation, "ru.ifmo.rain.astrans.asttomodel.bootstrap", "bootstrap/result/ru/ifmo/rain/astrans/asttomodel/bootstrap");
