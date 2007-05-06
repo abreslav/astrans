@@ -4,7 +4,7 @@ import ru.ifmo.rain.astrans.asttomodel.ITransformationContextFactory;
 import ru.ifmo.rain.astrans.asttomodel.bootstrap.IAstransastToAstransResolver;
 import ru.ifmo.rain.astrans.asttomodel.bootstrap.IAstransastToAstransTrace;
 
-public class ContextFactoryImpl implements ITransformationContextFactory {
+public class ContextFactoryImpl implements ITransformationContextFactory<IAstransastToAstransResolver, IAstransastToAstransTrace> {
 
 	private final IAstransastToAstransResolver resolver;
 	private final IAstransastToAstransTrace trace;
