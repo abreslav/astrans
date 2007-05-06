@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<trace:Trace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:trace="http://rain.ifmo.ru/~breslav/2007/astrans/interperter/trace">
+  <input href="model.ecore#/"/>
+  <output href="ast.ecore#/"/>
+  <inputModelRoot href="model.ecore#//Class"/>
+  <outputModelRoot href="ast.ecore#//ClassAS"/>
+  <classMappings>
+    <proto href="model.ecore#//Class"/>
+    <image href="ast.ecore#//ClassAS"/>
+  </classMappings>
+  <attributeMappings>
+    <proto href="model.ecore#//Class/a"/>
+    <image href="ast.ecore#//ClassAS/as"/>
+  </attributeMappings>
+  <referenceMappings type="MAPPED">
+    <proto href="model.ecore#//Class/r1"/>
+    <image xsi:type="ecore:EReference" href="ast.ecore#//ClassAS/ras1"/>
+  </referenceMappings>
+  <referenceMappings type="TRANSLATED">
+    <proto href="model.ecore#//Class/r2"/>
+    <image xsi:type="ecore:EReference" href="ast.ecore#//ClassAS/ras2"/>
+  </referenceMappings>
+  <referenceMappings>
+    <proto href="model.ecore#//Class/r3"/>
+    <image xsi:type="ecore:EReference" href="ast.ecore#//ClassAS/ras3"/>
+  </referenceMappings>
+  <referenceMappings type="TRANSLATED">
+    <proto href="model.ecore#//Class/r4"/>
+    <image xsi:type="ecore:EAttribute" href="ast.ecore#//ClassAS/ras4"/>
+  </referenceMappings>
+</trace:Trace>

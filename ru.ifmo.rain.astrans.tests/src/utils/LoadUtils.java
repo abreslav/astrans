@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import ru.ifmo.rain.astrans.AstransPackage;
 import ru.ifmo.rain.astrans.astransast.AstransastPackage;
 import ru.ifmo.rain.astrans.astransformation.AstransformationPackage;
+import ru.ifmo.rain.astrans.backtrans.dependencies.DependenciesPackage;
 import ru.ifmo.rain.astrans.trace.TracePackage;
 
 public class LoadUtils {
@@ -28,6 +29,7 @@ public class LoadUtils {
 		resourceSet.setPackageRegistry(EPackage.Registry.INSTANCE);
 		
 		addEPackage(TracePackage.eINSTANCE);
+		addEPackage(DependenciesPackage.eINSTANCE);
 		addEPackage(AstransformationPackage.eINSTANCE);
 		addEPackage(AstransPackage.eINSTANCE);
 		addEPackage(AstransastPackage.eINSTANCE);

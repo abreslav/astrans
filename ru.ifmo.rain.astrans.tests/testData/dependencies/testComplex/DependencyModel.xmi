@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<btd:DependencyModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:btd="http://rain.ifmo.ru/~breslav/2007/backtrans/dependencies" xsi:schemaLocation="http://rain.ifmo.ru/~breslav/2007/backtrans/dependencies ../../../../ru.ifmo.rain.astrans.backtrans.dependencies/model/dependencies.ecore">
+  <contexts>
+    <eClass href="input.ecore#//A"/>
+    <dependencies>
+      <reference href="input.ecore#//A/a"/>
+    </dependencies>
+    <dependencies>
+      <reference href="input.ecore#//A/b"/>
+      <dependsOn href="input.ecore#//A/a"/>
+      <dependsOn href="input.ecore#//A/c"/>
+      <dependsOn href="input.ecore#//A/f"/>
+    </dependencies>
+    <dependencies>
+      <reference href="input.ecore#//A/f"/>
+      <dependsOn href="input.ecore#//A/d"/>
+    </dependencies>
+  </contexts>
+</btd:DependencyModel>

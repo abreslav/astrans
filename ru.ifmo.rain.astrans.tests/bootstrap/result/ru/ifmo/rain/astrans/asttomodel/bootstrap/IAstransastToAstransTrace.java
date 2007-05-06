@@ -8,7 +8,6 @@ import ru.ifmo.rain.astrans.Reference;
 import ru.ifmo.rain.astrans.SkipClass;
 import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.TranslateReferences;
-
 import ru.ifmo.rain.astrans.astransast.AttributeAS;
 import ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS;
 import ru.ifmo.rain.astrans.astransast.CreateClassAS;

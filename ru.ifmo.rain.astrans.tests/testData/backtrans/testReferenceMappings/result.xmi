@@ -9,21 +9,25 @@
     </result>
     <factoryClassName name="test.model.ModelFactory"/>
     <assignAttributeStatements setterName="setA" getterName="getAs"/>
-    <assignReferenceStatements setterName="setR1" getterName="getRas1">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setR1" getterName="getRas1">
       <type name="test.model.Class"/>
     </assignReferenceStatements>
-    <assignReferenceStatements setterName="getR3" getterName="getRas3" many="true" mappingNeeded="false">
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="getR2" getterName="getRas2" many="true" resolverMethodName="resolveClassR2" parameterName="ras2">
+        <type name="test.model.Class"/>
+        <parameterType xsi:type="astransformation:ClassName" name="test.ast.ClassAS"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="getR3" getterName="getRas3" many="true" mappingNeeded="false">
       <type name="test.model.Class"/>
+    </assignReferenceStatements>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setR4" getterName="isRas4" resolverMethodName="resolveClassR4" parameterName="ras4">
+        <type name="test.model.Class"/>
+        <parameterType xsi:type="astransformation:BasicTypeName" type="boolean"/>
+      </resolveObjectStatements>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="classCreated"/>
-    <resolveObjectStatements setterName="getR2" getterName="getRas2" many="true" resolverMethodName="resolveClassR2" parameterName="ras2">
-      <type name="test.model.Class"/>
-      <parameterType xsi:type="astransformation:ClassName" name="test.ast.ClassAS"/>
-    </resolveObjectStatements>
-    <resolveObjectStatements setterName="setR4" getterName="isRas4" resolverMethodName="resolveClassR4" parameterName="ras4">
-      <type name="test.model.Class"/>
-      <parameterType xsi:type="astransformation:BasicTypeName" type="boolean"/>
-    </resolveObjectStatements>
   </mappingRules>
   <switchClassName name="test.ast.util.AstSwitch"/>
 </astransformation:Transformation>
