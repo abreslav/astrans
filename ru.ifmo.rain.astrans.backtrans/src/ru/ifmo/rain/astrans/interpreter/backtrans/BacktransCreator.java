@@ -31,6 +31,7 @@ import ru.ifmo.rain.astrans.astransformation.CustomMainMethod;
 import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
+import ru.ifmo.rain.astrans.astransformation.ResolveObjects;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
 import ru.ifmo.rain.astrans.astransformation.TypeName;
 import ru.ifmo.rain.astrans.trace.AttributeMapping;
@@ -40,22 +41,35 @@ import ru.ifmo.rain.astrans.trace.ReferenceMappingType;
 
 public class BacktransCreator {
 
-	public static Transformation createBackTransformation(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM) {
+	private final TraceAdapter trace;
+	private final GenPackage protoGP;
+	private final GenPackage imageGP;
+	private final IReferenceOrderProvider orderProvider;
+	
+	public BacktransCreator(final TraceAdapter trace, final GenPackage protoGP, final GenPackage imageGP, final IReferenceOrderProvider orderProvider) {
+		super();
+		this.trace = trace;
+		this.protoGP = protoGP;
+		this.imageGP = imageGP;
+		this.orderProvider = orderProvider;
+	}
+
+	public Transformation createBackTransformation() {
 		Transformation backTransformation = AstransformationFactory.eINSTANCE.createTransformation();
 		
 		String name = CodeGenUtil.capName(trace.getOutput().getName()) + "To" + CodeGenUtil.capName(trace.getInput().getName());
 		backTransformation.setName(name + "Transformation");
 		backTransformation.setResolverClassName("I" + name + "Resolver");
 		backTransformation.setTraceClassName("I" + name + "Trace");
-		backTransformation.setSwitchClassName(createClassName(imageGM.getQualifiedSwitchClassName()));
+		backTransformation.setSwitchClassName(createClassName(imageGP.getQualifiedSwitchClassName()));
 	
-		processMappings(trace, protoGM, imageGM, backTransformation);
+		processMappings(backTransformation);
 		
 		if (backTransformation.getMain() == null) {
 			CustomMainMethod method = AstransformationFactory.eINSTANCE.createCustomMainMethod();
 			method.setName("run");
-			method.setParameter(createParameter(trace.getOutputRoot(), imageGM));
-			method.setResult(createParameter(trace.getInputRoot(), protoGM));
+			method.setParameter(createParameter(trace.getOutputRoot(), imageGP));
+			method.setResult(createParameter(trace.getInputRoot(), protoGP));
 			method.setResolverMethodName("runTransformation");
 			backTransformation.setCustomMain(method);
 		}
@@ -63,31 +77,31 @@ public class BacktransCreator {
 		return backTransformation;
 	}
 
-	private static void processMappings(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, Transformation backTransformation) {
+	private void processMappings(Transformation backTransformation) {
 		Collection<ClassMapping> mappings = trace.getClassMappings();
 		for (ClassMapping mapping : mappings) {
 			if (!mapping.getProto().isAbstract()) {
 				MappingRule rule = AstransformationFactory.eINSTANCE.createMappingRule();
-				initMappingRule(protoGM, imageGM, backTransformation, mapping, rule, trace);
+				initMappingRule(backTransformation, mapping, rule);
 				
-				rule.setFactoryClassName(createClassName(protoGM.getQualifiedFactoryInterfaceName()));
+				rule.setFactoryClassName(createClassName(protoGP.getQualifiedFactoryInterfaceName()));
 				rule.setFactoryMethodName("create" + mapping.getProto().getName()); 
 				rule.setWriteTraceStatement(AstransformationFactory.eINSTANCE.createWriteTrace());
 				rule.getWriteTraceStatement().setTraceMethodName(CodeGenUtil.uncapName(mapping.getProto().getName()) + "Created");
-				processAttributes(trace, protoGM, imageGM, mapping, rule);
-				processReferences(trace, protoGM, imageGM, mapping, rule);
+				processAttributes(mapping, rule);
+				processReferences(mapping, rule);
 			}
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void initMappingRule(GenPackage protoGM, GenPackage imageGM, Transformation backTransformation, ClassMapping mapping, MappingRule rule, TraceAdapter trace) {
+	private void initMappingRule(Transformation backTransformation, ClassMapping mapping, MappingRule rule) {
 		backTransformation.getMappingRules().add(rule);
 
 		rule.setName("case" + mapping.getImage().getName());
 
-		rule.setResult(createParameter(mapping.getProto(), protoGM));
-		rule.setParameter(createParameter(mapping.getImage(), imageGM));
+		rule.setResult(createParameter(mapping.getProto(), protoGP));
+		rule.setParameter(createParameter(mapping.getImage(), imageGP));
 
 		if (mapping.getProto() == trace.getInputRoot() && mapping.getImage() == trace.getOutputRoot()) {
 			backTransformation.setMain(rule);
@@ -95,10 +109,8 @@ public class BacktransCreator {
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void processReferences(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, ClassMapping mapping, MappingRule rule) {
-		EList allReferences = mapping.getProto().getEAllReferences();
-		for (Iterator iter = allReferences.iterator(); iter.hasNext();) {
-			EReference reference = (EReference) iter.next();
+	private void processReferences(ClassMapping mapping, MappingRule rule) {
+		for (EReference reference : orderProvider.getReferenceOrder(mapping.getProto())) {
 			ReferenceMapping referenceMapping = trace.getReferenceMapping(reference);
 			if (referenceMapping == null) {
 				continue;
@@ -106,25 +118,27 @@ public class BacktransCreator {
 			EStructuralFeature imageReference = referenceMapping.getImage();
 			if (referenceMapping.getType() == ReferenceMappingType.TRANSLATED_LITERAL) {
 				ResolveObject resolveObject = AstransformationFactory.eINSTANCE.createResolveObject();
-				initAssignFeature(resolveObject, reference, imageReference, protoGM, imageGM);
+				initAssignFeature(resolveObject, reference, imageReference, protoGP, imageGP);
 				resolveObject.setResolverMethodName("resolve" + mapping.getProto().getName() + CodeGenUtil.capName(reference.getName()));
 				
 				resolveObject.setParameterName(imageReference.getName());
-				resolveObject.setParameterType(getTypeName(imageGM, imageReference.getEType()));
-				resolveObject.setType((ClassName) getTypeName(protoGM, reference.getEReferenceType()));
-				rule.getResolveObjectStatements().add(resolveObject);
+				resolveObject.setParameterType(getTypeName(imageGP, imageReference.getEType()));
+				resolveObject.setType((ClassName) getTypeName(protoGP, reference.getEReferenceType()));
+				ResolveObjects resolveObjects = AstransformationFactory.eINSTANCE.createResolveObjects();
+				resolveObjects.getResolveObjectStatements().add(resolveObject);
+				rule.getAssignReferenceStatements().add(resolveObjects);
 			} else {
 				AssignReference assignReference = AstransformationFactory.eINSTANCE.createAssignReference();
-				initAssignFeature(assignReference, reference, imageReference, protoGM, imageGM);
+				initAssignFeature(assignReference, reference, imageReference, protoGP, imageGP);
 				assignReference.setMappingNeeded(referenceMapping.getType() != ReferenceMappingType.NONE_LITERAL);
-				assignReference.setType((ClassName) getTypeName(protoGM, reference.getEType()));
+				assignReference.setType((ClassName) getTypeName(protoGP, reference.getEType()));
 				rule.getAssignReferenceStatements().add(assignReference);
 			}
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private static void processAttributes(TraceAdapter trace, GenPackage protoGM, GenPackage imageGM, ClassMapping mapping, MappingRule rule) {
+	private void processAttributes(ClassMapping mapping, MappingRule rule) {
 		EList allAttributes = mapping.getProto().getEAllAttributes();
 		for (Iterator iter = allAttributes.iterator(); iter.hasNext();) {
 			EAttribute attribute = (EAttribute) iter.next();
@@ -132,13 +146,15 @@ public class BacktransCreator {
 			AttributeMapping attributeMapping = trace.getAttributeMapping(attribute);
 			if (attributeMapping != null) {
 				EAttribute imageAttribute = attributeMapping.getImage();
-				initAssignFeature(assignAttribute, attribute, imageAttribute, protoGM, imageGM);
+				initAssignFeature(assignAttribute, attribute, imageAttribute, protoGP, imageGP);
 				
 				rule.getAssignAttributeStatements().add(assignAttribute);
 			}
 		}
 	}
 
+	// UTILITIES
+	
 	private static String getSetterName(GenFeature genFeature) {
 		return genFeature.getEcoreFeature().isMany() 
 			? genFeature.getGetAccessor()
@@ -218,9 +234,9 @@ public class BacktransCreator {
 		return null;
 	}
 	
-	private static void initAssignFeature(AssignFeature assignFeature, EStructuralFeature proto, EStructuralFeature image, GenPackage protoGM, GenPackage imageGM) {
-		assignFeature.setSetterName(getSetterName(getGenFeature(protoGM, proto)));
-		assignFeature.setGetterName(getGenFeature(imageGM, image).getGetAccessor());
+	private static void initAssignFeature(AssignFeature assignFeature, EStructuralFeature proto, EStructuralFeature image, GenPackage protoGP, GenPackage imageGP) {
+		assignFeature.setSetterName(getSetterName(getGenFeature(protoGP, proto)));
+		assignFeature.setGetterName(getGenFeature(imageGP, image).getGetAccessor());
 		assignFeature.setMany(proto.isMany());
 	}
 	

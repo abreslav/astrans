@@ -33,14 +33,6 @@ private final <transformation.switchClassName> transformer = new <transformation
 toCaseMethod(rule) ::= <<
 public <rule.result.type> <rule.name>(final <rule.parameter.type> <rule.parameter.name>) {
 	final <rule.result.type> <rule.result.name> = <rule.factoryClassName>.eINSTANCE.<rule.factoryMethodName>();
-	<if(rule.resolveObjectStatements)>
-	
-	addCommand(new Runnable() {
-		public void run() {
-			<rule.resolveObjectStatements:{r | <renderResolveObject(r=r, rule=rule)>}; separator="\n">
-		}
-	});
-	<endif>
 
 	<if(rule.assignAttributeStatements)>
 	
@@ -48,7 +40,7 @@ public <rule.result.type> <rule.name>(final <rule.parameter.type> <rule.paramete
 	<endif>
 	<if(rule.assignReferenceStatements)>
 	
-	<rule.assignReferenceStatements:{r | <renderReferenceAssignment(r=r, rule=rule)>}; separator="\n">
+	<rule.assignReferenceStatements; separator="\n">
 	<endif>
 	
 	getTrace().<rule.writeTraceStatement.traceMethodName>(<rule.parameter.name>, <rule.result.name>);
@@ -65,16 +57,24 @@ renderAttributeAssignment(a, rule) ::= <<
 <endif>
 >>
 
-renderReferenceAssignment(r, rule) ::= <<
-<if(r.many)><if(r.mappingNeeded)>
-doSwitch(<rule.result.name>.<r.setterName>(), <rule.parameter.name>.<r.getterName>());
+renderResolveObjects(it, rule) ::= <<
+addCommand(new Runnable() {
+	public void run() {
+		<it.resolveObjectStatements:{r | <renderResolveObject(r=r, rule=rule)>}; separator="\n">
+	}
+});
+>>
+
+renderAssignReference(it, rule) ::= <<
+<if(it.many)><if(it.mappingNeeded)>
+doSwitch(<rule.result.name>.<it.setterName>(), <rule.parameter.name>.<it.getterName>());
 <else>
-<rule.result.name>.<r.setterName>().addAll(<rule.parameter.name>.<r.getterName>());
+<rule.result.name>.<it.setterName>().addAll(<rule.parameter.name>.<it.getterName>());
 <endif>
-<else><if(r.mappingNeeded)>
-<rule.result.name>.<r.setterName>((<r.type>) doSwitch(<rule.parameter.name>.<r.getterName>()));
+<else><if(it.mappingNeeded)>
+<rule.result.name>.<it.setterName>((<it.type>) doSwitch(<rule.parameter.name>.<it.getterName>()));
 <else>
-<rule.result.name>.<r.setterName>(<rule.parameter.name>.<r.getterName>());
+<rule.result.name>.<it.setterName>(<rule.parameter.name>.<it.getterName>());
 <endif>
 <endif>
 >>
