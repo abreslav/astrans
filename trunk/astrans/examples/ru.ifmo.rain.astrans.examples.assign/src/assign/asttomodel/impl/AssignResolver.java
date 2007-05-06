@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
@@ -42,10 +43,11 @@ public class AssignResolver implements IAssignastToAssignResolver {
 		if (object.getClass_() == null) {
 			return ePackage;
 		}
-		EClass eClass = (EClass) ePackage.getEClassifier(object.getClass_());
+		EClassifier classifier = ePackage.getEClassifier(object.getClass_());
 		if (object.getFeature() == null) {
-			return eClass;
+			return classifier;
 		}
+		EClass eClass = (EClass) classifier;
 		return eClass.getEStructuralFeature(object.getFeature());
 	}
 
