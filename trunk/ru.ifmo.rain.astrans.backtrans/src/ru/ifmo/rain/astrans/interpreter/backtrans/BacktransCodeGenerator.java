@@ -8,46 +8,59 @@ import java.util.Iterator;
 
 import org.antlr.stringtemplate.AttributeRenderer;
 import org.antlr.stringtemplate.StringTemplate;
+import org.antlr.stringtemplate.StringTemplateErrorListener;
 import org.antlr.stringtemplate.StringTemplateGroup;
 import org.eclipse.emf.codegen.util.ImportManager;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
+import ru.ifmo.rain.astrans.astransformation.AssignReference;
 import ru.ifmo.rain.astrans.astransformation.BasicTypeName;
 import ru.ifmo.rain.astrans.astransformation.ClassName;
+import ru.ifmo.rain.astrans.astransformation.ResolveObjects;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
-import ru.ifmo.rain.astrans.astransformation.impl.BasicTypeNameImpl;
-import ru.ifmo.rain.astrans.astransformation.impl.ClassNameImpl;
 
 public class BacktransCodeGenerator {
 
 	private static abstract class Generator {
+		
+		private static final StringTemplateErrorListener ERROR_LISTENER = new StringTemplateErrorListener() {
+			public void error(String msg, Throwable e) {
+				throw new RuntimeException(msg, e); 
+			}
+			public void warning(String msg) {
+				throw new RuntimeException(msg); 
+			}
+		};
 
 		public final void generate(Transformation transformation, String targetPackage, String outputDirectory) throws IOException {
 			Reader reader = new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(getTemplatePath()));
 			StringTemplateGroup group = new StringTemplateGroup(reader);
-			StringTemplate mainTemplate = group.getInstanceOf("main");
-			mainTemplate.setAttribute("transformation", transformation);
 
+			group.setErrorListener(ERROR_LISTENER);
+			
 			final ImportManager importManager = new ImportManager(targetPackage);
-			mainTemplate.registerRenderer(ClassNameImpl.class, new AttributeRenderer() {
+			group.registerRenderer(ClassName.class, new AttributeRenderer() {
 				public String toString(Object o) {
 					String name = ((ClassName) o).getName();
 					importManager.addImport(name);
 					return importManager.getImportedName(name);
 				}
 			});
-			mainTemplate.registerRenderer(BasicTypeNameImpl.class, new AttributeRenderer() {
+			group.registerRenderer(BasicTypeName.class, new AttributeRenderer() {
 				public String toString(Object o) {
 					return ((BasicTypeName) o).getType().getName();
 				}
 			});
+			registerAdditionalRenderers(group);
 			
 			importManager.addImport(targetPackage + "." + transformation.getName());
 			importManager.addImport(targetPackage + "." + transformation.getResolverClassName());
 			importManager.addImport(targetPackage + "." + transformation.getTraceClassName());
 			addCustomImports(importManager, transformation);
 			
+			StringTemplate mainTemplate = group.getInstanceOf("main");
+			mainTemplate.setAttribute("transformation", transformation);
 			FileWriter writer = null;
 			try {
 				writer = new FileWriter(outputDirectory + "/" + getFileName(transformation, importManager));
@@ -66,6 +79,10 @@ public class BacktransCodeGenerator {
 			
 		}
 
+		protected void registerAdditionalRenderers(StringTemplateGroup group) {
+			
+		}
+		
 		protected abstract String getTemplatePath();
 		protected abstract String getFileName(Transformation transformation, ImportManager importManager);
 
@@ -93,6 +110,22 @@ public class BacktransCodeGenerator {
 		@Override
 		protected String getTemplatePath() {
 			return TEMPLATE;
+		}
+		
+		@Override
+		protected void registerAdditionalRenderers(final StringTemplateGroup group) {
+			group.registerRenderer(AssignReference.class, new TemplateAttributeRenderer(group, "renderAssignReference") {
+				@Override
+				protected void setAdditionalAttributes(Object o, StringTemplate template) {
+					template.setAttribute("rule", ((AssignReference) o).eContainer());
+				}
+			});
+			group.registerRenderer(ResolveObjects.class, new TemplateAttributeRenderer(group, "renderResolveObjects") {
+				@Override
+				protected void setAdditionalAttributes(Object o, StringTemplate template) {
+					template.setAttribute("rule", ((ResolveObjects) o).eContainer());
+				}
+			});
 		}
 		
 	}
