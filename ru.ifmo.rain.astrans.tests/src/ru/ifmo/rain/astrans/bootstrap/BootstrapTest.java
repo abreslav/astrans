@@ -17,10 +17,12 @@ import org.junit.Test;
 
 import ru.ifmo.rain.astrans.AstransPackage;
 import ru.ifmo.rain.astrans.Transformation;
+import ru.ifmo.rain.astrans.backtrans.dependencies.DependencyModel;
+import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.DependencyReferenceOrderProvider;
+import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.IncorrectGraphException;
 import ru.ifmo.rain.astrans.interpreter.AstransInterpreter;
 import ru.ifmo.rain.astrans.interpreter.backtrans.BacktransCodeGenerator;
 import ru.ifmo.rain.astrans.interpreter.backtrans.BacktransCreator;
-import ru.ifmo.rain.astrans.interpreter.backtrans.SimpleReferenceOrderProvider;
 import ru.ifmo.rain.astrans.interpreter.backtrans.TraceAdapter;
 import ru.ifmo.rain.astrans.trace.Trace;
 import ru.ifmo.rain.astrans.trace.TraceFactory;
@@ -30,11 +32,11 @@ public class BootstrapTest {
 
 	@Test
 	@SuppressWarnings("unchecked")
-	public void testBootstrap() throws IOException {
+	public void testBootstrap() throws IOException, IncorrectGraphException {
 		ResourceSet resourceSet = LoadUtils.createResourceSet(new File("bootstrap"));
 		Resource resource = resourceSet.createResource(URI.createURI("Transformation.xmi"));
 		resource.load(null);
-		
+
 		Transformation transformation = (Transformation) resource.getContents().get(0);
 		
 		Trace trace = TraceFactory.eINSTANCE.createTrace();
@@ -48,8 +50,10 @@ public class BootstrapTest {
 		GenPackage imageGM = createGenPackage(astPackage, "ru.ifmo.rain.astrans");
 		save(resourceSet, "astransast.genmodel", imageGM.getGenModel());
 		
-		
-		BacktransCreator backtransCreator = new BacktransCreator(new TraceAdapter(trace), protoGM, imageGM, new SimpleReferenceOrderProvider());
+		resource = resourceSet.createResource(URI.createURI("DependencyModel.xmi"));
+		resource.load(null);
+		DependencyModel dependencyModel = (DependencyModel) resource.getContents().get(0);
+		BacktransCreator backtransCreator = new BacktransCreator(new TraceAdapter(trace), protoGM, imageGM, new DependencyReferenceOrderProvider(dependencyModel));
 		ru.ifmo.rain.astrans.astransformation.Transformation backTransformation = backtransCreator.createBackTransformation();
 		save(resourceSet, "backtrans.xmi", backTransformation);
 		
