@@ -144,13 +144,22 @@ public interface AssignPackage extends EPackage {
 	int VARIABLE_ASSIGNMENT__VARIABLE_NAME = ASSIGNMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Returned</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_ASSIGNMENT__RETURNED = ASSIGNMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Variable Assignment</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_ASSIGNMENT_FEATURE_COUNT = ASSIGNMENT_FEATURE_COUNT + 1;
+	int VARIABLE_ASSIGNMENT_FEATURE_COUNT = ASSIGNMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link assign.impl.AbstractFeatureAssignmentImpl <em>Abstract Feature Assignment</em>}' class.
@@ -357,7 +366,7 @@ public interface AssignPackage extends EPackage {
 	int FEATURE_ACCESS__OBJECT = EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Feature</b></em>' containment reference.
+	 * The feature id for the '<em><b>Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -763,6 +772,17 @@ public interface AssignPackage extends EPackage {
 	EAttribute getVariableAssignment_VariableName();
 
 	/**
+	 * Returns the meta object for the attribute '{@link assign.VariableAssignment#isReturned <em>Returned</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Returned</em>'.
+	 * @see assign.VariableAssignment#isReturned()
+	 * @see #getVariableAssignment()
+	 * @generated
+	 */
+	EAttribute getVariableAssignment_Returned();
+
+	/**
 	 * Returns the meta object for class '{@link assign.AbstractFeatureAssignment <em>Abstract Feature Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -867,10 +887,10 @@ public interface AssignPackage extends EPackage {
 	EReference getFeatureAccess_Object();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link assign.FeatureAccess#getFeature <em>Feature</em>}'.
+	 * Returns the meta object for the reference '{@link assign.FeatureAccess#getFeature <em>Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Feature</em>'.
+	 * @return the meta object for the reference '<em>Feature</em>'.
 	 * @see assign.FeatureAccess#getFeature()
 	 * @see #getFeatureAccess()
 	 * @generated
@@ -1143,6 +1163,14 @@ public interface AssignPackage extends EPackage {
 		EAttribute VARIABLE_ASSIGNMENT__VARIABLE_NAME = eINSTANCE.getVariableAssignment_VariableName();
 
 		/**
+		 * The meta object literal for the '<em><b>Returned</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE_ASSIGNMENT__RETURNED = eINSTANCE.getVariableAssignment_Returned();
+
+		/**
 		 * The meta object literal for the '{@link assign.impl.AbstractFeatureAssignmentImpl <em>Abstract Feature Assignment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1235,7 +1263,7 @@ public interface AssignPackage extends EPackage {
 		EReference FEATURE_ACCESS__OBJECT = eINSTANCE.getFeatureAccess_Object();
 
 		/**
-		 * The meta object literal for the '<em><b>Feature</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

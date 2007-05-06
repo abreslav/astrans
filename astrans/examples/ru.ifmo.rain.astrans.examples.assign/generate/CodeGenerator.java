@@ -14,6 +14,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import ru.ifmo.rain.astrans.astransformation.Transformation;
+import ru.ifmo.rain.astrans.backtrans.dependencies.DependencyModel;
+import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.DependencyReferenceOrderProvider;
+import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.IncorrectGraphException;
 import ru.ifmo.rain.astrans.interpreter.backtrans.BacktransCodeGenerator;
 import ru.ifmo.rain.astrans.interpreter.backtrans.BacktransCreator;
 import ru.ifmo.rain.astrans.interpreter.backtrans.TraceAdapter;
@@ -23,7 +26,7 @@ import ru.ifmo.rain.astrans.utils.EMFHelper;
 
 
 public class CodeGenerator {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, IncorrectGraphException {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		
 		putPackage(resourceSet, EcorePackage.eINSTANCE);
@@ -41,12 +44,14 @@ public class CodeGenerator {
 		GenModel assignGenModel = (GenModel) loadObjectFromResource(resourceSet, "model/assign.genmodel");
 		GenModel astGenModel = (GenModel) loadObjectFromResource(resourceSet, "model/ast.genmodel");
 		Trace traceModel = (Trace) loadObjectFromResource(resourceSet, "trace.xmi");
+		DependencyModel dependencyModel = (DependencyModel) loadObjectFromResource(resourceSet, "dependencies.xmi");
 		
 		TraceAdapter trace = new TraceAdapter(traceModel);
 		
 		GenPackage protoGP = (GenPackage) assignGenModel.getGenPackages().get(0);
 		GenPackage imageGP = (GenPackage) astGenModel.getGenPackages().get(0);
-		Transformation transformation = BacktransCreator.createBackTransformation(trace, protoGP, imageGP);
+		BacktransCreator backtransCreator = new BacktransCreator(trace, protoGP, imageGP, new DependencyReferenceOrderProvider(dependencyModel));
+		Transformation transformation = backtransCreator.createBackTransformation();
 		EMFHelper.saveEObjectToFile(transformation, "backtrans.xmi");
 		new File("src/assign/asttomodel").mkdirs();
 		BacktransCodeGenerator.generate(transformation, "assign.asttomodel", "src/assign/asttomodel");

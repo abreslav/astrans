@@ -12,6 +12,7 @@ abstract class Assignment {
 @Ecore(constraints="VariableNameIsNotDefinedBefore")
 class VariableAssignment extends Assignment {
   attr String[1] variableName;
+  attr boolean returned = false;
 }
 
 @Ecore(constraints="FeatureIsChangeable")
@@ -39,7 +40,7 @@ class Variable extends Expression {
 @Ecore(constraints="FeatureBelongsToObjectType")
 class FeatureAccess extends Expression {
   val Expression[1] object;
-  val ecore.EStructuralFeature[1] feature;
+  ref ecore.EStructuralFeature[1] feature;
 }
 
 class EObjectReference extends Expression {

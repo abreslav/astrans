@@ -151,7 +151,7 @@ public class StaticEClassReferenceImpl extends EClassReferenceImpl implements St
 		}
 		return super.eIsSet(featureID);
 	}
-	
+
 	@Override
 	public EClassifier getType() {
 		return getEClass();

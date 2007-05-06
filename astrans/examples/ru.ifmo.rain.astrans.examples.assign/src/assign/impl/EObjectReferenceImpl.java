@@ -152,7 +152,7 @@ public class EObjectReferenceImpl extends ExpressionImpl implements EObjectRefer
 		}
 		return super.eIsSet(featureID);
 	}
-	
+
 	@Override
 	public EClassifier getType() {
 		return getObject().eClass();

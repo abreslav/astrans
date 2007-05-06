@@ -53,26 +53,26 @@ public interface FeatureAccess extends Expression {
 	void setObject(Expression value);
 
 	/**
-	 * Returns the value of the '<em><b>Feature</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Feature</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Feature</em>' containment reference.
+	 * @return the value of the '<em>Feature</em>' reference.
 	 * @see #setFeature(EStructuralFeature)
 	 * @see assign.AssignPackage#getFeatureAccess_Feature()
-	 * @model containment="true" required="true"
+	 * @model required="true"
 	 * @generated
 	 */
 	EStructuralFeature getFeature();
 
 	/**
-	 * Sets the value of the '{@link assign.FeatureAccess#getFeature <em>Feature</em>}' containment reference.
+	 * Sets the value of the '{@link assign.FeatureAccess#getFeature <em>Feature</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Feature</em>' containment reference.
+	 * @param value the new value of the '<em>Feature</em>' reference.
 	 * @see #getFeature()
 	 * @generated
 	 */

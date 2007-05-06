@@ -158,7 +158,7 @@ public class StringLiteralImpl extends ExpressionImpl implements StringLiteral {
 		result.append(')');
 		return result.toString();
 	}
-	
+
 	@Override
 	public EClassifier getType() {
 		return EcorePackage.eINSTANCE.getEString();
