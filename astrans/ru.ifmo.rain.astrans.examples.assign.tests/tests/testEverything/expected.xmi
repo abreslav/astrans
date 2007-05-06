@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<assign:AssignModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:assign="http://rain.ifmo.ru/~breslav/astrans/examples/2007/assign" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xsi:schemaLocation="http://rain.ifmo.ru/~breslav/astrans/examples/2007/assign ../../../ru.ifmo.rain.astrans.examples.assign/model/assign.ecore">
+  <assignments xsi:type="assign:VariableAssignment" variableName="package">
+    <expression xsi:type="assign:CreateInstance">
+      <eClassReference xsi:type="assign:StaticEClassReference">
+        <eClass href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+      </eClassReference>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="Model">
+    <expression xsi:type="assign:CreateInstance">
+      <eClassReference xsi:type="assign:StaticEClassReference">
+        <eClass href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+      </eClassReference>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:ManyFeatureAppend">
+    <expression xsi:type="assign:Variable" variableAssignment="//@assignments.1"/>
+    <object>
+      <object xsi:type="assign:Variable" variableAssignment="//@assignments.0"/>
+      <feature xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eClassifiers"/>
+    </object>
+  </assignments>
+</assign:AssignModel>
