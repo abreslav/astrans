@@ -47,7 +47,6 @@ public class BacktransCreator {
 	private final IReferenceOrderProvider orderProvider;
 	
 	public BacktransCreator(final TraceAdapter trace, final GenPackage protoGP, final GenPackage imageGP, final IReferenceOrderProvider orderProvider) {
-		super();
 		this.trace = trace;
 		this.protoGP = protoGP;
 		this.imageGP = imageGP;
@@ -110,6 +109,7 @@ public class BacktransCreator {
 
 	@SuppressWarnings("unchecked")
 	private void processReferences(ClassMapping mapping, MappingRule rule) {
+		ResolveObjects resolveObjects = null;
 		for (EReference reference : orderProvider.getReferenceOrder(mapping.getProto())) {
 			ReferenceMapping referenceMapping = trace.getReferenceMapping(reference);
 			if (referenceMapping == null) {
@@ -124,10 +124,14 @@ public class BacktransCreator {
 				resolveObject.setParameterName(imageReference.getName());
 				resolveObject.setParameterType(getTypeName(imageGP, imageReference.getEType()));
 				resolveObject.setType((ClassName) getTypeName(protoGP, reference.getEReferenceType()));
-				ResolveObjects resolveObjects = AstransformationFactory.eINSTANCE.createResolveObjects();
+				if (resolveObjects == null) {
+					resolveObjects = AstransformationFactory.eINSTANCE.createResolveObjects();
+					rule.getAssignReferenceStatements().add(resolveObjects);
+				}
 				resolveObjects.getResolveObjectStatements().add(resolveObject);
-				rule.getAssignReferenceStatements().add(resolveObjects);
 			} else {
+				resolveObjects = null;
+				
 				AssignReference assignReference = AstransformationFactory.eINSTANCE.createAssignReference();
 				initAssignFeature(assignReference, reference, imageReference, protoGP, imageGP);
 				assignReference.setMappingNeeded(referenceMapping.getType() != ReferenceMappingType.NONE_LITERAL);
