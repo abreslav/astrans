@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.junit.Test;
 
+import ru.ifmo.rain.astrans.trace.TracePackage;
 import ru.ifmo.rain.tests.utils.DirectoryBasedTest;
 import ru.ifmo.rain.tests.utils.XMIResourceSet;
 import ru.ifmo.rain.tests.utils.emf.Difference;
@@ -25,7 +26,7 @@ public class AssignTest extends DirectoryBasedTest {
 	
 	@Test
 	public void testAssign() throws IOException {
-		XMIResourceSet resourceSet = new XMIResourceSet(EcorePackage.eINSTANCE, AssignastPackage.eINSTANCE, AssignPackage.eINSTANCE);
+		XMIResourceSet resourceSet = new XMIResourceSet(EcorePackage.eINSTANCE, AssignastPackage.eINSTANCE, AssignPackage.eINSTANCE, TracePackage.eINSTANCE);
 
 		AssignModel expected = (AssignModel) resourceSet.loadEObject(getPath("expected.xmi"));
 		Unit ast = (Unit) resourceSet.loadEObject(getPath("ast.xmi"));
