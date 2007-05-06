@@ -31,8 +31,6 @@
         <type name="org.eclipse.emf.ecore.EClass"/>
         <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
       </resolveObjectStatements>
-    </assignReferenceStatements>
-    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
       <resolveObjectStatements setterName="setTextualReferenceType" getterName="getTextualReferenceType" resolverMethodName="resolveTranslateReferencesTextualReferenceType" parameterName="textualReferenceType">
         <type name="ru.ifmo.rain.astrans.EClassifierReference"/>
         <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>
@@ -146,6 +144,12 @@
     <factoryClassName name="ru.ifmo.rain.astrans.AstransFactory"/>
     <assignAttributeStatements setterName="setOutputName" getterName="getOutputName"/>
     <assignAttributeStatements setterName="setOutputNsURI" getterName="getOutputNsURI"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setInput" getterName="getInput" resolverMethodName="resolveTransformationInput" parameterName="input">
+        <type name="org.eclipse.emf.ecore.EPackage"/>
+        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="getCreateClassActions" getterName="getCreateClassActions" many="true">
       <type name="ru.ifmo.rain.astrans.CreateClass"/>
     </assignReferenceStatements>
@@ -159,18 +163,10 @@
       <type name="ru.ifmo.rain.astrans.SkipClass"/>
     </assignReferenceStatements>
     <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
-      <resolveObjectStatements setterName="setInput" getterName="getInput" resolverMethodName="resolveTransformationInput" parameterName="input">
-        <type name="org.eclipse.emf.ecore.EPackage"/>
-        <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EPackageReference"/>
-      </resolveObjectStatements>
-    </assignReferenceStatements>
-    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
       <resolveObjectStatements setterName="setInputModelRoot" getterName="getInputModelRoot" resolverMethodName="resolveTransformationInputModelRoot" parameterName="inputModelRoot">
         <type name="org.eclipse.emf.ecore.EClass"/>
         <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.QualifiedName"/>
       </resolveObjectStatements>
-    </assignReferenceStatements>
-    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
       <resolveObjectStatements setterName="setAstRoot" getterName="getAstRoot" resolverMethodName="resolveTransformationAstRoot" parameterName="astRoot">
         <type name="ru.ifmo.rain.astrans.EClassReference"/>
         <parameterType xsi:type="astransformation:ClassName" name="ru.ifmo.rain.astrans.astransast.EClassifierReferenceAS"/>

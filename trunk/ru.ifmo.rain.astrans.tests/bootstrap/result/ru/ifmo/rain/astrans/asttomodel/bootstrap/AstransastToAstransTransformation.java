@@ -3,6 +3,7 @@ package ru.ifmo.rain.astrans.asttomodel.bootstrap;
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EObject;
 
 import ru.ifmo.rain.astrans.AstransFactory;
@@ -14,6 +15,7 @@ import ru.ifmo.rain.astrans.Reference;
 import ru.ifmo.rain.astrans.SkipClass;
 import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.TranslateReferences;
+
 import ru.ifmo.rain.astrans.astransast.AttributeAS;
 import ru.ifmo.rain.astrans.astransast.ChangeInheritanceAS;
 import ru.ifmo.rain.astrans.astransast.CreateClassAS;
@@ -23,7 +25,9 @@ import ru.ifmo.rain.astrans.astransast.ReferenceAS;
 import ru.ifmo.rain.astrans.astransast.SkipClassAS;
 import ru.ifmo.rain.astrans.astransast.TransformationAS;
 import ru.ifmo.rain.astrans.astransast.TranslateReferencesAS;
+
 import ru.ifmo.rain.astrans.astransast.util.AstransastSwitch;
+
 import ru.ifmo.rain.astrans.asttomodel.ASTToModelTransformation;
 import ru.ifmo.rain.astrans.asttomodel.ITransformationContextFactory;
 
@@ -60,10 +64,6 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			addCommand(new Runnable() {
 				public void run() {
 					translateReferences.setModelReferenceTypeProto(getResolver().resolveTranslateReferencesModelReferenceTypeProto(translateReferencesAS.getModelReferenceTypeProto(), translateReferences));
-				}
-			});
-			addCommand(new Runnable() {
-				public void run() {
 					translateReferences.setTextualReferenceType(getResolver().resolveTranslateReferencesTextualReferenceType(translateReferencesAS.getTextualReferenceType(), translateReferences));
 				}
 			});
@@ -175,22 +175,18 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			transformation.setOutputName(transformationAS.getOutputName());
 			transformation.setOutputNsURI(transformationAS.getOutputNsURI());
 			
+			addCommand(new Runnable() {
+				public void run() {
+					transformation.setInput(getResolver().resolveTransformationInput(transformationAS.getInput(), transformation));
+				}
+			});
 			doSwitch(transformation.getCreateClassActions(), transformationAS.getCreateClassActions());
 			doSwitch(transformation.getTranslateReferencesActions(), transformationAS.getTranslateReferencesActions());
 			doSwitch(transformation.getChangeInheritanceActions(), transformationAS.getChangeInheritanceActions());
 			doSwitch(transformation.getSkipClassActions(), transformationAS.getSkipClassActions());
 			addCommand(new Runnable() {
 				public void run() {
-					transformation.setInput(getResolver().resolveTransformationInput(transformationAS.getInput(), transformation));
-				}
-			});
-			addCommand(new Runnable() {
-				public void run() {
 					transformation.setInputModelRoot(getResolver().resolveTransformationInputModelRoot(transformationAS.getInputModelRoot(), transformation));
-				}
-			});
-			addCommand(new Runnable() {
-				public void run() {
 					transformation.setAstRoot(getResolver().resolveTransformationAstRoot(transformationAS.getAstRoot(), transformation));
 				}
 			});
