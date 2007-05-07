@@ -12,6 +12,7 @@ import assignast.EClassDesignator;
 import assignast.EEnumLiteralDesignator;
 import assignast.EcoreObjectDesignator;
 import assignast.Unit;
+import assignast.VariableAssignmentAS;
 
 import assignast.util.AssignastSwitch;
 
@@ -21,7 +22,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 public interface IAssignastToAssignResolver {
-	AssignModel runTransformation(Unit unit, AssignastSwitch transformer);// caseVariableAS
+	AssignModel runTransformation(Unit unit, AssignastSwitch transformer);void enteredVariableAssignmentAS(VariableAssignmentAS variableAssignmentAS, VariableAssignment variableAssignment);
+	void leftVariableAssignmentAS(VariableAssignmentAS variableAssignmentAS, VariableAssignment variableAssignment);
+
+	// caseVariableAS
 	VariableAssignment resolveVariableVariableAssignment(String variableAssignment, Variable contextObject);
 
 	// caseFeatureAccessAS

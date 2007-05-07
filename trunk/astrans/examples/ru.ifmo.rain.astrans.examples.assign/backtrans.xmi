@@ -8,7 +8,7 @@
       <type name="assign.AssignModel"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
-    <assignReferenceStatements setterName="getAssignments" getterName="getAssignments" many="true">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="getAssignments" getterName="getAssignments" many="true">
       <type name="assign.Assignment"/>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="assignModelCreated"/>
@@ -23,10 +23,11 @@
     <factoryClassName name="assign.AssignFactory"/>
     <assignAttributeStatements setterName="setVariableName" getterName="getVariableName"/>
     <assignAttributeStatements setterName="setReturned" getterName="isReturned"/>
-    <assignReferenceStatements setterName="setExpression" getterName="getExpression">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setExpression" getterName="getExpression">
       <type name="assign.Expression"/>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="variableAssignmentCreated"/>
+    <scopeInformationStatements enterMethodName="enteredVariableAssignmentAS" leaveMethodName="leftVariableAssignmentAS"/>
   </mappingRules>
   <mappingRules name="caseManyFeatureAppendAS" factoryMethodName="createManyFeatureAppend">
     <parameter name="manyFeatureAppendAS">
@@ -36,10 +37,10 @@
       <type name="assign.ManyFeatureAppend"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
-    <assignReferenceStatements setterName="setExpression" getterName="getExpression">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setExpression" getterName="getExpression">
       <type name="assign.Expression"/>
     </assignReferenceStatements>
-    <assignReferenceStatements setterName="setObject" getterName="getObject">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setObject" getterName="getObject">
       <type name="assign.FeatureAccess"/>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="manyFeatureAppendCreated"/>
@@ -52,10 +53,10 @@
       <type name="assign.SingleFeatureAssignment"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
-    <assignReferenceStatements setterName="setExpression" getterName="getExpression">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setExpression" getterName="getExpression">
       <type name="assign.Expression"/>
     </assignReferenceStatements>
-    <assignReferenceStatements setterName="setObject" getterName="getObject">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setObject" getterName="getObject">
       <type name="assign.FeatureAccess"/>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="singleFeatureAssignmentCreated"/>
@@ -68,11 +69,13 @@
       <type name="assign.Variable"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setVariableAssignment" getterName="getVariableAssignment" resolverMethodName="resolveVariableVariableAssignment" parameterName="variableAssignment">
+        <type name="assign.VariableAssignment"/>
+        <parameterType xsi:type="astransformation:ClassName" name="java.lang.String"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="variableCreated"/>
-    <resolveObjectStatements setterName="setVariableAssignment" getterName="getVariableAssignment" resolverMethodName="resolveVariableVariableAssignment" parameterName="variableAssignment">
-      <type name="assign.VariableAssignment"/>
-      <parameterType xsi:type="astransformation:ClassName" name="java.lang.String"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseFeatureAccessAS" factoryMethodName="createFeatureAccess">
     <parameter name="featureAccessAS">
@@ -82,14 +85,16 @@
       <type name="assign.FeatureAccess"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
-    <assignReferenceStatements setterName="setObject" getterName="getObject">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setObject" getterName="getObject">
       <type name="assign.Expression"/>
     </assignReferenceStatements>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setFeature" getterName="getFeature" resolverMethodName="resolveFeatureAccessFeature" parameterName="feature">
+        <type name="org.eclipse.emf.ecore.EStructuralFeature"/>
+        <parameterType xsi:type="astransformation:ClassName" name="java.lang.String"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="featureAccessCreated"/>
-    <resolveObjectStatements setterName="setFeature" getterName="getFeature" resolverMethodName="resolveFeatureAccessFeature" parameterName="feature">
-      <type name="org.eclipse.emf.ecore.EStructuralFeature"/>
-      <parameterType xsi:type="astransformation:ClassName" name="java.lang.String"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseEObjectReferenceAS" factoryMethodName="createEObjectReference">
     <parameter name="eObjectReferenceAS">
@@ -99,11 +104,13 @@
       <type name="assign.EObjectReference"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setObject" getterName="getObject" resolverMethodName="resolveEObjectReferenceObject" parameterName="object">
+        <type name="org.eclipse.emf.ecore.EObject"/>
+        <parameterType xsi:type="astransformation:ClassName" name="assignast.EcoreObjectDesignator"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="eObjectReferenceCreated"/>
-    <resolveObjectStatements setterName="setObject" getterName="getObject" resolverMethodName="resolveEObjectReferenceObject" parameterName="object">
-      <type name="org.eclipse.emf.ecore.EObject"/>
-      <parameterType xsi:type="astransformation:ClassName" name="assignast.EcoreObjectDesignator"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseCreateInstanceAS" factoryMethodName="createCreateInstance">
     <parameter name="createInstanceAS">
@@ -113,7 +120,7 @@
       <type name="assign.CreateInstance"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
-    <assignReferenceStatements setterName="setEClassReference" getterName="getEClassReference">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setEClassReference" getterName="getEClassReference">
       <type name="assign.EClassReference"/>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="createInstanceCreated"/>
@@ -126,11 +133,13 @@
       <type name="assign.StaticEClassReference"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setEClass" getterName="getEClass" resolverMethodName="resolveStaticEClassReferenceEClass" parameterName="eClass">
+        <type name="org.eclipse.emf.ecore.EClass"/>
+        <parameterType xsi:type="astransformation:ClassName" name="assignast.EClassDesignator"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="staticEClassReferenceCreated"/>
-    <resolveObjectStatements setterName="setEClass" getterName="getEClass" resolverMethodName="resolveStaticEClassReferenceEClass" parameterName="eClass">
-      <type name="org.eclipse.emf.ecore.EClass"/>
-      <parameterType xsi:type="astransformation:ClassName" name="assignast.EClassDesignator"/>
-    </resolveObjectStatements>
   </mappingRules>
   <mappingRules name="caseDynamicEClassReferenceAS" factoryMethodName="createDynamicEClassReference">
     <parameter name="dynamicEClassReferenceAS">
@@ -140,7 +149,7 @@
       <type name="assign.DynamicEClassReference"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
-    <assignReferenceStatements setterName="setEClass" getterName="getEClass">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setEClass" getterName="getEClass">
       <type name="assign.Expression"/>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="dynamicEClassReferenceCreated"/>
@@ -153,7 +162,7 @@
       <type name="assign.CopyObject"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
-    <assignReferenceStatements setterName="setObject" getterName="getObject">
+    <assignReferenceStatements xsi:type="astransformation:AssignReference" setterName="setObject" getterName="getObject">
       <type name="assign.Expression"/>
     </assignReferenceStatements>
     <writeTraceStatement traceMethodName="copyObjectCreated"/>
@@ -188,11 +197,13 @@
       <type name="assign.EnumLiteral"/>
     </result>
     <factoryClassName name="assign.AssignFactory"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setLiteral" getterName="getLiteral" resolverMethodName="resolveEnumLiteralLiteral" parameterName="literal">
+        <type name="org.eclipse.emf.ecore.EEnumLiteral"/>
+        <parameterType xsi:type="astransformation:ClassName" name="assignast.EEnumLiteralDesignator"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
     <writeTraceStatement traceMethodName="enumLiteralCreated"/>
-    <resolveObjectStatements setterName="setLiteral" getterName="getLiteral" resolverMethodName="resolveEnumLiteralLiteral" parameterName="literal">
-      <type name="org.eclipse.emf.ecore.EEnumLiteral"/>
-      <parameterType xsi:type="astransformation:ClassName" name="assignast.EEnumLiteralDesignator"/>
-    </resolveObjectStatements>
   </mappingRules>
   <customMain name="run" resolverMethodName="runTransformation">
     <parameter name="unit">

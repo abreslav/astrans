@@ -7,4 +7,7 @@
       <dependsOn href="model/assign.ecore#//FeatureAccess/object"/>
     </dependencies>
   </contexts>
+  <contexts providingScopeInformation="true">
+    <eClass href="model/assign.ecore#//VariableAssignment"/>
+  </contexts>
 </btd:DependencyModel>

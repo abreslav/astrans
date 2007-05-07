@@ -14,8 +14,9 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import ru.ifmo.rain.astrans.astransformation.Transformation;
+import ru.ifmo.rain.astrans.backtrans.dependencies.DependenciesPackage;
 import ru.ifmo.rain.astrans.backtrans.dependencies.DependencyModel;
-import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.DependencyReferenceOrderProvider;
+import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.DependencyProvider;
 import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.IncorrectGraphException;
 import ru.ifmo.rain.astrans.interpreter.backtrans.BacktransCodeGenerator;
 import ru.ifmo.rain.astrans.interpreter.backtrans.BacktransCreator;
@@ -32,6 +33,7 @@ public class CodeGenerator {
 		putPackage(resourceSet, EcorePackage.eINSTANCE);
 		putPackage(resourceSet, TracePackage.eINSTANCE);
 		putPackage(resourceSet, GenModelPackage.eINSTANCE);
+		putPackage(resourceSet, DependenciesPackage.eINSTANCE);
 
 		XMIResourceFactoryImpl resourceFactoryImpl = new XMIResourceFactoryImpl();
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("ecore", resourceFactoryImpl);
@@ -50,7 +52,7 @@ public class CodeGenerator {
 		
 		GenPackage protoGP = (GenPackage) assignGenModel.getGenPackages().get(0);
 		GenPackage imageGP = (GenPackage) astGenModel.getGenPackages().get(0);
-		BacktransCreator backtransCreator = new BacktransCreator(trace, protoGP, imageGP, new DependencyReferenceOrderProvider(dependencyModel));
+		BacktransCreator backtransCreator = new BacktransCreator(trace, protoGP, imageGP, new DependencyProvider(dependencyModel));
 		Transformation transformation = backtransCreator.createBackTransformation();
 		EMFHelper.saveEObjectToFile(transformation, "backtrans.xmi");
 		new File("src/assign/asttomodel").mkdirs();

@@ -1,8 +1,10 @@
 package assign.asttomodel.impl;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -26,12 +28,14 @@ import assignast.EEnumLiteralDesignator;
 import assignast.EcoreObjectDesignator;
 import assignast.Import;
 import assignast.Unit;
+import assignast.VariableAssignmentAS;
 import assignast.util.AssignastSwitch;
 
 public class AssignResolver implements IAssignastToAssignResolver {
 
 	private final Map<String, EPackage> packages = new HashMap<String, EPackage>();
 	private final AssignTrace trace;
+	private final Set<VariableAssignment> definedVariables = new HashSet<VariableAssignment>();
 	
 	public AssignResolver(final AssignTrace trace) {
 		super();
@@ -68,7 +72,11 @@ public class AssignResolver implements IAssignastToAssignResolver {
 	}
 
 	public VariableAssignment resolveVariableVariableAssignment(String variableAssignment, Variable contextObject) {
-		return trace.getVariableMap().get(variableAssignment);
+		VariableAssignment var = trace.getVariableMap().get(variableAssignment);
+		if (definedVariables.contains(var)) {
+			return var;
+		}
+		throw new RuntimeException("Variable is not defined: " + variableAssignment);
 	}
 
 	public AssignModel runTransformation(Unit unit, AssignastSwitch transformer) {
@@ -78,6 +86,13 @@ public class AssignResolver implements IAssignastToAssignResolver {
 			packages.put(imp.getPackageName(), EPackage.Registry.INSTANCE.getEPackage(imp.getPackageUri()));
 		}
 		return (AssignModel) transformer.doSwitch(unit.getModel());
+	}
+
+	public void enteredVariableAssignmentAS(VariableAssignmentAS variableAssignmentAS, VariableAssignment variableAssignment) {
+		definedVariables.add(variableAssignment);
+	}
+
+	public void leftVariableAssignmentAS(VariableAssignmentAS variableAssignmentAS, VariableAssignment variableAssignment) {
 	}
 
 }
