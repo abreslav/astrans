@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<btd:DependencyModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:btd="http://rain.ifmo.ru/~breslav/2007/backtrans/dependencies">
+  <contexts>
+    <eClass href="model.ecore#//Class"/>
+  </contexts>
+  <contexts providingScopeInformation="true">
+    <eClass href="model.ecore#//Class1"/>
+  </contexts>
+</btd:DependencyModel>

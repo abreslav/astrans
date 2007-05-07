@@ -19,7 +19,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import ru.ifmo.rain.astrans.astransformation.Transformation;
 import ru.ifmo.rain.astrans.backtrans.dependencies.DependencyModel;
-import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.DependencyReferenceOrderProvider;
+import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.DependencyProvider;
 import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.IncorrectGraphException;
 import ru.ifmo.rain.astrans.trace.Trace;
 import ru.ifmo.rain.tests.utils.FileUtils;
@@ -84,8 +84,8 @@ public class BacktransCreatorTest {
 		resource.load(null);
 		DependencyModel dependencyModel = (DependencyModel) resource.getContents().get(0);
 
-		IReferenceOrderProvider orderProvider = new DependencyReferenceOrderProvider(dependencyModel);
-		BacktransCreator backtransCreator = new BacktransCreator(new TraceAdapter(trace), (GenPackage) genModel.getGenPackages().get(0), (GenPackage) astGenModel.getGenPackages().get(0), orderProvider);
+		IDependencyProvider dependencyProvider = new DependencyProvider(dependencyModel);
+		BacktransCreator backtransCreator = new BacktransCreator(new TraceAdapter(trace), (GenPackage) genModel.getGenPackages().get(0), (GenPackage) astGenModel.getGenPackages().get(0), dependencyProvider);
 		Transformation transformation = backtransCreator.createBackTransformation();
 		resource = resourceSet.createResource(URI.createURI(resultFileName));
 		resource.getContents().add(transformation);

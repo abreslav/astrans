@@ -30,6 +30,10 @@ public class TestEveythingTransformation extends ASTToModelTransformation<ITERes
 			
 			transformation.setOutputName().addAll(transformationAS.getOutputName());
 			transformation.setOutputNsURI(transformationAS.getOutputNsURI());
+		
+			addCommand(new Runnable() {
+				getResolver().enteredTransformationAS(transformationAS, transformation);
+			});
 			
 			transformation.setCreateClassActions((CreateClass) doSwitch(transformationAS.getCreateClassActions()));
 			transformation.getSkipClassActions().addAll(transformationAS.getSkipClassActions());
@@ -46,6 +50,11 @@ public class TestEveythingTransformation extends ASTToModelTransformation<ITERes
 			});
 			
 			getTrace().transformationCreated(transformationAS, transformation);
+		
+			addCommand(new Runnable() {
+				getResolver().leftTransformationAS(transformationAS, transformation);
+			});
+			
 			return transformation;
 		}
 	};

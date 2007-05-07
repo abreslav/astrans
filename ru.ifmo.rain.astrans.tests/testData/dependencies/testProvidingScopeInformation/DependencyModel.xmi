@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<btd:DependencyModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:btd="http://rain.ifmo.ru/~breslav/2007/backtrans/dependencies">
+  <contexts providingScopeInformation="true">
+    <eClass href="input.ecore#//A"/>
+  </contexts>
+</btd:DependencyModel>
