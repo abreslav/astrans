@@ -13,6 +13,8 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="eClass" lowerBound="1"
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="providingScopeInformation"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" upperBound="-1"
         eType="#//FeatureDependency" containment="true"/>
   </eClassifiers>

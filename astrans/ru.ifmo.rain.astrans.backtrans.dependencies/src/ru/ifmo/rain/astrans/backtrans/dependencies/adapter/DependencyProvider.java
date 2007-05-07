@@ -15,17 +15,22 @@ import org.eclipse.emf.ecore.EReference;
 import ru.ifmo.rain.astrans.backtrans.dependencies.DependencyModel;
 import ru.ifmo.rain.astrans.backtrans.dependencies.EClassContext;
 import ru.ifmo.rain.astrans.backtrans.dependencies.FeatureDependency;
-import ru.ifmo.rain.astrans.interpreter.backtrans.IReferenceOrderProvider;
+import ru.ifmo.rain.astrans.interpreter.backtrans.IDependencyProvider;
 
-public class DependencyReferenceOrderProvider implements IReferenceOrderProvider {
+public class DependencyProvider implements IDependencyProvider {
 
 	private final Map<EClass, List<EReference>> classToReferenceList = new HashMap<EClass, List<EReference>>();
+	private final Set<EClass> providingScopeInformation = new HashSet<EClass>();
 	
-	public DependencyReferenceOrderProvider(final DependencyModel dependencyModel) throws IncorrectGraphException {
+	public DependencyProvider(final DependencyModel dependencyModel) throws IncorrectGraphException {
 		List contexts = dependencyModel.getContexts();
 		for (Iterator iter = contexts.iterator(); iter.hasNext();) {
 			EClassContext context = (EClassContext) iter.next();
 			EClass eClass = context.getEClass();
+
+			if (context.isProvidingScopeInformation()) {
+				providingScopeInformation.add(eClass);
+			}
 			
 			Map<EReference, List<EReference>> refMap = createReferenceMap(context);
 
@@ -81,5 +86,9 @@ public class DependencyReferenceOrderProvider implements IReferenceOrderProvider
 			return Collections.unmodifiableList(eClass.getEAllReferences());
 		}
 		return order;
+	}
+
+	public boolean isProvidingScopeInformation(EClass eClass) {
+		return providingScopeInformation.contains(eClass);
 	}
 }

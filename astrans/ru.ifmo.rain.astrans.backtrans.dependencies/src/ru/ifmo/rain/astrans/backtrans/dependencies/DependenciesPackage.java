@@ -6,6 +6,7 @@
  */
 package ru.ifmo.rain.astrans.backtrans.dependencies;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EPackage;
@@ -111,13 +112,22 @@ public class DependenciesPackage extends EPackageImpl {
 	public static final int ECLASS_CONTEXT__ECLASS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Providing Scope Information</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ECLASS_CONTEXT__PROVIDING_SCOPE_INFORMATION = 1;
+
+	/**
 	 * The feature id for the '<em><b>Dependencies</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ECLASS_CONTEXT__DEPENDENCIES = 1;
+	public static final int ECLASS_CONTEXT__DEPENDENCIES = 2;
 
 	/**
 	 * The number of structural features of the '<em>EClass Context</em>' class.
@@ -126,7 +136,7 @@ public class DependenciesPackage extends EPackageImpl {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ECLASS_CONTEXT_FEATURE_COUNT = 2;
+	public static final int ECLASS_CONTEXT_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.backtrans.dependencies.FeatureDependency <em>Feature Dependency</em>}' class.
@@ -315,6 +325,19 @@ public class DependenciesPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.backtrans.dependencies.EClassContext#isProvidingScopeInformation <em>Providing Scope Information</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Providing Scope Information</em>'.
+	 * @see ru.ifmo.rain.astrans.backtrans.dependencies.EClassContext#isProvidingScopeInformation()
+	 * @see #getEClassContext()
+	 * @generated
+	 */
+	public EAttribute getEClassContext_ProvidingScopeInformation() {
+		return (EAttribute)eClassContextEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link ru.ifmo.rain.astrans.backtrans.dependencies.EClassContext#getDependencies <em>Dependencies</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -324,7 +347,7 @@ public class DependenciesPackage extends EPackageImpl {
 	 * @generated
 	 */
 	public EReference getEClassContext_Dependencies() {
-		return (EReference)eClassContextEClass.getEStructuralFeatures().get(1);
+		return (EReference)eClassContextEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -400,6 +423,7 @@ public class DependenciesPackage extends EPackageImpl {
 
 		eClassContextEClass = createEClass(ECLASS_CONTEXT);
 		createEReference(eClassContextEClass, ECLASS_CONTEXT__ECLASS);
+		createEAttribute(eClassContextEClass, ECLASS_CONTEXT__PROVIDING_SCOPE_INFORMATION);
 		createEReference(eClassContextEClass, ECLASS_CONTEXT__DEPENDENCIES);
 
 		featureDependencyEClass = createEClass(FEATURE_DEPENDENCY);
@@ -438,6 +462,7 @@ public class DependenciesPackage extends EPackageImpl {
 
 		initEClass(eClassContextEClass, EClassContext.class, "EClassContext", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEClassContext_EClass(), ecorePackage.getEClass(), null, "eClass", null, 1, 1, EClassContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEClassContext_ProvidingScopeInformation(), ecorePackage.getEBoolean(), "providingScopeInformation", "false", 0, 1, EClassContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEClassContext_Dependencies(), this.getFeatureDependency(), null, "dependencies", null, 0, -1, EClassContext.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(featureDependencyEClass, FeatureDependency.class, "FeatureDependency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -516,6 +541,14 @@ public class DependenciesPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EReference ECLASS_CONTEXT__ECLASS = eINSTANCE.getEClassContext_EClass();
+
+		/**
+		 * The meta object literal for the '<em><b>Providing Scope Information</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute ECLASS_CONTEXT__PROVIDING_SCOPE_INFORMATION = eINSTANCE.getEClassContext_ProvidingScopeInformation();
 
 		/**
 		 * The meta object literal for the '<em><b>Dependencies</b></em>' containment reference list feature.
