@@ -17,6 +17,11 @@ renderMappingRule(r) ::= <<
 <r.resolveObjectStatements:renderResolveMethod(); separator="\n">
 <\n>
 <endif>
+<if (r.scopeInformationStatements)>
+void <r.scopeInformationStatements.enterMethodName>(<r.parameter.type> <r.parameter.name>, <r.result.type> <r.result.name>);
+void <r.scopeInformationStatements.leaveMethodName>(<r.parameter.type> <r.parameter.name>, <r.result.type> <r.result.name>);
+<\n>
+<endif>
 >>
 
 renderResolveMethod(ros) ::= <<

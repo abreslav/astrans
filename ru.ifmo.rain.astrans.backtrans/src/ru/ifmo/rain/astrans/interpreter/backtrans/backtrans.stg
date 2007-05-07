@@ -33,10 +33,17 @@ private final <transformation.switchClassName> transformer = new <transformation
 toCaseMethod(rule) ::= <<
 public <rule.result.type> <rule.name>(final <rule.parameter.type> <rule.parameter.name>) {
 	final <rule.result.type> <rule.result.name> = <rule.factoryClassName>.eINSTANCE.<rule.factoryMethodName>();
-
 	<if(rule.assignAttributeStatements)>
 	
 	<rule.assignAttributeStatements:{a | <renderAttributeAssignment(a=a, rule=rule)>}; separator="\n">
+	<endif>
+	<if(rule.scopeInformationStatements)>
+
+	addCommand(new Runnable() {
+		public void run() {
+			getResolver().<rule.scopeInformationStatements.enterMethodName>(<rule.parameter.name>, <rule.result.name>);
+		}
+	});
 	<endif>
 	<if(rule.assignReferenceStatements)>
 	
@@ -44,7 +51,15 @@ public <rule.result.type> <rule.name>(final <rule.parameter.type> <rule.paramete
 	<endif>
 	
 	getTrace().<rule.writeTraceStatement.traceMethodName>(<rule.parameter.name>, <rule.result.name>);
+	<if(rule.scopeInformationStatements)>
 
+	addCommand(new Runnable() {
+		public void run() {
+			getResolver().<rule.scopeInformationStatements.leaveMethodName>(<rule.parameter.name>, <rule.result.name>);
+		}
+	});
+	
+	<endif>
 	return <rule.result.name>;
 }
 >>

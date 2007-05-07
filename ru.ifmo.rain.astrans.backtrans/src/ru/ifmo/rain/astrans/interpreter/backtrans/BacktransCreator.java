@@ -32,6 +32,7 @@ import ru.ifmo.rain.astrans.astransformation.MappingRule;
 import ru.ifmo.rain.astrans.astransformation.Parameter;
 import ru.ifmo.rain.astrans.astransformation.ResolveObject;
 import ru.ifmo.rain.astrans.astransformation.ResolveObjects;
+import ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements;
 import ru.ifmo.rain.astrans.astransformation.Transformation;
 import ru.ifmo.rain.astrans.astransformation.TypeName;
 import ru.ifmo.rain.astrans.trace.AttributeMapping;
@@ -44,13 +45,13 @@ public class BacktransCreator {
 	private final TraceAdapter trace;
 	private final GenPackage protoGP;
 	private final GenPackage imageGP;
-	private final IReferenceOrderProvider orderProvider;
+	private final IDependencyProvider dependencyProvider;
 	
-	public BacktransCreator(final TraceAdapter trace, final GenPackage protoGP, final GenPackage imageGP, final IReferenceOrderProvider orderProvider) {
+	public BacktransCreator(final TraceAdapter trace, final GenPackage protoGP, final GenPackage imageGP, final IDependencyProvider orderProvider) {
 		this.trace = trace;
 		this.protoGP = protoGP;
 		this.imageGP = imageGP;
-		this.orderProvider = orderProvider;
+		this.dependencyProvider = orderProvider;
 	}
 
 	public Transformation createBackTransformation() {
@@ -102,6 +103,13 @@ public class BacktransCreator {
 		rule.setResult(createParameter(mapping.getProto(), protoGP));
 		rule.setParameter(createParameter(mapping.getImage(), imageGP));
 
+		if (dependencyProvider.isProvidingScopeInformation(mapping.getProto())) {
+			ScopeInformationStatements statements = AstransformationFactory.eINSTANCE.createScopeInformationStatements();
+			statements.setEnterMethodName("entered" + mapping.getImage().getName());
+			statements.setLeaveMethodName("left" + mapping.getImage().getName());
+			rule.setScopeInformationStatements(statements);
+		}
+		
 		if (mapping.getProto() == trace.getInputRoot() && mapping.getImage() == trace.getOutputRoot()) {
 			backTransformation.setMain(rule);
 		}		
@@ -110,7 +118,7 @@ public class BacktransCreator {
 	@SuppressWarnings("unchecked")
 	private void processReferences(ClassMapping mapping, MappingRule rule) {
 		ResolveObjects resolveObjects = null;
-		for (EReference reference : orderProvider.getReferenceOrder(mapping.getProto())) {
+		for (EReference reference : dependencyProvider.getReferenceOrder(mapping.getProto())) {
 			ReferenceMapping referenceMapping = trace.getReferenceMapping(reference);
 			if (referenceMapping == null) {
 				continue;
