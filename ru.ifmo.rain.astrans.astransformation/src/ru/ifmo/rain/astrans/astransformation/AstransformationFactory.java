@@ -85,6 +85,7 @@ public class AstransformationFactory extends EFactoryImpl {
 			case AstransformationPackage.ASSIGN_REFERENCE: return createAssignReference();
 			case AstransformationPackage.WRITE_TRACE: return createWriteTrace();
 			case AstransformationPackage.RESOLVE_OBJECT: return createResolveObject();
+			case AstransformationPackage.SCOPE_INFORMATION_STATEMENTS: return createScopeInformationStatements();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -226,6 +227,16 @@ public class AstransformationFactory extends EFactoryImpl {
 	public ResolveObject createResolveObject() {
 		ResolveObject resolveObject = new ResolveObject();
 		return resolveObject;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ScopeInformationStatements createScopeInformationStatements() {
+		ScopeInformationStatements scopeInformationStatements = new ScopeInformationStatements();
+		return scopeInformationStatements;
 	}
 
 	/**

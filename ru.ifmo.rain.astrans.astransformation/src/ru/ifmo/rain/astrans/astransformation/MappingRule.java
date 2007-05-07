@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getAssignReferenceStatements <em>Assign Reference Statements</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getResolveObjectStatements <em>Resolve Object Statements</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getWriteTraceStatement <em>Write Trace Statement</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getScopeInformationStatements <em>Scope Information Statements</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,6 +101,16 @@ public class MappingRule extends Method {
 	 * @ordered
 	 */
 	protected WriteTrace writeTraceStatement = null;
+
+	/**
+	 * The cached value of the '{@link #getScopeInformationStatements() <em>Scope Information Statements</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getScopeInformationStatements()
+	 * @generated
+	 * @ordered
+	 */
+	protected ScopeInformationStatements scopeInformationStatements = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -295,6 +306,59 @@ public class MappingRule extends Method {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Scope Information Statements</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Scope Information Statements</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Scope Information Statements</em>' containment reference.
+	 * @see #setScopeInformationStatements(ScopeInformationStatements)
+	 * @generated
+	 */
+	public ScopeInformationStatements getScopeInformationStatements() {
+		return scopeInformationStatements;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetScopeInformationStatements(ScopeInformationStatements newScopeInformationStatements, NotificationChain msgs) {
+		ScopeInformationStatements oldScopeInformationStatements = scopeInformationStatements;
+		scopeInformationStatements = newScopeInformationStatements;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AstransformationPackage.MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS, oldScopeInformationStatements, newScopeInformationStatements);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getScopeInformationStatements <em>Scope Information Statements</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Scope Information Statements</em>' containment reference.
+	 * @see #getScopeInformationStatements()
+	 * @generated
+	 */
+	public void setScopeInformationStatements(ScopeInformationStatements newScopeInformationStatements) {
+		if (newScopeInformationStatements != scopeInformationStatements) {
+			NotificationChain msgs = null;
+			if (scopeInformationStatements != null)
+				msgs = ((InternalEObject)scopeInformationStatements).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS, null, msgs);
+			if (newScopeInformationStatements != null)
+				msgs = ((InternalEObject)newScopeInformationStatements).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AstransformationPackage.MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS, null, msgs);
+			msgs = basicSetScopeInformationStatements(newScopeInformationStatements, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, AstransformationPackage.MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS, newScopeInformationStatements, newScopeInformationStatements));
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -309,6 +373,8 @@ public class MappingRule extends Method {
 				return ((InternalEList)getAssignReferenceStatements()).basicRemove(otherEnd, msgs);
 			case AstransformationPackage.MAPPING_RULE__WRITE_TRACE_STATEMENT:
 				return basicSetWriteTraceStatement(null, msgs);
+			case AstransformationPackage.MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS:
+				return basicSetScopeInformationStatements(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -356,6 +422,8 @@ public class MappingRule extends Method {
 				return getResolveObjectStatements();
 			case AstransformationPackage.MAPPING_RULE__WRITE_TRACE_STATEMENT:
 				return getWriteTraceStatement();
+			case AstransformationPackage.MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS:
+				return getScopeInformationStatements();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -384,6 +452,9 @@ public class MappingRule extends Method {
 			case AstransformationPackage.MAPPING_RULE__WRITE_TRACE_STATEMENT:
 				setWriteTraceStatement((WriteTrace)newValue);
 				return;
+			case AstransformationPackage.MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS:
+				setScopeInformationStatements((ScopeInformationStatements)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -410,6 +481,9 @@ public class MappingRule extends Method {
 			case AstransformationPackage.MAPPING_RULE__WRITE_TRACE_STATEMENT:
 				setWriteTraceStatement((WriteTrace)null);
 				return;
+			case AstransformationPackage.MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS:
+				setScopeInformationStatements((ScopeInformationStatements)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -433,6 +507,8 @@ public class MappingRule extends Method {
 				return !getResolveObjectStatements().isEmpty();
 			case AstransformationPackage.MAPPING_RULE__WRITE_TRACE_STATEMENT:
 				return writeTraceStatement != null;
+			case AstransformationPackage.MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS:
+				return scopeInformationStatements != null;
 		}
 		return super.eIsSet(featureID);
 	}

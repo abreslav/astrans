@@ -65,6 +65,14 @@
         transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="writeTraceStatement" lowerBound="1"
         eType="#//WriteTrace" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scopeInformationStatements"
+        eType="#//ScopeInformationStatements" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScopeInformationStatements">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enterMethodName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="leaveMethodName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AssignReferenceStatement" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="ResolveObjects" eSuperTypes="#//AssignReferenceStatement">
