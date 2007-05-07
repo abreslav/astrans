@@ -564,13 +564,22 @@ public class AstransformationPackage extends EPackageImpl {
 	public static final int MAPPING_RULE__WRITE_TRACE_STATEMENT = METHOD_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Scope Information Statements</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS = METHOD_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Mapping Rule</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MAPPING_RULE_FEATURE_COUNT = METHOD_FEATURE_COUNT + 6;
+	public static final int MAPPING_RULE_FEATURE_COUNT = METHOD_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.AssignReferenceStatement <em>Assign Reference Statement</em>}' class.
@@ -826,6 +835,43 @@ public class AstransformationPackage extends EPackageImpl {
 	public static final int RESOLVE_OBJECT_FEATURE_COUNT = ASSIGN_FEATURE_FEATURE_COUNT + 4;
 
 	/**
+	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements <em>Scope Information Statements</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements
+	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getScopeInformationStatements()
+	 * @generated
+	 */
+	public static final int SCOPE_INFORMATION_STATEMENTS = 17;
+
+	/**
+	 * The feature id for the '<em><b>Enter Method Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SCOPE_INFORMATION_STATEMENTS__ENTER_METHOD_NAME = 0;
+
+	/**
+	 * The feature id for the '<em><b>Leave Method Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SCOPE_INFORMATION_STATEMENTS__LEAVE_METHOD_NAME = 1;
+
+	/**
+	 * The number of structural features of the '<em>Scope Information Statements</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	public static final int SCOPE_INFORMATION_STATEMENTS_FEATURE_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link ru.ifmo.rain.astrans.astransformation.BasicType <em>Basic Type</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -833,7 +879,7 @@ public class AstransformationPackage extends EPackageImpl {
 	 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getBasicType()
 	 * @generated
 	 */
-	public static final int BASIC_TYPE = 17;
+	public static final int BASIC_TYPE = 18;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -939,6 +985,13 @@ public class AstransformationPackage extends EPackageImpl {
 	 * @generated
 	 */
 	private EClass resolveObjectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass scopeInformationStatementsEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1322,6 +1375,19 @@ public class AstransformationPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for the containment reference '{@link ru.ifmo.rain.astrans.astransformation.MappingRule#getScopeInformationStatements <em>Scope Information Statements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Scope Information Statements</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.MappingRule#getScopeInformationStatements()
+	 * @see #getMappingRule()
+	 * @generated
+	 */
+	public EReference getMappingRule_ScopeInformationStatements() {
+		return (EReference)mappingRuleEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
 	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.AssignReferenceStatement <em>Assign Reference Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1536,6 +1602,44 @@ public class AstransformationPackage extends EPackageImpl {
 	}
 
 	/**
+	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements <em>Scope Information Statements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Scope Information Statements</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements
+	 * @generated
+	 */
+	public EClass getScopeInformationStatements() {
+		return scopeInformationStatementsEClass;
+	}
+
+	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements#getEnterMethodName <em>Enter Method Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enter Method Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements#getEnterMethodName()
+	 * @see #getScopeInformationStatements()
+	 * @generated
+	 */
+	public EAttribute getScopeInformationStatements_EnterMethodName() {
+		return (EAttribute)scopeInformationStatementsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * Returns the meta object for the attribute '{@link ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements#getLeaveMethodName <em>Leave Method Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Leave Method Name</em>'.
+	 * @see ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements#getLeaveMethodName()
+	 * @see #getScopeInformationStatements()
+	 * @generated
+	 */
+	public EAttribute getScopeInformationStatements_LeaveMethodName() {
+		return (EAttribute)scopeInformationStatementsEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
 	 * Returns the meta object for class '{@link ru.ifmo.rain.astrans.astransformation.Method <em>Method</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1678,6 +1782,7 @@ public class AstransformationPackage extends EPackageImpl {
 		createEReference(mappingRuleEClass, MAPPING_RULE__ASSIGN_REFERENCE_STATEMENTS);
 		createEReference(mappingRuleEClass, MAPPING_RULE__RESOLVE_OBJECT_STATEMENTS);
 		createEReference(mappingRuleEClass, MAPPING_RULE__WRITE_TRACE_STATEMENT);
+		createEReference(mappingRuleEClass, MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS);
 
 		assignReferenceStatementEClass = createEClass(ASSIGN_REFERENCE_STATEMENT);
 
@@ -1701,6 +1806,10 @@ public class AstransformationPackage extends EPackageImpl {
 		createEAttribute(resolveObjectEClass, RESOLVE_OBJECT__RESOLVER_METHOD_NAME);
 		createEReference(resolveObjectEClass, RESOLVE_OBJECT__PARAMETER_TYPE);
 		createEAttribute(resolveObjectEClass, RESOLVE_OBJECT__PARAMETER_NAME);
+
+		scopeInformationStatementsEClass = createEClass(SCOPE_INFORMATION_STATEMENTS);
+		createEAttribute(scopeInformationStatementsEClass, SCOPE_INFORMATION_STATEMENTS__ENTER_METHOD_NAME);
+		createEAttribute(scopeInformationStatementsEClass, SCOPE_INFORMATION_STATEMENTS__LEAVE_METHOD_NAME);
 
 		// Create enums
 		basicTypeEEnum = createEEnum(BASIC_TYPE);
@@ -1785,6 +1894,7 @@ public class AstransformationPackage extends EPackageImpl {
 		initEReference(getMappingRule_AssignReferenceStatements(), this.getAssignReferenceStatement(), null, "assignReferenceStatements", null, 0, -1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingRule_ResolveObjectStatements(), this.getResolveObject(), null, "resolveObjectStatements", null, 0, -1, MappingRule.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getMappingRule_WriteTraceStatement(), this.getWriteTrace(), null, "writeTraceStatement", null, 1, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMappingRule_ScopeInformationStatements(), this.getScopeInformationStatements(), null, "scopeInformationStatements", null, 0, 1, MappingRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(assignReferenceStatementEClass, AssignReferenceStatement.class, "AssignReferenceStatement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1808,6 +1918,10 @@ public class AstransformationPackage extends EPackageImpl {
 		initEAttribute(getResolveObject_ResolverMethodName(), ecorePackage.getEString(), "resolverMethodName", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResolveObject_ParameterType(), this.getTypeName(), null, "parameterType", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResolveObject_ParameterName(), ecorePackage.getEString(), "parameterName", null, 1, 1, ResolveObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(scopeInformationStatementsEClass, ScopeInformationStatements.class, "ScopeInformationStatements", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getScopeInformationStatements_EnterMethodName(), ecorePackage.getEString(), "enterMethodName", null, 1, 1, ScopeInformationStatements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScopeInformationStatements_LeaveMethodName(), ecorePackage.getEString(), "leaveMethodName", null, 1, 1, ScopeInformationStatements.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(basicTypeEEnum, BasicType.class, "BasicType");
@@ -2038,6 +2152,14 @@ public class AstransformationPackage extends EPackageImpl {
 		public static final EReference MAPPING_RULE__WRITE_TRACE_STATEMENT = eINSTANCE.getMappingRule_WriteTraceStatement();
 
 		/**
+		 * The meta object literal for the '<em><b>Scope Information Statements</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EReference MAPPING_RULE__SCOPE_INFORMATION_STATEMENTS = eINSTANCE.getMappingRule_ScopeInformationStatements();
+
+		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.AssignReferenceStatement <em>Assign Reference Statement</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2186,6 +2308,32 @@ public class AstransformationPackage extends EPackageImpl {
 		 * @generated
 		 */
 		public static final EAttribute RESOLVE_OBJECT__PARAMETER_NAME = eINSTANCE.getResolveObject_ParameterName();
+
+		/**
+		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements <em>Scope Information Statements</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see ru.ifmo.rain.astrans.astransformation.ScopeInformationStatements
+		 * @see ru.ifmo.rain.astrans.astransformation.AstransformationPackage#getScopeInformationStatements()
+		 * @generated
+		 */
+		public static final EClass SCOPE_INFORMATION_STATEMENTS = eINSTANCE.getScopeInformationStatements();
+
+		/**
+		 * The meta object literal for the '<em><b>Enter Method Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute SCOPE_INFORMATION_STATEMENTS__ENTER_METHOD_NAME = eINSTANCE.getScopeInformationStatements_EnterMethodName();
+
+		/**
+		 * The meta object literal for the '<em><b>Leave Method Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		public static final EAttribute SCOPE_INFORMATION_STATEMENTS__LEAVE_METHOD_NAME = eINSTANCE.getScopeInformationStatements_LeaveMethodName();
 
 		/**
 		 * The meta object literal for the '{@link ru.ifmo.rain.astrans.astransformation.Method <em>Method</em>}' class.

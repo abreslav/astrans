@@ -59,6 +59,12 @@ class MappingRule extends Method {
   ordered val AssignReferenceStatement[*] assignReferenceStatements;
   derived transient volatile readonly ref ResolveObject[*] resolveObjectStatements;
   val WriteTrace[1] writeTraceStatement;
+  val ScopeInformationStatements[0..1] scopeInformationStatements;
+}
+
+class ScopeInformationStatements {
+	attr String[1] enterMethodName;
+	attr String[1] leaveMethodName;
 }
 
 interface AssignReferenceStatement {
