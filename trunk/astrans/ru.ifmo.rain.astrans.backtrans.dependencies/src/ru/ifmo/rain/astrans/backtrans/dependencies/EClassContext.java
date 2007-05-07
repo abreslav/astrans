@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are supported:
  * <ul>
  *   <li>{@link ru.ifmo.rain.astrans.backtrans.dependencies.EClassContext#getEClass <em>EClass</em>}</li>
+ *   <li>{@link ru.ifmo.rain.astrans.backtrans.dependencies.EClassContext#isProvidingScopeInformation <em>Providing Scope Information</em>}</li>
  *   <li>{@link ru.ifmo.rain.astrans.backtrans.dependencies.EClassContext#getDependencies <em>Dependencies</em>}</li>
  * </ul>
  * </p>
@@ -49,6 +50,26 @@ public class EClassContext extends EObjectImpl implements EObject {
 	 * @ordered
 	 */
 	protected EClass eClass = null;
+
+	/**
+	 * The default value of the '{@link #isProvidingScopeInformation() <em>Providing Scope Information</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isProvidingScopeInformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean PROVIDING_SCOPE_INFORMATION_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isProvidingScopeInformation() <em>Providing Scope Information</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isProvidingScopeInformation()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean providingScopeInformation = PROVIDING_SCOPE_INFORMATION_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getDependencies() <em>Dependencies</em>}' containment reference list.
@@ -127,6 +148,38 @@ public class EClassContext extends EObjectImpl implements EObject {
 	}
 
 	/**
+	 * Returns the value of the '<em><b>Providing Scope Information</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Providing Scope Information</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Providing Scope Information</em>' attribute.
+	 * @see #setProvidingScopeInformation(boolean)
+	 * @generated
+	 */
+	public boolean isProvidingScopeInformation() {
+		return providingScopeInformation;
+	}
+
+	/**
+	 * Sets the value of the '{@link ru.ifmo.rain.astrans.backtrans.dependencies.EClassContext#isProvidingScopeInformation <em>Providing Scope Information</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Providing Scope Information</em>' attribute.
+	 * @see #isProvidingScopeInformation()
+	 * @generated
+	 */
+	public void setProvidingScopeInformation(boolean newProvidingScopeInformation) {
+		boolean oldProvidingScopeInformation = providingScopeInformation;
+		providingScopeInformation = newProvidingScopeInformation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DependenciesPackage.ECLASS_CONTEXT__PROVIDING_SCOPE_INFORMATION, oldProvidingScopeInformation, providingScopeInformation));
+	}
+
+	/**
 	 * Returns the value of the '<em><b>Dependencies</b></em>' containment reference list.
 	 * The list contents are of type {@link ru.ifmo.rain.astrans.backtrans.dependencies.FeatureDependency}.
 	 * <!-- begin-user-doc -->
@@ -168,6 +221,8 @@ public class EClassContext extends EObjectImpl implements EObject {
 			case DependenciesPackage.ECLASS_CONTEXT__ECLASS:
 				if (resolve) return getEClass();
 				return basicGetEClass();
+			case DependenciesPackage.ECLASS_CONTEXT__PROVIDING_SCOPE_INFORMATION:
+				return isProvidingScopeInformation() ? Boolean.TRUE : Boolean.FALSE;
 			case DependenciesPackage.ECLASS_CONTEXT__DEPENDENCIES:
 				return getDependencies();
 		}
@@ -183,6 +238,9 @@ public class EClassContext extends EObjectImpl implements EObject {
 		switch (featureID) {
 			case DependenciesPackage.ECLASS_CONTEXT__ECLASS:
 				setEClass((EClass)newValue);
+				return;
+			case DependenciesPackage.ECLASS_CONTEXT__PROVIDING_SCOPE_INFORMATION:
+				setProvidingScopeInformation(((Boolean)newValue).booleanValue());
 				return;
 			case DependenciesPackage.ECLASS_CONTEXT__DEPENDENCIES:
 				getDependencies().clear();
@@ -202,6 +260,9 @@ public class EClassContext extends EObjectImpl implements EObject {
 			case DependenciesPackage.ECLASS_CONTEXT__ECLASS:
 				setEClass((EClass)null);
 				return;
+			case DependenciesPackage.ECLASS_CONTEXT__PROVIDING_SCOPE_INFORMATION:
+				setProvidingScopeInformation(PROVIDING_SCOPE_INFORMATION_EDEFAULT);
+				return;
 			case DependenciesPackage.ECLASS_CONTEXT__DEPENDENCIES:
 				getDependencies().clear();
 				return;
@@ -218,10 +279,27 @@ public class EClassContext extends EObjectImpl implements EObject {
 		switch (featureID) {
 			case DependenciesPackage.ECLASS_CONTEXT__ECLASS:
 				return eClass != null;
+			case DependenciesPackage.ECLASS_CONTEXT__PROVIDING_SCOPE_INFORMATION:
+				return providingScopeInformation != PROVIDING_SCOPE_INFORMATION_EDEFAULT;
 			case DependenciesPackage.ECLASS_CONTEXT__DEPENDENCIES:
 				return dependencies != null && !dependencies.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (providingScopeInformation: ");
+		result.append(providingScopeInformation);
+		result.append(')');
+		return result.toString();
 	}
 
 } // EClassContext

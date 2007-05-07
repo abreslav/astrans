@@ -8,6 +8,7 @@ class DependencyModel {
 @Ecore(constraints="AllFeaturesBelongToAClass")
 class EClassContext {
 	ref ecore.EClass[1] eClass;
+	attr boolean providingScopeInformation = false;
 	val FeatureDependency[*] dependencies;
 }
 
