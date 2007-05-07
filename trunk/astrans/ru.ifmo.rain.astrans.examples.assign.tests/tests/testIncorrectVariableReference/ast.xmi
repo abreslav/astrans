@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ASCII"?>
+<assignast:Unit xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:assignast="http://rain.ifmo.ru/~breslav/astrans/examples/2002/assign/ast" xsi:schemaLocation="http://rain.ifmo.ru/~breslav/astrans/examples/2002/assign/ast ../../../ru.ifmo.rain.astrans.examples.assign/model/ast.ecore">
+  <imports packageName="ecore" packageUri="http://www.eclipse.org/emf/2002/Ecore"/>
+  <imports packageName="trace" packageUri="http://rain.ifmo.ru/~breslav/2007/astrans/interperter/trace"/>
+  <model>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="package" returned="true">
+      <expression xsi:type="assignast:CreateInstanceAS">
+        <eClassReference xsi:type="assignast:StaticEClassReferenceAS">
+          <eClass package="ecore" class="EPackage"/>
+        </eClassReference>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:ManyFeatureAppendAS">
+      <expression xsi:type="assignast:VariableAS" variableAssignment="Model"/>
+      <object feature="eClassifiers">
+        <object xsi:type="assignast:VariableAS" variableAssignment="package"/>
+      </object>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="Model">
+      <expression xsi:type="assignast:CreateInstanceAS">
+        <eClassReference xsi:type="assignast:StaticEClassReferenceAS">
+          <eClass package="ecore" class="EClass"/>
+        </eClassReference>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:SingleFeatureAssignmentAS">
+      <expression xsi:type="assignast:StringLiteralAS" value="package"/>
+      <object feature="name">
+        <object xsi:type="assignast:VariableAS" variableAssignment="package"/>
+      </object>
+    </assignments>
+    <assignments xsi:type="assignast:SingleFeatureAssignmentAS">
+      <expression xsi:type="assignast:StringLiteralAS" value="Model"/>
+      <object feature="name">
+        <object xsi:type="assignast:VariableAS" variableAssignment="Model"/>
+      </object>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="feature">
+      <expression xsi:type="assignast:CreateInstanceAS">
+        <eClassReference xsi:type="assignast:StaticEClassReferenceAS">
+          <eClass package="ecore" class="EReference"/>
+        </eClassReference>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:ManyFeatureAppendAS">
+      <expression xsi:type="assignast:VariableAS" variableAssignment="feature"/>
+      <object feature="eStructuralFeatures">
+        <object xsi:type="assignast:VariableAS" variableAssignment="Model"/>
+      </object>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="f1">
+      <expression xsi:type="assignast:VariableAS" variableAssignment="feature"/>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="f2">
+      <expression xsi:type="assignast:FeatureAccessAS" feature="unsettable">
+        <object xsi:type="assignast:VariableAS" variableAssignment="feature"/>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="f3">
+      <expression xsi:type="assignast:FeatureAccessAS" feature="instanceClassName">
+        <object xsi:type="assignast:FeatureAccessAS" feature="eType">
+          <object xsi:type="assignast:VariableAS" variableAssignment="feature"/>
+        </object>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="f4">
+      <expression xsi:type="assignast:EObjectReferenceAS">
+        <object package="ecore" class="EDate"/>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="f5">
+      <expression xsi:type="assignast:EObjectReferenceAS">
+        <object package="ecore" class="EPackage"/>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="f6">
+      <expression xsi:type="assignast:EObjectReferenceAS">
+        <object package="ecore" class="EPackage" feature="eClassifiers"/>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="f7">
+      <expression xsi:type="assignast:CreateInstanceAS">
+        <eClassReference xsi:type="assignast:DynamicEClassReferenceAS">
+          <eClass xsi:type="assignast:VariableAS" variableAssignment="Model"/>
+        </eClassReference>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="f8">
+      <expression xsi:type="assignast:CopyObjectAS">
+        <object xsi:type="assignast:CopyObjectAS">
+          <object xsi:type="assignast:VariableAS" variableAssignment="f7"/>
+        </object>
+      </expression>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="f9">
+      <expression xsi:type="assignast:BooleanLiteralAS" value="true"/>
+    </assignments>
+    <assignments xsi:type="assignast:VariableAssignmentAS" variableName="f10">
+      <expression xsi:type="assignast:EnumLiteralAS">
+        <literal package="trace" enum="ReferenceMappingType" literal="TRANSLATED"/>
+      </expression>
+    </assignments>
+  </model>
+</assignast:Unit>
