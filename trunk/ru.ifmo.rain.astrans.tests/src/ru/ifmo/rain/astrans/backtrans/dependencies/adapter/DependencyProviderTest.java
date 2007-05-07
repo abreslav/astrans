@@ -24,7 +24,7 @@ import ru.ifmo.rain.tests.utils.IFileProcessor;
 import ru.ifmo.rain.tests.utils.XMIResourceSet;
 
 @RunWith(Parameterized.class)
-public class DependencyReferenceOrderProviderTest {
+public class DependencyProviderTest {
 
 	@Parameters
 	public static Collection<Object[]> parameters() {
@@ -39,7 +39,7 @@ public class DependencyReferenceOrderProviderTest {
 	
 	private final File testDir;
 
-	public DependencyReferenceOrderProviderTest(File testDir) {
+	public DependencyProviderTest(File testDir) {
 		this.testDir = testDir;
 	}
 
@@ -56,13 +56,16 @@ public class DependencyReferenceOrderProviderTest {
 		DependencyModel dependencyModel = (DependencyModel) resourceSet.loadEObject(getURI("DependencyModel.xmi"));
 		
 		PrintStream output = new PrintStream(new File(testDir, "output.txt"));
-		DependencyReferenceOrderProvider provider;
+		DependencyProvider provider;
 		try {
-			provider = new DependencyReferenceOrderProvider(dependencyModel);
+			provider = new DependencyProvider(dependencyModel);
 		
 			EList classifiers = input.getEClassifiers();
 			for (Iterator iter = classifiers.iterator(); iter.hasNext();) {
 				EClass eClass = (EClass) iter.next();
+				if (provider.isProvidingScopeInformation(eClass)) {
+					output.println(eClass.getName());
+				}
 				Iterable<EReference> order = provider.getReferenceOrder(eClass);
 				for (EReference reference : order) {
 					output.println(eClass.getName() + ":" + reference.getName());

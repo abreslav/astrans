@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<astransformation:Transformation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:astransformation="http://rain.ifmo.ru/~breslav/2007/astransformation" name="AstToModelTransformation" main="//@mappingRules.0" resolverClassName="IAstToModelResolver" traceClassName="IAstToModelTrace">
+  <mappingRules name="caseClassAS" factoryMethodName="createClass">
+    <parameter name="classAS">
+      <type name="test.ast.ClassAS"/>
+    </parameter>
+    <result name="class">
+      <type name="test.model.Class"/>
+    </result>
+    <factoryClassName name="test.model.ModelFactory"/>
+    <assignAttributeStatements setterName="setA" getterName="getAs"/>
+    <assignReferenceStatements xsi:type="astransformation:ResolveObjects">
+      <resolveObjectStatements setterName="setR1" getterName="getRas1" resolverMethodName="resolveClassR1" parameterName="ras1">
+        <type name="test.model.Class"/>
+        <parameterType xsi:type="astransformation:ClassName" name="test.ast.ClassAS"/>
+      </resolveObjectStatements>
+    </assignReferenceStatements>
+    <writeTraceStatement traceMethodName="classCreated"/>
+  </mappingRules>
+  <mappingRules name="caseClass1AS" factoryMethodName="createClass1">
+    <parameter name="class1AS">
+      <type name="test.ast.Class1AS"/>
+    </parameter>
+    <result name="class1">
+      <type name="test.model.Class1"/>
+    </result>
+    <factoryClassName name="test.model.ModelFactory"/>
+    <writeTraceStatement traceMethodName="class1Created"/>
+    <scopeInformationStatements enterMethodName="enteredClass1AS" leaveMethodName="leftClass1AS"/>
+  </mappingRules>
+  <switchClassName name="test.ast.util.AstSwitch"/>
+</astransformation:Transformation>

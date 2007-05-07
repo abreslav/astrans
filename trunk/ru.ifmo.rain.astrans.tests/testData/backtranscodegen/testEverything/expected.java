@@ -27,7 +27,6 @@ public class TestEveythingTransformation extends ASTToModelTransformation<ITERes
 	
 		public Transformation caseTransformationAS(final TransformationAS transformationAS) {
 			final Transformation transformation = AstransFactory.eINSTANCE.createTransformation();
-		
 			
 			transformation.setOutputName().addAll(transformationAS.getOutputName());
 			transformation.setOutputNsURI(transformationAS.getOutputNsURI());
@@ -47,7 +46,6 @@ public class TestEveythingTransformation extends ASTToModelTransformation<ITERes
 			});
 			
 			getTrace().transformationCreated(transformationAS, transformation);
-		
 			return transformation;
 		}
 	};

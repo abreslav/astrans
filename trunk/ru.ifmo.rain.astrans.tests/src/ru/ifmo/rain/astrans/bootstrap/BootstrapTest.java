@@ -18,7 +18,7 @@ import org.junit.Test;
 import ru.ifmo.rain.astrans.AstransPackage;
 import ru.ifmo.rain.astrans.Transformation;
 import ru.ifmo.rain.astrans.backtrans.dependencies.DependencyModel;
-import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.DependencyReferenceOrderProvider;
+import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.DependencyProvider;
 import ru.ifmo.rain.astrans.backtrans.dependencies.adapter.IncorrectGraphException;
 import ru.ifmo.rain.astrans.interpreter.AstransInterpreter;
 import ru.ifmo.rain.astrans.interpreter.backtrans.BacktransCodeGenerator;
@@ -53,7 +53,7 @@ public class BootstrapTest {
 		resource = resourceSet.createResource(URI.createURI("DependencyModel.xmi"));
 		resource.load(null);
 		DependencyModel dependencyModel = (DependencyModel) resource.getContents().get(0);
-		BacktransCreator backtransCreator = new BacktransCreator(new TraceAdapter(trace), protoGM, imageGM, new DependencyReferenceOrderProvider(dependencyModel));
+		BacktransCreator backtransCreator = new BacktransCreator(new TraceAdapter(trace), protoGM, imageGM, new DependencyProvider(dependencyModel));
 		ru.ifmo.rain.astrans.astransformation.Transformation backTransformation = backtransCreator.createBackTransformation();
 		save(resourceSet, "backtrans.xmi", backTransformation);
 		

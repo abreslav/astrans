@@ -41,7 +41,6 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 	
 		public MappedEClass caseMappedEClassAS(final MappedEClassAS mappedEClassAS) {
 			final MappedEClass mappedEClass = AstransFactory.eINSTANCE.createMappedEClass();
-		
 			
 			addCommand(new Runnable() {
 				public void run() {
@@ -50,13 +49,11 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			});
 			
 			getTrace().mappedEClassCreated(mappedEClassAS, mappedEClass);
-		
 			return mappedEClass;
 		}
 
 		public TranslateReferences caseTranslateReferencesAS(final TranslateReferencesAS translateReferencesAS) {
 			final TranslateReferences translateReferences = AstransFactory.eINSTANCE.createTranslateReferences();
-		
 			
 			translateReferences.setCrossReferencesOnly(translateReferencesAS.isCrossReferencesOnly());
 			translateReferences.setIncludeDescendants(translateReferencesAS.isIncludeDescendants());
@@ -69,13 +66,11 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			});
 			
 			getTrace().translateReferencesCreated(translateReferencesAS, translateReferences);
-		
 			return translateReferences;
 		}
 
 		public CreateClass caseCreateClassAS(final CreateClassAS createClassAS) {
 			final CreateClass createClass = AstransFactory.eINSTANCE.createCreateClass();
-		
 			
 			createClass.setName(createClassAS.getName());
 			createClass.setAbstract(createClassAS.isAbstract());
@@ -90,13 +85,11 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			doSwitch(createClass.getStructuralFeatures(), createClassAS.getStructuralFeatures());
 			
 			getTrace().createClassCreated(createClassAS, createClass);
-		
 			return createClass;
 		}
 
 		public Attribute caseAttributeAS(final AttributeAS attributeAS) {
 			final Attribute attribute = AstransFactory.eINSTANCE.createAttribute();
-		
 			
 			attribute.setName(attributeAS.getName());
 			attribute.setLowerBound(attributeAS.getLowerBound());
@@ -109,13 +102,11 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			});
 			
 			getTrace().attributeCreated(attributeAS, attribute);
-		
 			return attribute;
 		}
 
 		public Reference caseReferenceAS(final ReferenceAS referenceAS) {
 			final Reference reference = AstransFactory.eINSTANCE.createReference();
-		
 			
 			reference.setName(referenceAS.getName());
 			reference.setLowerBound(referenceAS.getLowerBound());
@@ -129,13 +120,11 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			});
 			
 			getTrace().referenceCreated(referenceAS, reference);
-		
 			return reference;
 		}
 
 		public ChangeInheritance caseChangeInheritanceAS(final ChangeInheritanceAS changeInheritanceAS) {
 			final ChangeInheritance changeInheritance = AstransFactory.eINSTANCE.createChangeInheritance();
-		
 			
 			changeInheritance.setSubject((MappedEClass) doSwitch(changeInheritanceAS.getSubject()));
 			addCommand(new Runnable() {
@@ -147,13 +136,11 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			});
 			
 			getTrace().changeInheritanceCreated(changeInheritanceAS, changeInheritance);
-		
 			return changeInheritance;
 		}
 
 		public SkipClass caseSkipClassAS(final SkipClassAS skipClassAS) {
 			final SkipClass skipClass = AstransFactory.eINSTANCE.createSkipClass();
-		
 			
 			skipClass.setIncludeDescendants(skipClassAS.isIncludeDescendants());
 			
@@ -164,13 +151,11 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			});
 			
 			getTrace().skipClassCreated(skipClassAS, skipClass);
-		
 			return skipClass;
 		}
 
 		public Transformation caseTransformationAS(final TransformationAS transformationAS) {
 			final Transformation transformation = AstransFactory.eINSTANCE.createTransformation();
-		
 			
 			transformation.setOutputName(transformationAS.getOutputName());
 			transformation.setOutputNsURI(transformationAS.getOutputNsURI());
@@ -192,7 +177,6 @@ public class AstransastToAstransTransformation extends ASTToModelTransformation<
 			});
 			
 			getTrace().transformationCreated(transformationAS, transformation);
-		
 			return transformation;
 		}
 	};
