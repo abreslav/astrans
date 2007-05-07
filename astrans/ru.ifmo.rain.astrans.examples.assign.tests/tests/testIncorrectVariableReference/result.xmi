@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ASCII"?>
+<assign:AssignModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:assign="http://rain.ifmo.ru/~breslav/astrans/examples/2007/assign" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore">
+  <assignments xsi:type="assign:VariableAssignment" variableName="package" returned="true">
+    <expression xsi:type="assign:CreateInstance">
+      <eClassReference xsi:type="assign:StaticEClassReference">
+        <eClass href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+      </eClassReference>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="Model">
+    <expression xsi:type="assign:CreateInstance">
+      <eClassReference xsi:type="assign:StaticEClassReference">
+        <eClass href="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+      </eClassReference>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:ManyFeatureAppend">
+    <expression xsi:type="assign:Variable" variableAssignment="//@assignments.1"/>
+    <object>
+      <object xsi:type="assign:Variable" variableAssignment="//@assignments.0"/>
+      <feature xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eClassifiers"/>
+    </object>
+  </assignments>
+  <assignments xsi:type="assign:SingleFeatureAssignment">
+    <expression xsi:type="assign:StringLiteral" value="package"/>
+    <object>
+      <object xsi:type="assign:Variable" variableAssignment="//@assignments.0"/>
+      <feature xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+    </object>
+  </assignments>
+  <assignments xsi:type="assign:SingleFeatureAssignment">
+    <expression xsi:type="assign:StringLiteral" value="Model"/>
+    <object>
+      <object xsi:type="assign:Variable" variableAssignment="//@assignments.1"/>
+      <feature xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+    </object>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="feature">
+    <expression xsi:type="assign:CreateInstance">
+      <eClassReference xsi:type="assign:StaticEClassReference">
+        <eClass href="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+      </eClassReference>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:ManyFeatureAppend">
+    <expression xsi:type="assign:Variable" variableAssignment="//@assignments.5"/>
+    <object>
+      <object xsi:type="assign:Variable" variableAssignment="//@assignments.1"/>
+      <feature xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eStructuralFeatures"/>
+    </object>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="f1">
+    <expression xsi:type="assign:Variable" variableAssignment="//@assignments.5"/>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="f2">
+    <expression xsi:type="assign:FeatureAccess">
+      <object xsi:type="assign:Variable" variableAssignment="//@assignments.5"/>
+      <feature xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/unsettable"/>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="f3">
+    <expression xsi:type="assign:FeatureAccess">
+      <object xsi:type="assign:FeatureAccess">
+        <object xsi:type="assign:Variable" variableAssignment="//@assignments.5"/>
+        <feature xsi:type="ecore:EReference" href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+      </object>
+      <feature xsi:type="ecore:EAttribute" href="http://www.eclipse.org/emf/2002/Ecore#//EClassifier/instanceClassName"/>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="f4">
+    <expression xsi:type="assign:EObjectReference">
+      <object href="http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="f5">
+    <expression xsi:type="assign:EObjectReference">
+      <object href="http://www.eclipse.org/emf/2002/Ecore#//EPackage"/>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="f6">
+    <expression xsi:type="assign:EObjectReference">
+      <object href="http://www.eclipse.org/emf/2002/Ecore#//EPackage/eClassifiers"/>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="f7">
+    <expression xsi:type="assign:CreateInstance">
+      <eClassReference xsi:type="assign:DynamicEClassReference">
+        <eClass xsi:type="assign:Variable" variableAssignment="//@assignments.1"/>
+      </eClassReference>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="f8">
+    <expression xsi:type="assign:CopyObject">
+      <object xsi:type="assign:CopyObject">
+        <object xsi:type="assign:Variable" variableAssignment="//@assignments.13"/>
+      </object>
+    </expression>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="f9">
+    <expression xsi:type="assign:BooleanLiteral" value="true"/>
+  </assignments>
+  <assignments xsi:type="assign:VariableAssignment" variableName="f10">
+    <expression xsi:type="assign:EnumLiteral">
+      <literal href="http://rain.ifmo.ru/~breslav/2007/astrans/interperter/trace#//ReferenceMappingType/TRANSLATED"/>
+    </expression>
+  </assignments>
+</assign:AssignModel>

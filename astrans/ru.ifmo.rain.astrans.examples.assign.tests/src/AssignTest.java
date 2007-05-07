@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -28,11 +29,22 @@ public class AssignTest extends DirectoryBasedTest {
 	public void testAssign() throws IOException {
 		XMIResourceSet resourceSet = new XMIResourceSet(EcorePackage.eINSTANCE, AssignastPackage.eINSTANCE, AssignPackage.eINSTANCE, TracePackage.eINSTANCE);
 
+		boolean errorExpected = new File(getTestDir(), "error").exists();
 		AssignModel expected = (AssignModel) resourceSet.loadEObject(getPath("expected.xmi"));
 		Unit ast = (Unit) resourceSet.loadEObject(getPath("ast.xmi"));
 		
 		AssignastToAssignTransformation transformation = new AssignastToAssignTransformation(new AssignTransformationContextFactory());
-		AssignModel model = transformation.run(ast);
+		AssignModel model;
+		try {
+			model = transformation.run(ast);
+		} catch(RuntimeException e) {
+			if (!errorExpected) {
+				throw e;
+			}
+			return;
+		}
+		
+		assertFalse(errorExpected);
 		
 		resourceSet.saveEObject(model, getPath("result.xmi"));
 		
